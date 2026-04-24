@@ -94,12 +94,14 @@ let isOpen = false;
  
 
 header.addEventListener("click", (e) => {
+  if (dragged) return; // 🔥 важно
+  
   e.stopPropagation(); // на всякий случай
   isOpen = !isOpen;
   menu.classList.toggle("open", isOpen);
 });
 
-  
+
 items.forEach(item => {
   item.addEventListener("click", () => {
     item.classList.toggle("active");
