@@ -155,7 +155,12 @@ menu.addEventListener("pointermove", (e) => {
   menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
+  menu.addEventListener("pointercancel", () => {
+  isDragging = false;
+});
+  
 menu.addEventListener("pointerup", (e) => {
+  sDragging = false; // 🔥 ВОТ ЭТОГО
   menu.releasePointerCapture(e.pointerId);
 
   if (dragged) return;
