@@ -156,29 +156,25 @@ menu.addEventListener("pointermove", (e) => {
 });
 
 menu.addEventListener("pointerup", (e) => {
-  isDragging = false;
   menu.releasePointerCapture(e.pointerId);
-});
 
-// ======================
-// MENU TOGGLE (через pointerup)
-// ======================
-header.addEventListener("pointerup", (e) => {
   if (dragged) return;
 
-  e.stopPropagation();
+  // проверяем, что клик был по header
+  if (e.target.closest(".header")) {
+    isOpen = !isOpen;
+    menu.classList.toggle("open", isOpen);
 
-  isOpen = !isOpen;
-  menu.classList.toggle("open", isOpen);
-
-  // корректировка позиции после изменения размера
-  requestAnimationFrame(() => {
-    const clamped = clampPosition(offsetX, offsetY);
-    offsetX = clamped.x;
-    offsetY = clamped.y;
-    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  });
+    requestAnimationFrame(() => {
+      const clamped = clampPosition(offsetX, offsetY);
+      offsetX = clamped.x;
+      offsetY = clamped.y;
+      menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    });
+  }
 });
+
+
 
 // resize fix
 window.addEventListener("resize", () => {
