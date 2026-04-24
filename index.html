@@ -86,6 +86,7 @@
 <script>
 const menu = document.getElementById("menu");
 const items = document.querySelectorAll(".item");
+  const header = document.querySelector(".header");
 
 let isOpen = false;
 
@@ -118,7 +119,7 @@ function clampPosition(x, y) {
   };
 }
 
-menu.addEventListener("pointerdown", (e) => {
+header.addEventListener("pointerdown", (e) => {
   isDragging = true;
   dragged = false;
 
