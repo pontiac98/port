@@ -169,12 +169,12 @@ menu.addEventListener("pointerup", (e) => {
   //menu.classList.toggle("open", isOpen);
 
   // 🟡 после изменения размера — проверяем границы заново
-  requestAnimationFrame(() => {
-    const clamped = clampPosition(offsetX, offsetY);
-    offsetX = clamped.x;
-    offsetY = clamped.y;
-    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  });
+ // requestAnimationFrame(() => {
+  //  const clamped = clampPosition(offsetX, offsetY);
+  //  offsetX = clamped.x;
+   // offsetY = clamped.y;
+  //  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+ // });
 });
 
 // при изменении размера окна — тоже держим внутри
