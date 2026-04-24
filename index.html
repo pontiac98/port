@@ -2,73 +2,73 @@
 <html lang="ru">
 <head>
   <title>Sergey Yakovlev</title>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="description" content="Designer Portfolio" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <link rel="icon" type="image/svg+xml" href="icon.svg">
-<link rel="alternate icon" href="icon.png">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="alternate icon" href="icon.png">
 
 <style>
-  #menu {
-    position: fixed;
-    top: 0;
-    left: 0;
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
 
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    border: 1px solid white;
-    user-select: none;
-    
-touch-action: none;
-    transform: translate(50px, 50px);
-    cursor: grab;
-  }
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  border: 1px solid white;
+  user-select: none;
 
-  #menu:active {
-    cursor: grabbing;
-  }
+  touch-action: none;
+  transform: translate(50px, 50px);
+  cursor: grab;
+}
 
-  .header {
-    padding: 10px 14px;
-    font-weight: bold;
-    background: #111;
-  }
+#menu:active {
+  cursor: grabbing;
+}
 
-  .submenu {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px 14px;
+.header {
+  padding: 10px 14px;
+  font-weight: bold;
+  background: #111;
+}
 
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
 
-    transform: translateY(-5px);
-    transition: all 0.25s ease;
-  }
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
 
-  #menu.open .submenu {
-    max-height: 200px;
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+}
 
-  .item {
-    padding: 4px 8px;
-    border: 1px solid white;
-    cursor: pointer;
-  }
+#menu.open .submenu {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .item:hover {
-    background: white;
-    color: black;
-  }
+.item {
+  padding: 4px 8px;
+  border: 1px solid white;
+  cursor: pointer;
+}
 
-  .item.active {
-    font-weight: bold;
-  }
+.item:hover {
+  background: white;
+  color: black;
+}
+
+.item.active {
+  font-weight: bold;
+}
 </style>
 </head>
 
@@ -86,30 +86,23 @@ touch-action: none;
 
 <script>
 const menu = document.getElementById("menu");
+const header = document.querySelector(".header");
 const items = document.querySelectorAll(".item");
- const header = document.querySelector(".header");
-  
+
 let isOpen = false;
 
- 
-
-header.addEventListener("click", (e) => {
-  if (dragged) return; // 🔥 важно
-  
-  e.stopPropagation(); // на всякий случай
-  isOpen = !isOpen;
-  menu.classList.toggle("open", isOpen);
-});
-
-
+// ======================
+// SUBMENU
+// ======================
 items.forEach(item => {
-  item.addEventListener("click", () => {
+  item.addEventListener("pointerup", (e) => {
+    e.stopPropagation();
     item.classList.toggle("active");
   });
 });
 
 // ======================
-// DRAG + SAFE BOUNDS
+// DRAG
 // ======================
 let isDragging = false;
 let dragged = false;
@@ -132,6 +125,8 @@ function clampPosition(x, y) {
 }
 
 menu.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+
   isDragging = true;
   dragged = false;
 
@@ -163,14 +158,20 @@ menu.addEventListener("pointermove", (e) => {
 menu.addEventListener("pointerup", (e) => {
   isDragging = false;
   menu.releasePointerCapture(e.pointerId);
+});
 
+// ======================
+// MENU TOGGLE (через pointerup)
+// ======================
+header.addEventListener("pointerup", (e) => {
   if (dragged) return;
 
-   toggle меню только если это не drag
+  e.stopPropagation();
+
   isOpen = !isOpen;
   menu.classList.toggle("open", isOpen);
 
-  // 🟡 после изменения размера — проверяем границы заново
+  // корректировка позиции после изменения размера
   requestAnimationFrame(() => {
     const clamped = clampPosition(offsetX, offsetY);
     offsetX = clamped.x;
@@ -179,7 +180,7 @@ menu.addEventListener("pointerup", (e) => {
   });
 });
 
-// при изменении размера окна — тоже держим внутри
+// resize fix
 window.addEventListener("resize", () => {
   const clamped = clampPosition(offsetX, offsetY);
   offsetX = clamped.x;
