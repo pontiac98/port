@@ -5,7 +5,8 @@
 <meta charset="UTF-8">
   <meta name="description" content="Designer Portfolio" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <link rel="icon"  type="image/svg" href="icon.svg">
+ <link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="alternate icon" href="icon.png">
 
 <style>
   #menu {
@@ -86,9 +87,19 @@ touch-action: none;
 <script>
 const menu = document.getElementById("menu");
 const items = document.querySelectorAll(".item");
-
+ const header = document.querySelector(".header");
+  
 let isOpen = false;
 
+ 
+
+header.addEventListener("click", (e) => {
+  e.stopPropagation(); // на всякий случай
+  isOpen = !isOpen;
+  menu.classList.toggle("open", isOpen);
+});
+
+  
 items.forEach(item => {
   item.addEventListener("click", () => {
     item.classList.toggle("active");
@@ -154,8 +165,8 @@ menu.addEventListener("pointerup", (e) => {
   if (dragged) return;
 
   // toggle меню только если это не drag
-  isOpen = !isOpen;
-  menu.classList.toggle("open", isOpen);
+  //isOpen = !isOpen;
+  //menu.classList.toggle("open", isOpen);
 
   // 🟡 после изменения размера — проверяем границы заново
   requestAnimationFrame(() => {
