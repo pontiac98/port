@@ -1,11 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+<meta charset="UTF-8">
+
+<style>
+  #menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    border: 1px solid white;
+    user-select: none;
+
+    transform: translate(50px, 50px);
+    cursor: grab;
+  }
+
+  #menu:active {
+    cursor: grabbing;
+  }
+
+  .header {
+    padding: 10px 14px;
+    font-weight: bold;
+    background: #111;
+  }
+
+  .submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 14px;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transform: translateY(-5px);
+    transition: all 0.25s ease;
+  }
+
+  #menu.open .submenu {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .item {
+    padding: 4px 8px;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+
+  .item:hover {
+    background: white;
+    color: black;
+  }
+
+  .item.active {
+    font-weight: bold;
+  }
+</style>
 </head>
+
 <body>
-    <h1>Welcome to My Portfolio</h1>
+
+<div id="menu">
+  <div class="header">MENU</div>
+
+  <div class="submenu">
+    <div class="item">submenu1</div>
+    <div class="item">submenu2</div>
+    <div class="item">submenu3</div>
+  </div>
+</div>
+
+<script>
+const menu = document.getElementById("menu");
+const items = document.querySelectorAll(".item");
+
+let isOpen = false;
+
+items.forEach(item => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
+
+// ======================
+// DRAG + SAFE BOUNDS
+// ======================
+let isDragging = false;
+let dragged = false;
+
+let startX, startY;
+let offsetX = 50, offsetY = 50;
+
+const DRAG_THRESHOLD = 5;
+
+function clampPosition(x, y) {
+  const rect = menu.getBoundingClientRect();
+
+  const maxX = window.innerWidth - rect.width;
+  const maxY = window.innerHeight - rect.height;
+
+  return {
+    x: Math.max(0, Math.min(x, maxX)),
+    y: Math.max(0, Math.min(y, maxY))
+  };
+}
+
+menu.addEventListener("pointerdown", (e) => {
+  isDragging = true;
+  dragged = false;
+
+  startX = e.clientX - offsetX;
+  startY = e.clientY - offsetY;
+
+  menu.setPointerCapture(e.pointerId);
+});
+
+menu.addEventListener("pointermove", (e) => {
+  if (!isDragging) return;
+
+  let x = e.clientX - startX;
+  let y = e.clientY - startY;
+
+  const clamped = clampPosition(x, y);
+
+  if (Math.abs(clamped.x - offsetX) > DRAG_THRESHOLD ||
+      Math.abs(clamped.y - offsetY) > DRAG_THRESHOLD) {
+    dragged = true;
+  }
+
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+
+menu.addEventListener("pointerup", (e) => {
+  isDragging = false;
+  menu.releasePointerCapture(e.pointerId);
+
+  if (dragged) return;
+
+  // toggle меню только если это не drag
+  isOpen = !isOpen;
+  menu.classList.toggle("open", isOpen);
+
+  // 🟡 после изменения размера — проверяем границы заново
+  requestAnimationFrame(() => {
+    const clamped = clampPosition(offsetX, offsetY);
+    offsetX = clamped.x;
+    offsetY = clamped.y;
+    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
+});
+
+// при изменении размера окна — тоже держим внутри
+window.addEventListener("resize", () => {
+  const clamped = clampPosition(offsetX, offsetY);
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+</script>
+
 </body>
 </html>
