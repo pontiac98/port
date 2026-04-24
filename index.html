@@ -9,66 +9,65 @@
   <link rel="alternate icon" href="icon.png">
 
 <style>
-#menu {
-  position: fixed;
-  top: 0;
-  left: 0;
+  #menu {
+    position: fixed;
+    top: 0;
+    left: 0;
 
-  background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  border: 1px solid white;
-  user-select: none;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    border: 1px solid white;
+    user-select: none;
 
-  touch-action: none;
-  transform: translate(50px, 50px);
-  cursor: grab;
-}
+    transform: translate(50px, 50px);
+    cursor: grab;
+  }
 
-#menu:active {
-  cursor: grabbing;
-}
+  #menu:active {
+    cursor: grabbing;
+  }
 
-.header {
-  padding: 10px 14px;
-  font-weight: bold;
-  background: #111;
-}
+  .header {
+    padding: 10px 14px;
+    font-weight: bold;
+    background: #111;
+  }
 
-.submenu {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px 14px;
+  .submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 14px;
 
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
 
-  transform: translateY(-5px);
-  transition: all 0.25s ease;
-}
+    transform: translateY(-5px);
+    transition: all 0.25s ease;
+  }
 
-#menu.open .submenu {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
-}
+  #menu.open .submenu {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.item {
-  padding: 4px 8px;
-  border: 1px solid white;
-  cursor: pointer;
-}
+  .item {
+    padding: 4px 8px;
+    border: 1px solid white;
+    cursor: pointer;
+  }
 
-.item:hover {
-  background: white;
-  color: black;
-}
+  .item:hover {
+    background: white;
+    color: black;
+  }
 
-.item.active {
-  font-weight: bold;
-}
+  .item.active {
+    font-weight: bold;
+  }
 </style>
 </head>
 
@@ -86,23 +85,18 @@
 
 <script>
 const menu = document.getElementById("menu");
-const header = document.querySelector(".header");
 const items = document.querySelectorAll(".item");
 
 let isOpen = false;
 
-// ======================
-// SUBMENU
-// ======================
 items.forEach(item => {
-  item.addEventListener("pointerup", (e) => {
-    e.stopPropagation();
+  item.addEventListener("click", () => {
     item.classList.toggle("active");
   });
 });
 
 // ======================
-// DRAG
+// DRAG + SAFE BOUNDS
 // ======================
 let isDragging = false;
 let dragged = false;
@@ -125,8 +119,6 @@ function clampPosition(x, y) {
 }
 
 menu.addEventListener("pointerdown", (e) => {
-  e.preventDefault();
-
   isDragging = true;
   dragged = false;
 
@@ -155,33 +147,26 @@ menu.addEventListener("pointermove", (e) => {
   menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
-  menu.addEventListener("pointercancel", () => {
-  isDragging = false;
-});
-  
 menu.addEventListener("pointerup", (e) => {
-  sDragging = false; // 🔥 ВОТ ЭТОГО
+  isDragging = false;
   menu.releasePointerCapture(e.pointerId);
 
   if (dragged) return;
 
-  // проверяем, что клик был по header
-  if (e.target.closest(".header")) {
-    isOpen = !isOpen;
-    menu.classList.toggle("open", isOpen);
+  // toggle меню только если это не drag
+  isOpen = !isOpen;
+  menu.classList.toggle("open", isOpen);
 
-    requestAnimationFrame(() => {
-      const clamped = clampPosition(offsetX, offsetY);
-      offsetX = clamped.x;
-      offsetY = clamped.y;
-      menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    });
-  }
+  // 🟡 после изменения размера — проверяем границы заново
+  requestAnimationFrame(() => {
+    const clamped = clampPosition(offsetX, offsetY);
+    offsetX = clamped.x;
+    offsetY = clamped.y;
+    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
 });
 
-
-
-// resize fix
+// при изменении размера окна — тоже держим внутри
 window.addEventListener("resize", () => {
   const clamped = clampPosition(offsetX, offsetY);
   offsetX = clamped.x;
