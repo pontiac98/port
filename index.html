@@ -190,12 +190,31 @@ setTimeout(() => {
   header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
 
   // 🟡 после изменения размера — проверяем границы заново
-  requestAnimationFrame(() => {
-    const clamped = clampPosition(offsetX, offsetY);
-    offsetX = clamped.x;
-    offsetY = clamped.y;
-    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  });
+ requestAnimationFrame(() => {
+  const rect = menu.getBoundingClientRect();
+
+  let newX = offsetX;
+  let newY = offsetY;
+
+  // если вылезли вниз — поднимаем вверх
+  if (rect.bottom > window.innerHeight) {
+    newY -= (rect.bottom - window.innerHeight);
+  }
+
+  // если вдруг вылезли вправо
+  if (rect.right > window.innerWidth) {
+    newX -= (rect.right - window.innerWidth);
+  }
+
+  // защита от выхода вверх/влево
+  newX = Math.max(0, newX);
+  newY = Math.max(0, newY);
+
+  offsetX = newX;
+  offsetY = newY;
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
 });
 
 
