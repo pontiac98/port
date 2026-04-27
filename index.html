@@ -72,11 +72,18 @@ border-bottom: 2px dotted white;
     padding: 14px 28px;
     border: 0px solid white;
     cursor: pointer;
+
+      transition: 
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
   }
 
   .item:hover {
     background: white;
     color: black;
+
+  transform: translateX(3px); /* лёгкий сдвиг */
   }
 
   .item.active {
