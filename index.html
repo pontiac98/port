@@ -162,6 +162,7 @@ header.addEventListener("pointerup", (e) => {
   // toggle меню только если это не drag
   isOpen = !isOpen;
   menu.classList.toggle("open", isOpen);
+  header.textContent = isOpen ? "MENU^" : "MENU⌄";
 
   // 🟡 после изменения размера — проверяем границы заново
   requestAnimationFrame(() => {
