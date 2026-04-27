@@ -165,8 +165,8 @@ header.addEventListener("pointerup", (e) => {
   // toggle меню только если это не drag
   isOpen = !isOpen;
   menu.classList.toggle("open", isOpen);
-  header.style.opacity = 0;
-
+  
+  header.style.opacity = 0.9;
 setTimeout(() => {
  header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
   header.style.opacity = 1;
