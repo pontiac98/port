@@ -104,23 +104,6 @@ const items = document.querySelectorAll(".item");
 
 let isOpen = false;
 
-const submenu = document.querySelector(".submenu");
-
-submenu.addEventListener("transitionend", () => {
-  if (!isOpen) return;
-
-  const rect = menu.getBoundingClientRect();
-
-  let newY = offsetY;
-
-  if (rect.bottom > window.innerHeight) {
-    newY -= (rect.bottom - window.innerHeight);
-  }
-
-  offsetY = Math.max(0, newY);
-
-  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-});
   
 items.forEach(item => {
   item.addEventListener("click", (e) => {
@@ -214,7 +197,28 @@ setTimeout(() => {
   header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
 
   // 🟡 после изменения размера — проверяем границы заново
- 
+ setTimeout(() => {
+  const rect = menu.getBoundingClientRect();
+
+  let newX = offsetX;
+  let newY = offsetY;
+
+  if (rect.bottom > window.innerHeight) {
+    newY -= (rect.bottom - window.innerHeight);
+  }
+
+  if (rect.right > window.innerWidth) {
+    newX -= (rect.right - window.innerWidth);
+  }
+
+  newX = Math.max(0, newX);
+  newY = Math.max(0, newY);
+
+  offsetX = newX;
+  offsetY = newY;
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+}, 250); // 🔥 должно совпадать с CSS
 });
 
 
