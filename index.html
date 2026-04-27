@@ -29,13 +29,7 @@
     padding: 10px 14px;
     font-weight: bold;
     background: #111;
-
-  }
-
-  .header:hover {
-
-  }
-  
+  cursor: grab; 
   
   .submenu {
     display: flex;
@@ -126,6 +120,8 @@ header.addEventListener("pointerdown", (e) => {
   isDragging = true;
   dragged = false;
 
+header.style.cursor = "grabbing";
+  
   startX = e.clientX - offsetX;
   startY = e.clientY - offsetY;
 
@@ -153,7 +149,11 @@ header.addEventListener("pointermove", (e) => {
 
 header.addEventListener("pointerup", (e) => {
   isDragging = false;
+
+   header.style.cursor = "grab";
   header.releasePointerCapture(e.pointerId);
+
+  
 
   if (dragged) return;
 
@@ -168,6 +168,12 @@ header.addEventListener("pointerup", (e) => {
     offsetY = clamped.y;
     menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   });
+});
+
+
+  header.addEventListener("pointercancel", () => {
+  isDragging = false;
+  header.style.cursor = "grab";
 });
 
 // при изменении размера окна — тоже держим внутри
