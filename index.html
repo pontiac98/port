@@ -79,13 +79,20 @@ border-bottom: 2px dotted white;
     transform 0.15s ease;
   }
 
+  .label {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+  
   .item:hover {
     background: white;
     color: black;
-
-  transform: translateX(3px); /* лёгкий сдвиг */
   }
 
+.item:hover .label {
+  transform: translateX(3px);/* лёгкий сдвиг */
+}
+  
   .item.active {
     font-weight: bold;
   }
@@ -98,9 +105,9 @@ border-bottom: 2px dotted white;
   <div class="header">MENU ⏷</div>
 
   <div class="submenu">
-    <div class="item">submenu1</div>
-    <div class="item">submenu2</div>
-    <div class="item">submenu3</div>
+<div class="item"><span class="label">submenu1</span></div>
+<div class="item"><span class="label">submenu2</span></div>
+<div class="item"><span class="label">submenu3</span></div>
   </div>
 </div>
 
