@@ -184,6 +184,26 @@ header.addEventListener("pointerup", (e) => {
   
 
   if (dragged) return;
+  
+// 👉 если открываем
+    if (!isOpen) {
+    const submenuHeight = menu.querySelector(".submenu").scrollHeight;
+    const rect = menu.getBoundingClientRect();
+
+    let newY = offsetY;
+
+    const futureBottom = rect.bottom + submenuHeight;
+
+    if (futureBottom > window.innerHeight) {
+      newY -= (futureBottom - window.innerHeight);
+    }
+
+    newY = Math.max(0, newY);
+
+    offsetY = newY;
+
+    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  }
 
   // toggle меню только если это не drag
   isOpen = !isOpen;
@@ -197,28 +217,7 @@ setTimeout(() => {
   header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
 
   // 🟡 после изменения размера — проверяем границы заново
- setTimeout(() => {
-  const rect = menu.getBoundingClientRect();
 
-  let newX = offsetX;
-  let newY = offsetY;
-
-  if (rect.bottom > window.innerHeight) {
-    newY -= (rect.bottom - window.innerHeight);
-  }
-
-  if (rect.right > window.innerWidth) {
-    newX -= (rect.right - window.innerWidth);
-  }
-
-  newX = Math.max(0, newX);
-  newY = Math.max(0, newY);
-
-  offsetX = newX;
-  offsetY = newY;
-
-  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-}, 250); // 🔥 должно совпадать с CSS
 });
 
 
