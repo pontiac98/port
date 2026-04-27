@@ -20,10 +20,7 @@
     border: 1px solid white;
     user-select: none;
 
-    
-
-    transform: translate(50px, 50px);
-    
+    transform: translate(50px, 50px); 
   }
 
 
@@ -32,11 +29,11 @@
     padding: 10px 14px;
     font-weight: bold;
     background: #111;
-     cursor: grabbing;
+
   }
 
   .header:hover {
-    cursor: grab;
+
   }
   
   
@@ -111,7 +108,7 @@ let dragged = false;
 let startX, startY;
 let offsetX = 50, offsetY = 50;
 
-const DRAG_THRESHOLD = 5;
+const DRAG_THRESHOLD = 1;
 
 function clampPosition(x, y) {
   const rect = menu.getBoundingClientRect();
@@ -125,17 +122,17 @@ function clampPosition(x, y) {
   };
 }
 
-menu.addEventListener("pointerdown", (e) => {
+header.addEventListener("pointerdown", (e) => {
   isDragging = true;
   dragged = false;
 
   startX = e.clientX - offsetX;
   startY = e.clientY - offsetY;
 
-  menu.setPointerCapture(e.pointerId);
+  header.setPointerCapture(e.pointerId);
 });
 
-menu.addEventListener("pointermove", (e) => {
+header.addEventListener("pointermove", (e) => {
   if (!isDragging) return;
 
   let x = e.clientX - startX;
@@ -151,12 +148,12 @@ menu.addEventListener("pointermove", (e) => {
   offsetX = clamped.x;
   offsetY = clamped.y;
 
-  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  header.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
-menu.addEventListener("pointerup", (e) => {
+header.addEventListener("pointerup", (e) => {
   isDragging = false;
-  menu.releasePointerCapture(e.pointerId);
+  header.releasePointerCapture(e.pointerId);
 
   if (dragged) return;
 
