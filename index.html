@@ -14,6 +14,7 @@ background: #EEE;
   }
     
   #menu {
+     touch-action: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,7 +22,7 @@ background: #EEE;
     background: black;
     color: white;
     font-family: Arial, sans-serif;
-    border: 0px solid white;
+    border: 2px solid white;
     user-select: none;
     
   border-radius: 3px;
@@ -65,7 +66,7 @@ border-bottom: 2px dotted white;
   }
 
   .item {
-    padding: 14px 22px;
+    padding: 10px 14px;
     border: 0px solid white;
     cursor: pointer;
   }
@@ -136,6 +137,7 @@ function clampPosition(x, y) {
 }
 
 header.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
   isDragging = true;
   dragged = false;
 
