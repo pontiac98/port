@@ -19,7 +19,8 @@
     font-family: Arial, sans-serif;
     border: 1px solid white;
     user-select: none;
-
+    
+  border-radius: 2px;
     transform: translate(50px, 50px); 
   }
 
@@ -30,6 +31,8 @@
     font-weight: bold;
     background: #111;
   cursor: grab; 
+
+    transition: opacity 0.2s ease;
   }
 
     
@@ -73,7 +76,7 @@
 <body>
 
 <div id="menu">
-  <div class="header">MENU</div>
+  <div class="header">MENU ⏷</div>
 
   <div class="submenu">
     <div class="item">submenu1</div>
@@ -162,7 +165,13 @@ header.addEventListener("pointerup", (e) => {
   // toggle меню только если это не drag
   isOpen = !isOpen;
   menu.classList.toggle("open", isOpen);
-  header.textContent = isOpen ? "MENU^" : "MENU⌄";
+  header.style.opacity = 0;
+
+setTimeout(() => {
+ header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+  header.style.opacity = 1;
+}, 150);
+  header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
 
   // 🟡 после изменения размера — проверяем границы заново
   requestAnimationFrame(() => {
