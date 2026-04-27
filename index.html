@@ -135,7 +135,7 @@ header.addEventListener("pointerdown", (e) => {
   menu.setPointerCapture(e.pointerId);
 });
 
-menu.addEventListener("pointermove", (e) => {
+header.addEventListener("pointermove", (e) => {
   if (!isDragging) return;
 
   let x = e.clientX - startX;
@@ -154,7 +154,7 @@ menu.addEventListener("pointermove", (e) => {
   menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
-menu.addEventListener("pointerup", (e) => {
+header.addEventListener("pointerup", (e) => {
   isDragging = false;
   menu.releasePointerCapture(e.pointerId);
 
