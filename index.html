@@ -28,9 +28,12 @@ background: #EEE;
   border-radius: 3px;
     overflow: hidden;
     transform: translate(50px, 50px); 
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-
+#menu.dragging {
+  transition: none;
+}
 
   .header {
     padding: 10px 14px;
@@ -140,6 +143,8 @@ header.addEventListener("pointerdown", (e) => {
   e.preventDefault();
   isDragging = true;
   dragged = false;
+  
+  menu.classList.add("dragging");
 
 header.style.cursor = "grabbing";
   
@@ -171,6 +176,7 @@ header.addEventListener("pointermove", (e) => {
 header.addEventListener("pointerup", (e) => {
   isDragging = false;
 
+  menu.classList.remove("dragging");
    header.style.cursor = "grab";
   header.releasePointerCapture(e.pointerId);
 
