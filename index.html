@@ -52,7 +52,7 @@ border-bottom: 2px dotted white;
     display: flex;
     flex-direction: column;
     gap: 0px;
-    padding: 0px 8px;
+    padding: 0px 0px;
 
     max-height: 0;
     opacity: 0;
@@ -69,7 +69,7 @@ border-bottom: 2px dotted white;
   }
 
   .item {
-    padding: 14px 22px;
+    padding: 14px 28px;
     border: 0px solid white;
     cursor: pointer;
   }
@@ -104,6 +104,24 @@ const items = document.querySelectorAll(".item");
 
 let isOpen = false;
 
+const submenu = document.querySelector(".submenu");
+
+submenu.addEventListener("transitionend", () => {
+  if (!isOpen) return;
+
+  const rect = menu.getBoundingClientRect();
+
+  let newY = offsetY;
+
+  if (rect.bottom > window.innerHeight) {
+    newY -= (rect.bottom - window.innerHeight);
+  }
+
+  offsetY = Math.max(0, newY);
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+  
 items.forEach(item => {
   item.addEventListener("click", (e) => {
     e.stopPropagation();
