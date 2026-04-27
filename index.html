@@ -39,13 +39,16 @@ background: #EEE;
 
     transition: opacity 0.2s ease;
   }
-
+  
+#menu.open .header {
+border-bottom: 2px dotted white;
+}
     
   .submenu {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 10px 14px;
+
 
     max-height: 0;
     opacity: 0;
@@ -62,8 +65,8 @@ background: #EEE;
   }
 
   .item {
-    padding: 4px 8px;
-    border: 1px solid white;
+    padding: 14px 22px;
+    border: 0px solid white;
     cursor: pointer;
   }
 
