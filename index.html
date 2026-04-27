@@ -6,7 +6,7 @@
   <meta name="description" content="Designer Portfolio" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
-  <link rel="alternate icon" href="icon.png">
+ 
 
 <style>
   #menu {
@@ -125,7 +125,7 @@ function clampPosition(x, y) {
   };
 }
 
-header.addEventListener("pointerdown", (e) => {
+menu.addEventListener("pointerdown", (e) => {
   isDragging = true;
   dragged = false;
 
@@ -135,7 +135,7 @@ header.addEventListener("pointerdown", (e) => {
   menu.setPointerCapture(e.pointerId);
 });
 
-header.addEventListener("pointermove", (e) => {
+menu.addEventListener("pointermove", (e) => {
   if (!isDragging) return;
 
   let x = e.clientX - startX;
@@ -154,7 +154,7 @@ header.addEventListener("pointermove", (e) => {
   menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
-header.addEventListener("pointerup", (e) => {
+menu.addEventListener("pointerup", (e) => {
   isDragging = false;
   menu.releasePointerCapture(e.pointerId);
 
