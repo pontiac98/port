@@ -98,8 +98,16 @@ const items = document.querySelectorAll(".item");
 let isOpen = false;
 
 items.forEach(item => {
-  item.addEventListener("click", () => {
-    item.classList.toggle("active");
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    const isActive = item.classList.contains("active");
+
+    items.forEach(i => i.classList.remove("active"));
+
+    if (!isActive) {
+      item.classList.add("active");
+    }
   });
 });
 
