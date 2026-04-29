@@ -12,7 +12,40 @@
   body {
 background: #EEE;
   }
-    
+
+.section {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.section.active {
+  display: block;
+}
+
+/* случайная картинка на весь экран */
+#section0 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* галерея */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+
+  
   #menu {
      touch-action: none;
     position: fixed;
@@ -119,6 +152,16 @@ border-bottom: 2px dotted white;
 
 <body>
 
+  <div id="content">
+  <section id="section0" class="section active">
+    <img id="randomImage" />
+  </section>
+
+  <section id="section1" class="section">
+    <div class="gallery" id="gallery1"></div>
+  </section>
+</div>
+
 <div id="menu">
   <div class="header">MENU 
     <svg class="arrow" viewBox="0 0 24 24" >
@@ -134,6 +177,22 @@ border-bottom: 2px dotted white;
 </div>
 
 <script>
+
+function loadGallery() {
+  const gallery = document.getElementById("gallery1");
+
+  // всего 10 картинок
+for (let i = 1; i <= 10; i++) {
+  const img = document.createElement("img");
+  img.src = `images1/img${i}.png`;
+  gallery.appendChild(img);
+}
+}
+
+loadGallery();
+
+
+  
 const menu = document.getElementById("menu");
 const items = document.querySelectorAll(".item");
   const header = document.querySelector(".header");
