@@ -68,6 +68,14 @@ border-bottom: 2px dotted white;
     transform: translateY(0);
   }
 
+.arrow {
+  transition: transform 0.25s ease;
+}
+
+  #menu.open .arrow {
+  transform: rotate(180deg);
+}
+  
   .item {
     padding: 14px 28px;
     border: 0px solid white;
@@ -102,7 +110,11 @@ border-bottom: 2px dotted white;
 <body>
 
 <div id="menu">
-  <div class="header">MENU ⏷</div>
+  <div class="header">MENU 
+    <svg class="arrow" width="16" height="16" viewBox="0 0 24 24">
+    <path d="M6 9l6 6 6-6" fill="black" stroke="none" stroke-width="0"/>
+  </svg>
+  </div>
 
   <div class="submenu">
 <div class="item"><span class="label">submenu1</span></div>
@@ -225,10 +237,10 @@ header.addEventListener("pointerup", (e) => {
   
   header.style.opacity = 0.9;
 setTimeout(() => {
- header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+// header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
   header.style.opacity = 1;
 }, 150);
-  header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+ // header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
 
   // 🟡 после изменения размера — проверяем границы заново
 
