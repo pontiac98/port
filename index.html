@@ -135,10 +135,12 @@ border-bottom: 2px dotted white;
   transition: transform 0.15s ease;
 }
   
-  .item:hover .item.active:hover {
-    background: white;
+  .item:hover, .item.active:hover {
+    background: silver;
     color: black;
   }
+
+  
 
 .item:hover .label {
   transform: translate(4px, 0px)/* лёгкий сдвиг */
@@ -146,7 +148,7 @@ border-bottom: 2px dotted white;
   
   .item.active {
     font-weight: bold;
-    background: grey;
+    background: white;
     color: black;
   }
 </style>
