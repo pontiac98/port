@@ -170,11 +170,25 @@ border-bottom: 2px dotted white;
   display: inline-block;
   transition: transform 0.15s ease;
 }
-  
+
+
+/* hover только desktop */
+@media (hover: hover) and (pointer: fine) {
   .item:hover, .item.active:hover {
     background: silver;
     color: black;
   }
+}
+
+/* mobile — ничего не делает */
+@media (hover: none) {
+  .item:hover {
+    background: inherit;
+    color: inherit;
+  }
+}
+  
+
 
   
 
