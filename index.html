@@ -178,6 +178,10 @@ border-bottom: 2px dotted white;
     background: silver;
     color: black;
   }
+
+  .item:hover .label {
+  transform: translate(4px, 0px)/* лёгкий сдвиг */
+}
 }
 
 /* mobile — ничего не делает */
@@ -196,9 +200,7 @@ border-bottom: 2px dotted white;
 
   
 
-.item:hover .label {
-  transform: translate(4px, 0px)/* лёгкий сдвиг */
-}
+
   
   .item.active {
     font-weight: bold;
