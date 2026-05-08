@@ -45,6 +45,7 @@ background: #EEE;
   object-fit: cover;
 }
 
+  //запрет выделения картинки
   img {
   user-select: none;
   -webkit-user-select: none;
@@ -91,12 +92,6 @@ background: #EEE;
 border-bottom: 2px dotted white;
 }
 
-  // запреет дефолтной подсветки
-  #menu * {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  user-select: none;
-}
   
   .submenu {    
     display: flex;
@@ -137,6 +132,12 @@ border-bottom: 2px dotted white;
 }
   
   .item {
+     // запреет дефолтной подсветки
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+
+    
     padding: 14px 28px;
     border: 0px solid white;
     cursor: pointer;
