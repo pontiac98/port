@@ -200,6 +200,17 @@ border-bottom: 2px dotted white;
 
 <script>
 
+  // убрать контекст меню
+  document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+
+  img.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+});
+
 function loadGallery() {
   const gallery = document.getElementById("gallery1");
 
