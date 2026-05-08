@@ -210,6 +210,10 @@ border-bottom: 2px dotted white;
 
 <script>
 
+menu.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+  
   // убрать контекст меню
   document.querySelectorAll("img").forEach(img => {
   img.addEventListener("contextmenu", (e) => {
