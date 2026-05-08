@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="description" content="Designer Portfolio" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
  
 
@@ -89,8 +90,15 @@ background: #EEE;
 #menu.open .header {
 border-bottom: 2px dotted white;
 }
-    
-  .submenu {
+
+  // запреет дефолтной подсветки
+  #menu * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+  
+  .submenu {    
     display: flex;
     flex-direction: column;
     gap: 0px;
