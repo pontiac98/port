@@ -14,33 +14,58 @@ jobs:
     steps:
     # 1. Скачиваем актуальный код репозитория
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4      
+   
+    - name: Install dependencies
+      run: npm install image-size
 
     # 2. Запускаем Node.js скрипт для сканирования папки и сборки JSON
     - name: Generate JSON
       run: |
         node -e "
         const fs = require('fs');
-        const path = require('path');
-        
-        // Укажите имя вашей папки вместо 'images'
-        const targetDir = 'images1'; 
-        const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
-        
-        if (!fs.existsSync(targetDir)) {
-          console.log('Папка не найдена');
-          fs.writeFileSync('images.json', '[]');
-          process.exit(0);
-        }
-        
-        const files = fs.readdirSync(targetDir)
-          .filter(file => extensions.includes(path.extname(file).toLowerCase()))
-          .map(file => ({
+const path = require('path');
+const sizeOf = require('image-size');
+
+const targetDir = 'images1';
+const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+
+if (!fs.existsSync(targetDir)) {
+    fs.writeFileSync('images.json', '[]');
+    process.exit(0);
+}
+
+const files = fs.readdirSync(targetDir)
+    .filter(file => extensions.includes(path.extname(file).toLowerCase()))
+    .map(file => {
+
+        const filePath = path.join(targetDir, file);
+
+        const size = sizeOf(filePath);
+
+        const ratio = size.width / size.height;
+
+        let type = "";
+
+        if (ratio > 1.7)
+            type = "wide";
+        else if (ratio < 0.75)
+            type = "tall";
+        else if (ratio > 1.2)
+            type = "big";
+
+        return {
             name: file,
-            url: targetDir + '/' + file
-          }));
-          
-        fs.writeFileSync('images.json', JSON.stringify(files, null, 2));
+            url: filePath.replace(/\\/g, "/"),
+            width: size.width,
+            height: size.height,
+            ratio: Number(ratio.toFixed(2)),
+            type: type
+        };
+
+    });
+
+fs.writeFileSync("images.json", JSON.stringify(files, null, 2));
         console.log('Файл images.json успешно сгенерирован!');
         "
 
