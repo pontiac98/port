@@ -292,17 +292,9 @@ border-bottom: 2px dotted white;
             card.classList.add("card");
 
             // Пример шаблона размеров
-            switch (index % 8) {
-                case 0:
-                    card.classList.add("big");
-                    break;
-                case 3:
-                    card.classList.add("wide");
-                    break;
-                case 5:
-                    card.classList.add("tall");
-                    break;
-            }
+           if (image.type) {
+              card.classList.add(image.type);
+              }
 
             const img = document.createElement("img");
             img.src = image.url;
