@@ -14,9 +14,10 @@ const files = fs.readdirSync(targetDir)
     .filter(file => extensions.includes(path.extname(file).toLowerCase()))
     .map(file => {
 
-        const filePath = path.join(targetDir, file);
+       const filePath = path.join(targetDir, file);
 
-        const size = imageSize(filePath);
+        const buffer = fs.readFileSync(filePath);
+        const size = imageSize(buffer);
 
         const ratio = size.width / size.height;
 
