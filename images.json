@@ -13,7 +13,7 @@
     "width": 525,
     "height": 202,
     "ratio": 2.6,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (10).png",
@@ -37,7 +37,7 @@
     "width": 899,
     "height": 272,
     "ratio": 3.31,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (13).png",
@@ -45,7 +45,7 @@
     "width": 733,
     "height": 85,
     "ratio": 8.62,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (14).png",
@@ -53,7 +53,7 @@
     "width": 731,
     "height": 160,
     "ratio": 4.57,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (15).png",
@@ -61,7 +61,7 @@
     "width": 828,
     "height": 176,
     "ratio": 4.7,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (16).png",
@@ -93,7 +93,7 @@
     "width": 716,
     "height": 129,
     "ratio": 5.55,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (2).png",
@@ -101,7 +101,7 @@
     "width": 775,
     "height": 134,
     "ratio": 5.78,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (20).png",
@@ -117,7 +117,7 @@
     "width": 936,
     "height": 108,
     "ratio": 8.67,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (22).png",
@@ -133,7 +133,7 @@
     "width": 544,
     "height": 87,
     "ratio": 6.25,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (24).png",
@@ -149,7 +149,15 @@
     "width": 731,
     "height": 160,
     "ratio": 4.57,
-    "type": "wide"
+    "type": "verywide"
+  },
+  {
+    "name": "image (26).png",
+    "url": "images1/image (26).png",
+    "width": 525,
+    "height": 202,
+    "ratio": 2.6,
+    "type": "verywide"
   },
   {
     "name": "image (3).png",
@@ -197,7 +205,7 @@
     "width": 544,
     "height": 87,
     "ratio": 6.25,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "image (9).png",
@@ -237,7 +245,7 @@
     "width": 2388,
     "height": 867,
     "ratio": 2.75,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "img4.png",
@@ -261,7 +269,7 @@
     "width": 2284,
     "height": 387,
     "ratio": 5.9,
-    "type": "wide"
+    "type": "verywide"
   },
   {
     "name": "img7.png",
