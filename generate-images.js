@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const sizeOf = require('image-size');
+const { imageSize } = require('image-size');
 
 const targetDir = 'images1';
 const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
@@ -16,7 +16,7 @@ const files = fs.readdirSync(targetDir)
 
         const filePath = path.join(targetDir, file);
 
-        const size = sizeOf(filePath);
+        const size = imageSize(filePath);
 
         const ratio = size.width / size.height;
 
