@@ -22,22 +22,22 @@ jobs:
     # 2. Запускаем Node.js скрипт для сканирования папки и сборки JSON
     - name: Generate JSON
       run: |
-        node <<'EOF'
+        node -e "
         const fs = require('fs');
         const path = require('path');
         const sizeOf = require('image-size');
 
-const targetDir = 'images1';
-const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+        const targetDir = 'images1';
+        const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
 
-if (!fs.existsSync(targetDir)) {
-    fs.writeFileSync('images.json', '[]');
-    process.exit(0);
-}
+        if (!fs.existsSync(targetDir)) {
+        fs.writeFileSync('images.json', '[]');
+        process.exit(0);
+        }    
 
-const files = fs.readdirSync(targetDir)
-    .filter(file => extensions.includes(path.extname(file).toLowerCase()))
-    .map(file => {
+        const files = fs.readdirSync(targetDir)
+        .filter(file => extensions.includes(path.extname(file).toLowerCase()))
+        .map(file => {
 
         const filePath = path.join(targetDir, file);
 
@@ -63,11 +63,11 @@ const files = fs.readdirSync(targetDir)
             type: type
         };
 
-    });
+        });
 
-fs.writeFileSync("images.json", JSON.stringify(files, null, 2));
+        fs.writeFileSync("images.json", JSON.stringify(files, null, 2));
         console.log('Файл images.json успешно сгенерирован!');
-        EOF
+        "
 
     # 3. Сохраняем созданный images.json обратно в репозиторий
     - name: Commit and Push changes
