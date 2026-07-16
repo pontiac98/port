@@ -23,12 +23,14 @@ const files = fs.readdirSync(targetDir)
 
         let type = "";
 
-        if (ratio > 1.7)
-            type = "wide";
+       if (ratio > 2.4)
+    type = "verywide";
+        else if (ratio > 1.7)
+    type = "wide";
         else if (ratio < 0.75)
-            type = "tall";
+    type = "tall";
         else if (ratio > 1.2)
-            type = "big";
+    type = "big";
 
         return {
             name: file,
