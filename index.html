@@ -204,20 +204,39 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform: scale(1.02);
-   /* filter: grayscale(40%) saturate(70%) brightness(90%);  */
-    filter: grayscale(40%) saturate(.6) brightness(1.5);
-    transition: 
-      transform .35s ease,
-      filter .55s ease;; 
-
-
 }
 
 .card:hover .card-image {
- transform: scale(1.00); 
- /* filter: grayscale(0%) saturate(100%) brightness(100%);  */
-  filter: none;
+
+}
+
+  /* Эффекты только на устройствах с hover */
+@media (hover: hover) and (pointer: fine) {
+
+    .card-image {
+      transform: scale(1.02);
+        filter: grayscale(40%) saturate(.6) brightness(1.5) opacity(.5);
+        transition: 
+          transform .35s ease, 
+          filter .55s ease;
+    }
+
+    .card:hover .card-image {
+        transform: scale(1.00);
+        filter: none;
+    }
+
+}
+
+/* Сенсорные устройства */
+@media (hover: none) {
+
+    .card-image {
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+
 }
   
 .grid {
