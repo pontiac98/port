@@ -205,7 +205,8 @@ border-bottom: 2px dotted white;
     background-repeat: no-repeat;
 
     transform: scale(1.02);
-    filter: grayscale(40%) saturate(70%) brightness(90%);
+   /* filter: grayscale(40%) saturate(70%) brightness(90%);  */
+    filter: grayscale(40%) saturate(.6) brightness(.8);
     transition: 
       transform .35s ease,
       filter .35s ease;; 
@@ -215,7 +216,8 @@ border-bottom: 2px dotted white;
 
 .card:hover .card-image {
  transform: scale(1.00); 
-  filter: grayscale(0%) saturate(100%) brightness(100%);
+ /* filter: grayscale(0%) saturate(100%) brightness(100%);  */
+  filter: none;
 }
   
 .grid {
