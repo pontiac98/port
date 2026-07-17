@@ -261,7 +261,7 @@
     "width": 1762,
     "height": 1779,
     "ratio": 0.99,
-    "type": ""
+    "type": "tall"
   },
   {
     "name": "img6.png",
@@ -293,6 +293,6 @@
     "width": 2052,
     "height": 1179,
     "ratio": 1.74,
-    "type": "wide"
+    "type": "verywide"
   }
 ]
