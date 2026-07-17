@@ -314,14 +314,14 @@ border-bottom: 2px dotted white;
 
         const grid = document.getElementById("grid");
 
-        images.forEach((image, index) => {
+        images.forEach((item, index) => {
 
             const card = document.createElement("div");
             card.classList.add("card");
 
             // Пример шаблона размеров
-           if (image.type) {
-              card.classList.add(image.type);
+           if (item.type) {
+              card.classList.add(item.type);
               }
 
             const image = document.createElement("div");
