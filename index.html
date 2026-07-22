@@ -332,6 +332,7 @@ border-bottom: 2px dotted white;
     visibility: hidden;
     pointer-events: none;
 
+    backdrop-filter: blur(8px);
     transition:
         opacity .3s ease,
         visibility .3s ease;
@@ -362,8 +363,8 @@ border-bottom: 2px dotted white;
     opacity: 0;
 
     transition:
-        transform .3s ease,
-        opacity .3s ease;
+        transform .3s ease .07,
+        opacity .3s ease .07;
 }
 
   #viewer.open #viewerImage {
@@ -484,8 +485,17 @@ function openViewer(src, aspect){
   viewerImage.style.backgroundImage = `url("${src}")`;
   viewerImage.style.aspectRatio = aspect;
     //viewerImage.src = src;
-    viewer.classList.add("open");
-   document.body.classList.add("no-scroll");
+  
+    //viewer.classList.add("open");
+   //document.body.classList.add("no-scroll");
+
+ requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            viewer.classList.add("open");
+            document.body.classList.add("no-scroll");
+        });
+    });
+  
 }
 
 function closeViewer() {
