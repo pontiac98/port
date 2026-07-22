@@ -313,14 +313,40 @@ border-bottom: 2px dotted white;
         grid-column: auto;
         grid-row: auto;
     }  */
+}
 
+  #viewer{
+    position:fixed;
+    inset:0;
+
+    /*background:rgba(0,0,0,.85); */
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+#viewer.open{
+    display:flex;
+}
+
+#viewer div{
+    max-width:95vw;
+    max-height:95vh;
 }
   
 </style>
 </head>
 
 <body>
-
+  
+<div id="viewer">
+    <div id="viewerImage"> </div>
+</div>
+  
   <div id="content">
     <!--
   <section id="section0" class="section active">
@@ -367,6 +393,8 @@ border-bottom: 2px dotted white;
             const card = document.createElement("div");
             card.classList.add("card");
             card.tabIndex = 0;
+          
+            card.dataset.image = item.url;
 
             // Пример шаблона размеров
            if (item.type) {
@@ -379,6 +407,7 @@ border-bottom: 2px dotted white;
             image.style.aspectRatio = `${item.width} / ${item.height}`;
 
            card.style.aspectRatio = `${item.width} / ${item.height}`;
+          
 
             card.appendChild(image);
           
@@ -393,6 +422,27 @@ border-bottom: 2px dotted white;
         });
     });
 
+  // лайтбокс
+  document.addEventListener("click", e => {
+
+    const card = e.target.closest(".card");
+    if (!card) return;
+
+    openViewer(card.dataset.image);
+
+});
+
+  //обработчик лайтбокса
+  const viewer = document.getElementById("viewer");
+const viewerImage = document.getElementById("viewerImage");
+
+function openViewer(src){
+  viewerImage.style.backgroundImage = `url("${src}")`;
+    //viewerImage.src = src;
+    viewer.classList.add("open");
+}
+
+viewer.onclick = () => viewer.classList.remove("open");
 
   
   // убрать контекст меню
