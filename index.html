@@ -381,11 +381,11 @@ border-bottom: 2px dotted white;
     background-repeat: no-repeat;
 
     transform: scale(0.45);
-    opacity: 0;
+    opacity: 1;
 
     transition:
-        transform 1.9s cubic-bezier(0.8, -0.5, 0.2, 1.8) .1,
-        opacity .3s ease-in .0;
+        transform 1.9s cubic-bezier(0.8, -0.5, 0.2, 1.8) .1;
+      /*  opacity .3s ease-in .0; */
 }
 
   #viewer.open #viewerImage {
@@ -521,7 +521,7 @@ function openViewer(src, aspect){
   //document.body.style.paddingRight = scrollbarWidth + "px";
   
   viewerImage.style.backgroundImage = `url("${src}")`;
-  //viewerImage.style.aspectRatio = aspect;
+  viewerImage.style.aspectRatio = aspect;
 
   
     //viewerImage.src = src;
