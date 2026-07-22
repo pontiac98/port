@@ -354,6 +354,18 @@ border-bottom: 2px dotted white;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+
+    transform: scale(.96);
+    opacity: 0;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+}
+
+  #viewer.open #viewerImage {
+    transform: scale(1);
+    opacity: 1;
 }
 
   body.no-scroll {
@@ -453,7 +465,7 @@ border-bottom: 2px dotted white;
     const card = e.target.closest(".card");
     if (!card) return;
 
-    openViewer(card.dataset.image);
+    openViewer(card.dataset.image, card.aspectRatio);
 
 });
 
@@ -461,8 +473,9 @@ border-bottom: 2px dotted white;
   const viewer = document.getElementById("viewer");
 const viewerImage = document.getElementById("viewerImage");
 
-function openViewer(src){
+function openViewer(src, aspect){
   viewerImage.style.backgroundImage = `url("${src}")`;
+  viewerImage.style.aspectRatio = aspect;
     //viewerImage.src = src;
     viewer.classList.add("open");
    document.body.classList.add("no-scroll");
