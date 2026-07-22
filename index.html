@@ -380,15 +380,15 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform: scale(0.45);
-    opacity: 1;
+    transform: scale(0.85);
+    opacity: 0.1;
 
     transition:
-        transform 1.9s ease-in-out .1;
-      /*  opacity .3s ease-in .0; */
+        transform 1.9s ease-in-out .0,
+       opacity .3s ease-in .0; 
 }
 
-  #viewer.open #viewerImage {
+  #viewerImage.animate {
     transform: scale(1);
     opacity: 1;
 }
@@ -526,19 +526,29 @@ function openViewer(src, aspect){
   
     //viewerImage.src = src;
   
-    //viewer.classList.add("open");
+    viewer.classList.add("open");
    
 
  requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            viewer.classList.add("open");
+           // viewer.classList.add("open");
             //document.body.classList.add("no-scroll");
+        });
+    });
+
+   // Сбросить состояние
+    viewerImage.classList.remove("animate");
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            viewerImage.classList.add("animate");
         });
     });
   
 }
 
 function closeViewer() {
+  viewerImage.classList.remove("animate");
     viewer.classList.remove("open");
   
     document.body.classList.remove("no-scroll");
