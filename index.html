@@ -529,19 +529,20 @@ function openViewer(src, aspect){
 
   
     //viewerImage.src = src;
-  
-   // viewer.classList.add("open");
+  viewerImage.getBoundingClientRect();
+    viewer.classList.add("open");
    
 
  requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            viewer.classList.add("open");
+            //viewer.classList.add("open");
             //document.body.classList.add("no-scroll");
         });
     });
 
    // Сбросить состояние
     viewerImage.classList.remove("animate");
+  viewerImage.offsetHeight;
 
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
