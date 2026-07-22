@@ -348,6 +348,10 @@ border-bottom: 2px dotted white;
     overflow: hidden;
     touch-action: none;
 }
+ 
+  html {
+    scrollbar-gutter: stable;
+}
   
 </style>
 </head>
@@ -466,7 +470,7 @@ viewer.addEventListener("click", (e) => {
     }
 });
   
-viewer.onclick = () => viewer.classList.remove("open");
+//viewer.onclick = () => viewer.classList.remove("open");
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
