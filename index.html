@@ -359,12 +359,12 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform: scale(1.00);
+    transform: scale(.97);
     opacity: 0;
 
     transition:
-        transform .3s ease .07,
-        opacity .3s ease .07;
+        transform .3s ease .2,
+        opacity .3s ease .13;
 }
 
   #viewer.open #viewerImage {
@@ -379,7 +379,12 @@ border-bottom: 2px dotted white;
 
   html {
     scrollbar-gutter: stable;
-     background: red;
+     background: white;
+}
+
+  html.no-scroll,
+body.no-scroll {
+    background: rgba(0,0,0,.85);
 }
  
 
