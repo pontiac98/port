@@ -349,9 +349,7 @@ border-bottom: 2px dotted white;
     touch-action: none;
 }
  
-  html {
-    scrollbar-gutter: stable;
-}
+
   
 </style>
 </head>
@@ -460,7 +458,6 @@ function openViewer(src){
 
 function closeViewer() {
     viewer.classList.remove("open");
-
     document.body.classList.remove("no-scroll");
 }
 
@@ -474,7 +471,8 @@ viewer.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        viewer.classList.remove("open");
+      closeViewer();
+        //viewer.classList.remove("open");
     }
 });
   
