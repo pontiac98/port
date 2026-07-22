@@ -371,7 +371,9 @@ border-bottom: 2px dotted white;
 
 
   #viewerImage {
-    width: 89vw;
+    width: 600px;
+    aspect-ratio: 16 / 9;
+   /* width: 89vw; */
    /* height: 89vh; */
      height: auto;
 
@@ -525,7 +527,7 @@ function openViewer(src, aspect){
   //document.body.style.paddingRight = scrollbarWidth + "px";
   
   viewerImage.style.backgroundImage = `url("${src}")`;
-  viewerImage.style.aspectRatio = aspect;
+ // viewerImage.style.aspectRatio = aspect;
 
   
     //viewerImage.src = src;
