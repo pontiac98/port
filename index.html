@@ -468,7 +468,8 @@ function closeViewer() {
 }); */
   
 //viewer.onclick = () => viewer.classList.remove("open");
-  viewer.onclick = () => closeViewer();
+ // viewer.onclick = () => closeViewer();
+  viewer.addEventListener("click", closeViewer);
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
