@@ -359,12 +359,12 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform: scale(.97);
+    transform: scale(1.00);
     opacity: 0;
 
     transition:
-        transform .3s ease .2,
-        opacity .3s ease .13;
+        transform .3s ease .1,
+        opacity .3s ease .3;
 }
 
   #viewer.open #viewerImage {
@@ -379,12 +379,12 @@ border-bottom: 2px dotted white;
 
   html {
     scrollbar-gutter: stable;
-     background: white;
+     /*background: white;  */
+    background: rgba(0,0,0,.85);
 }
 
-  html.no-scroll,
-body.no-scroll {
-    background: rgba(0,0,0,.85);
+  html.no-scroll {
+   /* background: rgba(0,0,0,.85); */
 }
  
 
