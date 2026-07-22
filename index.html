@@ -479,6 +479,7 @@ const viewerImage = document.getElementById("viewerImage");
 
 function openViewer(src, aspect){
   
+  document.body.classList.add("no-scroll");
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   document.body.style.paddingRight = scrollbarWidth + "px";
   
@@ -487,12 +488,12 @@ function openViewer(src, aspect){
     //viewerImage.src = src;
   
     //viewer.classList.add("open");
-   //document.body.classList.add("no-scroll");
+   
 
  requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             viewer.classList.add("open");
-            document.body.classList.add("no-scroll");
+            //document.body.classList.add("no-scroll");
         });
     });
   
