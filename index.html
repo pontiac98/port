@@ -343,6 +343,11 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 }
+
+  body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+}
   
 </style>
 </head>
@@ -446,8 +451,21 @@ function openViewer(src){
   viewerImage.style.backgroundImage = `url("${src}")`;
     //viewerImage.src = src;
     viewer.classList.add("open");
+   document.body.classList.add("no-scroll");
 }
 
+function closeViewer() {
+    viewer.classList.remove("open");
+
+    document.body.classList.remove("no-scroll");
+}
+
+viewer.addEventListener("click", (e) => {
+    if (e.target === viewer) {
+        closeViewer();
+    }
+});
+  
 viewer.onclick = () => viewer.classList.remove("open");
 
 document.addEventListener("keydown", (e) => {
