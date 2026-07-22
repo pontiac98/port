@@ -359,7 +359,7 @@ border-bottom: 2px dotted white;
     background-position: center;
     background-repeat: no-repeat;
 
-    transform: scale(0.95);
+    transform: scale(0.75);
     opacity: 0;
 
     transition:
@@ -381,10 +381,14 @@ border-bottom: 2px dotted white;
     scrollbar-gutter: stable;
      /*background: white;  
     background: rgba(0,0,0,.85);*/
-    background: #222;
+    background: #EEE;
+    transition:
+        background .5s ease-out,
+    
 }
 
   html.no-scroll {
+    background: #222;
    /* background: rgba(0,0,0,.85); */
 }
  
@@ -491,6 +495,7 @@ const viewerImage = document.getElementById("viewerImage");
 function openViewer(src, aspect){
   
   document.body.classList.add("no-scroll");
+  document.documentElement.classList.add("no-scroll");
  // const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   //document.body.style.paddingRight = scrollbarWidth + "px";
   
@@ -514,6 +519,7 @@ function closeViewer() {
     viewer.classList.remove("open");
   
     document.body.classList.remove("no-scroll");
+  document.documentElement.classList.remove("no-scroll");
   //document.body.style.paddingRight = "";
 }
 
