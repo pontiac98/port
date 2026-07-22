@@ -372,8 +372,8 @@ border-bottom: 2px dotted white;
 }
 
   body.no-scroll {
-   /* overflow: hidden;
-    touch-action: none; */
+    overflow: hidden;
+    touch-action: none; 
 }
  
 
@@ -477,6 +477,10 @@ border-bottom: 2px dotted white;
 const viewerImage = document.getElementById("viewerImage");
 
 function openViewer(src, aspect){
+  
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = scrollbarWidth + "px";
+  
   viewerImage.style.backgroundImage = `url("${src}")`;
   viewerImage.style.aspectRatio = aspect;
     //viewerImage.src = src;
@@ -486,7 +490,9 @@ function openViewer(src, aspect){
 
 function closeViewer() {
     viewer.classList.remove("open");
+  
     document.body.classList.remove("no-scroll");
+  document.body.style.paddingRight = "";
 }
 
 /*viewer.addEventListener("click", (e) => {
