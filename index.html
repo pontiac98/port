@@ -322,27 +322,31 @@ border-bottom: 2px dotted white;
 
     /*background: rgba(0,0,0,.85); */
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
   isolation: isolate;
 
     z-index: 9999;
 
-    opacity: 0;
-    visibility: hidden;
+   /* opacity: 0;
+    visibility: hidden; 
+    opacity: 1;
+    visibility: visible;*/
+  
     pointer-events: none;
 
     backdrop-filter: blur(0px);
-    transition:
+    /*transition:
         opacity .1s ease-out,
-        visibility .1s ease;
+        visibility .1s ease; */
 }
 
 #viewer.open {
   backdrop-filter: blur(2px);
-    opacity: 1;
-    visibility: visible;
+   /* opacity: 1;
+    visibility: visible; */
+  display: flex;
     pointer-events: auto;
 }
 
