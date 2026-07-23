@@ -185,9 +185,14 @@ border-bottom: 2px dotted white;
   }
 
 
+
+
+
+  
 /* карточки*/
+  
   .card-image {
-    width: 100%;
+    /*width: 100%; */
     height: 100%;
 
     background-size: cover;
@@ -239,8 +244,8 @@ border-bottom: 2px dotted white;
   grid-auto-flow: dense;
   
 
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  width: 100%; */
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+  width: 100%; 
   
   gap: 4px;
   padding: 64px 4px 0px;  
@@ -305,6 +310,9 @@ border-bottom: 2px dotted white;
 }
 
 
+
+/* лайтбокс          */
+  
 #viewer {
     position: fixed;
     inset: 0;
@@ -469,7 +477,7 @@ border-bottom: 2px dotted white;
             image.style.backgroundImage = `url("${item.url}")`;
             image.style.aspectRatio = `${item.width} / ${item.height}`;
 
-           card.style.aspectRatio = `${item.width} / ${item.height}`;
+           //card.style.aspectRatio = `${item.width} / ${item.height}`;
           
 
             card.appendChild(image);
