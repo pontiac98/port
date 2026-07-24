@@ -295,6 +295,7 @@
   
 /* меню */
   #menu{
+    display: flex;
   position: sticky;
   top: 0;
     margin: 0px;
@@ -307,6 +308,7 @@
   }
 
   #menu div {
+    user-select: none;
     display: block;
     padding: 14px 24px;
 
@@ -318,13 +320,15 @@
 
 #menu div:hover:not(.active) {
     color: white;
+  cursor: pointer;
 }
 
 #menu div.active {
     color: white;
     font-weight: 700;
     background: #1f1f1f;
-
+  
+    border-bottom: 2px solid white;
     cursor: default;
 }
   
@@ -337,13 +341,12 @@
     <div id="viewerImage"> </div>
 </div>
   <!-- -->
-  <header id="menu">
-
-    <div class="active" data-gallery="1">RGB</div>
-    <div data-gallery="2">CMYK</div>
-    <div data-gallery="3">3-D</div>
-    <div data-gallery="about">ABOUT</div>
-
+  
+<header id="menu">
+    <div class="menu-item active" data-gallery="1">RGB</div>
+    <div class="menu-item" data-gallery="2">CMYK</div>
+    <div class="menu-item" data-gallery="3">3-D</div>
+    <div class="menu-item" data-gallery="about">ABOUT</div>
 </header>
 
   
