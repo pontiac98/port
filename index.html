@@ -314,14 +314,16 @@
     margin: 0px;
     padding: 0px;
     z-index: 2;
+    isolation: isolate; 
     
     gap: 4px;
       
     /*height: 52px; */
     width: 100vw;
-    /*background: silver;
-    opacity: 50%;*/
-    background: rgba(192, 192, 192, 0.5);
+    background: silver;
+    opacity: 50%;
+    
+    /*background: rgba(192, 192, 192, 0.5);*/
     
    /* backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);  */
@@ -332,7 +334,7 @@
   }
 
   #menu:hover{
-   /* opacity: 60%; */
+    opacity: 60%; 
   }
 
   #menu::before {
@@ -367,8 +369,8 @@
 }
 
 #menu div:hover:not(.active) {
-    color: black;
-  -webkit-text-stroke: 2px black;  
+    color: white;
+ /* -webkit-text-stroke: 2px black;  */
   cursor: pointer;
 }
 
