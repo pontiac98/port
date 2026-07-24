@@ -110,7 +110,7 @@
   width: 100%; 
   
   gap: 4px;
-  background: red;
+  /*background: red; */
   padding: 0px 4px 0px;  
 }
 
@@ -305,6 +305,28 @@
     width: 100vw;
     background: #2f2f2f;
   }
+
+  #menu div {
+    display: block;
+    padding: 14px 24px;
+
+    color: silver;
+    text-decoration: none;
+
+    transition: color .2s, background .2s;
+}
+
+#menu div:hover:not(.active) {
+    color: white;
+}
+
+#menu div.active {
+    color: white;
+    font-weight: 700;
+    background: #1f1f1f;
+
+    cursor: default;
+}
   
 </style>
 </head>
@@ -314,16 +336,16 @@
 <div id="viewer">
     <div id="viewerImage"> </div>
 </div>
-  <!--
+  <!-- -->
   <header id="menu">
 
-    <button class="active" data-gallery="1">RGB</button>
-    <button data-gallery="2">CMYK</button>
-    <button data-gallery="3">3-D</button>
-    <button data-gallery="about">ABOUT</button>
+    <div class="active" data-gallery="1">RGB</div>
+    <div data-gallery="2">CMYK</div>
+    <div data-gallery="3">3-D</div>
+    <div data-gallery="about">ABOUT</div>
 
 </header>
--->
+
   
   <main>
   <div id="content">
@@ -476,6 +498,16 @@ document.addEventListener("keydown", (e) => {
       closeViewer();
         //viewer.classList.remove("open");
     }
+});
+
+// переключание галереи
+  document.querySelectorAll("#menu a").forEach(item => {
+    item.addEventListener("click", e => {
+
+        e.preventDefault();
+        // переключение галере
+      
+    });
 });
   
 //
