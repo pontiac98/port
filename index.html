@@ -307,14 +307,26 @@
 }
   
 /* меню */
+.bw{
+position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100vw;
+  
+  /* Размытие фона страницы */
+  background: rgba(255, 255, 255, 0.01); /* Белый 1% */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+  
   #menu{
     display: flex;
-  position: sticky;
-  top: 0;
+ /* position: sticky;
+  top: 0; 
     margin: 0px;
     padding: 0px;
     z-index: 2;
-    isolation: isolate; 
+    isolation: isolate; */
     
     gap: 4px;
       
@@ -337,24 +349,7 @@
     opacity: 60%; 
   }
 
-  #menu::before {
-    content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   
-  /* Уводим псевдоэлемент НАЗАД, под текст и кнопки меню */
-  z-index: -1; 
-  
-  /* Минимальный фоновый оттенок для стабильной работы эффекта*/ 
-  background: rgba(255, 255, 255, 0.05); 
-  
-  /* Эффект размытия */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* Для Safari */
-  }
 
   #menu div {
     user-select: none;
@@ -394,14 +389,15 @@
     <div id="viewerImage"> </div>
 </div>
   <!-- -->
-  
+
+  <div class="bw">
 <header id="menu">
     <div class="menu-item active" data-gallery="1">RGB</div>
     <div class="menu-item" data-gallery="2">CMYK</div>
     <div class="menu-item" data-gallery="3">3-D</div>
     <div class="menu-item" data-gallery="about">ABOUT</div>
 </header>
-
+  </div>
   
   <main>
   <div id="content">
