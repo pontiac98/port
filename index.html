@@ -75,6 +75,11 @@
 
     opacity: 0;
    /* transition: opacity .35s ease; */
+
+     transition: 
+          opacity .55s ease,
+          transform .35s ease, 
+          filter .55s ease;
 }
 
 .card:hover .card-image {
@@ -94,10 +99,10 @@
     .card-image {
       transform: scale(1.00);
         filter: grayscale(90%) saturate(1.0) brightness(1.0) opacity(.5);
-        transition: 
+       /* transition: 
           opacity .35s ease,
           transform .35s ease, 
-          filter .55s ease;
+          filter .55s ease;  */
     }
 
     .card:hover .card-image {
@@ -157,6 +162,7 @@
    overflow: hidden;
    border-radius: 4px;
    width: 100%;
+  background-image: linear-gradient(45deg, red, yellow);
 }
 
  .card:focus {
