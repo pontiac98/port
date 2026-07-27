@@ -72,10 +72,16 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    opacity: 0;
+    transition: opacity .35s ease;
 }
 
 .card:hover .card-image {
+}
 
+  .card-image.loaded {
+    opacity: 1;
 }
 
   /* Эффекты только на устройствах с мышью hover */
@@ -457,7 +463,7 @@ position: sticky;
 
             const image = document.createElement("div");
             image.className = "card-image";
-            image.style.backgroundImage = `url("${item.url}")`;
+            //image.style.backgroundImage = `url("${item.url}")`;
             //image.style.aspectRatio = `${item.width} / ${item.height}`;
 
            //card.style.aspectRatio = `${item.width} / ${item.height}`;
@@ -466,16 +472,46 @@ position: sticky;
 
             card.appendChild(image);
           
-            //const img = document.createElement("img");
-           // img.src = image.url;
-           // img.alt = image.name;
-           // img.loading = "lazy";
-
-            //card.appendChild(img);
+ 
             grid.appendChild(card);
-
+            observer.observe(card);
         });
     });
+
+// предзагрузчик в видимую область
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+        const image = card.querySelector(".card-image");
+
+        const src = card.dataset.src;
+
+        const loader = new Image();
+
+        loader.onload = () => {
+
+            image.style.backgroundImage = `url("${src}")`;
+
+            requestAnimationFrame(() => {
+                image.classList.add("loaded");
+            });
+
+        };
+
+        loader.src = src;
+
+        observer.unobserve(card);
+
+    });
+
+}, {
+    rootMargin: "300px"
+});
+  
 
   // лайтбокс
   document.addEventListener("click", e => {
