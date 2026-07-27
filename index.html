@@ -100,9 +100,15 @@
 }
 
     body.no-scroll .card:hover{
+      /*opacity: .355; *?
+   /* transform: scale(1.02); */
+      filter: saturate(.5) ; 
+}
+
+      body.no-scroll .card:hover::after{
       opacity: .355;
    /* transform: scale(1.02); */
-      /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
+      filter: saturate(.5) ; 
 }
 
   .card::after{
@@ -112,9 +118,13 @@
   background-color: white;
   opacity: .355;
   pointer-events: none; 
-   transition:   opacity .55s ease;
+    filter: saturate(.5) ; 
+   transition:   
+     opacity .55s ease,
+     filter .55s ease; 
 }  
   .card:hover::after {
+    filter: saturate(1.0) ; 
   opacity: .0;
 }
 
