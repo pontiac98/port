@@ -72,7 +72,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: linear-gradient(45deg, red, yellow);
+    /*background-image: linear-gradient(45deg, red, yellow); */
 
     opacity: 0;
    /* transition: opacity .35s ease; */
@@ -95,11 +95,11 @@
 
   body.no-scroll .card:hover .card-image {
    /* transform: scale(1.02); */
-        filter: grayscale(90%) saturate(1.0) brightness(1.0) opacity(.5);
+        filter: grayscale(90%) saturate(1.0) brightness(1.2) opacity(1.0) contrast(50%);
 }
     .card-image {
       transform: scale(1.00);
-        filter: grayscale(90%) saturate(1.0) brightness(1.0) opacity(.5);
+        filter: grayscale(90%) saturate(1.0) brightness(1.2) opacity(1.0) contrast(50%);
        /* transition: 
           opacity .35s ease,
           transform .35s ease, 
@@ -163,7 +163,7 @@
    overflow: hidden;
    border-radius: 4px;
    width: 100%;
- /* background-image: linear-gradient(45deg, red, yellow);  */
+  background-image: linear-gradient(45deg, #f9f9f9, #e5e5e5);  
 }
 
  .card:focus {
