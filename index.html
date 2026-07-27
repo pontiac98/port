@@ -86,18 +86,6 @@
 .card:hover .card-image {
 }
 
-.card::after{
-   content: "";
-   position: absolute; 
-   inset: 0; 
-  background-color: white;
-  opacity: 0;
-  pointer-events: none; 
-   transition:   opacity .55s ease;
-}  
-  .card:hover::after {
-  opacity: .5;
-}
 
   .card-image.loaded {
     opacity: 1;
@@ -110,6 +98,26 @@
    /* transform: scale(1.02); */
       /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
 }
+
+    body.no-scroll .card:hover{
+      opacity: .355;
+   /* transform: scale(1.02); */
+      /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
+}
+
+  .card::after{
+   content: "";
+   position: absolute; 
+   inset: 0; 
+  background-color: white;
+  opacity: .355;
+  pointer-events: none; 
+   transition:   opacity .55s ease;
+}  
+  .card:hover::after {
+  opacity: .0;
+}
+
     .card-image {
       transform: scale(1.00);
       /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
