@@ -125,10 +125,16 @@ body::after {
   pointer-events: none; 
    transition:   opacity .3s ease; 
 }  
- 
+
+.card:has(.card-image.loaded):hover::after {
+  opacity: .355;
+}
+  /*
   .card:hover::after {
   opacity: .355;
 }
+  */
+  
     .card:hover{
     filter: saturate(1.0); 
 }
