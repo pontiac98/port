@@ -60,7 +60,7 @@ body::before {
   z-index: 2000; /* Выше любого стандартного лайтбокса */
   background-image: url('o1.gif');
   opacity: 0.1;
-  mix-blend-mode: overlay; 
+ /* mix-blend-mode: overlay; */
 }
 
 /* Второй GIF-слой */
@@ -68,7 +68,7 @@ body::after {
   z-index: 2001; /* Самый верхний уровень на всей странице */
   background-image: url('o2.gif');
   opacity: 0.1;
-  mix-blend-mode: overlay; 
+  /*mix-blend-mode: overlay; */
 }
   
 .section {
@@ -246,10 +246,15 @@ body::after {
 /* для мобильной */
 @media (max-width: 900px) {
 
-  body::before,
-  body::after {
-    background-size: 50%;
-  }
+    /* двойная плотность */
+body::before {
+  background-image: image-set(url('o1.gif') 2x);
+}
+
+/* двойная плотность */
+body::after {
+  background-image: image-set(url('o2.gif') 2x);
+}
     html {
     scrollbar-gutter: auto;
     background: #EEE;   
