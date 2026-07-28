@@ -50,15 +50,16 @@ body::after {
 body::before {
   z-index: 2000; /* Выше любого стандартного лайтбокса */
   background-image: url('o1.gif');
-  opacity: 0.3;
+  opacity: 0.1;
+  mix-blend-mode: overlay; 
 }
 
 /* Второй GIF-слой */
 body::after {
   z-index: 2001; /* Самый верхний уровень на всей странице */
   background-image: url('o2.gif');
-  opacity: 0.3;
-  mix-blend-mode: multiply; 
+  opacity: 0.1;
+  mix-blend-mode: overlay; 
 }
   
 .section {
@@ -284,7 +285,7 @@ body::after {
     align-items: center;
     isolation: isolate;
 
-    z-index: 3000;
+    z-index: 1000;
 
     opacity: 0;
     visibility: hidden; 
