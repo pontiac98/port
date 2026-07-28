@@ -579,7 +579,10 @@ position: sticky;
   document.addEventListener("click", e => {
 
     const card = e.target.closest(".card");
-    if (!card) return;
+    if (!card) return;    
+    
+    const image = card.querySelector(".card-image");
+    if (!image.classList.contains("loaded")) return;
 
     openViewer(card.dataset.image, card.dataset.ratio);
 
