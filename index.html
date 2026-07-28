@@ -58,7 +58,8 @@ body::after {
   /* Первый GIF-слой */
 body::before {
   z-index: 2000; /* Выше любого стандартного лайтбокса */
-  background-image: url('o1.gif');
+  background-image: image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
+  background-image: -webkit-image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
   opacity: 0.1;
  /* mix-blend-mode: overlay; */
 }
@@ -66,7 +67,8 @@ body::before {
 /* Второй GIF-слой */
 body::after {
   z-index: 2001; /* Самый верхний уровень на всей странице */
-  background-image: url('o2.gif');
+   background-image: image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
+  background-image: -webkit-image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
   opacity: 0.1;
   /*mix-blend-mode: overlay; */
 }
@@ -246,15 +248,16 @@ body::after {
 /* для мобильной */
 @media (max-width: 900px) {
 
-    /* двойная плотность */
+    /* двойная плотность 
 body::before {
   background-image: image-set(url('o1.gif') 2x);
 }
 
-/* двойная плотность */
 body::after {
   background-image: image-set(url('o2.gif') 2x);
-}
+} 
+  */
+  
     html {
     scrollbar-gutter: auto;
     background: #EEE;   
