@@ -202,7 +202,7 @@ body::after {
    overflow: hidden;
    border-radius: 0px;
    width: 100%;
-  background-image: linear-gradient(230deg, black, #e5e5e5);  
+  background-image: linear-gradient(230deg, #f9f9f9, #e5e5e5);  
    filter: saturate(1.0); 
    transition: filter .25s ease-out;   
 }
@@ -405,6 +405,14 @@ position: sticky;
   cursor: pointer;
 }
 
+    #menu div span{
+      display: inline-block; 
+ transition: transform .2s;
+}
+  
+  #menu div:hover:not(.active) span{
+  transform: translateY(-4px);
+}
   
 
 #menu div.active {
@@ -430,10 +438,10 @@ position: sticky;
 
 <div class="bw">
   <header id="menu">
-    <div class="menu-item active" data-gallery="1">RGB</div>
-    <div class="menu-item" data-gallery="2">CMYK</div>
-    <div class="menu-item" data-gallery="3">3-D</div>
-    <div class="menu-item" data-gallery="about">ABOUT</div>
+    <div class="menu-item active" data-gallery="1"><span>RGB</span></div>
+    <div class="menu-item" data-gallery="2"><span>CMYK</span></div>
+    <div class="menu-item" data-gallery="3"><span>3-D</span></div>
+    <div class="menu-item" data-gallery="about"><span>ABOUT</span></div>
   </header>
 </div>
   
