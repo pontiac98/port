@@ -158,12 +158,17 @@ body::after {
   pointer-events: none; 
    transition:   opacity .3s ease; 
 }  
+ 
   .card:hover::after {
   opacity: .355;
 }
     .card:hover{
     filter: saturate(1.0); 
 }
+
+  .card {
+    filter: saturate(.5); 
+  }
 
     .card-image {
       transform: scale(1.00);
@@ -240,7 +245,7 @@ body::after {
    border-radius: 4px;
    width: 100%;
   background-image: linear-gradient(230deg, #f9f9f9, #e5e5e5);  
-   filter: saturate(.5); 
+   filter: saturate(1.0); 
    transition: filter .25s ease-out;   
 }
 
