@@ -35,14 +35,6 @@
   font-family: "DotGothic16", sans-serif;
   font-weight: 400;
   font-style: normal; 
-   /* 
-  font-family: "IBM Plex Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;*/
-    
   }
 
 
@@ -60,16 +52,16 @@ body::before {
   z-index: 2000; /* Выше любого стандартного лайтбокса */
   background-image: image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
   background-image: -webkit-image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
-  opacity: 0.1;
- /* mix-blend-mode: overlay; */
+  opacity: 0.08;
+  mix-blend-mode: overlay; 
 }
 
 /* Второй GIF-слой */
 body::after {
   z-index: 2001; /* Самый верхний уровень на всей странице */
-   background-image: image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
+  background-image: image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
   background-image: -webkit-image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
-  opacity: 0.1;
+  opacity: 0.10;
   /*mix-blend-mode: overlay; */
 }
   
@@ -84,23 +76,7 @@ body::after {
 }
 
 
-  
-  /*запрет выделения картинки
-  img {
-  user-select: none;
-  -webkit-user-select: none;
-
-  -webkit-user-drag: none;
-  -webkit-touch-callout: none;
-
-  touch-action: manipulation;
-}
-*/
-
-
-
-
-  
+    
 /* карточки*/
   
   .card-image {
@@ -110,12 +86,9 @@ body::after {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /*background-image: linear-gradient(45deg, red, yellow); */
-
+    
     opacity: 0;
-   /* transition: opacity .35s ease; */
-
-     transition: 
+    transition: 
           opacity .55s ease,
           transform .35s ease, 
           filter .55s ease;
@@ -133,20 +106,14 @@ body::after {
 @media (hover: hover) and (pointer: fine) {
 
   body.no-scroll .card:hover .card-image {
-   /* transform: scale(1.02); */
-      /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
 }
 
     body.no-scroll .card:hover{
-      /*opacity: .355; *?
-   /* transform: scale(1.02); */
       filter: saturate(1.0) ; 
 }
 
       body.no-scroll .card:hover::after{
       opacity: .0; 
-   /* transform: scale(1.02); */
-
 }
 
   .card::after{
@@ -172,11 +139,6 @@ body::after {
 
     .card-image {
       transform: scale(1.00);
-      /*  filter: grayscale(60%) saturate(1.0) brightness(1.5) opacity(1.0) contrast(60%); */
-       /* transition: 
-          opacity .35s ease,
-          transform .35s ease, 
-          filter .55s ease;  */
     }
 
     .card:hover .card-image {
@@ -199,7 +161,6 @@ body::after {
     .card-image {
         transform: none;
         filter: none;
-        /* transition: none;  */
     }
 }
   
@@ -209,13 +170,10 @@ body::after {
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 15vw;
   grid-auto-flow: dense;
-  
-
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
   width: 100%; 
   
   gap: 4px;
-  /*background: red; */
+  background: silver; 
   padding: 0px 4px 0px;  
 }
 
@@ -250,26 +208,13 @@ body::after {
 }
 
  .card:focus {
-   /* outline: 2px solid silver;  */
   }
   
   .card:hover {
-    
   }
 
 /* для мобильной */
-@media (max-width: 900px) {
-
-    /* двойная плотность 
-body::before {
-  background-image: image-set(url('o1.gif') 2x);
-}
-
-body::after {
-  background-image: image-set(url('o2.gif') 2x);
-} 
-  */
-  
+@media (max-width: 900px) {  
     html {
     scrollbar-gutter: auto;
     background: #EEE;   
@@ -282,9 +227,7 @@ body::after {
     .grid {
       padding: 0px 0px 0px;
       grid-template-columns: repeat(3, minmax(15px, 1fr));
-      /*  grid-template-columns: 1fr; */
       grid-auto-rows: minmax(35vw, auto); /* или AUTO или другое подходящее значение */
-     /* grid-auto-flow: dense; */
     }
 
   /*.verywide {
@@ -395,7 +338,6 @@ body::after {
 }
 
   html {
-    /*overflow-x: hidden; */
     scrollbar-gutter: stable; 
     background: #EEE;
     transition:
@@ -429,24 +371,10 @@ position: sticky;
   
   #menu{
     display: flex;
- /* position: sticky;
-  top: 0; 
-    margin: 0px;
-    padding: 0px;
-    z-index: 2;
-    isolation: isolate; */
-    
     gap: 4px;
-      
-    /*height: 52px; 
-    width: 100%;*/
+ 
     background: silver;
     opacity: 50%;
-    
-    /*background: rgba(192, 192, 192, 0.5);*/
-    
-   /* backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);  */
     border-bottom: 2px solid black;
 
     transition:
@@ -472,7 +400,7 @@ position: sticky;
 }
 
 #menu div:hover:not(.active) {
-    color: white;
+  color: white;
  /* -webkit-text-stroke: 2px black;  */
   cursor: pointer;
 }
@@ -497,7 +425,8 @@ position: sticky;
     <div id="viewerImage"> </div>
 </div>
  
-  <!-- -->
+  <!-- 
+  -->
 
 <div class="bw">
   <header id="menu">
@@ -509,18 +438,11 @@ position: sticky;
 </div>
   
   <main>
-  <div id="content">
-    <!--
-  <section id="section0" class="section active">
-    <div id="randomImage"></div>
-  </section>
--->
-
-    
-  <section id="section1" class="section">
-      <div class="grid" id="grid"></div>
-  </section>
-  </div>
+    <div id="content">  
+        <section id="section1" class="section">
+          <div class="grid" id="grid"></div>
+        </section>
+    </div>
   </main>
   
 <script>
@@ -545,8 +467,6 @@ position: sticky;
 
             const image = document.createElement("div");
             image.className = "card-image";
-            //image.style.backgroundImage = `url("${item.url}")`;
-            //image.style.aspectRatio = `${item.width} / ${item.height}`;
             card.dataset.ratio = `${item.width} / ${item.height}`;
           
             card.appendChild(image);          
@@ -611,16 +531,10 @@ function openViewer(src, aspect){
   
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
- // const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-  //document.body.style.paddingRight = scrollbarWidth + "px";
-  
+ 
   viewerImage.style.backgroundImage = `url("${src}")`;
   viewerImage.style.aspectRatio = aspect;
-
-  
-    //viewerImage.src = src;
-  //viewerImage.getBoundingClientRect();
-    viewer.classList.add("open");
+  viewer.classList.add("open");
    
 
  requestAnimationFrame(() => {
@@ -632,7 +546,6 @@ function openViewer(src, aspect){
 
    // Сбросить состояние
     viewerImage.classList.remove("animate");
-  //viewerImage.offsetHeight;
 
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -648,23 +561,14 @@ function closeViewer() {
   
     document.body.classList.remove("no-scroll");
   document.documentElement.classList.remove("no-scroll");
-  //document.body.style.paddingRight = "";
 }
 
-/*viewer.addEventListener("click", (e) => {
-    if (e.target === viewer) {
-        closeViewer();
-    }
-}); */
-  
-//viewer.onclick = () => viewer.classList.remove("open");
- // viewer.onclick = () => closeViewer();
+
   viewer.addEventListener("click", closeViewer);
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeViewer();
-        //viewer.classList.remove("open");
     }
 });
 
@@ -683,166 +587,7 @@ document.addEventListener("keydown", (e) => {
   //
   //
   //
-  //
-
-
-  
-  
-  // убрать контекст меню
-  document.querySelectorAll("img").forEach(img => {
-  img.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-  });
-
-  img.addEventListener("dragstart", (e) => {
-    e.preventDefault();
-  });
-});
-
-
-
-  
-const menu = document.getElementById("menu");
-const items = document.querySelectorAll(".item");
-  const header = document.querySelector(".header");
-
-let isOpen = false;
-
-  
-items.forEach(item => {
-  item.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    // убрать active у всех
-    items.forEach(i => i.classList.remove("active"));
-
-    // добавить только текущему
-    item.classList.add("active");
-
-    // section1 hide + section2 show
-    //
-    
-  });
-});
-
-// ======================
-// DRAG + SAFE BOUNDS
-// ======================
-let isDragging = false;
-let dragged = false;
-
-let startX, startY;
-let offsetX = 50, offsetY = 50;
-
-const DRAG_THRESHOLD = 1;
-
-function clampPosition(x, y) {
-  const rect = menu.getBoundingClientRect();
-
-  const maxX = window.innerWidth - rect.width;
-  const maxY = window.innerHeight - rect.height;
-
-  return {
-    x: Math.max(0, Math.min(x, maxX)),
-    y: Math.max(0, Math.min(y, maxY))
-  };
-}
-
-header.addEventListener("pointerdown", (e) => {
-  e.preventDefault();
-  isDragging = true;
-  dragged = false;
-  
-  menu.classList.add("dragging");
-
-header.style.cursor = "grabbing";
-  
-  startX = e.clientX - offsetX;
-  startY = e.clientY - offsetY;
-
-  header.setPointerCapture(e.pointerId);
-});
-
-header.addEventListener("pointermove", (e) => {
-  if (!isDragging) return;
-
-  let x = e.clientX - startX;
-  let y = e.clientY - startY;
-
-  const clamped = clampPosition(x, y);
-
-  if (Math.abs(clamped.x - offsetX) > DRAG_THRESHOLD ||
-      Math.abs(clamped.y - offsetY) > DRAG_THRESHOLD) {
-    dragged = true;
-  }
-
-  offsetX = clamped.x;
-  offsetY = clamped.y;
-
-  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-});
-
-header.addEventListener("pointerup", (e) => {
-  isDragging = false;
-
-  menu.classList.remove("dragging");
-   header.style.cursor = "grab";
-  header.releasePointerCapture(e.pointerId);
-
-  
-
-  if (dragged) return;
-  
-// 👉 если открываем
-    if (!isOpen) {
-    const submenuHeight = menu.querySelector(".submenu").scrollHeight;
-    const rect = menu.getBoundingClientRect();
-
-    let newY = offsetY;
-
-    const futureBottom = rect.bottom + submenuHeight;
-
-    if (futureBottom > window.innerHeight) {
-      newY -= (futureBottom - window.innerHeight);
-    }
-
-    newY = Math.max(0, newY);
-
-    offsetY = newY;
-
-    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  }
-
-  // toggle меню только если это не drag
-  isOpen = !isOpen;
-  menu.classList.toggle("open", isOpen);
-  
-  header.style.opacity = 0.9;
-setTimeout(() => {
-// header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
-  header.style.opacity = 1;
-}, 150);
- // header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
-
-  // 🟡 после изменения размера — проверяем границы заново
-
-});
-
-
-  header.addEventListener("pointercancel", () => {
-  isDragging = false;
-  header.style.cursor = "grab";
-});
-
-// при изменении размера окна — тоже держим внутри
-window.addEventListener("resize", () => {
-  const clamped = clampPosition(offsetX, offsetY);
-  offsetX = clamped.x;
-  offsetY = clamped.y;
-  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-});
-
-  
+  //  
 </script>
 
 </body>
