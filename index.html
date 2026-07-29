@@ -115,6 +115,9 @@ body::after {
       body.no-scroll .card:hover::after{
       opacity: .0; 
 }
+        body.no-scroll .card::after{
+      opacity: .0; 
+}
 
   .card::after{
    content: "";
@@ -332,7 +335,7 @@ body::after {
     transform-origin: center center; /* maybe */
 
     transition:
-      transform .255s ease-out .0s, 
+      transform .255s ease .0s, 
       opacity .1s ease-in .0s; 
 }
 
@@ -651,6 +654,14 @@ let currentScale = 1;
     if (e.touches.length !== 2) return;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
+    
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    const rect = viewerImage.getBoundingClientRect();
+
+viewerImage.style.transformOrigin =
+    `${cx - rect.left}px ${cy - rect.top}px`;
+    
 }, { passive: false });
 
 viewerImage.addEventListener("touchmove", e => {
@@ -665,6 +676,7 @@ viewerImage.addEventListener("touchmove", e => {
   function resetZoom() {
     viewerImage.classList.remove("pinching");
       requestAnimationFrame(() => {
+        viewerImage.style.transformOrigin = "center center";
         viewerImage.style.transform = "scale(1)";
     });
 }
