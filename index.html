@@ -329,7 +329,7 @@ body::after {
     opacity: 0.1;
 
     transition:
-      transform .1s ease-in-out .0s, 
+      transform .255s ease-out .0s, 
       opacity .1s ease-in .0s; 
 }
 
@@ -338,6 +338,10 @@ body::after {
     opacity: 1;
 }
 
+#viewerImage.pinching {
+    transition: none;
+}
+  
   body.no-scroll {
     overflow: hidden;
     touch-action: none; 
@@ -515,9 +519,7 @@ position: sticky;
         };
 
         loader.src = src;
-
         observer.unobserve(card);
-
     });
 
 }, {
@@ -535,14 +537,13 @@ position: sticky;
     if (!image.classList.contains("loaded")) return;
 
     openViewer(card.dataset.image, card.dataset.ratio);
-
 });
 
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
-const viewerImage = document.getElementById("viewerImage");
+  const viewerImage = document.getElementById("viewerImage");
 
-function openViewer(src, aspect){
+  function openViewer(src, aspect){
   
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
@@ -587,6 +588,49 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+// пинч картинки в лайтбоксе
+
+let startDistance = 0;
+let currentScale = 1;
+
+  function distance(t1, t2) {
+    return Math.hypot(
+        t2.clientX - t1.clientX,
+        t2.clientY - t1.clientY
+    );
+}
+
+  viewerImage.addEventListener("touchstart", e => {
+    if (e.touches.length !== 2) return;
+    viewerImage.classList.add("pinching");
+    startDistance = distance(e.touches[0], e.touches[1]);
+});
+
+viewerImage.addEventListener("touchmove", e => {
+    if (e.touches.length !== 2) return;
+    e.preventDefault();
+    const d = distance(e.touches[0], e.touches[1]);
+    currentScale = d / startDistance;
+    currentScale = Math.max(.8, Math.min(3, currentScale));
+    viewerImage.style.transform = `scale(${currentScale})`;
+});
+
+  function resetZoom() {
+    viewerImage.classList.remove("pinching");
+    viewerImage.style.transform = "scale(1)";
+}
+
+viewerImage.addEventListener("touchend", resetZoom);
+viewerImage.addEventListener("touchcancel", resetZoom);
+
+
+
+
+  
+  //
+  //
+  //
+  //
 // переключание галереи
   document.querySelectorAll("#menu a").forEach(item => {
     item.addEventListener("click", e => {
