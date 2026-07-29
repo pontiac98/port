@@ -335,6 +335,7 @@ body::after {
 }*/
 
   #viewerFrame {
+    position: relative;
     overflow: hidden;
     border-radius: 24px;
 
@@ -585,6 +586,7 @@ if (h > vh) {
 
 viewerFrame.style.width = w + "px";
 viewerFrame.style.height = h + "px";
+     viewerFrame.style.aspectRatio = aspect;
     
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
@@ -659,7 +661,9 @@ viewerImage.addEventListener("touchmove", e => {
 
   function resetZoom() {
     viewerImage.classList.remove("pinching");
-    viewerImage.style.transform = "scale(1)";
+      requestAnimationFrame(() => {
+        viewerImage.style.transform = "scale(1)";
+    });
 }
 
 viewerImage.addEventListener("touchend", resetZoom);
