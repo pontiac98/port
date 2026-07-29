@@ -350,7 +350,7 @@ body::after {
     width: 100%;
     height: 100%;
 
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -511,7 +511,8 @@ position: sticky;
 
             const image = document.createElement("div");
             image.className = "card-image";
-            card.dataset.ratio = `${item.width} / ${item.height}`;
+            //card.dataset.ratio = `${item.width} / ${item.height}`;
+            card.dataset.ratio = item.width / item.height;
           
             card.appendChild(image);          
             grid.appendChild(card);
