@@ -314,7 +314,7 @@ body::after {
 }
 
 
-  #viewerImage {
+/*  #viewerImage {
     width: 89vw; 
     height: auto;
 
@@ -332,13 +332,35 @@ body::after {
     transition:
       transform .255s ease-out .0s, 
       opacity .1s ease-in .0s; 
+}*/
+
+  #viewerFrame {
+    overflow: hidden;
+    border-radius: 6px;
+
+    transform: scale(1.0);
+    opacity: 0;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
 }
 
-  #viewerImage.animate {
-    /* transform: scale(1);  */
+#viewerImage {
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+  #viewerFrame.animate {
+     transform: scale(1); 
     opacity: 1;
-}
+}   
 
+  
 #viewerImage.pinching {
     transition: none;
 }
@@ -442,7 +464,9 @@ position: sticky;
 <body>
   
 <div id="viewer">
-    <div id="viewerImage"> </div>
+    <div id="viewerFrame">
+        <div id="viewerImage"></div>
+    </div>
 </div>
  
   <!-- 
@@ -543,9 +567,24 @@ position: sticky;
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
-
-  function openViewer(src, aspect){
+  const viewerFrame = document.getElementById("viewerFrame");
   
+  function openViewer(src, aspect){
+
+const vw = window.innerWidth * 0.89;
+const vh = window.innerHeight * 0.89;
+
+let w = vw;
+let h = w / aspect;
+
+if (h > vh) {
+    h = vh;
+    w = h * aspect;
+}
+
+viewerFrame.style.width = w + "px";
+viewerFrame.style.height = h + "px";
+    
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
  
@@ -562,21 +601,21 @@ position: sticky;
     });
 
    // Сбросить состояние
-    viewerImage.classList.remove("animate");
+    viewerFrame.classList.remove("animate");
 
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            viewerImage.classList.add("animate");
+            viewerFrame.classList.add("animate");
         });
     });
   
 }
 
 function closeViewer() {
-  viewerImage.classList.remove("animate");
-    viewer.classList.remove("open");
+  viewerFrame.classList.remove("animate");
+  viewer.classList.remove("open");
   
-    document.body.classList.remove("no-scroll");
+  document.body.classList.remove("no-scroll");
   document.documentElement.classList.remove("no-scroll");
 }
 
