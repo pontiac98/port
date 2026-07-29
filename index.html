@@ -315,7 +315,7 @@ body::after {
 }
 
 
-/*  #viewerImage {
+ #viewerImage {
     width: 89vw; 
     height: auto;
 
@@ -329,13 +329,14 @@ body::after {
     transform: scale(1.0); 
     opacity: 0.1;
     touch-action: none;
+    transform-origin: center center; /* maybe */
 
     transition:
       transform .255s ease-out .0s, 
       opacity .1s ease-in .0s; 
-}*/
+}
 
-  #viewerFrame {
+/*  #viewerFrame {
     position: relative;
     overflow: hidden;
     border-radius: 24px;
@@ -358,9 +359,9 @@ body::after {
   transform: scale(1);
    transition:
         transform .25s ease;
-}
+}   */
 
-  #viewerFrame.animate {
+  #viewerImage.animate {
      transform: scale(1); 
     opacity: 1;
 }   
@@ -469,9 +470,7 @@ position: sticky;
 <body>
   
 <div id="viewer">
-    <div id="viewerFrame">
-        <div id="viewerImage"></div>
-    </div>
+            <div id="viewerImage"></div>
 </div>
  
   <!-- 
@@ -573,24 +572,24 @@ position: sticky;
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
-  const viewerFrame = document.getElementById("viewerFrame");
+ // const viewerFrame = document.getElementById("viewerFrame");
   
   function openViewer(src, aspect){
 
-const vw = window.innerWidth * 0.89;
-const vh = window.innerHeight * 0.89;
+//const vw = window.innerWidth * 0.89;
+//const vh = window.innerHeight * 0.89;
 
-let w = vw;
-let h = w / aspect;
+//let w = vw;
+//let h = w / aspect;
 
-if (h > vh) {
-    h = vh;
-    w = h * aspect;
-}
+//if (h > vh) {
+//    h = vh;
+//    w = h * aspect;
+//}
 
-viewerFrame.style.width = w + "px";
-viewerFrame.style.height = h + "px";
-     viewerFrame.style.aspectRatio = aspect;
+//viewerFrame.style.width = w + "px";
+//viewerFrame.style.height = h + "px";
+//     viewerFrame.style.aspectRatio = aspect;
     
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
@@ -608,18 +607,18 @@ viewerFrame.style.height = h + "px";
     });
 
    // Сбросить состояние
-    viewerFrame.classList.remove("animate");
+    viewerImage.classList.remove("animate");
 
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            viewerFrame.classList.add("animate");
+            viewerImage.classList.add("animate");
         });
     });
   
 }
 
 function closeViewer() {
-  viewerFrame.classList.remove("animate");
+  viewerImage.classList.remove("animate");
   viewer.classList.remove("open");
   
   document.body.classList.remove("no-scroll");
