@@ -681,7 +681,7 @@ viewerImage.addEventListener("touchmove", e => {
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
  viewerImage.style.transformOrigin =
-    `${cx - startRect.left}px ${cy - startRect.top}px`;
+    `${cx - startRect.left}px ${startRect.height - (cy - startRect.top)}px`;
   
 const rawScale = Math.max(.8, d / startDistance);
 let scale;
