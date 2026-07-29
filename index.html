@@ -214,7 +214,7 @@ body::after {
    overflow: hidden;
    border-radius: 0px;
    width: 100%;
-  background-image: linear-gradient(230deg, #f9f9f980, #e5e5e520);  
+  background-image: linear-gradient(44deg, #f9f9f980, #e5e5e500);  
    filter: saturate(1.0); 
    transition: filter .25s ease-out;   
 }
@@ -643,7 +643,7 @@ document.addEventListener("keydown", (e) => {
 // пинч картинки в лайтбоксе
 
 let startDistance = 0;
-let currentScale = 1;
+//let currentScale = 1;
 
   function distance(t1, t2) {
     return Math.hypot(
@@ -670,8 +670,15 @@ viewerImage.style.transformOrigin =
 viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
+
+  const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    const rect = viewerImage.getBoundingClientRect();
+
+viewerImage.style.transformOrigin =
+    `${cx - rect.left}px ${cy - rect.top}px`;
   
-    //const d = distance(e.touches[0], e.touches[1]);
+    const d = distance(e.touches[0], e.touches[1]);
     //currentScale = d / startDistance;
     //currentScale = Math.max(.8, Math.min(3, currentScale));
 
@@ -684,7 +691,7 @@ if (rawScale <= 2.5) {
     scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
 }
   
-    viewerImage.style.transform = `scale(${currentScale})`;
+    viewerImage.style.transform = `scale(${scale})`;
 }, { passive: false });
 
   function resetZoom() {
