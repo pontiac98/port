@@ -675,13 +675,16 @@ viewerImage.addEventListener("touchmove", e => {
     //currentScale = d / startDistance;
     //currentScale = Math.max(.8, Math.min(3, currentScale));
 
-const rawScale = Math.max(1, d / startDistance);
+const rawScale = Math.max(.8, d / startDistance);
 let scale;
-if (rawScale <= 2.5) {
+const maxK = 3;
+  
+if (rawScale <= maxK) {
     scale = rawScale;
 } else {
-    const over = rawScale - 2.5;
-    scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
+    const over = rawScale - maxK;
+   // scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
+  scale = maxK + (rawScale - maxK) * 0.18;
 }
   
     viewerImage.style.transform = `scale(${scale})`;
