@@ -647,16 +647,8 @@ let currentScale = 1;
     );
 }
 
-  viewerFrame.addEventListener("touchstart", e => {
-     alert("Frame " + e.touches.length);
-}, { passive: false });
-  
-   viewer.addEventListener("touchstart", e => {
-     alert("viewer " + e.touches.length);
-}, { passive: false });
 
   viewerImage.addEventListener("touchstart", e => {
-     alert("touchstart " + e.touches.length);
     if (e.touches.length !== 2) return;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
