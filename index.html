@@ -734,7 +734,8 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     startDistance = distance(e.touches[0], e.touches[1]);
 
     startRect = viewerImage.getBoundingClientRect();
-
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
 viewerImage.style.transformOrigin =
     `${cx - startRect.left}px ${cy - startRect.top}px`;
