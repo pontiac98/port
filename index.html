@@ -647,6 +647,8 @@ document.addEventListener("keydown", (e) => {
 
 let startDistance = 0;
 let startRect;
+  let startCenterX;
+let startCenterY;
 //let currentScale = 1;
 
   function distance(t1, t2) {
@@ -730,6 +732,7 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 }, { passive: false });  
   */
 
+  /*
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     viewerImage.classList.add("pinching");
@@ -743,12 +746,36 @@ viewerImage.style.transformOrigin =
     `${cx - startRect.left}px ${cy - startRect.top}px`;
     
 }, { passive: false });
+ */
+
+viewerImage.addEventListener("touchstart", e => {
+
+    if (e.touches.length !== 2) return;
+
+    startDistance = distance(e.touches[0], e.touches[1]);
+
+    startCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    startCenterY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+    const rect = viewerImage.getBoundingClientRect();
+
+    viewerImage.style.transformOrigin =
+        `${startCenterX - rect.left}px ${startCenterY - rect.top}px`;
+
+}, { passive: false });
+  
 
 viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
  
     const d = distance(e.touches[0], e.touches[1]);
+  
+  const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+const dx = cx - startCenterX;
+const dy = cy - startCenterY;
     //currentScale = d / startDistance;
     //currentScale = Math.max(.8, Math.min(3, currentScale));
 
@@ -765,7 +792,10 @@ if (rawScale <= maxK) {
   scale = maxK + (rawScale - maxK) * 0.18;
 }
   
-    viewerImage.style.transform = `scale(${scale})`;
+   // viewerImage.style.transform = `scale(${scale})`;
+
+  viewerImage.style.transform =
+    `translate(${dx}px, ${dy}px) scale(${scale})`;
 }, { passive: false });
 
   function resetZoom() {
