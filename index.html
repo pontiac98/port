@@ -706,8 +706,18 @@ startRect = {
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
    // const rect = viewerImage.getBoundingClientRect();
 
-viewerImage.style.transformOrigin =
-    `${cx - startRect.left}px ${cy - startRect.top}px`;
+
+    //клампинг
+    const offsetX = cx - startRect.left;
+    const offsetY = cy - startRect.top;
+
+    // Ограничиваем точку строго внутри картинки
+    const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
+    const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
+    viewerImage.style.transformOrigin = `${clampedX}px ${clampedY}px`;
+
+//viewerImage.style.transformOrigin =
+    //`${cx - startRect.left}px ${cy - startRect.top}px`;
     
 }, { passive: false });
 
@@ -721,8 +731,18 @@ viewerImage.addEventListener("touchmove", e => {
 
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
- viewerImage.style.transformOrigin =
-    `${cx - startRect.left}px ${(cy - startRect.top)}px`; //inversion of Y axis
+
+    //клампинг
+    const offsetX = cx - startRect.left;
+    const offsetY = cy - startRect.top;
+
+    // Ограничиваем точку строго внутри картинки
+    const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
+    const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
+    viewerImage.style.transformOrigin = `${clampedX}px ${clampedY}px`;
+  
+ //viewerImage.style.transformOrigin =
+    //`${cx - startRect.left}px ${(cy - startRect.top)}px`; //inversion of Y axis
   
 const rawScale = Math.max(.8, d / startDistance);
 let scale;
