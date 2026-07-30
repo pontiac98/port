@@ -641,6 +641,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+
+  
 // пинч картинки в лайтбоксе
 
 let startDistance = 0;
@@ -769,7 +771,7 @@ if (rawScale <= maxK) {
   function resetZoom() {
     viewerImage.classList.remove("pinching");
       requestAnimationFrame(() => {
-        viewerImage.style.transformOrigin = "center center";
+        //viewerImage.style.transformOrigin = "center center";
         viewerImage.style.transform = "scale(1)";
     });
 }
