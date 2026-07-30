@@ -761,9 +761,6 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     const offsetX = (cx - startRect.left) * clampX;
     const offsetY = (cy - startRect.top) * clampY;
     viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
-
-    //viewerImage.style.transformOrigin =
-    //    `${cx - startRect.left}px ${cy - startRect.top}px`;
     
 }, { passive: false });
 
@@ -783,12 +780,14 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     
     //const clampX =  Math.min(1, aspectRatio / viewerRatio);
     //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    const clampX = 1;
+    const clampY = 1;
         
     //клампинг
     const offsetX = (cx - startRect.left) * clampX;
     const offsetY = (cy - startRect.top) * clampY;
     
-    //viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
 
 
 
