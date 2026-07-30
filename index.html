@@ -665,7 +665,10 @@ let startDistance = 0;
 
 // 1. Получаем размеры и позицию самого контейнера
 const containerRect = viewerImage.getBoundingClientRect();
-
+    
+  const viewerRect = viewer.getBoundingClientRect(); // my calc
+  const viewerRatio = viewerRect.width / viewerRect.height;
+    
 // 2. Рассчитываем соотношение сторон контейнера
 const containerRatio = containerRect.width / containerRect.height;
 //const aspectRatio = viewerImage.style.aspectRatio; //  Number(viewerImage.dataset.aspect);
@@ -707,14 +710,17 @@ startRect = {
    // const rect = viewerImage.getBoundingClientRect();
 
 
+const clampX =  Math.min(1, aspectRatio / viewerRatio);
+const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    
     //клампинг
-    const offsetX = cx - startRect.left;
-    const offsetY = cy - startRect.top;
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
 
     // Ограничиваем точку строго внутри картинки
-    const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
-    const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
-    viewerImage.style.transformOrigin = `${clampedX}px ${clampedY}px`;
+    //const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
+    //const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
 
 //viewerImage.style.transformOrigin =
     //`${cx - startRect.left}px ${cy - startRect.top}px`;
@@ -733,14 +739,19 @@ viewerImage.addEventListener("touchmove", e => {
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
     //клампинг
-    const offsetX = cx - startRect.left;
-    const offsetY = cy - startRect.top;
+  const aspectRatio = viewerImage.dataset.ratio;
+ const viewerRect = viewer.getBoundingClientRect(); // my calc
+  const viewerRatio = viewerRect.width / viewerRect.height;
 
-    // Ограничиваем точку строго внутри картинки
-    const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
-    const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
-    viewerImage.style.transformOrigin = `${clampedX}px ${clampedY}px`;
+
+  const clampX =  Math.min(1, aspectRatio / viewerRatio);
+const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    
   
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
+
+  viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`;
  //viewerImage.style.transformOrigin =
     //`${cx - startRect.left}px ${(cy - startRect.top)}px`; //inversion of Y axis
   
