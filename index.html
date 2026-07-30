@@ -659,7 +659,46 @@ let startDistance = 0;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
-    startRect = viewerImage.getBoundingClientRect();
+    //startRect = viewerImage.getBoundingClientRect();
+
+
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+const aspectRatio = viewerImage.style.aspectRatio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+startRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+
+
+    
     
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
