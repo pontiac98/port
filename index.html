@@ -659,9 +659,9 @@ let startDistance = 0;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
-    //startRect = viewerImage.getBoundingClientRect();
+    startRect = viewerImage.getBoundingClientRect();
 
-
+/*
 // 1. Получаем размеры и позицию самого контейнера
 const containerRect = viewerImage.getBoundingClientRect();
 
@@ -697,7 +697,7 @@ startRect = {
     y
 };
 
-
+*/
     
     
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
