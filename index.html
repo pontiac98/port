@@ -751,8 +751,11 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     const viewerRect = viewer.getBoundingClientRect(); // my calc
     const viewerRatio = viewerRect.width / viewerRect.height;
     
-    const clampX =  Math.min(1, aspectRatio / viewerRatio);
-    const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    //const clampX =  Math.min(1, aspectRatio / viewerRatio);
+    //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    const clampX = 1;
+    const clampY = 1;
+
     
     //клампинг
     const offsetX = (cx - startRect.left) * clampX;
@@ -778,14 +781,14 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     const viewerRect = viewer.getBoundingClientRect(); // my calc
     const viewerRatio = viewerRect.width / viewerRect.height;
     
-    const clampX =  Math.min(1, aspectRatio / viewerRatio);
-    const clampY =  Math.min(1, viewerRatio / aspectRatio);
-    
+    //const clampX =  Math.min(1, aspectRatio / viewerRatio);
+    //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+        
     //клампинг
     const offsetX = (cx - startRect.left) * clampX;
     const offsetY = (cy - startRect.top) * clampY;
     
-    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+    //viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
 
 
 
