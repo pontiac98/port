@@ -644,7 +644,7 @@ document.addEventListener("keydown", (e) => {
 // пинч картинки в лайтбоксе
 
 let startDistance = 0;
-  let startRect;
+let startRect;
 //let currentScale = 1;
 
   function distance(t1, t2) {
@@ -654,7 +654,7 @@ let startDistance = 0;
     );
 }
 
-
+/*
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     viewerImage.classList.add("pinching");
@@ -725,6 +725,20 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 //viewerImage.style.transformOrigin =
     //`${cx - startRect.left}px ${cy - startRect.top}px`;
     
+}, { passive: false });  
+  */
+
+  viewerImage.addEventListener("touchstart", e => {
+    if (e.touches.length !== 2) return;
+    viewerImage.classList.add("pinching");
+    startDistance = distance(e.touches[0], e.touches[1]);
+
+    startRect = viewerImage.getBoundingClientRect();
+
+
+viewerImage.style.transformOrigin =
+    `${cx - startRect.left}px ${cy - startRect.top}px`;
+    
 }, { passive: false });
 
 viewerImage.addEventListener("touchmove", e => {
@@ -735,25 +749,6 @@ viewerImage.addEventListener("touchmove", e => {
     //currentScale = d / startDistance;
     //currentScale = Math.max(.8, Math.min(3, currentScale));
 
-    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-    //клампинг
-  const aspectRatio = viewerImage.dataset.ratio;
- const viewerRect = viewer.getBoundingClientRect(); // my calc
-  const viewerRatio = viewerRect.width / viewerRect.height;
-
-
-  const clampX =  Math.min(1, aspectRatio / viewerRatio);
-const clampY =  Math.min(1, viewerRatio / aspectRatio);
-    
-  
-    const offsetX = (cx - startRect.left) * clampX;
-    const offsetY = (cy - startRect.top) * clampY;
-
-  viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`;
- //viewerImage.style.transformOrigin =
-    //`${cx - startRect.left}px ${(cy - startRect.top)}px`; //inversion of Y axis
   
 const rawScale = Math.max(.8, d / startDistance);
 let scale;
