@@ -645,6 +645,14 @@ document.addEventListener("keydown", (e) => {
   
 // пинч картинки в лайтбоксе
 
+
+  function distance(t1, t2) {
+    return Math.hypot(
+        t2.clientX - t1.clientX,
+        t2.clientY - t1.clientY
+    );
+}
+  
  // закоментим старую реализацию
   /*
   
@@ -654,12 +662,7 @@ let startRect;
 let startCenterY;
 //let currentScale = 1;
 
-  function distance(t1, t2) {
-    return Math.hypot(
-        t2.clientX - t1.clientX,
-        t2.clientY - t1.clientY
-    );
-}
+
 
 /*
   viewerImage.addEventListener("touchstart", e => {
