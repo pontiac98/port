@@ -654,15 +654,13 @@ document.addEventListener("keydown", (e) => {
 }
   
  // закоментим старую реализацию
-  /*
+ 
   
 let startDistance = 0;
 let startRect;
-  let startCenterX;
+let startCenterX;
 let startCenterY;
 //let currentScale = 1;
-
-
 
 /*
   viewerImage.addEventListener("touchstart", e => {
@@ -755,7 +753,7 @@ viewerImage.style.transformOrigin =
  */
 
 
-/*  
+  
 viewerImage.addEventListener("touchstart", e => {
 
     if (e.touches.length !== 2) return;
@@ -806,73 +804,9 @@ if (rawScale <= maxK) {
     `translate(${dx}px, ${dy}px) scale(${scale})`;
 }, { passive: false });
 
-*/
 
-let currentScale = 1;
-let currentTx = 0;
-let currentTy = 0;
 
-let startScale = 1;
-let startTx = 0;
-let startTy = 0;
 
-let startDistance = 0;
-let startCenterX = 0;
-let startCenterY = 0;
-
-// Установим начальную точку трансформации в левый верхний угол, 
-// чтобы математика сдвигов была проще и предсказуемее
-viewerImage.style.transformOrigin = "0px 0px";
-
-viewerImage.addEventListener("touchstart", e => {
-    if (e.touches.length !== 2) return;
-
-    startDistance = distance(e.touches[0], e.touches[1]);
-
-    // Точка между пальцами на экране
-    startCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    startCenterY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-    // Сохраняем состояние, которое было ДО начала нового жеста
-    startScale = currentScale;
-    startTx = currentTx;
-    startTy = currentTy;
-
-}, { passive: false });
-
-viewerImage.addEventListener("touchmove", e => {
-    if (e.touches.length !== 2) return;
-    e.preventDefault();
-
-    const d = distance(e.touches[0], e.touches[1]);
-    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-    // 1. Расчет нового масштаба с вашим эффектом сопротивления (rubber banding)
-    const rawScale = (d / startDistance) * startScale;
-    const maxK = 3;
-    const minK = 0.8;
-    
-    let scale = rawScale;
-    if (rawScale > maxK) {
-        scale = maxK + (rawScale - maxK) * 0.18;
-    } else if (rawScale < minK) {
-        scale = minK - (minK - rawScale) * 0.18;
-    }
-
-    // 2. Магия компенсации сдвига:
-    // Формула удерживает точку на картинке ровно между пальцами
-    const tx = cx - (startCenterX - startTx) * (scale / startScale);
-    const ty = cy - (startCenterY - startTy) * (scale / startScale);
-
-    // Сохраняем текущие значения для следующих кадров/жестов
-    currentScale = scale;
-    currentTx = tx;
-    currentTy = ty;
-
-    // Применяем трансформацию (порядок translate -> scale критически важен)
-    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-}, { passive: false });
 
   
   
