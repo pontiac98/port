@@ -602,6 +602,7 @@ position: sticky;
  
   viewerImage.style.backgroundImage = `url("${src}")`;
   viewerImage.style.aspectRatio = aspect;
+    viewerImage.dataset.ratio = aspect; // kinda real aspect
   viewer.classList.add("open");
    
 
@@ -659,15 +660,16 @@ let startDistance = 0;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
-    startRect = viewerImage.getBoundingClientRect();
+    //startRect = viewerImage.getBoundingClientRect();
 
-/*
+
 // 1. Получаем размеры и позицию самого контейнера
 const containerRect = viewerImage.getBoundingClientRect();
 
 // 2. Рассчитываем соотношение сторон контейнера
 const containerRatio = containerRect.width / containerRect.height;
-const aspectRatio = viewerImage.style.aspectRatio;
+//const aspectRatio = viewerImage.style.aspectRatio; //  Number(viewerImage.dataset.aspect);
+const aspectRatio = viewerImage.dataset.ratio;
 let width, height, x, y;
 
 // 3. Вычисляем размеры и координаты по логике "contain"
@@ -697,7 +699,7 @@ startRect = {
     y
 };
 
-*/
+
     
     
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
