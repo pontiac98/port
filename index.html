@@ -755,9 +755,9 @@ viewerImage.style.transformOrigin =
 
   
 viewerImage.addEventListener("touchstart", e => {
-
+    
     if (e.touches.length !== 2) return;
-
+    viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
     startCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
