@@ -736,7 +736,8 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 }, { passive: false });  
   */
 
-  /*
+// вариант с трасформ ориджин и скейл
+  
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     viewerImage.classList.add("pinching");
@@ -746,14 +747,71 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
-viewerImage.style.transformOrigin =
-    `${cx - startRect.left}px ${cy - startRect.top}px`;
+    const aspectRatio = viewerImage.dataset.ratio;
+    const viewerRect = viewer.getBoundingClientRect(); // my calc
+    const viewerRatio = viewerRect.width / viewerRect.height;
+    
+    const clampX =  Math.min(1, aspectRatio / viewerRatio);
+    const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    
+    //клампинг
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
+    //viewerImage.style.transformOrigin =
+    //    `${cx - startRect.left}px ${cy - startRect.top}px`;
     
 }, { passive: false });
- */
+
+  
+  viewerImage.addEventListener("touchmove", e => {
+    if (e.touches.length !== 2) return;
+    e.preventDefault();
+ 
+    const d = distance(e.touches[0], e.touches[1]);
+  
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+    const aspectRatio = viewerImage.dataset.ratio;
+    const viewerRect = viewer.getBoundingClientRect(); // my calc
+    const viewerRatio = viewerRect.width / viewerRect.height;
+    
+    const clampX =  Math.min(1, aspectRatio / viewerRatio);
+    const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    
+    //клампинг
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
+    
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
 
 
   
+const rawScale = Math.max(.8, d / startDistance);
+let scale;
+const maxK = 3;
+  
+if (rawScale <= maxK) {
+    scale = rawScale;
+} else {
+    const over = rawScale - maxK;
+   // scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
+  scale = maxK + (rawScale - maxK) * 0.18;
+}
+  
+   viewerImage.style.transform = `scale(${scale})`;
+}, { passive: false });
+
+
+
+
+  
+//рабочий вариант с траслейт и скейл
+  
+ /* 
 viewerImage.addEventListener("touchstart", e => {
     
     if (e.touches.length !== 2) return;
@@ -804,6 +862,7 @@ if (rawScale <= maxK) {
     `translate(${dx}px, ${dy}px) scale(${scale})`;
 }, { passive: false });
 
+*/
 
 
 
