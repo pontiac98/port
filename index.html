@@ -740,6 +740,7 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
   
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
+    e.preventDefault();
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
@@ -768,7 +769,8 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
   viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
- 
+    viewerImage.classList.add("pinching");
+    
     const d = distance(e.touches[0], e.touches[1]);
   
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
