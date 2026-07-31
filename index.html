@@ -654,7 +654,8 @@ document.addEventListener("keydown", (e) => {
 }
   
  // закоментим старую реализацию
- 
+
+  let firstMove = true;
   let pinchActive = false;
 let startDistance = 0;
 let startRect;
@@ -736,8 +737,12 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 }, { passive: false });  
   */
 
+
+
+  
 // вариант с трасформ ориджин и скейл
   
+ /* 
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
@@ -778,32 +783,41 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     
 }, { passive: false });
 
+*/
+  
   
   viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
-    if (!pinchActive) {
-      return;
-    }
+
+     
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
     
-    //viewerImage.classList.add("pinching");
+    if (firstMove) {
+      firstMove = false;
+      startRect = viewerImage.getBoundingClientRect();
 
-    //const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    //const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-   
-    /*
-    if (!pinchActive) {
-      pinchActive = true;
       startDistance = distance(e.touches[0], e.touches[1]);
-      //startRect = viewerImage.getBoundingClientRect();
-    const offsetX = (cx - startRect.left) * 1;
-    const offsetY = (cy - startRect.top) * 1;
-    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
-      return;
+      
+        const offsetX = (cx - startRect.left) * 1;
+        const offsetY = (cy - startRect.top) * 1;
+    
+      viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
+       const isCenterInside = (
+            cx >= startRect.left && cx <= startRect.right &&
+            cy >= startRect.top && cy <= startRect.bottom
+        );
+
+      pinchActive = isCenterInside; //по сути одно и то же   
     }
 
-    */
+  
+    if (!pinchActive) return;
+   
+
+    viewerImage.classList.add("pinching");
     
    
   
@@ -907,6 +921,7 @@ if (rawScale <= maxK) {
   
   function resetZoom() {
     pinchActive = false;
+    firstMove = true;
     viewerImage.classList.remove("pinching");
       requestAnimationFrame(() => {
         //viewerImage.style.transformOrigin = "center center";
