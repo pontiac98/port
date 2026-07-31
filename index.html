@@ -741,14 +741,26 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
-   // pinchActive = true;
-    viewerImage.classList.add("pinching");
+   // 
+    
     startDistance = distance(e.touches[0], e.touches[1]);
 
     startRect = viewerImage.getBoundingClientRect();
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
+     // проверка попадает ли центр касания в картинку
+      const isCenterInside = (
+            cx >= startRect.left && cx <= startRect.right &&
+            cy >= startRect.top && cy <= startRect.bottom
+        );
+
+    if (!isCenterInside) {
+      return;
+    }
+
+    pinchActive = true;
+    viewerImage.classList.add("pinching");
     const aspectRatio = viewerImage.dataset.ratio;
     const viewerRect = viewer.getBoundingClientRect(); // my calc
     const viewerRatio = viewerRect.width / viewerRect.height;
@@ -770,43 +782,50 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
   viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
-    viewerImage.classList.add("pinching");
-
-    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
+    if (!pinchActive) {
+      return;
+    }
     
+    //viewerImage.classList.add("pinching");
+
+    //const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    //const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+   
+    /*
     if (!pinchActive) {
       pinchActive = true;
       startDistance = distance(e.touches[0], e.touches[1]);
-      startRect = viewerImage.getBoundingClientRect();
+      //startRect = viewerImage.getBoundingClientRect();
     const offsetX = (cx - startRect.left) * 1;
     const offsetY = (cy - startRect.top) * 1;
     viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
       return;
     }
+
+    */
     
-    const d = distance(e.touches[0], e.touches[1]);
+   
   
     
-    const aspectRatio = viewerImage.dataset.ratio;
-    const viewerRect = viewer.getBoundingClientRect(); // my calc
-    const viewerRatio = viewerRect.width / viewerRect.height;
+    //const aspectRatio = viewerImage.dataset.ratio;
+    //const viewerRect = viewer.getBoundingClientRect(); // my calc
+    //const viewerRatio = viewerRect.width / viewerRect.height;
     
-    //const clampX =  Math.min(1, aspectRatio / viewerRatio);
-    //const clampY =  Math.min(1, viewerRatio / aspectRatio);
-    const clampX = 1;
-    const clampY = 1;
+        //const clampX =  Math.min(1, aspectRatio / viewerRatio);
+        //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    //const clampX = 1;
+    //const clampY = 1;
         
     //клампинг
-    const offsetX = (cx - startRect.left) * clampX;
-    const offsetY = (cy - startRect.top) * clampY;
+   // const offsetX = (cx - startRect.left) * clampX;
+    //const offsetY = (cy - startRect.top) * clampY;
     
     //viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
 
 
 
-  
+   const d = distance(e.touches[0], e.touches[1]);
 const rawScale = Math.max(.8, d / startDistance);
 let scale;
 const maxK = 3;
