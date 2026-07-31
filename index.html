@@ -785,6 +785,7 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 
 */
 
+  /*
 viewerImage.addEventListener("touchstart", e => {
    e.preventDefault();
     if (event.touches.length < 2) {
@@ -793,10 +794,20 @@ viewerImage.addEventListener("touchstart", e => {
     }
 
   }, { passive: false });
+  */
   
   viewerImage.addEventListener("touchmove", e => {
+       e.preventDefault();
+    
+      if (event.touches.length < 2) {
+        if (pinchActive) {
+            resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
+        }
+        return; // Прекращаем любые вычисления зума
+    }
+    
     if (e.touches.length !== 2) return;
-    e.preventDefault();
+   
 
      
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
