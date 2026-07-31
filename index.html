@@ -655,7 +655,7 @@ document.addEventListener("keydown", (e) => {
   
  // закоментим старую реализацию
  
-  
+  let pinchActive = false;
 let startDistance = 0;
 let startRect;
 let startCenterX;
@@ -741,6 +741,7 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
   viewerImage.addEventListener("touchstart", e => {
     if (e.touches.length !== 2) return;
     e.preventDefault();
+   // pinchActive = true;
     viewerImage.classList.add("pinching");
     startDistance = distance(e.touches[0], e.touches[1]);
 
@@ -770,12 +771,24 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
     if (e.touches.length !== 2) return;
     e.preventDefault();
     viewerImage.classList.add("pinching");
-    
-    const d = distance(e.touches[0], e.touches[1]);
-  
+
     const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
+    
+    if (!pinchActive) {
+      pinchActive = true;
+      startDistance = distance(e.touches[0], e.touches[1]);
+      startRect = viewerImage.getBoundingClientRect();
+    const offsetX = (cx - startRect.left) * 1;
+    const offsetY = (cy - startRect.top) * 1;
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+      return;
+    }
+    
+    const d = distance(e.touches[0], e.touches[1]);
+  
+    
     const aspectRatio = viewerImage.dataset.ratio;
     const viewerRect = viewer.getBoundingClientRect(); // my calc
     const viewerRatio = viewerRect.width / viewerRect.height;
@@ -874,6 +887,7 @@ if (rawScale <= maxK) {
   
   
   function resetZoom() {
+    pinchActive = false;
     viewerImage.classList.remove("pinching");
       requestAnimationFrame(() => {
         //viewerImage.style.transformOrigin = "center center";
