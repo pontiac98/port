@@ -784,7 +784,15 @@ const clampY =  Math.min(1, viewerRatio / aspectRatio);
 }, { passive: false });
 
 */
-  
+
+viewerImage.addEventListener("touchstart", e => {
+   e.preventDefault();
+    if (event.touches.length < 2) {
+        pinchActive = false; // Сбрасываем, если палец один
+      firstMove = true;
+    }
+
+  }, { passive: false });
   
   viewerImage.addEventListener("touchmove", e => {
     if (e.touches.length !== 2) return;
