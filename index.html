@@ -1022,12 +1022,13 @@ viewerImage.addEventListener("wheel", e => {
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
 
+  /*
     if (oldScale > scale) {
     scale = 1;
     tx = 0.0;
     ty = 0.0;
     }
-
+ */
     updateTransform();
 
 
