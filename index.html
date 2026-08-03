@@ -338,6 +338,7 @@ body::after {
     transform-origin: center center; /* maybe */
 
     transition:
+      translate .255s ease-in-out .0s, 
       transform .255s ease-in-out .0s, 
       opacity .1s ease-in .0s; 
 }
@@ -628,6 +629,7 @@ position: sticky;
 
 function closeViewer() {
   scale = 1;
+  viewerImage.style.transform = `scale(${scale})`
   viewerImage.classList.remove("animate");
   viewer.classList.remove("open");
   
@@ -969,8 +971,7 @@ viewer.addEventListener("wheel", e => {
 
   const x = e.clientX;
   const y = e.clientY;
-  viewerImage.transform-origin
-
+ 
 viewerImage.style.transformOrigin =
         `${e.clientX}px ${e.clientY}px`;
   
