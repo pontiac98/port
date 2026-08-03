@@ -979,12 +979,8 @@ viewerImage.addEventListener("wheel", e => {
 // 1. Получаем размеры и позицию самого контейнера
 const containerRect = viewerImage.getBoundingClientRect();
     
-  //const viewerRect = viewer.getBoundingClientRect(); // my calc
-  //const viewerRatio = viewerRect.width / viewerRect.height;
-    
 // 2. Рассчитываем соотношение сторон контейнера
 const containerRatio = containerRect.width / containerRect.height;
-//const aspectRatio = viewerImage.style.aspectRatio; //  Number(viewerImage.dataset.aspect);
 const aspectRatio = viewerImage.dataset.ratio;
 let width, height, x, y;
 
@@ -1015,6 +1011,15 @@ startMRect = {
     y
 };
 
+  // проверка попадает ли мышь в картинку
+      const isCenterInside = (
+            e.clientX >= startMRect.left && e.clientX <= startMRect.right &&
+            e.clientY >= startMRect.top && e.clientY <= startMRect.bottom
+        );
+
+    if (!isCenterInside) {
+      return;
+    }
 
   
   
