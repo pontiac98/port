@@ -882,7 +882,7 @@ if (rawScale <= maxK) {
 
 
   
-//рабочий вариант с траслейт и скейл
+//рабочий вариант с траснлейт и скейл
   
  /* 
 viewerImage.addEventListener("touchstart", e => {
@@ -964,6 +964,7 @@ viewerImage.addEventListener("touchcancel", resetZoom);
   let scale = 1;
 let tx = 0;
 let ty = 0;
+  let startMRect;
 
   function updateTransform() {
     viewerImage.style.transform =
@@ -974,6 +975,48 @@ viewerImage.addEventListener("wheel", e => {
 
     e.preventDefault();
 
+
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+    
+  //const viewerRect = viewer.getBoundingClientRect(); // my calc
+  //const viewerRatio = viewerRect.width / viewerRect.height;
+    
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+//const aspectRatio = viewerImage.style.aspectRatio; //  Number(viewerImage.dataset.aspect);
+const aspectRatio = viewerImage.dataset.ratio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+startMRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+
+
+  
   
     const maxScale = 3;
     const rubberLimit = 3.3;
@@ -1001,12 +1044,12 @@ viewerImage.addEventListener("wheel", e => {
             scale = maxScale;
             viewerImage.style.transform = `scale(${scale})`;
         }
-
+/*
       if (scale < 1) {
             scale = 1;
             viewerImage.style.transform = `scale(${scale})`;
         }
-
+*/
       
        }, 80);
 
@@ -1022,13 +1065,13 @@ viewerImage.addEventListener("wheel", e => {
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
 
-  /*
+  
     if (oldScale > scale) {
     scale = 1;
     tx = 0.0;
     ty = 0.0;
     }
- */
+ 
     updateTransform();
 
 
