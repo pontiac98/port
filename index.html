@@ -986,7 +986,7 @@ viewerImage.addEventListener("wheel", e => {
         scale /= 1.12;
 
     // ограничение снизу
-    scale = Math.max(1, scale);
+    scale = Math.max(.7, scale);
 
     // сверху допускаем немного "перетянуть"
     scale = Math.min(rubberLimit, scale);
@@ -998,11 +998,16 @@ viewerImage.addEventListener("wheel", e => {
     viewerImage._rubber = setTimeout(() => {
 
         if (scale > maxScale) {
-
             scale = maxScale;
             viewerImage.style.transform = `scale(${scale})`;
-
         }
+
+      if (scale < 1) {
+            scale = 1;
+            viewerImage.style.transform = `scale(${scale})`;
+        }
+
+      
        }, 80);
 
       // координаты мыши относительно центра окна
