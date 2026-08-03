@@ -963,21 +963,24 @@ viewerImage.addEventListener("touchcancel", resetZoom);
 
 
   let scale = 1;
+let tx = 0;
+let ty = 0;
 
-viewer.addEventListener("wheel", e => {
+  function updateTransform() {
+    viewerImage.style.transform =
+        `translate(${tx}px, ${ty}px) scale(${scale})`;
+}
+
+viewerImage.addEventListener("wheel", e => {
 
     e.preventDefault();
 
-
-  const x = e.clientX;
-  const y = e.clientY;
- 
-viewerImage.style.transformOrigin =
-        `${e.clientX}px ${e.clientY}px`;
   
     const maxScale = 3;
     const rubberLimit = 3.3;
 
+    const oldScale = scale;
+  
     if (e.deltaY < 0)
         scale *= 1.12;
     else
@@ -1001,6 +1004,20 @@ viewerImage.style.transformOrigin =
             viewerImage.style.transform = `scale(${scale})`;
 
         }
+
+      // координаты мыши относительно центра окна
+    const mx = e.clientX - window.innerWidth / 2;
+    const my = e.clientY - window.innerHeight / 2;
+
+    // коэффициент изменения масштаба
+    const k = scale / oldScale;
+
+    // корректировка смещения
+    tx = mx - (mx - tx) * k;
+    ty = my - (my - ty) * k;
+
+    updateTransform();
+
 
     }, 80);
 
