@@ -1004,6 +1004,7 @@ viewerImage.addEventListener("wheel", e => {
             viewerImage.style.transform = `scale(${scale})`;
 
         }
+       }, 80);
 
       // координаты мыши относительно центра окна
     const mx = e.clientX - window.innerWidth / 2;
@@ -1016,11 +1017,16 @@ viewerImage.addEventListener("wheel", e => {
     tx = mx - (mx - tx) * k;
     ty = my - (my - ty) * k;
 
+    if (scale <= 1.001) {
+    scale = 1;
+    tx *= 0.8;
+    ty *= 0.8;
+    }
+
     updateTransform();
 
 
-    }, 80);
-
+   
 }, { passive:false });
 
   
