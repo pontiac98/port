@@ -627,6 +627,7 @@ position: sticky;
 }
 
 function closeViewer() {
+  scale = 1;
   viewerImage.classList.remove("animate");
   viewer.classList.remove("open");
   
@@ -955,6 +956,54 @@ viewerImage.addEventListener("touchcancel", resetZoom);
 
 
 
+  
+//масштаб колесом
+
+
+  let scale = 1;
+
+viewer.addEventListener("wheel", e => {
+
+    e.preventDefault();
+
+
+  const x = e.clientX;
+  const y = e.clientY;
+  viewerImage.transform-origin
+
+viewerImage.style.transformOrigin =
+        `${e.clientX}px ${e.clientY}px`;
+  
+    const maxScale = 3;
+    const rubberLimit = 3.3;
+
+    if (e.deltaY < 0)
+        scale *= 1.12;
+    else
+        scale /= 1.12;
+
+    // ограничение снизу
+    scale = Math.max(1, scale);
+
+    // сверху допускаем немного "перетянуть"
+    scale = Math.min(rubberLimit, scale);
+
+    viewerImage.style.transform = `scale(${scale})`;
+
+    clearTimeout(viewerImage._rubber);
+
+    viewerImage._rubber = setTimeout(() => {
+
+        if (scale > maxScale) {
+
+            scale = maxScale;
+            viewerImage.style.transform = `scale(${scale})`;
+
+        }
+
+    }, 80);
+
+}, { passive:false });
 
   
   //
