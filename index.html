@@ -1036,23 +1036,9 @@ startMRect = {
 
     //viewerImage.style.transform = `scale(${scale})`;
 
-    clearTimeout(viewerImage._rubber);
 
-    viewerImage._rubber = setTimeout(() => {
 
-        if (scale > maxScale) {
-            scale = maxScale;
-          //viewerImage.style.transform = `scale(${scale})`;
-          updateTransform();
-        }
-/*
-      if (scale < 1) {
-            scale = 1;
-            viewerImage.style.transform = `scale(${scale})`;
-        }
-*/
-      
-       }, 80);
+  
 
       // координаты мыши относительно центра окна
   const rect = viewerImage.getBoundingClientRect();
@@ -1066,6 +1052,18 @@ startMRect = {
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
 
+
+    clearTimeout(viewerImage._rubber);
+    viewerImage._rubber = setTimeout(() => {
+
+        if (scale > maxScale) {
+            scale = maxScale;
+          viewerImage.style.transform = `scale(${scale})`;
+          //updateTransform();
+        }
+      
+       }, 80);
+  
   
     if (oldScale > scale) {
     scale = 1;
