@@ -627,6 +627,7 @@ position: sticky;
 }
 
 function closeViewer() {
+  startMRect=null;
   scale = 1;
   viewerImage.style.transform = `scale(${scale})`
   viewerImage.classList.remove("animate");
@@ -1056,7 +1057,9 @@ startMRect = {
     const k = scale / oldScale;
 
     // корректировка смещения
-  
+
+    const otx = tx;
+    const oty = ty;
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
   
@@ -1066,6 +1069,10 @@ startMRect = {
 
         if (scale > maxScale) {
             scale = maxScale;
+        // откат к прежним
+          tx = otx;
+          ty = oty;
+          
          // viewerImage.style.transform = `scale(${scale})`;
           updateTransform();
         }
