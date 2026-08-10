@@ -627,6 +627,7 @@ position: sticky;
 }
 
 function closeViewer() {
+  rubberF = false;
   startMRect=null;
   scale = 1;
   viewerImage.style.transform = `scale(${scale})`
@@ -967,6 +968,8 @@ let tx = 0;
 let ty = 0;
   let startMRect;
 
+  let rubberF = false;
+
   function updateTransform() {
     viewerImage.style.transform =
         `translate(${tx}px, ${ty}px) scale(${scale})`;
@@ -1060,22 +1063,28 @@ startMRect = {
 
     const otx = tx;
     const oty = ty;
+
+  if (!rubberF) {
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
+  }
   
+  // if (scale > maxScale) { rubberF = true} 
+    //  else {rubberF = false}
 
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
 
         if (scale > maxScale) {
             scale = maxScale;
+          rubberF - true;
         // откат к прежним
           tx = otx;
           ty = oty;
           
          // viewerImage.style.transform = `scale(${scale})`;
           updateTransform();
-        }
+        } else {rubberF = false}
       
        }, 80);
   
