@@ -984,6 +984,8 @@ let rubberTy = 0;
         `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
 
+
+  
 viewerImage.addEventListener("wheel", e => {
 
     e.preventDefault();
@@ -1064,18 +1066,27 @@ startMRect = {
   
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
+  
 
 
     // проверяем вход в резиновую зону
+  if (scale > maxScale) {rubberscale = scale}
+  
 if (scale > maxScale && !rubberF) {
 
     rubberF = true;
 
     rubberScale = scale;
-  scale = maxScale;
+    scale = maxScale;
     // запоминаем положение иыши .. картинки
     rubberMx = mx;
     rubberMy = my;
+
+   const k = scale / oldScale;
+
+    tx -= (mx - rect.width / 2) * (k - 1);
+    ty -= (my - rect.height / 2) * (k - 1);
+  
     rubberTx = tx;
     rubberTy = ty;
 } 
@@ -1083,14 +1094,14 @@ if (scale > maxScale && !rubberF) {
 
 // пока не в резинке — продолжаем панорамирование
 if (!rubberF) {
-
-
-    }
-  
-   const k = scale / oldScale;
+ const k = scale / oldScale;
 
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
+
+    }
+  
+  
  
 
 
