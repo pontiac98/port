@@ -1057,6 +1057,14 @@ if (scale > maxScale && !rubberF) {
 }
 
 
+        // координаты мыши относительно центра окна
+// const rect = viewerImage.getBoundingClientRect();
+  const rect = startMRect;
+  
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+
 // пока не в резинке — продолжаем панорамирование
 if (!rubberF) {
 
@@ -1070,38 +1078,13 @@ if (!rubberF) {
 
   
 
-      // координаты мыши относительно центра окна
-// const rect = viewerImage.getBoundingClientRect();
-  const rect = startMRect;
-  
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-
-    // коэффициент изменения масштаба
-    const k = scale / oldScale;
-
-    // корректировка смещения
-
-   //const otx = tx;
-    //const oty = ty;
-
-
-  
-
-
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
 
         if (scale > maxScale) {
             scale = maxScale;
-          rubberF = true;
-        // откат к прежним
-         // tx = otx;
-        //  ty = oty;
-          
-         // viewerImage.style.transform = `scale(${scale})`;
           updateTransform();
-        } else {rubberF = false}
+        } 
       
        }, 80);
   
