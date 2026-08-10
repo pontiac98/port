@@ -1083,6 +1083,10 @@ if (!rubberF) {
 
         if (scale > maxScale) {
             scale = maxScale;
+          tx = rubberTx;
+        ty = rubberTy;
+
+        rubberF = false;
           updateTransform();
         } 
       
