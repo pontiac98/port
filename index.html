@@ -1053,7 +1053,7 @@ startMRect = {
     scale = Math.min(rubberLimit, scale);
 
 
-
+ scale = Math.min(maxScale, scale);
 
 
 
@@ -1092,7 +1092,7 @@ if (!rubberF) {
 
 
   
-
+/*
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
 
@@ -1115,7 +1115,7 @@ if (!rubberF) {
         } 
       
        }, 80);
-
+ */
 
   
     if (oldScale > scale) {
