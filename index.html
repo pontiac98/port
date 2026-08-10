@@ -1053,7 +1053,7 @@ startMRect = {
     scale = Math.min(rubberLimit, scale);
 
 
- scale = Math.min(maxScale, scale);
+ //scale = Math.min(maxScale, scale);
 
 
 
@@ -1072,6 +1072,7 @@ if (scale > maxScale && !rubberF) {
     rubberF = true;
 
     rubberScale = scale;
+  scale = maxScale;
     // запоминаем положение иыши .. картинки
     rubberMx = mx;
     rubberMy = my;
@@ -1083,16 +1084,18 @@ if (scale > maxScale && !rubberF) {
 // пока не в резинке — продолжаем панорамирование
 if (!rubberF) {
 
-    }
 
-  const k = scale / oldScale;
+    }
+  
+   const k = scale / oldScale;
 
     tx -= (mx - rect.width / 2) * (k - 1);
     ty -= (my - rect.height / 2) * (k - 1);
+ 
 
 
   
-/*
+
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
 
@@ -1115,7 +1118,7 @@ if (!rubberF) {
         } 
       
        }, 80);
- */
+ 
 
   
     if (oldScale > scale) {
