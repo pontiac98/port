@@ -1095,7 +1095,12 @@ if (!rubberF) {
         } 
       
        }, 80);
-  
+
+
+    if (oldScale == scale) {
+     tx -= (mx - rect.width / 2) * (k - 1);
+    ty -= (my - rect.height / 2) * (k - 1);
+    }
   
     if (oldScale > scale) {
     scale = 1;
