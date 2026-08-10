@@ -974,6 +974,8 @@ let ty = 0;
   let rubberMx = 0;
 let rubberMy = 0;
  let rubberScale;
+    let rubberTx = 0;
+let rubberTy = 0;
 
   function updateTransform() {
     viewerImage.style.transform =
@@ -1071,6 +1073,8 @@ if (scale > maxScale && !rubberF) {
     // запоминаем положение иыши .. картинки
     rubberMx = mx;
     rubberMy = my;
+    rubberTx = tx;
+    rubberTy = ty;
 } 
 
 
@@ -1097,9 +1101,8 @@ if (!rubberF) {
         scale = maxScale;
         const ratio = scale / rubberScale;
 
-        tx -= (rubberMx - rect.width / 2) * (ratio - 1);
-        ty -= (rubberMy - rect.height / 2) * (ratio - 1);
-
+        tx = rubberTx - (rubberMx - rect.width / 2) * (ratio - 1);
+        ty = rubberTy - (rubberMy - rect.height / 2) * (ratio - 1);
 
         rubberF = false;
           rubberTx = 0;
