@@ -1086,9 +1086,18 @@ if (!rubberF) {
     viewerImage._rubber = setTimeout(() => {
 
         if (scale > maxScale) {
-            scale = maxScale;
-          tx = rubberTx;
-        ty = rubberTy;
+            
+         
+
+        scale = maxScale;
+          const ratio = scale / oldScale;
+
+        //tx = rubberTx * ratio;
+        //ty = rubberTy * ratio;
+
+           tx -= (mx - rect.width / 2) * (ratio - 1);
+          ty -= (my - rect.height / 2) * (ratio - 1);
+
 
         rubberF = false;
           rubberTx = 0;
