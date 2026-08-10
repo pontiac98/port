@@ -969,6 +969,8 @@ let ty = 0;
   let startMRect;
 
   let rubberF = false;
+  let rubberTx = 0;
+let rubberTy = 0;
 
   function updateTransform() {
     viewerImage.style.transform =
@@ -1043,8 +1045,27 @@ startMRect = {
     // сверху допускаем немного "перетянуть"
     scale = Math.min(rubberLimit, scale);
 
-    //viewerImage.style.transform = `scale(${scale})`;
 
+  // проверяем вход в резиновую зону
+if (scale > maxScale && !rubberF) {
+
+    rubberF = true;
+
+    // запоминаем положение картинки
+    rubberTx = tx;
+    rubberTy = ty;
+}
+
+
+// пока не в резинке — продолжаем панорамирование
+if (!rubberF) {
+
+    const k = scale / oldScale;
+
+    tx -= (mx - rect.width / 2) * (k - 1);
+    ty -= (my - rect.height / 2) * (k - 1);
+
+}
 
 
   
@@ -1061,26 +1082,22 @@ startMRect = {
 
     // корректировка смещения
 
-    const otx = tx;
-    const oty = ty;
+   //const otx = tx;
+    //const oty = ty;
 
-  if (!rubberF) {
-    tx -= (mx - rect.width / 2) * (k - 1);
-    ty -= (my - rect.height / 2) * (k - 1);
-  }
+
   
-  // if (scale > maxScale) { rubberF = true} 
-    //  else {rubberF = false}
+
 
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
 
         if (scale > maxScale) {
             scale = maxScale;
-          rubberF - true;
+          rubberF = true;
         // откат к прежним
-          tx = otx;
-          ty = oty;
+         // tx = otx;
+        //  ty = oty;
           
          // viewerImage.style.transform = `scale(${scale})`;
           updateTransform();
