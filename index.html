@@ -320,7 +320,12 @@ body::after {
     pointer-events: none;
 }
 
+.viewerWrp {
+  position: relative;
+inset: 0;
+}
 
+  
  #viewerImage {
     width: 89vw; 
     height: auto;
@@ -483,7 +488,9 @@ position: sticky;
 <body>
   
 <div id="viewer">
+  <div class="viewerWrp">
             <div id="viewerImage"></div>
+  </div>
 </div>
  
   <!-- 
