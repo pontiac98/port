@@ -1159,6 +1159,45 @@ let rubberF = false;
 let lastWheelX = 0;
 let lastWheelY = 0;
 
+    function realRect() {
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+    
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+const aspectRatio = viewerImage.dataset.ratio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+const rRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+      
+    return rRect;
+}
+
 function updateTransform() {
     viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
@@ -1167,7 +1206,8 @@ viewerImage.addEventListener("wheel", e => {
     e.preventDefault();
 
     // 1. Проверка нахождения мыши в контейнере
-    const containerRect = viewerImage.getBoundingClientRect();
+    //const containerRect = viewerImage.getBoundingClientRect();
+  const containerRect = realRect();
     const isMouseInside = (
         e.clientX >= containerRect.left && e.clientX <= containerRect.right &&
         e.clientY >= containerRect.top && e.clientY <= containerRect.bottom
@@ -1242,6 +1282,14 @@ viewerImage.addEventListener("wheel", e => {
         }
     }, 80);
 
+
+
+ if (oldScale > scale) {
+    scale = 1;
+    tx = 0.0;
+    ty = 0.0;
+    }
+  
     updateTransform();
 }, { passive: false });
 
