@@ -966,7 +966,7 @@ viewerImage.addEventListener("touchcancel", resetZoom);
   
 //масштаб колесом
 
-
+/*
   let scale = 1;
 let tx = 0;
 let ty = 0;
@@ -1144,6 +1144,109 @@ if (!rubberF) {
    
 }, { passive:false });
 
+
+  пердыдущая версия колеса*/
+
+
+let scale = 1;
+let tx = 0;
+let ty = 0;
+
+let rubberF = false;
+
+// Сюда мы будем сохранять координаты мыши последнего события wheel
+let lastWheelX = 0;
+let lastWheelY = 0;
+
+function updateTransform() {
+    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+}
+
+viewerImage.addEventListener("wheel", e => {
+    e.preventDefault();
+
+    // 1. Проверка нахождения мыши в контейнере
+    const containerRect = viewerImage.getBoundingClientRect();
+    const isMouseInside = (
+        e.clientX >= containerRect.left && e.clientX <= containerRect.right &&
+        e.clientY >= containerRect.top && e.clientY <= containerRect.bottom
+    );
+
+    if (!isMouseInside) return;
+
+    // Запоминаем текущие координаты мыши для этого шага скролла
+    lastWheelX = e.clientX;
+    lastWheelY = e.clientY;
+
+    const maxScale = 3;
+    const rubberLimit = 3.3;
+    const oldScale = scale;
+
+    // 2. Расчет масштаба
+    if (e.deltaY < 0) {
+        scale *= 1.12;
+    } else {
+        scale /= 1.12;
+    }
+
+    // Ограничения
+    scale = Math.max(0.7, scale);
+    scale = Math.min(rubberLimit, scale);
+
+    // 3. Мгновенный сброс в единицу (ваша логика)
+    if (oldScale > scale && scale <= 1) {
+        scale = 1;
+        tx = 0.0;
+        ty = 0.0;
+        rubberF = false;
+        clearTimeout(viewerImage._rubber);
+        updateTransform();
+        return;
+    }
+
+    // 4. Панорамирование во время скролла (работает одинаково везде)
+    // Картинка послушно следует за курсором, даже в режиме резинки
+    const k = scale / oldScale;
+    tx = lastWheelX - (lastWheelX - tx) * k;
+    ty = lastWheelY - (lastWheelY - ty) * k;
+
+    // Входим в режим резинки, если превысили лимит
+    if (scale > maxScale) {
+        rubberF = true;
+    }
+
+    // 5. Таймер плавного отскока назад
+    clearTimeout(viewerImage._rubber);
+    viewerImage._rubber = setTimeout(() => {
+        if (scale > maxScale) {
+            // Включаем плавность для возврата
+          //  viewerImage.style.transition = "transform 0.25s ease-out";
+
+            // Вычисляем коэффициент сжатия от текущего до maxScale
+            const ratio = maxScale / scale;
+            scale = maxScale;
+
+            // ВАЖНО: Сжимаем картинку относительно lastWheelX/Y (где скролл ЗАВЕРШИЛСЯ),
+            // а не e.clientX/Y (где мышь может быть сейчас). Это убирает прыжки!
+            tx = lastWheelX - (lastWheelX - tx) * ratio;
+            ty = lastWheelY - (lastWheelY - ty) * ratio;
+
+            rubberF = false;
+            updateTransform();
+
+            // Выключаем плавность, чтобы обычный зум не лагал
+           // setTimeout(() => {
+           //     viewerImage.style.transition = "none";
+           // }, 250);
+        }
+    }, 80);
+
+    updateTransform();
+}, { passive: false });
+
+
+
+  
   
   //
   //
