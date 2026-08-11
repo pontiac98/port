@@ -422,8 +422,12 @@ position: sticky;
     gap: 4px;
  
     background: silver;
-    opacity: 50%;
-    border-bottom: 0px solid black; 
+    
+    /* Наша формула: из 0.5 вычитаем (коэффициент * разницу 0.4) */
+    opacity: calc(0.5 - var(--mouse-y-ratio, 0) * 0.4);
+    
+   /* opacity: 50%; */
+    border-bottom: 1px solid black; 
 
     transition:
         opacity .325s ease-out;  
@@ -469,7 +473,7 @@ position: sticky;
     font-weight: 700;
     background: white;
   
-    border-bottom: 4px solid black;
+    border-bottom: 3px solid black;
     cursor: default;
 }
   
@@ -503,6 +507,12 @@ position: sticky;
   </main>
   
 <script>
+
+  //мышь влияет на прозрачность меню
+window.addEventListener('mousemove', (e) => {
+  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
+});
+  
 
   // фвто загрузка картинок
   fetch("images.json")
