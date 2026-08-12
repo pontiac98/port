@@ -1261,6 +1261,9 @@ viewerImage.addEventListener("wheel", e => {
 
     const maxScale = 3;
     const rubberLimit = 3.3;
+    const minScale = 1;
+const rubberMin = 0.86;
+
     const oldScale = scale;
 
     // 2. Расчет масштаба
@@ -1271,7 +1274,7 @@ viewerImage.addEventListener("wheel", e => {
     }
 
     // Ограничения
-    scale = Math.max(0.7, scale);
+    scale = Math.max(rubberMin, scale);
     scale = Math.min(rubberLimit, scale);
 
 
@@ -1284,11 +1287,7 @@ viewerImage.addEventListener("wheel", e => {
     ty = lastWheelY - (lastWheelY - ty) * k;
 
 
-  const minScale = 1;
-const rubberMin = 0.7;
 
-// не даём уйти ниже сильной резинки
-scale = Math.max(rubberMin, scale);
 
   
 if (scale < minScale) {
@@ -1342,7 +1341,7 @@ if (scale < minScale) {
     tx = 0.0;
     ty = 0.0;
 
- unlockTime = Date.now() + 180; 
+ unlockTime = Date.now() + 125; 
     }
   
     updateTransform();
