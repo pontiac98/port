@@ -1311,14 +1311,18 @@ if (scale < minScale) {
             rubberF = false;
             updateTransform();
         }
-if (scale < 1) {
-        scale = 1;
+if (scale < minScale) {
+        const ratio = minScale / scale;
+        scale = minScale;
+        //tx = 0.0;
+        //ty = 0.0;
 
+        tx = lastWheelX - (lastWheelX - tx) * ratio;
+        ty = lastWheelY - (lastWheelY - ty) * ratio;
         // пока сначала просто возвращаем масштаб
+         rubberF = false;
         updateTransform();
-
-        rubberF = false;
-    }
+         }
 
       
     }, 80);
@@ -1327,8 +1331,8 @@ if (scale < 1) {
 
  if (oldScale > scale && !rubberF) {
     scale = 1;
-    tx = 0.0;
-    ty = 0.0;
+    //tx = 0.0;
+    //ty = 0.0;
     }
   
     updateTransform();
