@@ -663,7 +663,8 @@ function closeViewer() {
   ty = 0;
   startMRect=null;
   scale = 1;
-  viewerImage.style.transform = `scale(${scale})`
+  viewerWrp.style.transform = `scale(${scale})`;
+  viewerImage.style.transform = `scale(${scale})`;
   viewerImage.classList.remove("animate");
   viewer.classList.remove("open");
   
@@ -1324,7 +1325,7 @@ if (scale < 1) {
 
 
 
- if (oldScale > scale) {
+ if (oldScale > scale && !rubberF) {
     scale = 1;
     tx = 0.0;
     ty = 0.0;
