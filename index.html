@@ -327,6 +327,8 @@ body::after {
     align-items: center;
   width: 100%;
   height: 100%;
+  transition:
+      transform .185s ease-in-out .0s;
 }
 
   
@@ -1228,7 +1230,7 @@ const rRect = {
 }
 
 function updateTransform() {
-    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    viewerWrp.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
 
 viewerImage.addEventListener("wheel", e => {
