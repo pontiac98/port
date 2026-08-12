@@ -1268,18 +1268,8 @@ viewerImage.addEventListener("wheel", e => {
     scale = Math.max(0.7, scale);
     scale = Math.min(rubberLimit, scale);
 
-/*    // 3. Мгновенный сброс в единицу (ваша логика)
-    if (scale < 1) {
-        scale = 1;
-        tx = 0.0;
-        ty = 0.0;
-        rubberF = false;
-        clearTimeout(viewerImage._rubber);
-        updateTransform();
-        return;
-    }
 
-    */
+
 
     // 4. Панорамирование во время скролла (работает одинаково везде)
     // Картинка послушно следует за курсором, даже в режиме резинки
@@ -1287,6 +1277,18 @@ viewerImage.addEventListener("wheel", e => {
     tx = lastWheelX - (lastWheelX - tx) * k;
     ty = lastWheelY - (lastWheelY - ty) * k;
 
+
+  const minScale = 1;
+const rubberMin = 0.7;
+
+// не даём уйти ниже сильной резинки
+scale = Math.max(rubberMin, scale);
+
+if (scale < minScale) {
+    rubberF = true;
+}
+
+  
     // Входим в режим резинки, если превысили лимит
     if (scale > maxScale) {
         rubberF = true;
@@ -1296,10 +1298,7 @@ viewerImage.addEventListener("wheel", e => {
     clearTimeout(viewerImage._rubber);
     viewerImage._rubber = setTimeout(() => {
         if (scale > maxScale) {
-            // Включаем плавность для возврата
-          //  viewerImage.style.transition = "transform 0.25s ease-out";
-
-            // Вычисляем коэффициент сжатия от текущего до maxScale
+                      // Вычисляем коэффициент сжатия от текущего до maxScale
             const ratio = maxScale / scale;
             scale = maxScale;
 
@@ -1310,12 +1309,17 @@ viewerImage.addEventListener("wheel", e => {
 
             rubberF = false;
             updateTransform();
-
-            // Выключаем плавность, чтобы обычный зум не лагал
-           // setTimeout(() => {
-           //     viewerImage.style.transition = "none";
-           // }, 250);
         }
+if (scale < 1) {
+        scale = 1;
+
+        // пока сначала просто возвращаем масштаб
+        updateTransform();
+
+        rubberF = false;
+    }
+
+      
     }, 80);
 
 
