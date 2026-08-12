@@ -1285,10 +1285,11 @@ const rubberMin = 0.7;
 // не даём уйти ниже сильной резинки
 scale = Math.max(rubberMin, scale);
 
+  /*
 if (scale < minScale) {
     rubberF = true;
 }
-
+*/
   
     // Входим в режим резинки, если превысили лимит
     if (scale > maxScale) {
@@ -1311,6 +1312,8 @@ if (scale < minScale) {
             rubberF = false;
             updateTransform();
         }
+
+      /* нижняя резинка
 if (scale < minScale) {
         const ratio = minScale / scale;
         scale = minScale;
@@ -1323,7 +1326,7 @@ if (scale < minScale) {
          rubberF = false;
         updateTransform();
          }
-
+ */
       
     }, 80);
 
