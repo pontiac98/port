@@ -322,6 +322,10 @@ body::after {
 
 .viewerWrp {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
   width: 89vw;
     height: 89vh;
 }
@@ -1184,9 +1188,9 @@ let lastWheelY = 0;
   
     function realRect() {
 // 1. Получаем размеры и позицию самого контейнера
-//const containerRect = viewerImage.getBoundingClientRect();
+const containerRect = viewerImage.getBoundingClientRect();
 
-const containerRect = viewerWrp.getBoundingClientRect();
+//const containerRect = viewerWrp.getBoundingClientRect();
       
 // 2. Рассчитываем соотношение сторон контейнера
 const containerRatio = containerRect.width / containerRect.height;
