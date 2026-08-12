@@ -324,7 +324,6 @@ body::after {
   position: absolute;
   width: 89vw;
     height: 89vh;
-
 }
 
   
@@ -602,7 +601,7 @@ window.addEventListener('mousemove', (e) => {
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
-  const viewerWrp = document.getElementByClass("viewerWrp");
+  const viewerWrp = document.querySelector('.viewerWrp'); 
  // const viewerFrame = document.getElementById("viewerFrame");
   
   function openViewer(src, aspect){
