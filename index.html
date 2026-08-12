@@ -327,6 +327,7 @@ body::after {
     align-items: center;
   width: 100%;
   height: 100%;
+  transform-origin: 0 0; 
   transition:
       transform .185s ease-in-out .0s;
 }
@@ -339,8 +340,8 @@ body::after {
     max-width: 89vw;
     max-height: 89vh;   */
    
-     width: 100%; 
-    height: 100%;  
+     width: 90%; 
+    height: 90%;  
    
     background-size: contain;
     background-position: center;
@@ -1230,7 +1231,7 @@ const rRect = {
 }
 
 function updateTransform() {
-    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    viewerWrp.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
 
 viewerImage.addEventListener("wheel", e => {
@@ -1267,7 +1268,7 @@ viewerImage.addEventListener("wheel", e => {
     scale = Math.max(0.7, scale);
     scale = Math.min(rubberLimit, scale);
 
-    // 3. Мгновенный сброс в единицу (ваша логика)
+/*    // 3. Мгновенный сброс в единицу (ваша логика)
     if (scale < 1) {
         scale = 1;
         tx = 0.0;
@@ -1277,6 +1278,8 @@ viewerImage.addEventListener("wheel", e => {
         updateTransform();
         return;
     }
+
+    */
 
     // 4. Панорамирование во время скролла (работает одинаково везде)
     // Картинка послушно следует за курсором, даже в режиме резинки
