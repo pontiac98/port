@@ -322,8 +322,8 @@ body::after {
 
 .viewerWrp {
   position: absolute;
-  width: 89vw;
-  height: 89vh;
+  width: 100vw;
+  height: 100vh;
 }
 
   
@@ -1240,11 +1240,11 @@ viewerImage.addEventListener("wheel", e => {
 
     if (!isMouseInside) return;
 
-  const containerRect = viewerImage.getBoundingClientRect();
+  //const containerRect = viewerImage.getBoundingClientRect();
     // Запоминаем текущие координаты мыши для этого шага скролла
   // отсчитываем от контейнера лефт и топ
-    lastWheelX = e.clientX - containerRect.left;
-    lastWheelY = e.clientY - containerRect.top;
+    lastWheelX = e.clientX;
+    lastWheelY = e.clientY;
 
     const maxScale = 3;
     const rubberLimit = 3.3;
