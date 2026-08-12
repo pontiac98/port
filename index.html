@@ -322,8 +322,8 @@ body::after {
 
 .viewerWrp {
   position: absolute;
-  width: 99vw;
-    height: 99vh;
+  width: 89vw;
+    height: 89vh;
 
 }
 
@@ -602,6 +602,7 @@ window.addEventListener('mousemove', (e) => {
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
+  const viewerWrp = document.getElementByClass("viewerWrp");
  // const viewerFrame = document.getElementById("viewerFrame");
   
   function openViewer(src, aspect){
@@ -1180,10 +1181,14 @@ let rubberF = false;
 let lastWheelX = 0;
 let lastWheelY = 0;
 
+
+  
     function realRect() {
 // 1. Получаем размеры и позицию самого контейнера
-const containerRect = viewerImage.getBoundingClientRect();
-    
+//const containerRect = viewerImage.getBoundingClientRect();
+
+const containerRect = viewerWrp.getBoundingClientRect();
+      
 // 2. Рассчитываем соотношение сторон контейнера
 const containerRatio = containerRect.width / containerRect.height;
 const aspectRatio = viewerImage.dataset.ratio;
