@@ -1245,8 +1245,9 @@ viewerImage.addEventListener("wheel", e => {
     if (!isMouseInside) return;
 
     // Запоминаем текущие координаты мыши для этого шага скролла
-    lastWheelX = e.clientX;
-    lastWheelY = e.clientY;
+  // отсчитываем от контейнера лефт и топ
+    lastWheelX = e.clientX - realRect.left;
+    lastWheelY = e.clientY - realRect.top;
 
     const maxScale = 3;
     const rubberLimit = 3.3;
