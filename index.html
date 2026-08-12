@@ -1235,9 +1235,14 @@ function updateTransform() {
     viewerWrp.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
 
+  let unlockTime = 0;
+  
 viewerImage.addEventListener("wheel", e => {
     e.preventDefault();
 
+  //блок на время возврата к маштабу 1
+  if (Date.now() < unlockTime) return;
+  
     // 1. Проверка нахождения мыши в контейнере
      //const containerRect = viewerImage.getBoundingClientRect();
  const backRect = realRect();
@@ -1313,7 +1318,7 @@ if (scale < minScale) {
             updateTransform();
         }
 
-      /* нижняя резинка
+      /* нижняя резинка */
 if (scale < minScale) {
         const ratio = minScale / scale;
         scale = minScale;
@@ -1326,7 +1331,7 @@ if (scale < minScale) {
          rubberF = false;
         updateTransform();
          }
- */
+
       
     }, 80);
 
@@ -1336,6 +1341,8 @@ if (scale < minScale) {
     scale = 1;
     tx = 0.0;
     ty = 0.0;
+
+ unlockTime = Date.now() + 180; 
     }
   
     updateTransform();
