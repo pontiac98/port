@@ -1232,14 +1232,15 @@ viewerImage.addEventListener("wheel", e => {
 
     // 1. Проверка нахождения мыши в контейнере
      //const containerRect = viewerImage.getBoundingClientRect();
- const containerRect = realRect();
+ const backRect = realRect();
     const isMouseInside = (
-        e.clientX >= containerRect.left && e.clientX <= containerRect.right &&
-        e.clientY >= containerRect.top && e.clientY <= containerRect.bottom
+        e.clientX >= backRect.left && e.clientX <= backRect.right &&
+        e.clientY >= backRect.top && e.clientY <= backRect.bottom
     );
 
     if (!isMouseInside) return;
 
+  const containerRect = viewerImage.getBoundingClientRect();
     // Запоминаем текущие координаты мыши для этого шага скролла
   // отсчитываем от контейнера лефт и топ
     lastWheelX = e.clientX - containerRect.left;
