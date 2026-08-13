@@ -652,6 +652,8 @@ position: sticky;
 }
 
 function closeViewer() {
+if (scale > 1) return;
+  
   rubberF = false;
      rubberTx = 0;
     rubberTy = 0;
@@ -1384,6 +1386,7 @@ viewerImage.addEventListener("mousedown", e => {
     e.preventDefault(); 
     
     isDragging = true;
+    viewerWrp.style.transition = "transform .0s ease-in-out .0s";
     //viewerImage.style.cursor = "grabbing";
 
     // Запоминаем стартовую позицию курсора с учетом уже имеющегося сдвига (tx, ty)
@@ -1396,6 +1399,7 @@ viewerImage.addEventListener("mousedown", e => {
 window.addEventListener("mouseup", () => {
     if (!isDragging) return;
     isDragging = false;
+  viewerWrp.style.transition = "transform .185s ease-in-out .0s";
     //viewerImage.style.cursor = "grab";
 });
 
