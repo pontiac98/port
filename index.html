@@ -525,10 +525,6 @@ position: sticky;
   
 <script>
 
-  //мышь влияет на прозрачность меню
-window.addEventListener('mousemove', (e) => {
-  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
-});
   
 
   // фвто загрузка картинок
@@ -1349,6 +1345,74 @@ if (scale < minScale) {
 
 
 
+
+
+
+
+//мышь влияет на прозрачность меню
+window.addEventListener('mousemove', (e) => {
+  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
+
+
+if (isDragging) {
+    // Вычисляем новый сдвиг
+    tx = e.clientX - startX;
+    ty = e.clientY - startY;
+
+    // Применяем изменения
+    updateTransform();
+} 
+});
+
+
+  // Переменные для отслеживания состояния перетаскивания
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+
+// Функция обновления CSS-трансформации (замените на вашу, если она называется иначе)
+//function updateTransform() {
+//    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+//}
+
+// 1. Начало перетаскивания
+viewerImage.addEventListener("mousedown", e => {
+    // Разрешаем перетаскивание только если картинка увеличена
+    if (scale <= 1) return; 
+    
+    // Блокируем стандартное поведение браузера (например, перетаскивание самой картинки)
+    e.preventDefault(); 
+    
+    isDragging = true;
+    //viewerImage.style.cursor = "grabbing";
+
+    // Запоминаем стартовую позицию курсора с учетом уже имеющегося сдвига (tx, ty)
+    startX = e.clientX - tx;
+    startY = e.clientY - ty;
+});
+
+
+  // 3. Конец перетаскивания
+window.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    //viewerImage.style.cursor = "grab";
+});
+
+// На случай, если мышь ушла за пределы окна во время перетаскивания
+window.addEventListener("blur", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    //viewerImage.style.cursor = "grab";
+});
+
+
+
+
+
+
+  
+  
   
   
   //
