@@ -496,6 +496,32 @@ position: sticky;
 </head>
 
 <body>
+
+  
+  <!-- Отладочный маркер границ -->
+<div id="debug-back-rect" style="
+    position: fixed;
+    border: 3px dashed #ff0055;
+    background-color: rgba(255, 0, 85, 0.1);
+    pointer-events: none; /* Чтобы рамка не перехватывала клики мыши */
+    z-index: 99999;
+    display: none; /* Изначально скрыт, включим при открытии */
+    box-sizing: border-box;
+    transition: none !important; /* Никаких анимаций, только живой расчет */
+">
+    <div style="
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background: #ff0055;
+        color: white;
+        font-family: monospace;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 3px;
+    ">backRect</div>
+</div>
+
   
 <div id="viewer">
   <div class="viewerWrp">
@@ -1384,6 +1410,7 @@ if (scale < minScale) {
     }
   
     updateTransform();
+  drawDebugRect(); 
 }, { passive: false });
 
 
@@ -1475,6 +1502,7 @@ window.addEventListener('mousemove', (e) => {
 
     // Применяем изменения
     updateTransform();
+  drawDebugRect(); 
 
 });
 
@@ -1488,6 +1516,8 @@ window.addEventListener("resize", () => {
       // Пересчитываем базовую область заново
         limitRect = calcVLs();
        backRect = realRect();
+      drawDebugRect(); 
+      
     }
 });
 
@@ -1525,6 +1555,7 @@ viewerImage.addEventListener("mousedown", e => {
     // Запоминаем стартовую позицию курсора с учетом уже имеющегося сдвига (tx, ty)
     startX = e.clientX - tx;
     startY = e.clientY - ty;
+  
 });
 
 
@@ -1569,6 +1600,7 @@ window.addEventListener("mouseup", () => {
 
   
    updateTransform();
+  drawDebugRect(); 
     //viewerImage.style.cursor = "grab";
 });
 
@@ -1584,7 +1616,22 @@ window.addEventListener("blur", () => {
 
 
 
-  
+  function drawDebugRect() {
+    const debugEl = document.getElementById("debug-back-rect");
+    if (!debugEl) return;
+
+    // Включаем отображение
+    debugEl.style.display = "block";
+
+    // Получаем живые координаты вашей картинки
+    const rect = realRect();
+
+    // Переносим физические пиксели на отладочную рамку
+    debugEl.style.left = `${rect.left}px`;
+    debugEl.style.top = `${rect.top}px`;
+    debugEl.style.width = `${rect.width}px`;
+    debugEl.style.height = `${rect.height}px`;
+}
   
   
   
