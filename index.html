@@ -1446,6 +1446,15 @@ if (scale < minScale) {
 window.addEventListener('mousemove', (e) => {
   document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
 
+backRect = realRect(); 
+const isHover = (
+            e.clientX >= backRect.left && e.clientX <= backRect.right &&
+            e.clientY >= backRect.top && e.clientY <= backRect.bottom
+        );
+  if (isHover) viewerImage.classList.add("hover")
+    else viewerImage.classList.remove("hover");
+
+  
     lastWheelX = e.clientX;
     lastWheelY = e.clientY;
   if (!isDragging) return;
@@ -1593,9 +1602,11 @@ viewerImage.addEventListener("mouseup", e => {
   
   
     isDragging = false;
-  if (e.clientX == cx && e.clientY == cy) return;
+  
   
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
+
+  if (e.clientX == cx && e.clientY == cy) return;
 
   //резиновая отттяжка
   backRect = realRect();
