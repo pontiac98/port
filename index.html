@@ -609,6 +609,9 @@ position: sticky;
   
   function openViewer(src, aspect){
 
+limitRect = viewerImage.getBoundingClientRect();
+
+    
 //const vw = window.innerWidth * 0.89;
 //const vh = window.innerHeight * 0.89;
 
@@ -1355,7 +1358,7 @@ if (scale < minScale) {
 
 
 
-
+let limitRect;
 //мышь влияет на прозрачность меню
 window.addEventListener('mousemove', (e) => {
   document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
@@ -1364,14 +1367,16 @@ window.addEventListener('mousemove', (e) => {
     lastWheelY = e.clientY;
 
   
-if (isDragging) {
+if (!isDragging) return;
+
+  
     // Вычисляем новый сдвиг
     tx = e.clientX - startX;
     ty = e.clientY - startY;
 
     // Применяем изменения
     updateTransform();
-} 
+
 });
 
 
