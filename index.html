@@ -1597,7 +1597,7 @@ viewerImage.addEventListener("mousedown", e => {
 
 
   // 3. Конец перетаскивания  window ?
-window.addEventListener("mouseup", () => {
+window.addEventListener("mouseup", e => {
     if (!isDragging) return;
   
   
@@ -1606,7 +1606,8 @@ window.addEventListener("mouseup", () => {
   
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
 
-  //if (e.clientX == cx && e.clientY == cy) return;
+  // типа клик на месте не будет сбрасывать картинку в центр
+  if (e.clientX == cx && e.clientY == cy) return;
 
   //резиновая отттяжка
   backRect = realRect();
