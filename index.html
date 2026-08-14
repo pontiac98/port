@@ -27,6 +27,10 @@
 
 <style>
   body {
+
+    scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none;  /* Для IE и Edge */
+    
     position: relative;
     margin: 0px;
     padding: 0px;
@@ -398,10 +402,18 @@ body::after {
     touch-action: none; 
 }
 
+html::-webkit-scrollbar {
+  display: none; /* Для Chrome, Safari и Opera */
+}
+  
   html {
     /* Формат: scrollbar-color: [цвет-ползунка] [цвет-дорожки]; */
-  scrollbar-color: red yellow;
+     scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none;  /* Для IE и Edge */
+    
+  /*scrollbar-color: red yellow;
     scrollbar-gutter: stable; 
+    */
     background: #c9c9c9;
     transition:
         background .8s ease-out;    
