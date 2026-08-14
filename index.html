@@ -1305,7 +1305,9 @@ viewerImage.addEventListener("wheel", e => {
   
     // 1. Проверка нахождения мыши в контейнере
      //const containerRect = viewerImage.getBoundingClientRect();
-// const backRect = realRect();
+
+  
+    backRect = realRect();
     const isMouseInside = (
         e.clientX >= backRect.left && e.clientX <= backRect.right &&
         e.clientY >= backRect.top && e.clientY <= backRect.bottom
@@ -1566,7 +1568,7 @@ window.addEventListener("mouseup", () => {
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
 
   //резиновая отттяжка
-  backRect = realRect();
+  //backRect = realRect();
 // 4. Корректировка по горизонтали (X)
     // Левый край картинки ушел правее левого края лимита
     if (backRect.left > limitRect.left) {
@@ -1588,14 +1590,14 @@ window.addEventListener("mouseup", () => {
     }
  if ((backRect.width * 0.8) <= limitRect.width) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-   tx = 0;
-   //tx = (limit.width - backRect.width) / 2;
+   //tx = 0;
+   tx = (limit.width - backRect.width) / 2;
     }
 
   if ((backRect.height * 0.8) <= limitRect.height) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-    ty = 0;
-    //ty = (limit.height - backRect.height) / 2;
+    //ty = 0;
+    ty = (limit.height - backRect.height) / 2;
     }
 
   
