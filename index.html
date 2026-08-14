@@ -1450,7 +1450,7 @@ window.addEventListener('mousemove', (e) => {
   */
 
 
-  
+  /*
     // 4. Корректировка по горизонтали (X)
     // Левый край картинки ушел правее левого края лимита
     if (backRect.left > limitRect.left) {
@@ -1470,6 +1470,8 @@ window.addEventListener('mousemove', (e) => {
     if (backRect.bottom < limitRect.bottom) {
         ty += (limitRect.bottom - backRect.bottom);
     }
+
+*/
 
     // Применяем изменения
     updateTransform();
@@ -1531,6 +1533,39 @@ window.addEventListener("mouseup", () => {
     if (!isDragging) return;
     isDragging = false;
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
+
+  //резиновая отттяжка
+  backRect = realRect();
+// 4. Корректировка по горизонтали (X)
+    // Левый край картинки ушел правее левого края лимита
+    if (backRect.left > limitRect.left) {
+        tx -= (backRect.left - limitRect.left);
+    }
+    // Правый край картинки ушел левее правого края лимита
+    if (backRect.right < limitRect.right) {
+        tx += (limitRect.right - backRect.right);
+    }
+
+    // 5. Корректировка по вертикали (Y)
+    // Верхний край картинки ушел ниже верхнего края лимита
+    if (backRect.top > limitRect.top) {
+        ty -= (backRect.top - limitRect.top);
+    }
+    // Нижний край картинки ушел выше нижнего края лимита
+    if (backRect.bottom < limitRect.bottom) {
+        ty += (limitRect.bottom - backRect.bottom);
+    }
+ if (backRect.width <= limitRect.width) {
+        // Здесь можно сбросить tx в дефолтное состояние, если необходимо
+   tx = 0;
+    }
+
+  if (backRect.height <= limitRect.height) {
+        // Здесь можно сбросить tx в дефолтное состояние, если необходимо
+   ty = 0;
+    }
+
+  
    updateTransform();
     //viewerImage.style.cursor = "grab";
 });
