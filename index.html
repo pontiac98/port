@@ -1360,7 +1360,10 @@ if (scale < minScale) {
 window.addEventListener('mousemove', (e) => {
   document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
 
+    lastWheelX = e.clientX;
+    lastWheelY = e.clientY;
 
+  
 if (isDragging) {
     // Вычисляем новый сдвиг
     tx = e.clientX - startX;
