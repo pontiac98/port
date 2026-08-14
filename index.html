@@ -392,6 +392,10 @@ body::after {
     opacity: 1;
 }   
 
+    #viewerImage.animate.hover {
+     filter: blur(4px) brightness(120%);
+}   
+
   
 #viewerImage.pinching {
     transition: none;
@@ -1583,10 +1587,14 @@ viewerImage.addEventListener("mousedown", e => {
 });
 
 
-  // 3. Конец перетаскивания
-window.addEventListener("mouseup", () => {
+  // 3. Конец перетаскивания  window ?
+viewerImage.addEventListener("mouseup", e => {
     if (!isDragging) return;
+  
+  
     isDragging = false;
+  if (e.clientX == cx && e.clientY == cy) return;
+  
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
 
   //резиновая отттяжка
