@@ -609,8 +609,7 @@ position: sticky;
   
   function openViewer(src, aspect){
 
-  limitRect = viewerImage.getBoundingClientRect();
-  backRect = realRect();
+  
     
 
     
@@ -653,6 +652,9 @@ position: sticky;
             viewerImage.classList.add("animate");
         });
     });
+
+    limitRect = viewerImage.getBoundingClientRect();
+    backRect = realRect();
   
 }
 
@@ -664,7 +666,7 @@ if (scale > 1) return;
     rubberTy = 0;
   tx = 0;
   ty = 0;
-  startMRect=null;
+  //startMRect=null;
   scale = 1;
   viewerWrp.style.transform = `scale(${scale})`;
   viewerImage.style.transform = `scale(${scale})`;
@@ -1185,6 +1187,7 @@ let scale = 1;
 let tx = 0;
 let ty = 0;
   let backRect;
+  let limitRect;
 
 let rubberF = false;
 
@@ -1361,16 +1364,15 @@ if (scale < minScale) {
 
 
 
-let limitRect;
+
 //мышь влияет на прозрачность меню
+  
 window.addEventListener('mousemove', (e) => {
   document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
 
     lastWheelX = e.clientX;
     lastWheelY = e.clientY;
-
-  
-if (!isDragging) return;
+  if (!isDragging) return;
 
   
     // Вычисляем новый сдвиг
@@ -1382,8 +1384,11 @@ if (!isDragging) return;
     const limit = limitRect;
     
     // Физические размеры картинки на экране в текущем масштабе
-    const currentWidth = backRect.width * scale;
-    const currentHeight = backRect.height * scale;
+  
+  
+  //уберем фактор масштаба
+    const currentWidth = backRect.width;
+    const currentHeight = backRect.height;
 
     // 3. Ограничения по вертикали (Y)
     if (currentHeight > limit.height) {
@@ -1419,6 +1424,19 @@ if (!isDragging) return;
 });
 
 
+//ресайз окна обновляет данные областей
+  
+window.addEventListener("resize", () => {
+    // Проверяем, открыт ли лайтбокс (если у вас есть для этого флаг или класс)
+    if (viewerWrp.classList.contains("active")) { 
+        // Пересчитываем базовую область заново
+        limitRect = viewerImage.getBoundingClientRect();
+       backRect = realRect();
+    }
+});
+
+  
+
   // Переменные для отслеживания состояния перетаскивания
 let isDragging = false;
 let startX = 0;
@@ -1438,6 +1456,11 @@ viewerImage.addEventListener("mousedown", e => {
     e.preventDefault(); 
     
     isDragging = true;
+  
+    // актуализируем реальные видимые краницы  картинки в текущем масщтабе
+    backRect = realRect(); 
+
+  
     viewerWrp.style.transition = "transform .0s ease-in-out .0s";
     //viewerImage.style.cursor = "grabbing";
 
