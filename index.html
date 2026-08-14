@@ -609,7 +609,7 @@ position: sticky;
   
   function openViewer(src, aspect){
 
-limitRect = viewerImage.getBoundingClientRect();
+  limitRect = viewerImage.getBoundingClientRect();
 
     
 //const vw = window.innerWidth * 0.89;
@@ -1373,6 +1373,41 @@ if (!isDragging) return;
     // Вычисляем новый сдвиг
     tx = e.clientX - startX;
     ty = e.clientY - startY;
+
+ // 2. Получаем размеры базовой области (limitRect)
+    const limit = limitRect;
+    
+    // Физические размеры картинки на экране в текущем масштабе
+    const currentWidth = realRect.width * scale;
+    const currentHeight = realRect.height * scale;
+
+    // 3. Ограничения по вертикали (Y)
+    if (currentHeight > limit.height) {
+        // Верхний край картинки не должен опускаться ниже верхнего края контейнера
+        if (ty > 0) ty = 0;
+        
+        // Нижний край картинки не должен подниматься выше нижнего края контейнера
+        // Минимальный ty равен разнице высот (уйдет в минус)
+        const minTy = limit.height - currentHeight;
+        if (ty < minTy) ty = minTy;
+    } else {
+        // Если картинка меньше контейнера, центрируем её по вертикали
+        ty = (limit.height - currentHeight) / 2;
+    }
+
+    // 4. Ограничения по горизонтали (X)
+    if (currentWidth > limit.width) {
+        // Левый край картинки не должен уходить правее левого края контейнера
+        if (tx > 0) tx = 0;
+        
+        // Правый край картинки не должен уходить левее правого края контейнера
+        const minTx = limit.width - currentWidth;
+        if (tx < minTx) tx = minTx;
+    } else {
+        // Если картинка меньше контейнера, центрируем её по горизонтали
+        tx = (limit.width - currentWidth) / 2;
+    }
+  
 
     // Применяем изменения
     updateTransform();
