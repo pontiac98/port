@@ -704,7 +704,11 @@ if (scale > 1) return;
 }
 
 
-  viewer.addEventListener("click", closeViewer);
+  viewer.addEventListener("click", (e) => {
+    if (e.clientX == cx && e.clientY == cy) {
+      closeViewer();
+    }
+});
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -1536,7 +1540,13 @@ let startY = 0;
 //}
 
 // 1. Начало перетаскивания
+  let cx = 0;
+  let cy = 0;
 viewerImage.addEventListener("mousedown", e => {
+   
+  cx = e.clientX;
+  cy = e.clientY;
+  
     // Разрешаем перетаскивание только если картинка увеличена
     if (scale <= 1) return; 
     
