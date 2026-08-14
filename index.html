@@ -1479,7 +1479,7 @@ window.addEventListener('mousemove', (e) => {
   
 window.addEventListener("resize", () => {
     // Проверяем, открыт ли лайтбокс (если у вас есть для этого флаг или класс)
-    if (viewerWrp.classList.contains("active")) { 
+    if (viewer.classList.contains("open")) { 
         
       // Пересчитываем базовую область заново
         limitRect = calcVLs();
