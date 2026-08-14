@@ -1588,19 +1588,30 @@ window.addEventListener("mouseup", () => {
     }
  if ((backRect.width * 0.8) <= limitRect.width) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-   //tx = 0;
-   tx = (limit.width - backRect.width) / 2;
+   tx = 0;
+   //tx = (limit.width - backRect.width) / 2;
     }
 
   if ((backRect.height * 0.8) <= limitRect.height) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-   //ty = 0;
-    ty = (limit.height - backRect.height) / 2;
+    ty = 0;
+    //ty = (limit.height - backRect.height) / 2;
     }
 
   
    updateTransform();
-  drawDebugRect(); 
+
+// Запускаем цикл обновления рамки во время плавного отскока (на 300мс)
+    const startTime = Date.now();
+    function animateDebug() {
+        drawDebugRect();
+        if (Date.now() - startTime < 200) {
+            requestAnimationFrame(animateDebug);
+        }
+    }
+    animateDebug();
+  
+  //drawDebugRect(); 
     //viewerImage.style.cursor = "grab";
 });
 
