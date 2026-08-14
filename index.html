@@ -1555,14 +1555,16 @@ window.addEventListener("mouseup", () => {
     if (backRect.bottom < limitRect.bottom) {
         ty += (limitRect.bottom - backRect.bottom);
     }
- if (backRect.width <= limitRect.width) {
+ if ((backRect.width * 0.8) <= limitRect.width) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-   tx = 0;
+   //tx = 0;
+   tx = (limit.width - backRect.width) / 2;
     }
 
-  if (backRect.height <= limitRect.height) {
+  if ((backRect.height * 0.8) <= limitRect.height) {
         // Здесь можно сбросить tx в дефолтное состояние, если необходимо
-   ty = 0;
+   //ty = 0;
+    ty = (limit.height - backRect.height) / 2;
     }
 
   
