@@ -1407,6 +1407,8 @@ window.addEventListener('mousemove', (e) => {
     ty = e.clientY - startY;
 
 
+    backRect = realRect(); 
+
 
   /*
  // 2. Получаем размеры базовой области (limitRect)
@@ -1529,6 +1531,7 @@ window.addEventListener("mouseup", () => {
     if (!isDragging) return;
     isDragging = false;
   viewerWrp.style.transition = "transform .185s ease-in-out .0s";
+   updateTransform();
     //viewerImage.style.cursor = "grab";
 });
 
