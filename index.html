@@ -653,7 +653,7 @@ position: sticky;
         });
     });
 
-    limitRect = viewerImage.getBoundingClientRect();
+    limitRect = calcVLs();
     backRect = realRect();
   
 }
@@ -1196,6 +1196,33 @@ let lastWheelX = 0;
 let lastWheelY = 0;
 
 
+  //лимиты при перемещении картинки
+function calcVLs() {
+    // 1. Находим текущую ширину и высоту всего окна браузера в пикселях
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // 2. Вычисляем физическую ширину и высоту лимита (89vw и 89vh)
+    const width = vw * 0.89;
+    const height = vh * 0.89;
+
+    // 3. Вычисляем координаты top и left, чтобы область была строго по центру экрана
+    const left = (vw - width) / 2;
+    const top = (vh - height) / 2;
+
+    // 4. Возвращаем объект, полностью повторяющий структуру getBoundingClientRect()
+    return {
+        width: width,
+        height: height,
+        left: left,
+        top: top,
+        right: left + width,
+        bottom: top + height
+    };
+}
+
+
+  
   
     function realRect() {
 // 1. Получаем размеры и позицию самого контейнера
@@ -1429,8 +1456,9 @@ window.addEventListener('mousemove', (e) => {
 window.addEventListener("resize", () => {
     // Проверяем, открыт ли лайтбокс (если у вас есть для этого флаг или класс)
     if (viewerWrp.classList.contains("active")) { 
-        // Пересчитываем базовую область заново
-        limitRect = viewerImage.getBoundingClientRect();
+        
+      // Пересчитываем базовую область заново
+        limitRect = calcVLs();
        backRect = realRect();
     }
 });
@@ -1459,6 +1487,8 @@ viewerImage.addEventListener("mousedown", e => {
   
     // актуализируем реальные видимые краницы  картинки в текущем масщтабе
     backRect = realRect(); 
+
+  limitRect = calcVLs();
 
   
     viewerWrp.style.transition = "transform .0s ease-in-out .0s";
