@@ -1316,6 +1316,7 @@ function updateTransform() {
 }
 
   let unlockTime = 0;
+  let trackY = 0;
   
 viewerImage.addEventListener("wheel", e => {
     e.preventDefault();
@@ -1323,6 +1324,8 @@ viewerImage.addEventListener("wheel", e => {
   //блок на время возврата к маштабу 1
   if (Date.now() < unlockTime) return;
 
+
+  trackY = e.deltaY;
   //отсекаем микро события трекпада
    const absX = Math.abs(e.deltaX);
   const absY = Math.abs(e.deltaY);
@@ -1693,7 +1696,10 @@ window.addEventListener("blur", () => {
   function drawDebugRect() {
     const debugEl = document.getElementById("debug-back-rect");
     if (!debugEl) return;
-
+    
+    //debugEl.textContent = `Track Y: ${trackY}`;
+    debugEl.textContent = `Track Y:: ${trackY.toFixed(2)}`;
+    
     // Включаем отображение
     debugEl.style.display = "block";
 
