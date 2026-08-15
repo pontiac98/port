@@ -1698,7 +1698,7 @@ window.addEventListener("blur", () => {
     if (!debugEl) return;
     
     //debugEl.textContent = `Track Y: ${trackY}`;
-    debugEl.textContent = `Track Y:: ${trackY.toFixed(2)}`;
+    debugEl.children[0].textContent = `Track Y: ${trackY.toFixed(2)}`;
     
     // Включаем отображение
     debugEl.style.display = "block";
