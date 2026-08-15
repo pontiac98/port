@@ -1317,6 +1317,7 @@ function updateTransform() {
 
   let unlockTime = 0;
   let trackY = 0;
+  let maxTrackY = 0;
   
 viewerImage.addEventListener("wheel", e => {
     e.preventDefault();
@@ -1326,11 +1327,13 @@ viewerImage.addEventListener("wheel", e => {
 
 
   trackY = e.deltaY;
+  if (maxTrackY < trackY) maxTrackY = trackY;
+  
   //отсекаем микро события трекпада
    const absX = Math.abs(e.deltaX);
   const absY = Math.abs(e.deltaY);
   if (absX > absY) return; 
- if (absY < 0.1) return; 
+ if (absY < 77) return; 
   
     // 1. Проверка нахождения мыши в контейнере
      //const containerRect = viewerImage.getBoundingClientRect();
@@ -1698,7 +1701,7 @@ window.addEventListener("blur", () => {
     if (!debugEl) return;
     
     //debugEl.textContent = `Track Y: ${trackY}`;
-    debugEl.children[0].textContent = `Track Y: ${trackY.toFixed(2)}`;
+    debugEl.children[0].textContent = `Track Y: ${trackY.toFixed(2)}  Max Y: ${maxTrackY.toFixed(2)}`;
     
     // Включаем отображение
     debugEl.style.display = "block";
