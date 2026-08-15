@@ -1322,6 +1322,12 @@ viewerImage.addEventListener("wheel", e => {
 
   //блок на время возврата к маштабу 1
   if (Date.now() < unlockTime) return;
+
+  //отсекаем микро события трекпада
+   const absX = Math.abs(e.deltaX);
+  const absY = Math.abs(e.deltaY);
+  if (absX > absY) return; 
+ if (absY < 0.1) return; 
   
     // 1. Проверка нахождения мыши в контейнере
      //const containerRect = viewerImage.getBoundingClientRect();
@@ -1437,7 +1443,10 @@ if (scale < minScale) {
 
 
 
-
+//убираем контекстное меню
+window.addEventListener('contextmenu', (e) => {
+  e.preventDefault(); 
+});
 
 
 
@@ -1457,8 +1466,12 @@ const isHover = (
   
     lastWheelX = e.clientX;
     lastWheelY = e.clientY;
-  if (!isDragging) return;
 
+  // отменяем панарамирование если не нажата ЛКМ
+   if (e.buttons !== 1) isDragging = false;
+  
+  if (!isDragging) return;
+ 
   
     // Вычисляем новый сдвиг
     tx = e.clientX - startX;
