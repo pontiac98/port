@@ -325,7 +325,7 @@ body::after {
 }
 
 #layerA {
-pointer-events: none;
+
 }
 	
 .viewerWrp {
@@ -607,7 +607,6 @@ position: sticky;
 
             const image = document.createElement("div");
             image.className = "card-image";
-            //card.dataset.ratio = `${item.width} / ${item.height}`;
             card.dataset.ratio = item.width / item.height;
           
             card.appendChild(image);          
@@ -716,8 +715,8 @@ layerB.addEventListener("pointerup", e => {
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
-  const viewerWrp = document.querySelector('.viewerWrp'); 
- // const viewerFrame = document.getElementById("viewerFrame");
+  const viewerWrp = layerB;
+
   
   function openViewer(src, aspect){
 
