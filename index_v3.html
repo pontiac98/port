@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y13DRRJEBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y13DRRJEBE');
+</script>
+  <title>Sergey Yakovlev</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Designer Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+ 
+
+<style>
+  body {
+
+    scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none;  /* Для IE и Edge */
+    
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #EEE;
+
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal; 
+  }
+
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+  /* Первый GIF-слой */
+body::before {
+  z-index: 2000; /* Выше любого стандартного лайтбокса */
+  background-image: image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
+  background-image: -webkit-image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
+  opacity: 0.08;
+  mix-blend-mode: overlay; 
+}
+
+/* Второй GIF-слой */
+body::after {
+  z-index: 2001; /* Самый верхний уровень на всей странице */
+  background-image: image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
+  background-image: -webkit-image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
+  opacity: 0.10;
+  /*mix-blend-mode: overlay; */
+}
+  
+.section {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section.active {
+  display: block;
+}
+
+
+    
+/* карточки*/
+  
+  .card-image {
+    width: 100%; 
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    opacity: 0;
+    transition: 
+          opacity .55s ease,
+          transform .35s ease, 
+          filter .55s ease;
+}
+
+.card:hover .card-image {
+}
+
+
+  .card-image.loaded {
+    opacity: 1;
+}
+
+  /* Эффекты только на устройствах с мышью hover */
+@media (hover: hover) and (pointer: fine) {
+
+  body.no-scroll .card:hover .card-image {
+}
+
+    body.no-scroll .card:hover{
+      filter: saturate(1.0) ; 
+}
+
+      body.no-scroll .card:hover::after{
+      opacity: .0; 
+}
+        body.no-scroll .card::after{
+      opacity: .0; 
+}
+   body.no-scroll .card:has(.card-image.loaded):hover::after {
+  opacity: .0;
+}
+
+  .card::after{
+   content: "";
+   position: absolute; 
+   inset: 0; 
+  background-color: white;
+  opacity: .0;
+  pointer-events: none; 
+   transition:   opacity .3s ease; 
+}  
+
+.card:has(.card-image.loaded):hover::after {
+  opacity: .355;
+}
+  /*
+  .card:hover::after {
+  opacity: .355;
+}
+  */
+  
+    .card:hover{
+    filter: saturate(1.0); 
+}
+
+  .card {
+    filter: saturate(.5); 
+  }
+
+    .card-image {
+      transform: scale(1.00);
+    }
+
+    .card:hover .card-image {
+        transform: scale(1.00);
+        filter: none;
+    }
+
+}
+
+/* Сенсорные устройства */
+@media (hover: none) {
+
+      .card{
+    filter: none;
+}
+    .card:hover{
+    filter: none;
+}
+  
+    .card-image {
+        transform: none;
+        filter: none;
+    }
+}
+  
+.grid {
+  display: grid;
+  
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 15vw;
+  grid-auto-flow: dense;
+  width: 100%; 
+  
+  gap: 4px;
+  background: silver; 
+  padding: 0px 4px 0px;  
+}
+
+  /* убрано для google подобной сетки */
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.verywide {
+    grid-column: span 3;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+  
+
+.card { 
+  position: relative;
+   overflow: hidden;
+   border-radius: 0px;
+   width: 100%;
+  background-image: linear-gradient(44deg, #f9f9f980, #e5e5e500);  
+   filter: saturate(1.0); 
+   transition: filter .25s ease-out;   
+}
+
+ .card:focus {
+  }
+  
+  .card:hover {
+  }
+
+/* для мобильной */
+@media (max-width: 900px) {  
+    html {
+    scrollbar-gutter: auto;
+    background: #EEE;   
+}
+
+  html.no-scroll {
+    background: #EEE;
+}
+
+    .grid {
+      padding: 0px 0px 0px;
+      grid-template-columns: repeat(3, minmax(15px, 1fr));
+      grid-auto-rows: minmax(35vw, auto); /* или AUTO или другое подходящее значение */
+    }
+
+  /*.verywide {
+    grid-column: span 2;
+    }
+   
+    .big,
+    .wide,
+    .verywide,
+    .tall {
+        grid-column: auto;
+        grid-row: auto;
+    }  */
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+  
+
+/* лайтбокс          */
+  
+#viewer {
+    position: fixed;
+    inset: 0;
+  /*  display: flex;
+    justify-content: center;
+    align-items: center;  */
+    isolation: isolate;
+
+    z-index: 1000;
+
+    opacity: 0;
+    visibility: hidden; 
+    pointer-events: none;
+
+    backdrop-filter: blur(0px);
+    transition:
+        opacity .1s ease-out,
+        visibility .1s ease; 
+}
+
+#viewer.open {
+    backdrop-filter: blur(2px) grayscale(100%);
+    opacity: 1;
+    visibility: visible; 
+    pointer-events: auto;
+}
+
+  #viewer::before {
+    content: "";
+    position: fixed;
+    inset: -20px;
+    z-index: -1;
+
+    background: rgba(0,0,0,.85);
+    opacity: 0;
+    transition: opacity .8s ease-out .0s;
+    pointer-events: none;
+}
+
+#viewer.open::before {
+  content: "";
+    opacity: 1;
+}
+
+  /*  test */
+  #viewer.open::after {
+    content: "";
+    position: fixed;
+    inset: -20px;
+    z-index: 1;
+    background: white;
+    opacity: .01;
+    pointer-events: none;
+}
+
+.viewerWrp {
+  position: absolute;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0; 
+  transition:
+      transform .185s ease-in-out .0s;
+}
+
+  
+ #viewerImage {
+  /*  width: 89vw; 
+    height: auto;
+
+    max-width: 89vw;
+    max-height: 89vh;   */
+   
+     width: 90%; 
+    height: 90%;  
+   
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.0); 
+    opacity: 0.1;
+    touch-action: none;
+    transform-origin: 0 0; 
+   /* transform-origin: center center;  maybe */
+
+    transition:
+      transform .185s ease-in-out .0s, 
+      opacity .1s ease-in .0s; 
+}
+
+/*  #viewerFrame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+
+    transform: scale(1.0);
+    opacity: 0;
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease;
+}
+
+#viewerImage {
+    width: 100%;
+    height: 100%;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  transform: scale(1);
+   transition:
+        transform .25s ease;
+}   */
+
+  #viewerImage.animate {
+     transform: scale(1); 
+    opacity: 1;
+}   
+
+    #viewerImage.animate.hover {
+     filter: blur(4px) brightness(120%);
+}   
+
+  
+#viewerImage.pinching {
+    transition: none;
+}
+  
+  body.no-scroll {
+    overflow: hidden;
+    touch-action: none; 
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Для Chrome, Safari и Opera */
+}
+  
+  html {
+    /* Формат: scrollbar-color: [цвет-ползунка] [цвет-дорожки]; */
+     scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none;  /* Для IE и Edge */
+    
+  /*scrollbar-color: red yellow;
+    scrollbar-gutter: stable; 
+    */
+    background: #c9c9c9;
+    transition:
+        background .8s ease-out;    
+}
+
+  html.no-scroll {
+    background: #343434;
+}
+
+  main {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+   /* background: #EEE; */
+}
+  
+/* меню */
+.bw{
+position: sticky;
+  top: 0;
+  z-index: 2;
+ /* width: 100% */
+  
+  /* Размытие фона страницы */
+  background: rgba(255, 255, 255, 0.01); /* Белый 1% */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+  
+  #menu{
+    display: flex;
+    gap: 4px;
+ 
+    background: silver;
+    
+    /* Наша формула: из 0.5 вычитаем (коэффициент * разницу 0.4) */
+    opacity: calc(0.5 - var(--mouse-y-ratio, 0) * 0.4);
+    
+   /* opacity: 50%; */
+    border-bottom: 1px solid black; 
+
+    transition:
+        opacity .325s ease-out;  
+  }
+
+  #menu:hover{
+    opacity: 80%; 
+  }
+
+  
+
+  #menu div {
+    user-select: none;
+    display: block;
+    padding: 8px 24px;
+    margin: 4px;
+
+    color: black;
+    text-decoration: none;
+
+    transition: color .2s, background .2s;
+}
+
+  /* эффекты меню */
+#menu div:hover:not(.active) {
+  color: white;
+ /* -webkit-text-stroke: 2px black;  */
+  cursor: pointer;
+}
+
+    #menu div span{
+      display: inline-block; 
+ transition: transform .2s ease-in-out;
+}
+  
+  #menu div:hover:not(.active) span{
+  transform: translateY(-4px);
+}
+  
+
+#menu div.active {
+    color: black;
+    font-weight: 700;
+    background: white;
+  
+    border-bottom: 3px solid black;
+    cursor: default;
+}
+  
+</style>
+</head>
+
+<body>
+
+  
+  <!-- Отладочный маркер границ -->
+<div id="debug-back-rect" style="
+    position: fixed;
+    border: 3px dashed #ff0055;
+    background-color: rgba(255, 0, 85, 0.1);
+    pointer-events: none; /* Чтобы рамка не перехватывала клики мыши */
+    z-index: 99999;
+    display: none; /* Изначально скрыт, включим при открытии */
+    box-sizing: border-box;
+    transition: none !important; /* Никаких анимаций, только живой расчет */
+">
+    <div style="
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background: #ff0055;
+        color: white;
+        font-family: monospace;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 3px;
+    ">backRect</div>
+</div>
+
+  
+<div id="viewer">
+  <div class="viewerWrp">
+            <div id="viewerImage"></div>
+  </div>
+</div>
+ 
+  <!-- 
+  -->
+
+<div class="bw">
+  <header id="menu">
+    <div class="menu-item active" data-gallery="1"><span>RGB</span></div>
+    <div class="menu-item" data-gallery="2"><span>CMYK</span></div>
+    <div class="menu-item" data-gallery="3"><span>3-D</span></div>
+    <div class="menu-item" data-gallery="about"><span>ABOUT</span></div>
+  </header>
+</div>
+  
+  <main>
+    <div id="content">  
+        <section id="section1" class="section">
+          <div class="grid" id="grid"></div>
+        </section>
+    </div>
+  </main>
+  
+<script>
+
+
+
+  // галерея
+  let gallery = [];
+
+  // фвто загрузка картинок
+  fetch("images.json")
+    .then(res => res.json())
+    .then(images => {
+
+        const grid = document.getElementById("grid");
+
+        images.forEach((item, index) => {
+
+            const card = document.createElement("div");
+            card.classList.add("card");          
+            card.dataset.image = item.url;
+            card.dataset.index = index;
+
+            // Пример шаблона размеров
+           if (item.type) {
+              card.classList.add(item.type);
+              }
+
+            const image = document.createElement("div");
+            image.className = "card-image";
+            //card.dataset.ratio = `${item.width} / ${item.height}`;
+            card.dataset.ratio = item.width / item.height;
+          
+            card.appendChild(image);          
+            grid.appendChild(card);
+            observer.observe(card);
+
+           gallery.push({
+                url: item.url,
+                card: card
+            });
+        });
+    });
+
+// предзагрузчик в видимую область
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+        const image = card.querySelector(".card-image");
+
+        const src = card.dataset.image;
+
+        const loader = new Image();
+
+        loader.onload = () => {
+
+            image.style.backgroundImage = `url("${src}")`;
+
+            requestAnimationFrame(() => {
+                image.classList.add("loaded");
+            });
+
+        };
+
+        loader.src = src;
+        observer.unobserve(card);
+    });
+
+}, {
+    rootMargin: "300px"
+});
+  
+
+  // лайтбокс
+  document.addEventListener("click", e => {
+
+    const card = e.target.closest(".card");
+    if (!card) return;    
+    
+    const image = card.querySelector(".card-image");
+    if (!image.classList.contains("loaded")) return;
+
+    openViewer(card.dataset.image, card.dataset.ratio);
+});
+
+  //обработчик лайтбокса
+  const viewer = document.getElementById("viewer");
+  const viewerImage = document.getElementById("viewerImage");
+  const viewerWrp = document.querySelector('.viewerWrp'); 
+ // const viewerFrame = document.getElementById("viewerFrame");
+  
+  function openViewer(src, aspect){
+
+  
+    
+
+    
+//const vw = window.innerWidth * 0.89;
+//const vh = window.innerHeight * 0.89;
+
+//let w = vw;
+//let h = w / aspect;
+
+//if (h > vh) {
+//    h = vh;
+//    w = h * aspect;
+//}
+
+//viewerFrame.style.width = w + "px";
+//viewerFrame.style.height = h + "px";
+//     viewerFrame.style.aspectRatio = aspect;
+    
+  document.body.classList.add("no-scroll");
+  document.documentElement.classList.add("no-scroll");
+ 
+  viewerImage.style.backgroundImage = `url("${src}")`;
+  viewerImage.style.aspectRatio = aspect;
+    viewerImage.dataset.ratio = aspect; // kinda real aspect
+  viewer.classList.add("open");
+   
+
+ requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            //viewer.classList.add("open");
+            //document.body.classList.add("no-scroll");
+        });
+    });
+
+   // Сбросить состояние
+    viewerImage.classList.remove("animate");
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            viewerImage.classList.add("animate");
+        });
+    });
+
+    limitRect = calcVLs();
+    backRect = realRect();
+  
+}
+
+function closeViewer() {
+if (scale > 1) return;
+  
+  rubberF = false;
+     rubberTx = 0;
+    rubberTy = 0;
+  tx = 0;
+  ty = 0;
+  //startMRect=null;
+  scale = 1;
+  viewerWrp.style.transform = `scale(${scale})`;
+  viewerImage.style.transform = `scale(${scale})`;
+  viewerImage.classList.remove("animate");
+  viewer.classList.remove("open");
+  
+  document.body.classList.remove("no-scroll");
+  document.documentElement.classList.remove("no-scroll");
+}
+
+
+  viewer.addEventListener("click", (e) => {
+    if (e.clientX == cx && e.clientY == cy) {
+      closeViewer();
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeViewer();
+    }
+});
+
+
+  
+// пинч картинки в лайтбоксе
+
+
+  function distance(t1, t2) {
+    return Math.hypot(
+        t2.clientX - t1.clientX,
+        t2.clientY - t1.clientY
+    );
+}
+  
+ // закоментим старую реализацию
+
+  let firstMove = true;
+  let pinchActive = false;
+let startDistance = 0;
+let startRect;
+let startCenterX;
+let startCenterY;
+//let currentScale = 1;
+
+/*
+  viewerImage.addEventListener("touchstart", e => {
+    if (e.touches.length !== 2) return;
+    viewerImage.classList.add("pinching");
+    startDistance = distance(e.touches[0], e.touches[1]);
+
+    //startRect = viewerImage.getBoundingClientRect();
+
+
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+    
+  const viewerRect = viewer.getBoundingClientRect(); // my calc
+  const viewerRatio = viewerRect.width / viewerRect.height;
+    
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+//const aspectRatio = viewerImage.style.aspectRatio; //  Number(viewerImage.dataset.aspect);
+const aspectRatio = viewerImage.dataset.ratio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+startRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+
+
+    
+    
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+   // const rect = viewerImage.getBoundingClientRect();
+
+
+const clampX =  Math.min(1, aspectRatio / viewerRatio);
+const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    
+    //клампинг
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
+
+    // Ограничиваем точку строго внутри картинки
+    //const clampedX = Math.max(0, Math.min(offsetX, startRect.width));
+    //const clampedY = Math.max(0, Math.min(offsetY, startRect.height));
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
+//viewerImage.style.transformOrigin =
+    //`${cx - startRect.left}px ${cy - startRect.top}px`;
+    
+}, { passive: false });  
+  */
+
+
+
+  
+// вариант с трасформ ориджин и скейл
+  
+ /* 
+  viewerImage.addEventListener("touchstart", e => {
+    if (e.touches.length !== 2) return;
+    e.preventDefault();
+   // 
+    
+    startDistance = distance(e.touches[0], e.touches[1]);
+
+    startRect = viewerImage.getBoundingClientRect();
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+     // проверка попадает ли центр касания в картинку
+      const isCenterInside = (
+            cx >= startRect.left && cx <= startRect.right &&
+            cy >= startRect.top && cy <= startRect.bottom
+        );
+
+    if (!isCenterInside) {
+      return;
+    }
+
+    pinchActive = true;
+    viewerImage.classList.add("pinching");
+    const aspectRatio = viewerImage.dataset.ratio;
+    const viewerRect = viewer.getBoundingClientRect(); // my calc
+    const viewerRatio = viewerRect.width / viewerRect.height;
+    
+    //const clampX =  Math.min(1, aspectRatio / viewerRatio);
+    //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    const clampX = 1;
+    const clampY = 1;
+
+    
+    //клампинг
+    const offsetX = (cx - startRect.left) * clampX;
+    const offsetY = (cy - startRect.top) * clampY;
+    viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+    
+}, { passive: false });
+
+*/
+
+  /*
+viewerImage.addEventListener("touchstart", e => {
+   e.preventDefault();
+    if (event.touches.length < 2) {
+        pinchActive = false; // Сбрасываем, если палец один
+      firstMove = true;
+    }
+
+  }, { passive: false });
+  */
+  
+  viewerImage.addEventListener("touchmove", e => {
+       e.preventDefault();
+    
+      if (event.touches.length < 2) {
+        if (pinchActive) {
+            resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
+        }
+        return; // Прекращаем любые вычисления зума
+    }
+    
+    if (e.touches.length !== 2) return;
+   
+
+     
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    
+    if (firstMove) {
+      firstMove = false;
+      startRect = viewerImage.getBoundingClientRect();
+
+      startDistance = distance(e.touches[0], e.touches[1]);
+      
+        const offsetX = (cx - startRect.left) * 1;
+        const offsetY = (cy - startRect.top) * 1;
+    
+      viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
+       const isCenterInside = (
+            cx >= startRect.left && cx <= startRect.right &&
+            cy >= startRect.top && cy <= startRect.bottom
+        );
+
+      pinchActive = isCenterInside; //по сути одно и то же   
+    }
+
+  
+    if (!pinchActive) return;
+   
+
+    viewerImage.classList.add("pinching");
+    
+   
+  
+    
+    //const aspectRatio = viewerImage.dataset.ratio;
+    //const viewerRect = viewer.getBoundingClientRect(); // my calc
+    //const viewerRatio = viewerRect.width / viewerRect.height;
+    
+        //const clampX =  Math.min(1, aspectRatio / viewerRatio);
+        //const clampY =  Math.min(1, viewerRatio / aspectRatio);
+    //const clampX = 1;
+    //const clampY = 1;
+        
+    //клампинг
+   // const offsetX = (cx - startRect.left) * clampX;
+    //const offsetY = (cy - startRect.top) * clampY;
+    
+    //viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
+
+
+
+   const d = distance(e.touches[0], e.touches[1]);
+const rawScale = Math.max(.8, d / startDistance);
+let scale;
+const maxK = 3;
+  
+if (rawScale <= maxK) {
+    scale = rawScale;
+} else {
+    const over = rawScale - maxK;
+   // scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
+  scale = maxK + (rawScale - maxK) * 0.18;
+}
+  
+   viewerImage.style.transform = `scale(${scale})`;
+}, { passive: false });
+
+
+
+
+  
+//рабочий вариант с траснлейт и скейл
+  
+ /* 
+viewerImage.addEventListener("touchstart", e => {
+    
+    if (e.touches.length !== 2) return;
+    viewerImage.classList.add("pinching");
+    startDistance = distance(e.touches[0], e.touches[1]);
+
+    startCenterX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    startCenterY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+    const rect = viewerImage.getBoundingClientRect();
+
+    viewerImage.style.transformOrigin =
+        `${startCenterX - rect.left}px ${startCenterY - rect.top}px`;
+
+}, { passive: false });
+  
+
+viewerImage.addEventListener("touchmove", e => {
+    if (e.touches.length !== 2) return;
+    e.preventDefault();
+ 
+    const d = distance(e.touches[0], e.touches[1]);
+  
+  const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+const dx = cx - startCenterX;
+const dy = cy - startCenterY;
+    //currentScale = d / startDistance;
+    //currentScale = Math.max(.8, Math.min(3, currentScale));
+
+  
+const rawScale = Math.max(.8, d / startDistance);
+let scale;
+const maxK = 3;
+  
+if (rawScale <= maxK) {
+    scale = rawScale;
+} else {
+    const over = rawScale - maxK;
+   // scale = 2.5 + (1 - Math.exp(-over * 2)) * 0.7;
+  scale = maxK + (rawScale - maxK) * 0.18;
+}
+  
+   // viewerImage.style.transform = `scale(${scale})`;
+
+  viewerImage.style.transform =
+    `translate(${dx}px, ${dy}px) scale(${scale})`;
+}, { passive: false });
+
+*/
+
+
+
+
+  
+  
+  function resetZoom() {
+    pinchActive = false;
+    firstMove = true;
+    viewerImage.classList.remove("pinching");
+      requestAnimationFrame(() => {
+        //viewerImage.style.transformOrigin = "center center";
+        viewerImage.style.transform = "scale(1)";
+    });
+}
+
+viewerImage.addEventListener("touchend", resetZoom);
+viewerImage.addEventListener("touchcancel", resetZoom);
+
+
+
+  
+//масштаб колесом
+
+/*
+  let scale = 1;
+let tx = 0;
+let ty = 0;
+  let startMRect;
+
+  let rubberF = false;
+  let rubberMx = 0;
+let rubberMy = 0;
+ let rubberScale;
+    let rubberTx = 0;
+let rubberTy = 0;
+
+  function updateTransform() {
+    viewerImage.style.transform =
+        `translate(${tx}px, ${ty}px) scale(${scale})`;
+}
+
+
+  
+viewerImage.addEventListener("wheel", e => {
+
+    e.preventDefault();
+
+
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+    
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+const aspectRatio = viewerImage.dataset.ratio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+startMRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+
+  // проверка попадает ли мышь в картинку
+      const isCenterInside = (
+            e.clientX >= startMRect.left && e.clientX <= startMRect.right &&
+            e.clientY >= startMRect.top && e.clientY <= startMRect.bottom
+        );
+
+    if (!isCenterInside) {
+      return;
+    }
+
+  
+  
+    const maxScale = 3;
+    const rubberLimit = 3.3;
+
+    const oldScale = scale;
+  
+    if (e.deltaY < 0)
+        scale *= 1.12;
+    else
+        scale /= 1.12;
+
+    // ограничение снизу
+    scale = Math.max(.7, scale);
+
+    // сверху допускаем немного "перетянуть"
+    scale = Math.min(rubberLimit, scale);
+
+
+ //scale = Math.min(maxScale, scale);
+
+
+
+
+        // координаты мыши относительно центра окна
+// const rect = viewerImage.getBoundingClientRect();
+  const rect = startMRect;
+  
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+  
+
+
+    // проверяем вход в резиновую зону
+  if (scale > maxScale) {rubberscale = scale}
+  
+if (scale > maxScale && !rubberF) {
+
+    rubberF = true;
+
+    rubberScale = scale;
+    scale = maxScale;
+    // запоминаем положение иыши .. картинки
+    rubberMx = mx;
+    rubberMy = my;
+
+   const k = scale / oldScale;
+
+    tx -= (mx - rect.width / 2) * (k - 1);
+    ty -= (my - rect.height / 2) * (k - 1);
+  
+    rubberTx = tx;
+    rubberTy = ty;
+} 
+
+
+// пока не в резинке — продолжаем панорамирование
+if (!rubberF) {
+ const k = scale / oldScale;
+
+    tx -= (mx - rect.width / 2) * (k - 1);
+    ty -= (my - rect.height / 2) * (k - 1);
+
+    }
+  
+  
+ 
+
+
+  
+
+    clearTimeout(viewerImage._rubber);
+    viewerImage._rubber = setTimeout(() => {
+
+        if (scale > maxScale) {
+            
+         
+
+        scale = maxScale;
+        const ratio = scale / rubberScale;
+
+        tx = rubberTx - (rubberMx - rect.width / 2) * (ratio - 1);
+        ty = rubberTy - (rubberMy - rect.height / 2) * (ratio - 1);
+
+        rubberF = false;
+          rubberTx = 0;
+        rubberTy = 0;
+          rubberScale = 0;
+          
+          updateTransform();
+        } 
+      
+       }, 80);
+ 
+
+  
+    if (oldScale > scale) {
+    scale = 1;
+    tx = 0.0;
+    ty = 0.0;
+    }
+ 
+    updateTransform();
+
+
+   
+}, { passive:false });
+
+
+  пердыдущая версия колеса*/
+
+
+let scale = 1;
+let tx = 0;
+let ty = 0;
+  let backRect;
+  let limitRect;
+
+let rubberF = false;
+
+// Сюда мы будем сохранять координаты мыши последнего события wheel
+let lastWheelX = 0;
+let lastWheelY = 0;
+
+
+  //лимиты при перемещении картинки
+function calcVLs() {
+    // 1. Находим текущую ширину и высоту всего окна браузера в пикселях
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // 2. Вычисляем физическую ширину и высоту лимита (89vw и 89vh)
+    const width = vw * 0.89;
+    const height = vh * 0.89;
+
+    // 3. Вычисляем координаты top и left, чтобы область была строго по центру экрана
+    const left = (vw - width) / 2;
+    const top = (vh - height) / 2;
+
+    // 4. Возвращаем объект, полностью повторяющий структуру getBoundingClientRect()
+    return {
+        width: width,
+        height: height,
+        left: left,
+        top: top,
+        right: left + width,
+        bottom: top + height
+    };
+}
+
+
+  
+  
+    function realRect() {
+// 1. Получаем размеры и позицию самого контейнера
+const containerRect = viewerImage.getBoundingClientRect();
+
+//const containerRect = viewerWrp.getBoundingClientRect();
+      
+// 2. Рассчитываем соотношение сторон контейнера
+const containerRatio = containerRect.width / containerRect.height;
+const aspectRatio = viewerImage.dataset.ratio;
+let width, height, x, y;
+
+// 3. Вычисляем размеры и координаты по логике "contain"
+if (containerRatio > aspectRatio) {
+    // Контейнер шире, чем картинка -> высота картинки равна высоте контейнера
+    height = containerRect.height;
+    width = height * aspectRatio;
+    x = containerRect.left + (containerRect.width - width) / 2;
+    y = containerRect.top;
+} else {
+    // Контейнер выше, чем картинка -> ширина картинки равна ширине контейнера
+    width = containerRect.width;
+    height = width / aspectRatio;
+    x = containerRect.left;
+    y = containerRect.top + (containerRect.height - height) / 2;
+}
+
+// 4. Формируем финальный объект startRect с теми же свойствами, что у DOMRect
+const rRect = {
+    width,
+    height,
+    left: x,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    x,
+    y
+};
+      
+    return rRect;
+}
+
+function updateTransform() {
+    viewerWrp.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+}
+
+  let unlockTime = 0;
+  let trackY = 0;
+  let maxTrackY = 0;
+  
+viewerImage.addEventListener("wheel", e => {
+    e.preventDefault();
+
+  //блок на время возврата к маштабу 1
+  if (Date.now() < unlockTime) return;
+
+
+  trackY = e.deltaY;
+  if (maxTrackY < trackY) maxTrackY = trackY;
+  
+  //отсекаем микро события трекпада
+   const absX = Math.abs(e.deltaX);
+  const absY = Math.abs(e.deltaY);
+  if (absX > absY) return; 
+ if (absY < 77) return; 
+  
+    // 1. Проверка нахождения мыши в контейнере
+     //const containerRect = viewerImage.getBoundingClientRect();
+
+  
+    backRect = realRect();
+    const isMouseInside = (
+        e.clientX >= backRect.left && e.clientX <= backRect.right &&
+        e.clientY >= backRect.top && e.clientY <= backRect.bottom
+    );
+
+    if (!isMouseInside) return;
+
+  //const containerRect = viewerImage.getBoundingClientRect();
+    // Запоминаем текущие координаты мыши для этого шага скролла
+  // отсчитываем от контейнера лефт и топ
+    lastWheelX = e.clientX;
+    lastWheelY = e.clientY;
+
+    const maxScale = 3;
+    const rubberLimit = 3.3;
+    const minScale = 1;
+const rubberMin = 0.93;
+
+    const oldScale = scale;
+
+    // 2. Расчет масштаба
+    if (e.deltaY < 0) {
+        scale *= 1.12;
+    } else {
+        scale /= 1.12;
+    }
+
+    // Ограничения
+    scale = Math.max(rubberMin, scale);
+    scale = Math.min(rubberLimit, scale);
+
+
+
+
+    // 4. Панорамирование во время скролла (работает одинаково везде)
+    // Картинка послушно следует за курсором, даже в режиме резинки
+    const k = scale / oldScale;
+    tx = lastWheelX - (lastWheelX - tx) * k;
+    ty = lastWheelY - (lastWheelY - ty) * k;
+
+
+
+
+  
+if (scale < minScale) {
+    rubberF = true;
+}
+
+  
+    // Входим в режим резинки, если превысили лимит
+    if (scale > maxScale) {
+        rubberF = true;
+    }
+
+    // 5. Таймер плавного отскока назад
+    clearTimeout(viewerImage._rubber);
+    viewerImage._rubber = setTimeout(() => {
+        if (scale > maxScale) {
+                      // Вычисляем коэффициент сжатия от текущего до maxScale
+            const ratio = maxScale / scale;
+            scale = maxScale;
+
+            // ВАЖНО: Сжимаем картинку относительно lastWheelX/Y (где скролл ЗАВЕРШИЛСЯ),
+            // а не e.clientX/Y (где мышь может быть сейчас). Это убирает прыжки!
+            tx = lastWheelX - (lastWheelX - tx) * ratio;
+            ty = lastWheelY - (lastWheelY - ty) * ratio;
+
+            rubberF = false;
+            updateTransform();
+        }
+
+      /* нижняя резинка */
+if (scale < minScale) {
+        const ratio = minScale / scale;
+        scale = minScale;
+        tx = 0.0;
+        ty = 0.0;
+
+        //tx = lastWheelX - (lastWheelX - tx) * ratio;
+       // ty = lastWheelY - (lastWheelY - ty) * ratio;
+        // пока сначала просто возвращаем масштаб
+         rubberF = false;
+        updateTransform();
+         }
+
+     /* if (scale == minScale) {
+        tx = 0.0;
+        ty = 0.0;
+        }   */
+
+      
+    }, 80);
+
+
+
+ if (oldScale > scale && !rubberF) {
+    scale = 1;
+    tx = 0.0;
+    ty = 0.0;
+
+ unlockTime = Date.now() + 125; 
+    }
+  
+    updateTransform();
+  drawDebugRect(); 
+}, { passive: false });
+
+
+
+//убираем контекстное меню
+window.addEventListener('contextmenu', (e) => {
+  e.preventDefault(); 
+});
+
+
+
+//мышь влияет на прозрачность меню
+  
+window.addEventListener('mousemove', (e) => {
+  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
+
+backRect = realRect(); 
+const isHover = (
+            e.clientX >= backRect.left && e.clientX <= backRect.right &&
+            e.clientY >= backRect.top && e.clientY <= backRect.bottom
+        );
+  if (isHover) viewerImage.classList.add("hover")
+    else viewerImage.classList.remove("hover");
+
+  
+    lastWheelX = e.clientX;
+    lastWheelY = e.clientY;
+
+  // отменяем панарамирование если не нажата ЛКМ
+   if (e.buttons !== 1) isDragging = false;
+  
+  if (!isDragging) return;
+ 
+  
+    // Вычисляем новый сдвиг
+    tx = e.clientX - startX;
+    ty = e.clientY - startY;
+
+    //updateTransform();
+    //backRect = realRect(); 
+
+
+  /*
+ // 2. Получаем размеры базовой области (limitRect)
+    const limit = limitRect;
+    
+    // Физические размеры картинки на экране в текущем масштабе
+  
+  
+  //уберем фактор масштаба
+    const currentWidth = backRect.width;
+    const currentHeight = backRect.height;
+
+    // 3. Ограничения по вертикали (Y)
+    if (currentHeight > limit.height) {
+        // Верхний край картинки не должен опускаться ниже верхнего края контейнера
+        if (ty > 0) ty = 0;
+        
+        // Нижний край картинки не должен подниматься выше нижнего края контейнера
+        // Минимальный ty равен разнице высот (уйдет в минус)
+        const minTy = limit.height - currentHeight;
+        if (ty < minTy) ty = minTy;
+    } else {
+        // Если картинка меньше контейнера, центрируем её по вертикали
+        ty = (limit.height - currentHeight) / 2;
+    }
+
+    // 4. Ограничения по горизонтали (X)
+    if (currentWidth > limit.width) {
+        // Левый край картинки не должен уходить правее левого края контейнера
+        if (tx > 0) tx = 0;
+        
+        // Правый край картинки не должен уходить левее правого края контейнера
+        const minTx = limit.width - currentWidth;
+        if (tx < minTx) tx = minTx;
+    } else {
+        // Если картинка меньше контейнера, центрируем её по горизонтали
+        tx = (limit.width - currentWidth) / 2;
+    }
+  */
+
+
+  /*
+    // 4. Корректировка по горизонтали (X)
+    // Левый край картинки ушел правее левого края лимита
+    if (backRect.left > limitRect.left) {
+        tx -= (backRect.left - limitRect.left);
+    }
+    // Правый край картинки ушел левее правого края лимита
+    if (backRect.right < limitRect.right) {
+        tx += (limitRect.right - backRect.right);
+    }
+
+    // 5. Корректировка по вертикали (Y)
+    // Верхний край картинки ушел ниже верхнего края лимита
+    if (backRect.top > limitRect.top) {
+        ty -= (backRect.top - limitRect.top);
+    }
+    // Нижний край картинки ушел выше нижнего края лимита
+    if (backRect.bottom < limitRect.bottom) {
+        ty += (limitRect.bottom - backRect.bottom);
+    }
+
+*/
+
+    // Применяем изменения
+    updateTransform();
+  drawDebugRect(); 
+
+});
+
+
+//ресайз окна обновляет данные областей
+  
+window.addEventListener("resize", () => {
+    // Проверяем, открыт ли лайтбокс (если у вас есть для этого флаг или класс)
+    if (viewer.classList.contains("open")) { 
+        
+      // Пересчитываем базовую область заново
+        limitRect = calcVLs();
+       backRect = realRect();
+      drawDebugRect(); 
+      
+    }
+});
+
+  
+
+  // Переменные для отслеживания состояния перетаскивания
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+
+// Функция обновления CSS-трансформации (замените на вашу, если она называется иначе)
+//function updateTransform() {
+//    viewerImage.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+//}
+
+// 1. Начало перетаскивания
+  let cx = 0;
+  let cy = 0;
+viewerImage.addEventListener("mousedown", e => {
+   
+  cx = e.clientX;
+  cy = e.clientY;
+  
+    // Разрешаем перетаскивание только если картинка увеличена
+    if (scale <= 1) return; 
+    
+    // Блокируем стандартное поведение браузера (например, перетаскивание самой картинки)
+    e.preventDefault(); 
+    
+    isDragging = true;
+  
+    // актуализируем реальные видимые краницы  картинки в текущем масщтабе
+    backRect = realRect(); 
+
+  limitRect = calcVLs();
+
+  
+    viewerWrp.style.transition = "transform .0s ease-in-out .0s";
+    //viewerImage.style.cursor = "grabbing";
+
+    // Запоминаем стартовую позицию курсора с учетом уже имеющегося сдвига (tx, ty)
+    startX = e.clientX - tx;
+    startY = e.clientY - ty;
+  
+});
+
+
+  // 3. Конец перетаскивания  window ?
+window.addEventListener("mouseup", e => {
+    if (!isDragging) return;
+  
+  
+    isDragging = false;
+  
+  
+  viewerWrp.style.transition = "transform .185s ease-in-out .0s";
+
+  // типа клик на месте не будет сбрасывать картинку в центр
+  if (e.clientX == cx && e.clientY == cy) return;
+
+  //резиновая отттяжка
+  backRect = realRect();
+// 4. Корректировка по горизонтали (X)
+    // Левый край картинки ушел правее левого края лимита
+    if (backRect.left > limitRect.left) {
+        tx -= (backRect.left - limitRect.left);
+    }
+    // Правый край картинки ушел левее правого края лимита
+    if (backRect.right < limitRect.right) {
+        tx += (limitRect.right - backRect.right);
+    }
+
+    // 5. Корректировка по вертикали (Y)
+    // Верхний край картинки ушел ниже верхнего края лимита
+    if (backRect.top > limitRect.top) {
+        ty -= (backRect.top - limitRect.top);
+    }
+    // Нижний край картинки ушел выше нижнего края лимита
+    if (backRect.bottom < limitRect.bottom) {
+        ty += (limitRect.bottom - backRect.bottom);
+    }
+
+  const vw = window.innerWidth;
+    const vh = window.innerHeight;
+  const wrpRect = viewerWrp.getBoundingClientRect();
+  
+    
+ if ((backRect.width * 0.8) <= limitRect.width) {
+        // Здесь можно сбросить tx в дефолтное состояние, если необходимо
+   //tx = 0;
+   tx = (vw - wrpRect.width) / 2;
+    }
+
+  if ((backRect.height * 0.8) <= limitRect.height) {
+        // Здесь можно сбросить tx в дефолтное состояние, если необходимо
+    //ty = 0;
+    ty = (vh - wrpRect.height) / 2;
+    }
+
+  
+   updateTransform();
+
+// Запускаем цикл обновления рамки во время плавного отскока (на 300мс)
+    const startTime = Date.now();
+    function animateDebug() {
+        drawDebugRect();
+        if (Date.now() - startTime < 200) {
+            requestAnimationFrame(animateDebug);
+        }
+    }
+    animateDebug();
+  
+  //drawDebugRect(); 
+    //viewerImage.style.cursor = "grab";
+});
+
+// На случай, если мышь ушла за пределы окна во время перетаскивания
+window.addEventListener("blur", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    //viewerImage.style.cursor = "grab";
+});
+
+
+
+
+
+
+  function drawDebugRect() {
+    const debugEl = document.getElementById("debug-back-rect");
+    if (!debugEl) return;
+    
+    //debugEl.textContent = `Track Y: ${trackY}`;
+    debugEl.children[0].textContent = `Track Y: ${trackY.toFixed(2)}  Max Y: ${maxTrackY.toFixed(2)}`;
+    
+    // Включаем отображение
+    debugEl.style.display = "block";
+
+    // Получаем живые координаты вашей картинки
+    const rect = realRect();
+
+    // Переносим физические пиксели на отладочную рамку
+    debugEl.style.left = `${rect.left}px`;
+    debugEl.style.top = `${rect.top}px`;
+    debugEl.style.width = `${rect.width}px`;
+    debugEl.style.height = `${rect.height}px`;
+}
+  
+  
+  
+  //
+  //
+  //
+  //
+// переключание галереи
+  document.querySelectorAll("#menu a").forEach(item => {
+    item.addEventListener("click", e => {
+
+        e.preventDefault();
+        // переключение галере
+      
+    });
+});
+  
+//
+  //
+  //
+  //
+  //
+  //  
+</script>
+
+</body>
+</html>
