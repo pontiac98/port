@@ -540,9 +540,19 @@ position: sticky;
 
   
 <div id="viewer">
-  <div class="viewerWrp">
-            <div id="viewerImage"></div>
+  
+  <div id="layerA" class="viewerWrp">
+    <div class="viewerImg"></div>
   </div>
+  
+  <div id="layerB" class="viewerWrp">
+    <div id="viewerImage"></div>
+  </div>
+
+   <div id="layerC" class="viewerWrp">
+    <div class="viewerImg"></div>
+  </div>
+  
 </div>
  
   <!-- 
@@ -652,6 +662,52 @@ position: sticky;
     openViewer(card.dataset.image, card.dataset.ratio);
 });
 
+
+
+
+
+  
+// листание картинок в лайтбоксе свайпы через слои
+//
+  //
+  //
+  //
+
+  // слои для трансформация - картинки для преназначения
+  const layerA = document.getElementById("layerA");
+  const layerB = document.getElementById("layerB");
+  const layerC = document.getElementById("layerC");
+
+  const imageA =  layerA.children[0];
+  const imageB =  layerB.children[0];
+  const imageC =  layerC.children[0];
+
+
+  
+layerB.addEventListener("pointerdown", e => {
+   	
+	});
+  
+layerB.addEventListener("pointermove", e => {
+   	
+	});
+  
+layerB.addEventListener("pointerup", e => {
+   	
+	});
+
+
+  layerB.addEventListener("pointercancel", e => {
+    if (layerB.hasPointerCapture(e.pointerId)) {
+        layerB.releasePointerCapture(e.pointerId);
+    }
+});
+
+
+
+
+
+  
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
@@ -1725,6 +1781,8 @@ window.addEventListener("blur", () => {
     debugEl.style.height = `${rect.height}px`;
 }
   
+
+
   
   
   //
