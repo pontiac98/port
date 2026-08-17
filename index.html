@@ -695,8 +695,7 @@ layerMid.addEventListener("pointerdown", e => {
 	if (!swiping) swiping = true;
 	layerMid.setPointerCapture(e.pointerId);
 	
-	ssX = e.clientX;
-	ssY = e.clientY;
+	startSwipeX = e.clientX;
 	layerMid.style.transition = "transform .0s ease-in-out .0s";
 	});
   
@@ -1790,7 +1789,8 @@ window.addEventListener("mouseup", e => {
 window.addEventListener("blur", () => {
     if (!isDragging) return;
     isDragging = false;
-    //viewerImage.style.cursor = "grab";
+	
+	 endSwipe();
 });
 
 
