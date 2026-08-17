@@ -324,7 +324,7 @@ body::after {
     pointer-events: none;
 }
 
-#layerA {
+#layerTop {
 pointer-events: none;
 }
 	
@@ -545,15 +545,15 @@ position: sticky;
   
 <div id="viewer">
   
-  <div id="layerA" class="viewerWrp">
+  <div id="layerBot" class="viewerWrp">
     <div class="viewerImg"></div>
   </div>
   
-  <div id="layerB" class="viewerWrp">
+  <div id="layerMid" class="viewerWrp">
     <div id="viewerImage"></div>
   </div>
 
-   <div id="layerC" class="viewerWrp">
+   <div id="layerTop" class="viewerWrp">
     <div class="viewerImg"></div>
   </div>
   
@@ -677,32 +677,32 @@ position: sticky;
   //
 
   // слои для трансформация - картинки для преназначения
-  const layerA = document.getElementById("layerA");
-  const layerB = document.getElementById("layerB");
-  const layerC = document.getElementById("layerC");
+  const layerTop = document.getElementById("layerTop");
+  const layerMid = document.getElementById("layerMid");
+  const layerBot = document.getElementById("layerBot");
 
-  const imageA =  layerA.children[0];
-  const imageB =  layerB.children[0];
-  const imageC =  layerC.children[0];
+  const imageTop =  layerTop.children[0];
+  const imageMid =  layerMid.children[0];
+  const imageBot =  layerBot.children[0];
 
 
   
-layerB.addEventListener("pointerdown", e => {
+layerMid.addEventListener("pointerdown", e => {
    	
 	});
   
-layerB.addEventListener("pointermove", e => {
+layerMid.addEventListener("pointermove", e => {
    	
 	});
   
-layerB.addEventListener("pointerup", e => {
+layerMid.addEventListener("pointerup", e => {
    	
 	});
 
 
-  layerB.addEventListener("pointercancel", e => {
-    if (layerB.hasPointerCapture(e.pointerId)) {
-        layerB.releasePointerCapture(e.pointerId);
+  layerMid.addEventListener("pointercancel", e => {
+    if (layerMid.hasPointerCapture(e.pointerId)) {
+        layerMid.releasePointerCapture(e.pointerId);
     }
 });
 
@@ -715,7 +715,7 @@ layerB.addEventListener("pointerup", e => {
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
-  const viewerWrp = layerB;
+  const viewerWrp = layerMid;
 
   
   function openViewer(src, aspect){
