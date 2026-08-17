@@ -686,10 +686,16 @@ position: sticky;
   const imageBot =  layerBot.children[0];
 	let ssX = 0;
 	let ssY = 0;
+	
+let swiping = false;		
 
   
 layerMid.addEventListener("pointerdown", e => {
    	if (scale > 1) return;
+
+	if (!swiping) swiping = true;
+	setPointerCapture(e.pointerId);
+	
 	ssX = e.clientX;
 	ssY = e.clientY;
 	layerMid.style.transition = "transform .0s ease-in-out .0s";
@@ -699,6 +705,8 @@ layerMid.addEventListener("pointerdown", e => {
   
 layerMid.addEventListener("pointermove", e => {
    	if (scale > 1) return;
+	if (!swiping) return;
+	
 	const sTX = (e.clientX - ssX) * 0.78;
 	layerMid.style.transform = `translate(${sTX}px, ${ssY}px) scale(${scale})`;
 	
@@ -706,6 +714,8 @@ layerMid.addEventListener("pointermove", e => {
   
 layerMid.addEventListener("pointerup", e => {
    	if (scale > 1) return;
+
+	swiping = false;
 	ssX = 0;
 	ssY = 0;
 	
@@ -721,6 +731,7 @@ layerMid.addEventListener("pointerup", e => {
     }
 
 	//if (scale > 1) return;
+	  swiping = false;
 	ssX = 0;
 	ssY = 0;
 	
