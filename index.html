@@ -567,7 +567,10 @@ position: sticky;
   
 <script>
 
-  
+
+
+  // галерея
+  let gallery = [];
 
   // фвто загрузка картинок
   fetch("images.json")
@@ -581,6 +584,7 @@ position: sticky;
             const card = document.createElement("div");
             card.classList.add("card");          
             card.dataset.image = item.url;
+            card.dataset.index = index;
 
             // Пример шаблона размеров
            if (item.type) {
@@ -595,6 +599,11 @@ position: sticky;
             card.appendChild(image);          
             grid.appendChild(card);
             observer.observe(card);
+
+           gallery.push({
+                url: item.url,
+                card: card
+            });
         });
     });
 
