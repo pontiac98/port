@@ -699,13 +699,16 @@ layerMid.addEventListener("pointerdown", e => {
   
 layerMid.addEventListener("pointermove", e => {
    	if (scale > 1) return;
-	const stX = (e.clientX - ssX) * 0.78;
-	layerMid.style.transform = `translate(${stX}px, ${ssY}px) scale(${scale})`;
+	const sTX = (e.clientX - ssX) * 0.78;
+	layerMid.style.transform = `translate(${sTX}px, ${ssY}px) scale(${scale})`;
 	
 	});
   
 layerMid.addEventListener("pointerup", e => {
    	if (scale > 1) return;
+	ssX = 0;
+	ssY = 0;
+	
 	layerMid.style.transition = "transform .185s ease-in-out .0s";
 	layerMid.style.transform = `translate(${ssX}px, ${ssY}px) scale(${scale})`;
 	
@@ -716,6 +719,14 @@ layerMid.addEventListener("pointerup", e => {
     if (layerMid.hasPointerCapture(e.pointerId)) {
         layerMid.releasePointerCapture(e.pointerId);
     }
+
+	//if (scale > 1) return;
+	ssX = 0;
+	ssY = 0;
+	
+	layerMid.style.transition = "transform .185s ease-in-out .0s";
+	layerMid.style.transform = `translate(${ssX}px, ${ssY}px) scale(${scale})`;
+	  
 });
 
 	
