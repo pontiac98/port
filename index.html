@@ -694,51 +694,53 @@ layerMid.addEventListener("pointerdown", e => {
    	if (scale > 1) return;
 
 	if (!swiping) swiping = true;
-	setPointerCapture(e.pointerId);
+	layerMid.setPointerCapture(e.pointerId);
 	
 	ssX = e.clientX;
 	ssY = e.clientY;
 	layerMid.style.transition = "transform .0s ease-in-out .0s";
-
-	
 	});
   
 layerMid.addEventListener("pointermove", e => {
    	if (scale > 1) return;
 	if (!swiping) return;
 	
-	const sTX = (e.clientX - ssX) * 0.78;
+	const sTX = (e.clientX - ssX);
 	layerMid.style.transform = `translate(${sTX}px, ${ssY}px) scale(${scale})`;
-	
 	});
   
 layerMid.addEventListener("pointerup", e => {
    	if (scale > 1) return;
+	endSwipe(e);
+	});
 
+
+  layerMid.addEventListener("pointercancel", e => {
+    endSwipe(e)
+   });
+
+	  
+	
+	function endSwipe(e) {
+if (layerMid.hasPointerCapture(e.pointerId)) {
+        layerMid.releasePointerCapture(e.pointerId);
+}
+		  if (
+        e?.pointerId !== undefined &&
+        layerMid.hasPointerCapture(e.pointerId)
+    ) {
+        layerMid.releasePointerCapture(e.pointerId);
+    }
+
+			  
+	//if (scale > 1) return;
 	swiping = false;
 	ssX = 0;
 	ssY = 0;
 	
 	layerMid.style.transition = "transform .185s ease-in-out .0s";
-	layerMid.style.transform = `translate(${ssX}px, ${ssY}px) scale(${scale})`;
-	
-	});
-
-
-  layerMid.addEventListener("pointercancel", e => {
-    if (layerMid.hasPointerCapture(e.pointerId)) {
-        layerMid.releasePointerCapture(e.pointerId);
-    }
-
-	//if (scale > 1) return;
-	  swiping = false;
-	ssX = 0;
-	ssY = 0;
-	
-	layerMid.style.transition = "transform .185s ease-in-out .0s";
-	layerMid.style.transform = `translate(${ssX}px, ${ssY}px) scale(${scale})`;
-	  
-});
+	layerMid.style.transform = `translate(${ssX}px, ${ssY}px) scale(${scale})`;	  
+  }
 
 	
 
