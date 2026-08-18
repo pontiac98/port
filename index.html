@@ -667,7 +667,8 @@ position: sticky;
     const image = card.querySelector(".card-image");
     if (!image.classList.contains("loaded")) return;
 
-    openViewer(card.dataset.image, card.dataset.ratio);
+    //openViewer(card.dataset.image, card.dataset.ratio);
+	  openViewer(card.dataset.index);
 });
 
 
@@ -812,9 +813,12 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
   const viewerWrp = layerMid;
 
   
-  function openViewer(src, aspect){
+  function openViewer(index){
 
-  
+  	const src = gallery[index].dataset.image;
+	const aspect = gallery[index].dataset.ratio;
+
+
     
 
     
