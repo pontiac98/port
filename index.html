@@ -690,6 +690,7 @@ position: sticky;
 
   
 layerMid.addEventListener("pointerdown", e => {
+	layerMid.style.transition = "transform .185s ease-in-out .0s";
    	if (scale > 1) return;
 	
 	const touches = e.targetTouches ? e.targetTouches.length : 1;
@@ -703,13 +704,15 @@ layerMid.addEventListener("pointerdown", e => {
 	layerMid.setPointerCapture(e.pointerId);
 	
 	startSwipeX = e.clientX;
-	layerMid.style.transition = "transform .0s ease-in-out .0s";
+	//layerMid.style.transition = "transform .0s ease-in-out .0s";
 	});
 
 
 	
 layerMid.addEventListener("pointermove", e => {
+	layerMid.style.transition = "transform .0s ease-in-out .0s";
    	if (scale > 1) return;
+	
 	
 	const touches = e.targetTouches ? e.targetTouches.length : 1;
 	if (touches > 1) {
