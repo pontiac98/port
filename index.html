@@ -710,8 +710,7 @@ layerMid.addEventListener("pointerdown", e => {
 
 	
 layerMid.addEventListener("pointermove", e => {
-	layerMid.style.transition = "transform .0s ease-in-out .0s";
-   	if (scale > 1) return;
+	if (scale > 1) return;
 	
 	
 	const touches = e.targetTouches ? e.targetTouches.length : 1;
@@ -722,6 +721,9 @@ layerMid.addEventListener("pointermove", e => {
 	
 	if (!swiping) return;
 	if (pinchActive) return;
+
+	//отключаем анимацию только когда происходит свайп
+	layerMid.style.transition = "transform .0s ease-in-out .0s";
 	
 	const deltaSwipeX = (e.clientX - startSwipeX) * 0.78;
 	layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
