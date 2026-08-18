@@ -710,6 +710,13 @@ layerMid.addEventListener("pointerdown", e => {
 	
 layerMid.addEventListener("pointermove", e => {
    	if (scale > 1) return;
+	
+	const touches = e.targetTouches ? e.targetTouches.length : 1;
+	if (touches > 1) {
+		swiping = false;
+		return; 
+	}
+	
 	if (!swiping) return;
 	if (pinchActive) return;
 	
