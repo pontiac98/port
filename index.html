@@ -358,6 +358,8 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     transform: scale(1.0); 
     opacity: 1.0;
     touch-action: none;
+	user-select: none;
+	pointer-events: none;
 	filter: brightness(50%);
 	
     /*transform-origin: 50% 50%; maybe */
@@ -749,7 +751,8 @@ if (activePointers.size > 1) {
 	// подтверждение свайпа
 	if (!swiping) swiping = true;
 	//layerMid.setPointerCapture(e.pointerId);
-	
+
+	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
 	startSwipeX = e.clientX;
 	//layerMid.style.transition = "transform .0s ease-in-out .0s";
 	});
@@ -806,7 +809,9 @@ layerMid.addEventListener("pointerup", e => {
 	  
 	
 	function endSwipe(e) {
-
+  if (e && layerMid.hasPointerCapture(e.pointerId)) {
+        layerMid.releasePointerCapture(e.pointerId);
+    }
 		/*
 if (layerMid.hasPointerCapture(e.pointerId)) {
         layerMid.releasePointerCapture(e.pointerId);
