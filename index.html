@@ -1016,8 +1016,10 @@ viewerImage.addEventListener("touchstart", e => {
   viewerImage.addEventListener("touchmove", e => {
        e.preventDefault();
     
-      if (event.touches.length < 2) {
+	  // тут измениния возможно не нужны
+      if (e.touches.length < 2) {
         if (pinchActive) {
+			pinchActive = false;
             resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
         }
         return; // Прекращаем любые вычисления зума
