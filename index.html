@@ -1909,10 +1909,9 @@ window.addEventListener("mouseup", e => {
 
 // На случай, если мышь ушла за пределы окна во время перетаскивания
 window.addEventListener("blur", () => {
+	endSwipe();
     if (!isDragging) return;
     isDragging = false;
-	
-	 endSwipe();
 });
 
 
