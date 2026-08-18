@@ -689,12 +689,15 @@ position: sticky;
   const imageTop =  layerTop.children[0];
   const imageMid =  layerMid.children[0];
   const imageBot =  layerBot.children[0];
-	
+
+	const activePointers = new Map();
 	let startSwipeX = 0;
 	let swiping = false;		
 
   
 layerMid.addEventListener("pointerdown", e => {
+	activePointers.set(e.pointerId, e);
+	
 	layerMid.style.transition = "transform .185s ease-in-out .0s";
    	if (scale > 1) return;
 
@@ -706,15 +709,20 @@ layerMid.addEventListener("pointerdown", e => {
 	}
 	*/
 
+if (activePointers.size > 1) {
+    endSwipe(e);
+    return;
+}
+
+	
 	if (pinchActive) {
-    	swiping = false;
-		//endSwipe(e);
+		endSwipe(e);
     	return;
 	}
 
 	// подтверждение свайпа
 	if (!swiping) swiping = true;
-	layerMid.setPointerCapture(e.pointerId);
+	//layerMid.setPointerCapture(e.pointerId);
 	
 	startSwipeX = e.clientX;
 	//layerMid.style.transition = "transform .0s ease-in-out .0s";
@@ -723,6 +731,9 @@ layerMid.addEventListener("pointerdown", e => {
 
 	
 layerMid.addEventListener("pointermove", e => {
+	 if (activePointers.has(e.pointerId)) {
+        activePointers.set(e.pointerId, e);
+    }
 	if (scale > 1) return;
 	
 	/* тут нужна альтерантива
@@ -732,12 +743,15 @@ layerMid.addEventListener("pointermove", e => {
 		return; 
 	}
 	*/
+	if (activePointers.size > 1) {
+	endSwipe(e);
+    return;
+}
 
 	
 	if (!swiping) return;
 	if (pinchActive) {
-    	swiping = false;
-		endSwipe(e);
+    	endSwipe(e);
     	return;
 	}
 
@@ -752,18 +766,22 @@ layerMid.addEventListener("pointermove", e => {
 
 	
 layerMid.addEventListener("pointerup", e => {
+	activePointers.delete(e.pointerId); 
    	if (scale > 1) return;
 	endSwipe(e);
 	});
 
 
   layerMid.addEventListener("pointercancel", e => {
+	  activePointers.delete(e.pointerId); 
     endSwipe(e)
    });
 
 	  
 	
 	function endSwipe(e) {
+
+		/*
 if (layerMid.hasPointerCapture(e.pointerId)) {
         layerMid.releasePointerCapture(e.pointerId);
 }
@@ -773,7 +791,7 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
     ) {
         layerMid.releasePointerCapture(e.pointerId);
     }
-
+*/
 			  
 	swiping = false;
 	startSwipeX = 0;
