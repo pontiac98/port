@@ -806,18 +806,48 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
 
 
 
+
+	// обновление слоев лайтбокса
+
+	function updateLayers(index) {
+
+const nextCard = gallery[(index + gallery.length + 1) % gallery.length].card;
+const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
+const nowCard = gallery[index].card;
+
+
+imageBot.style.backgroundImage = `url("${nextCard.dataset.src}")`;
+imageBot.style.aspectRatio = nextCard.dataset.ratio;
+imageBot.dataset.ratio = nextCard.dataset.ratio; // kinda real aspect
+layerBot.style.transform = `scale(${.7})`;
+
+imageTop.style.backgroundImage = `url("${prevCard.dataset.src}")`;
+imageTop.style.aspectRatio = prevCard.dataset.ratio;
+imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
+layerBot.style.transform = `translateX(${-50%}px)`;
+
+
+imageMid.style.backgroundImage = `url("${nowCard.dataset.src}")`;
+imageMid.style.aspectRatio = nowCard.dataset.ratio;
+imageMid.dataset.ratio = nowCard.dataset.ratio; // kinda real aspect
+}
+
+
   
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
   const viewerWrp = layerMid;
 
-  
+
+
+	//открытие лайтбокса
   function openViewer(index){
 
-  	const src = gallery[index].dataset.image;
-	const aspect = gallery[index].dataset.ratio;
+  	const src = gallery[index].card.dataset.image;
+	const aspect = gallery[index].card.dataset.ratio;
 
+	  updateLayers(index);
 
     
 
