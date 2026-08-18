@@ -345,6 +345,31 @@ touch-action: none; /* Запрещает нативный скролл и зу�
       transform .185s ease-in-out .0s;
 }
 
+
+
+.viewerImg {
+     width: 90%; 
+    height: 90%;  
+   
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.0); 
+    opacity: 1.0;
+    touch-action: none;
+	filter: brightness(50%);
+	
+    /*transform-origin: 50% 50%; maybe */
+    transform-origin: center center;  
+
+    transition:
+		filter .2s ease-in-out .0s,
+      transform .185s ease-in-out .0s, 
+      opacity .1s ease-in .0s; 
+}
+
+	
   
  #viewerImage {
   /*  width: 89vw; 
@@ -819,13 +844,12 @@ const nowCard = gallery[index].card;
 imageBot.style.backgroundImage = `url("${nextCard.dataset.image}")`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
 imageBot.dataset.ratio = nextCard.dataset.ratio; // kinda real aspect
-layerBot.style.transform = `scale(0.7)`;
+imagerBot.style.transform = `scale(0.7)`; // картинку снизу уменьшаем
 
 imageTop.style.backgroundImage = `url("${prevCard.dataset.image}")`;
 imageTop.style.aspectRatio = prevCard.dataset.ratio;
 imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
-layerBot.style.transform = `translateX(-50%)`;
-
+layerBot.style.transform = `translateX(-50%)`; // весь слой смещаем
 
 imageMid.style.backgroundImage = `url("${nowCard.dataset.image}")`;
 imageMid.style.aspectRatio = nowCard.dataset.ratio;
