@@ -819,12 +819,12 @@ const nowCard = gallery[index].card;
 imageBot.style.backgroundImage = `url("${nextCard.dataset.src}")`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
 imageBot.dataset.ratio = nextCard.dataset.ratio; // kinda real aspect
-layerBot.style.transform = `scale(${.7})`;
+layerBot.style.transform = `scale(0.7)`;
 
 imageTop.style.backgroundImage = `url("${prevCard.dataset.src}")`;
 imageTop.style.aspectRatio = prevCard.dataset.ratio;
 imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
-layerBot.style.transform = `translateX(${-50%}px)`;
+layerBot.style.transform = `translateX(-50%)`;
 
 
 imageMid.style.backgroundImage = `url("${nowCard.dataset.src}")`;
