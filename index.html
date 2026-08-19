@@ -360,7 +360,7 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     touch-action: none;
 	user-select: none;
 	pointer-events: none;
-	filter: brightness(50%);
+	filter: brightness(100%);
 	
     /*transform-origin: 50% 50%; maybe */
     transform-origin: center center;  
@@ -846,15 +846,17 @@ const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
 const nowCard = gallery[index].card;
 
 
+imageBot.style.transform = `scale(0.7)`; // картинку снизу уменьшаем
+imageBot.style.opacity = `0.3`;
 imageBot.style.backgroundImage = `url("${nextCard.dataset.image}")`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
 imageBot.dataset.ratio = nextCard.dataset.ratio; // kinda real aspect
-imageBot.style.transform = `scale(0.7)`; // картинку снизу уменьшаем
 
+layerTop.style.transform = `translateX(-50%)`; // весь слой смещаем
 imageTop.style.backgroundImage = `url("${prevCard.dataset.image}")`;
 imageTop.style.aspectRatio = prevCard.dataset.ratio;
 imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
-layerTop.style.transform = `translateX(-50%)`; // весь слой смещаем
+
 
 imageMid.style.backgroundImage = `url("${nowCard.dataset.image}")`;
 imageMid.style.aspectRatio = nowCard.dataset.ratio;
