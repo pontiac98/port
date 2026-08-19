@@ -791,6 +791,9 @@ layerMid.addEventListener("pointermove", e => {
 
 	//отключаем анимацию только когда происходит свайп
 	layerMid.style.transition = "transform .0s ease-in-out .0s";
+	layerTop.style.transition = "transform .0s ease-in-out .0s";
+	layerBot.style.transition = "transform .0s ease-in-out .0s";
+	imageBot.style.transition = "transform .0s ease-in-out .0s";
 	
 	const rF = 0.78; // фактор тяжести
 	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
