@@ -790,10 +790,13 @@ layerMid.addEventListener("pointermove", e => {
 	}
 
 	//отключаем анимацию только когда происходит свайп
-	layerMid.style.transition = "transform .0s ease-in-out .0s";
-	layerTop.style.transition = "transform .0s ease-in-out .0s";
-	layerBot.style.transition = "transform .0s ease-in-out .0s";
-	imageBot.style.transition = "transform .0s ease-in-out .0s";
+	layerMid.style.transition = "none";
+	imageMid.style.transition = "none";
+	
+	layerTop.style.transition = "none";
+	
+	imageBot.style.transition = "none";
+	
 	
 	const rF = 0.78; // фактор тяжести
 	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
@@ -814,13 +817,14 @@ layerMid.addEventListener("pointermove", e => {
 
 	//  свайп в право
 	if (deltaSwipeX > 0) {
-		const scaleMid = 1 - scaleK * progress;
+		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
 
 	imageMid.style.opacity = `${opaMid}`;	
 	imageMid.style.transform = `scale(${scaleMid})`;
 		// тут надо проссумировать с offsetTopX
-	layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
+	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
+		layerTop.style.transform = `translateX(${progress*100}%) scale(${scale})`;	
 	}
 	
 	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
@@ -861,9 +865,23 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
 			  
 	swiping = false;
 	startSwipeX = 0;
-	
-	layerMid.style.transition = "transform .185s ease-in-out .0s";
-	layerMid.style.transform = `translateX(${startSwipeX}px) scale(${scale})`;	  
+
+	// возвращаем все на свои места при отмене свайпа		
+	layerMid.style.transition = "transform .185s ease-in-out";
+	imageMid.style.transition = "opacity .185s ease-in-out";
+
+	layerTop.style.transition = "transform .185s ease-in-out";
+
+	imageBot.style.transition = "opacity .185s ease-in-out, transform .185s ease-in-out";
+		
+
+	imageMid.style.opacity = `1`;	
+	layerMid.style.transform = `translateX(0) scale(1)`;	  
+
+	layerTop.style.transform = `translateX(-100%)`; // весь слой смещаем
+		
+	imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
+	imageBot.style.opacity = `0.0`;
   }
 
 	
@@ -874,20 +892,20 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
 
 	// обновление слоев лайтбокса
 
-	function updateLayers(index) {
+function updateLayers(index) {
 
 const nextCard = gallery[(index + gallery.length + 1) % gallery.length].card;
 const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
 const nowCard = gallery[index].card;
 
 
-imageBot.style.transform = `scale(0.7)`; // картинку снизу уменьшаем
-imageBot.style.opacity = `0.3`;
-imageBot.style.backgroundImage = `url("${nextCard.dataset.image}")`;
+imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
+imageBot.style.opacity = `0.0`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
+imageBot.style.backgroundImage = `url("${nextCard.dataset.image}")`;
 imageBot.dataset.ratio = nextCard.dataset.ratio; // kinda real aspect
 
-layerTop.style.transform = `translateX(-50%)`; // весь слой смещаем
+layerTop.style.transform = `translateX(-100%)`; // весь слой смещаем
 imageTop.style.backgroundImage = `url("${prevCard.dataset.image}")`;
 imageTop.style.aspectRatio = prevCard.dataset.ratio;
 imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
