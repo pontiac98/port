@@ -769,14 +769,16 @@ if (activePointers.size > 1) {
 	});
 
 
+
+	
 	// логика свайпа
 	//
 
 	//
 layerMid.addEventListener("pointermove", e => {
-	// if (activePointers.has(e.pointerId)) {
-    //    activePointers.set(e.pointerId, e);
-   // }
+	 if (activePointers.has(e.pointerId)) {
+        activePointers.set(e.pointerId, e);
+    }
 	
 	if (scale > 1) return;
 	
@@ -856,6 +858,7 @@ layerMid.addEventListener("pointerup", e => {
 
   layerMid.addEventListener("pointercancel", e => {
 	  activePointers.delete(e.pointerId); 
+	  if (scale > 1) return;
     endSwipe(e);
    });
 
@@ -1193,12 +1196,13 @@ viewerImage.addEventListener("touchstart", e => {
        e.preventDefault();
     
 	  // тут измениния возможно не нужны
+	  // работает только  при условии пинч эктив
       if (e.touches.length < 2) {
-       // if (pinchActive) {
-		//	pinchActive = false;
-       //     resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
-       // }
-		resetZoom();
+        if (pinchActive) {
+			pinchActive = false;
+            resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
+        }
+
         return; // Прекращаем любые вычисления зума
     }
     
