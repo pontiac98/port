@@ -749,9 +749,11 @@ if (activePointers.size > 1) {
 
 	// подтверждение свайпа
 	if (!swiping) swiping = true;
-	//layerMid.setPointerCapture(e.pointerId);
+
+	
 
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
+	
 	startSwipeX = e.clientX;
 	imageMid.style.transformOrigin = `center center`; // поправляем центр после пинч зума
 	//layerMid.style.transition = "transform .0s ease-in-out .0s";
@@ -787,10 +789,12 @@ layerMid.addEventListener("pointermove", e => {
 
 	
 	if (!swiping) return;
-/*	if (pinchActive) {
+
+	//проверим и уберем
+	if (pinchActive) {
     	endSwipe(e);
     	return;
-	}  */
+	}  
 
 	//отключаем анимацию только когда происходит свайп
 	viewer.classList.add("swiping");
@@ -829,7 +833,7 @@ layerMid.addEventListener("pointermove", e => {
 	imageMid.style.transform = `scale(${scaleMid})`;
 		// тут надо проссумировать с offsetTopX
 	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
-		layerTop.style.transform = `translateX(-${(1 - progress)*100}%)`;	
+	layerTop.style.transform = `translateX(-${(1 - progress)*100}%)`;	
 	}
 	
 	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
@@ -855,10 +859,10 @@ layerMid.addEventListener("pointerup", e => {
 	
 	function endSwipe(e) {
 
-		//вроде не нужен
- // if (e && layerMid.hasPointerCapture(e.pointerId)) {
-  //      layerMid.releasePointerCapture(e.pointerId);
-  //  }
+		//вроде не нужен?
+ if (e && layerMid.hasPointerCapture(e.pointerId)) {
+        layerMid.releasePointerCapture(e.pointerId);
+    }
 		/*
 if (layerMid.hasPointerCapture(e.pointerId)) {
         layerMid.releasePointerCapture(e.pointerId);
@@ -896,9 +900,13 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
   }
 
 	
+//удаление поинтеров изза экрана
+	function removePointer(e) {
+    activePointers.delete(e.pointerId);
+}
 
-
-
+window.addEventListener("pointerup", removePointer);
+window.addEventListener("pointercancel", removePointer);
 
 
 	// обновление слоев лайтбокса
