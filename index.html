@@ -722,6 +722,8 @@ position: sticky;
 	let startSwipeX = 0;
 	let swiping = false;		
 
+	let progress = 0;
+
   
 layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
@@ -758,7 +760,10 @@ if (activePointers.size > 1) {
 	});
 
 
-	
+	// логика свайпа
+	//
+
+	//
 layerMid.addEventListener("pointermove", e => {
 	 if (activePointers.has(e.pointerId)) {
         activePointers.set(e.pointerId, e);
@@ -787,8 +792,35 @@ layerMid.addEventListener("pointermove", e => {
 	//отключаем анимацию только когда происходит свайп
 	layerMid.style.transition = "transform .0s ease-in-out .0s";
 	
-	const deltaSwipeX = (e.clientX - startSwipeX) * 0.78;
-	layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
+	const rF = 0.78; // фактор тяжести
+	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
+	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
+
+	const scaleF = .5;
+	const opaF = 4;
+	
+	// свайп в лево
+	if (deltaSwipeX < 0) {
+		const scaleBot = 1 - scaleF + scaleF * progress;
+		const opaBot = progress * opaF;
+
+	imageBot.style.opacity = `${opaBot}`;	
+	imageBot.style.transform = `scale(${scaleBot})`;	
+	layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
+	}
+
+	//  свайп в право
+	if (deltaSwipeX > 0) {
+		const scaleMid = 1 - scaleK * progress;
+		const opaMid = (1 - progress ) * .75 + .25;
+
+	imageMid.style.opacity = `${opaMid}`;	
+	imageMid.style.transform = `scale(${scaleMid})`;
+		// тут надо проссумировать с offsetTopX
+	layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
+	}
+	
+	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
 	});
 
 
