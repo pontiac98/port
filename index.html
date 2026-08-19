@@ -764,6 +764,7 @@ if (activePointers.size > 1) {
 
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
 	startSwipeX = e.clientX;
+	imageMid.style.transformOrigin = `center center`; // поправляем центр после пинч зума
 	//layerMid.style.transition = "transform .0s ease-in-out .0s";
 	});
 
@@ -911,6 +912,7 @@ const nextCard = gallery[(index + gallery.length + 1) % gallery.length].card;
 const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
 const nowCard = gallery[index].card;
 
+viewer.classList.add("swiping");
 
 imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
 imageBot.style.opacity = `0.0`;
@@ -927,6 +929,8 @@ imageTop.dataset.ratio = prevCard.dataset.ratio; // kinda real aspect
 imageMid.style.backgroundImage = `url("${nowCard.dataset.image}")`;
 imageMid.style.aspectRatio = nowCard.dataset.ratio;
 imageMid.dataset.ratio = nowCard.dataset.ratio; // kinda real aspect
+
+viewer.classList.remove("swiping"); 
 }
 
 
@@ -967,9 +971,9 @@ imageMid.dataset.ratio = nowCard.dataset.ratio; // kinda real aspect
   document.body.classList.add("no-scroll");
   document.documentElement.classList.add("no-scroll");
  
-  viewerImage.style.backgroundImage = `url("${src}")`;
-  viewerImage.style.aspectRatio = aspect;
-    viewerImage.dataset.ratio = aspect; // kinda real aspect
+ // viewerImage.style.backgroundImage = `url("${src}")`;
+ // viewerImage.style.aspectRatio = aspect;
+ //   viewerImage.dataset.ratio = aspect; // kinda real aspect
   viewer.classList.add("open");
    
 
