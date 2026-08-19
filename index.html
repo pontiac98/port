@@ -774,9 +774,10 @@ if (activePointers.size > 1) {
 
 	//
 layerMid.addEventListener("pointermove", e => {
-	 if (activePointers.has(e.pointerId)) {
-        activePointers.set(e.pointerId, e);
-    }
+	// if (activePointers.has(e.pointerId)) {
+    //    activePointers.set(e.pointerId, e);
+   // }
+	
 	if (scale > 1) return;
 	
 	/* тут нужна альтерантива
@@ -786,17 +787,19 @@ layerMid.addEventListener("pointermove", e => {
 		return; 
 	}
 	*/
+
+	//это посути аналог пинчЭктив
 	if (activePointers.size > 1) {
 	endSwipe(e);
     return;
-}
+	}
 
 	
 	if (!swiping) return;
-	if (pinchActive) {
+/*	if (pinchActive) {
     	endSwipe(e);
     	return;
-	}
+	}  */
 
 	//отключаем анимацию только когда происходит свайп
 	viewer.classList.add("swiping");
@@ -912,7 +915,7 @@ const nextCard = gallery[(index + gallery.length + 1) % gallery.length].card;
 const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
 const nowCard = gallery[index].card;
 
-viewer.classList.add("swiping");
+//viewer.classList.add("swiping");
 
 imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
 imageBot.style.opacity = `0.0`;
@@ -930,7 +933,7 @@ imageMid.style.backgroundImage = `url("${nowCard.dataset.image}")`;
 imageMid.style.aspectRatio = nowCard.dataset.ratio;
 imageMid.dataset.ratio = nowCard.dataset.ratio; // kinda real aspect
 
-viewer.classList.remove("swiping"); 
+//viewer.classList.remove("swiping"); 
 }
 
 
@@ -947,10 +950,10 @@ viewer.classList.remove("swiping");
 
   	const src = gallery[index].card.dataset.image;
 	const aspect = gallery[index].card.dataset.ratio;
-
+		
+	  viewer.classList.add("swiping");
 	  updateLayers(index);
 
-    
 
     
 //const vw = window.innerWidth * 0.89;
@@ -993,6 +996,7 @@ viewer.classList.remove("swiping");
         });
     });
 
+	viewer.classList.remove("swiping"); 
     limitRect = calcVLs();
     backRect = realRect();
   
@@ -1190,10 +1194,11 @@ viewerImage.addEventListener("touchstart", e => {
     
 	  // тут измениния возможно не нужны
       if (e.touches.length < 2) {
-        if (pinchActive) {
-			pinchActive = false;
-            resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
-        }
+       // if (pinchActive) {
+		//	pinchActive = false;
+       //     resetZoom(); // Вызываем вашу функцию сброса/сохранения масштаба
+       // }
+		resetZoom();
         return; // Прекращаем любые вычисления зума
     }
     
