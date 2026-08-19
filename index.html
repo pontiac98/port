@@ -804,7 +804,7 @@ layerMid.addEventListener("pointermove", e => {
 	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
 
 	const scaleF = .5;
-	const opaF = 4;
+	const opaF = 2;
 	
 	// свайп в лево
 	if (deltaSwipeX < 0) {
@@ -825,7 +825,7 @@ layerMid.addEventListener("pointermove", e => {
 	imageMid.style.transform = `scale(${scaleMid})`;
 		// тут надо проссумировать с offsetTopX
 	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
-		layerTop.style.transform = `translateX(-${progress*100}%))`;	
+		layerTop.style.transform = `translateX(-${(1 - progress)*100}%)`;	
 	}
 	
 	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
