@@ -324,6 +324,13 @@ body::after {
     pointer-events: none;
 }
 
+
+.swiping #viewerImage,
+.swiping .viewerWrp,
+.swiping .viewerImg{
+    transition: none;
+}
+	
 #layerTop {
 pointer-events: none;
 }
@@ -366,9 +373,9 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     transform-origin: center center;  
 
     transition:
-		filter .2s ease-in-out .0s,
-      transform .185s ease-in-out .0s, 
-      opacity .1s ease-in .0s; 
+		filter .2s ease-in-out,
+      	transform .185s ease-in-out, 
+     	opacity .185s ease-in; 
 }
 
 	
@@ -395,8 +402,8 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     transform-origin: center center; 
 
     transition:
-      transform .185s ease-in-out .0s, 
-      opacity .1s ease-in .0s; 
+      transform .185s ease-in-out, 
+      opacity .185s ease-in; 
 }
 
 /*  #viewerFrame {
@@ -791,20 +798,22 @@ layerMid.addEventListener("pointermove", e => {
 	}
 
 	//отключаем анимацию только когда происходит свайп
+	viewer.classList.add("swiping");
+	/*
 	layerMid.style.transition = "none";
 	imageMid.style.transition = "none";
 	
 	layerTop.style.transition = "none";
 	
 	imageBot.style.transition = "none";
-	
+	*/
 	
 	const rF = 0.78; // фактор тяжести
 	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
 	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
 
 	const scaleF = .5;
-	const opaF = 1;
+	const opaF = .8;
 	
 	// свайп в лево
 	if (deltaSwipeX < 0) {
@@ -867,14 +876,16 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
 	swiping = false;
 	startSwipeX = 0;
 
-	// возвращаем все на свои места при отмене свайпа		
+	// возвращаем все на свои места при отмене свайпа	
+	viewer.classList.remove("swiping"); // возвращаем плавные переходы
+		/*
 	layerMid.style.transition = "transform .185s ease-in-out";
 	imageMid.style.transition = "opacity .185s ease-in-out, transform .185s ease-in-out";
 
 	layerTop.style.transition = "transform .185s ease-in-out";
 
 	imageBot.style.transition = "opacity .185s ease-in-out, transform .185s ease-in-out";
-		
+		*/
 
 	imageMid.style.opacity = `1`;	
 	imageMid.style.transform = `scale(1)`;	  
