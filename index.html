@@ -736,7 +736,7 @@ position: sticky;
 layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
 	
-	layerMid.style.transition = "transform .185s ease-in-out .0s";
+	//layerMid.style.transition = "transform .185s ease-in-out .0s"; //делаем через классы
    	if (scale > 1) return;
 
 	/*
