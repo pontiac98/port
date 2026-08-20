@@ -817,7 +817,7 @@ layerMid.addEventListener("pointermove", e => {
 	imageBot.style.transition = "none";
 	*/
 	
-	const rF = 0.78; // фактор тяжести
+	const rF = 0.70; // фактор тяжести
 	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
 	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
 
@@ -838,12 +838,13 @@ layerMid.addEventListener("pointermove", e => {
 	if (deltaSwipeX > 0) {
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
+		const shiftX = (-1.2 + progress*rF)*100;
 
 	imageMid.style.opacity = `${opaMid}`;	
 	imageMid.style.transform = `scale(${scaleMid})`;
 		// тут надо проссумировать с offsetTopX
 	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
-	layerTop.style.transform = `translateX(-${(1 - progress*.78)*100}%)`;	
+	layerTop.style.transform = `translateX(${shiftX}%)`;	
 	}
 	
 	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
