@@ -735,22 +735,12 @@ position: sticky;
 layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
 	
-	//layerMid.style.transition = "transform .185s ease-in-out .0s"; //делаем через классы
    	if (scale > 1) return;
-
-	/*
-	const touches = e.targetTouches ? e.targetTouches.length : 1;
-	if (touches > 1) {
-		swiping = false;
-		return; 
-	}
-	*/
 
 if (activePointers.size > 1) {
     endSwipe(e);
     return;
 }
-
 	
 	if (pinchActive) {
 		endSwipe(e);
@@ -760,13 +750,10 @@ if (activePointers.size > 1) {
 	// подтверждение свайпа
 	if (!swiping) swiping = true;
 
-	
-
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
 	
 	startSwipeX = e.clientX;
 	imageMid.style.transformOrigin = `center center`; // поправляем центр после пинч зума
-	//layerMid.style.transition = "transform .0s ease-in-out .0s";
 	});
 
 
@@ -774,8 +761,11 @@ if (activePointers.size > 1) {
 	
 	// логика свайпа
 	//
-
 	//
+	
+	let swipeX = 0;
+	let swipeFrame = false;
+	
 layerMid.addEventListener("pointermove", e => {
 	 if (activePointers.has(e.pointerId)) {
         activePointers.set(e.pointerId, e);
@@ -783,21 +773,12 @@ layerMid.addEventListener("pointermove", e => {
 	
 	if (scale > 1) return;
 	
-	/* тут нужна альтерантива
-	const touches = e.targetTouches ? e.targetTouches.length : 1;
-	if (touches > 1) {
-		swiping = false;
-		return; 
-	}
-	*/
-
 	//это посути аналог пинчЭктив
 	if (activePointers.size > 1) {
 	endSwipe(e);
     return;
 	}
 
-	
 	if (!swiping) return;
 
 	//проверим и уберем
@@ -806,20 +787,27 @@ layerMid.addEventListener("pointermove", e => {
     	return;
 	}  
 
-	//отключаем анимацию только когда происходит свайп
+ 	swipeX = e.clientX;
+
+    if (!swipeFrame) {
+        swipeFrame = true;
+
+        requestAnimationFrame(() => {
+            swipeFrame = false;
+            updateSwipe(swipeX);
+        });
+    }	
+	});
+
+
+function updateSwipe(x) {
+//отключаем анимацию только когда происходит свайп
 	viewer.classList.add("swiping");
-	/*
-	layerMid.style.transition = "none";
-	imageMid.style.transition = "none";
 	
-	layerTop.style.transition = "none";
-	
-	imageBot.style.transition = "none";
-	*/
 	
 	const rF = 0.70; // фактор тяжести
-	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
-	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
+	const deltaSwipeX = (x - startSwipeX) * rF;
+	progress = Math.abs(x - startSwipeX) / innerWidth;
 
 	const scaleF = .33;
 	const opaF = .8;
@@ -829,28 +817,31 @@ layerMid.addEventListener("pointermove", e => {
 		const scaleBot = 1 - scaleF + scaleF * progress;
 		const opaBot = progress * opaF;
 
+		//вернуть в прежнее слои из правого свайпа
+		imageMid.style.opacity = `1`;	
+		imageMid.style.transform = `scale(1)`;
+		layerTop.style.transform = `translateX(-101%)`;	
+
 	imageBot.style.opacity = `${opaBot}`;	
 	imageBot.style.transform = `scale(${scaleBot})`;	
-	layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
-	}
-
-	//  свайп в право
-	if (deltaSwipeX > 0) {
+	layerMid.style.transform = `translateX(${deltaSwipeX}px)`;	
+		
+	} else if (deltaSwipeX > 0) {  //  свайп в право
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
 		const shiftX = (-1.2 + progress*rF)*100;
 
+		//вернуть в прежнее слои из левого свайпа
+		imageBot.style.opacity = `0`;	
+		imageBot.style.transform = `scale(.5)`;	
+		layerMid.style.transform = `translateX(0px)`;	
+
 	imageMid.style.opacity = `${opaMid}`;	
 	imageMid.style.transform = `scale(${scaleMid})`;
-		// тут надо проссумировать с offsetTopX
-	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
 	layerTop.style.transform = `translateX(${shiftX}%)`;	
 	}
+}
 	
-	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
-	});
-
-
 
 	
 layerMid.addEventListener("pointerup", e => {
