@@ -393,12 +393,7 @@ touch-action: none; /* Запрещает нативный скролл и зу�
      	opacity .185s ease-in; 
 }
 
-@media (max-width: 1500px) {  
-.viewerImg {
-     width: 100%; 
-    height: 100%;  
-}
-}
+
 	
   
  #viewerImage {
@@ -428,6 +423,12 @@ touch-action: none; /* Запрещает нативный скролл и зу�
 }
 
 
+	@media (max-width: 900px) {  
+.viewerImg, #viewerImage {
+     width: 100%; 
+    height: 100%;  
+}
+}
 
   #viewerImage.animate {
      transform: scale(1); 
@@ -820,7 +821,7 @@ layerMid.addEventListener("pointermove", e => {
 	const deltaSwipeX = (e.clientX - startSwipeX) * rF;
 	progress = Math.abs(e.clientX - startSwipeX) / innerWidth;
 
-	const scaleF = .5;
+	const scaleF = .33;
 	const opaF = .8;
 	
 	// свайп в лево
@@ -842,7 +843,7 @@ layerMid.addEventListener("pointermove", e => {
 	imageMid.style.transform = `scale(${scaleMid})`;
 		// тут надо проссумировать с offsetTopX
 	//layerTop.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;	
-	layerTop.style.transform = `translateX(-${(1 - progress)*100}%)`;	
+	layerTop.style.transform = `translateX(-${(1 - progress*.78)*100}%)`;	
 	}
 	
 	//layerMid.style.transform = `translateX(${deltaSwipeX}px) scale(${scale})`;
