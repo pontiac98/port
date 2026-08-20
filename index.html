@@ -307,13 +307,20 @@ body::after {
 
     background: rgba(0,0,0,.85);
     opacity: 0;
-    transition: opacity .8s ease-out .0s;
+    transition: 
+		background 1s ease-out,
+		opacity .8s ease-out .0s;
     pointer-events: none;
 }
 
 #viewer.open::before {
   content: "";
     opacity: 1;
+}
+
+	#viewer.open.deep::before {
+  content: "";
+    background: rgba(16,16,16,1);
 }
 
   /*  test */
@@ -747,6 +754,8 @@ if (activePointers.size > 1) {
     	return;
 	}
 
+	viewer.classList.add("deep");
+	
 	// подтверждение свайпа
 	if (!swiping) swiping = true;
 
@@ -1005,6 +1014,7 @@ if (scale > 1) return;
   viewerImage.style.transform = `scale(${scale})`;
   viewerImage.classList.remove("animate");
   viewer.classList.remove("open");
+	viewer.classList.remove("deep"); // обнюляем непрозрачность
   
   document.body.classList.remove("no-scroll");
   document.documentElement.classList.remove("no-scroll");
@@ -1200,6 +1210,7 @@ viewerImage.addEventListener("touchstart", e => {
     const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
     
     if (firstMove) {
+		viewer.classList.add("deep"); //делаем фон непрозрачным
       firstMove = false;
       startRect = realRect(); // действительный рект	
 		contRect = viewerImage.getBoundingClientRect();
@@ -1617,7 +1628,8 @@ function updateTransform() {
   
 viewerImage.addEventListener("wheel", e => {
     e.preventDefault();
-
+	
+	
   //блок на время возврата к маштабу 1
   if (Date.now() < unlockTime) return;
 
@@ -1643,6 +1655,8 @@ viewerImage.addEventListener("wheel", e => {
 
     if (!isMouseInside) return;
 
+	viewer.classList.add("deep"); //делаем фон непрозрачным
+
   //const containerRect = viewerImage.getBoundingClientRect();
     // Запоминаем текущие координаты мыши для этого шага скролла
   // отсчитываем от контейнера лефт и топ
@@ -1652,7 +1666,7 @@ viewerImage.addEventListener("wheel", e => {
     const maxScale = 3;
     const rubberLimit = 3.3;
     const minScale = 1;
-const rubberMin = 0.93;
+	const rubberMin = 0.93;
 
     const oldScale = scale;
 
@@ -1721,6 +1735,7 @@ if (scale < minScale) {
         updateTransform();
          }
 
+		// это дефолтный уход в масштаб 1 без резинки
      /* if (scale == minScale) {
         tx = 0.0;
         ty = 0.0;
@@ -1985,6 +2000,8 @@ window.addEventListener("blur", () => {
 	endSwipe();
     if (!isDragging) return;
     isDragging = false;
+	// можно добавить эктивПИнч фэлс
+	//
 });
 
 
