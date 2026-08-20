@@ -796,6 +796,7 @@ layerMid.addEventListener("pointermove", e => {
 
         requestAnimationFrame(() => {
             swipeFrame = false;
+			if (!swiping) return;
             updateSwipe(swipeX);
         });
     }	
@@ -809,7 +810,8 @@ function updateSwipe(x) {
 	
 	const rF = 0.70; // фактор тяжести
 	const deltaSwipeX = (x - startSwipeX) * rF;
-	progress = Math.abs(x - startSwipeX) / innerWidth;
+	progress = Math.min(1, Math.abs(x - startSwipeX) / innerWidth);
+
 
 	const scaleF = .33;
 	const opaF = .8;
@@ -848,15 +850,11 @@ function updateSwipe(x) {
 	
 layerMid.addEventListener("pointerup", e => {
 	activePointers.delete(e.pointerId); 
-   	if (scale > 1) return;
-	endSwipe(e);
 	});
 
 
   layerMid.addEventListener("pointercancel", e => {
 	  activePointers.delete(e.pointerId); 
-	  if (scale > 1) return;
-    endSwipe(e);
    });
 
 	  
