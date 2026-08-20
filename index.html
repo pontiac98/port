@@ -1203,7 +1203,7 @@ viewerImage.addEventListener("touchstart", e => {
     
     if (firstMove) {
       firstMove = false;
-      startRect = viewerImage.getBoundingClientRect();
+      startRect = realRect(); // действительный рект	
 
       startDistance = distance(e.touches[0], e.touches[1]);
       
