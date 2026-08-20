@@ -833,7 +833,7 @@ function updateSwipe(x) {
 	} else if (deltaSwipeX > 0) {  //  свайп в право
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
-		const shiftX = (-1.01 + progress*rF*)*100;
+		const shiftX = (-1.01 + progress*rF)*100;
 
 		//вернуть в прежнее слои из левого свайпа
 		imageBot.style.opacity = `0`;	
