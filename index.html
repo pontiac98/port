@@ -833,7 +833,7 @@ function updateSwipe(x) {
 	} else if (deltaSwipeX > 0) {  //  свайп в право
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
-		const shiftX = (-1.01 + progress*rF*1.2)*100;
+		const shiftX = (-1.01 + progress*rF*)*100;
 
 		//вернуть в прежнее слои из левого свайпа
 		imageBot.style.opacity = `0`;	
@@ -1202,11 +1202,12 @@ viewerImage.addEventListener("touchstart", e => {
     if (firstMove) {
       firstMove = false;
       startRect = realRect(); // действительный рект	
+		contRect = viewerImage.getBoundingClientRect();
 
       startDistance = distance(e.touches[0], e.touches[1]);
       
-        const offsetX = (cx - startRect.left) * 1;
-        const offsetY = (cy - startRect.top) * 1;
+        const offsetX = (cx - contRect.left) * 1; // эти офсеты надо сичтат с ректа контейнера
+        const offsetY = (cy - contRect.top) * 1;
     
       viewerImage.style.transformOrigin = `${offsetX}px ${offsetY}px`; //updated
 
