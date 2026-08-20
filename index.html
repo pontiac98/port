@@ -355,7 +355,7 @@ touch-action: none; /* Запрещает нативный скролл и зу�
 
 
 #layerTop {
-	transform: translateX(-100%);
+	transform: translateX(-101%);
 	pointer-events: none;
 }
 	
@@ -753,6 +753,7 @@ if (activePointers.size > 1) {
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
 	
 	startSwipeX = e.clientX;
+	viewer.classList.add("swiping"); //перенес из апдейтСвайп
 	imageMid.style.transformOrigin = `center center`; // поправляем центр после пинч зума
 	});
 
@@ -788,6 +789,7 @@ layerMid.addEventListener("pointermove", e => {
 	}  
 
  	swipeX = e.clientX;
+	
 
     if (!swipeFrame) {
         swipeFrame = true;
@@ -802,7 +804,7 @@ layerMid.addEventListener("pointermove", e => {
 
 function updateSwipe(x) {
 //отключаем анимацию только когда происходит свайп
-	viewer.classList.add("swiping");
+	//viewer.classList.add("swiping");
 	
 	
 	const rF = 0.70; // фактор тяжести
@@ -829,7 +831,7 @@ function updateSwipe(x) {
 	} else if (deltaSwipeX > 0) {  //  свайп в право
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
-		const shiftX = (-1.2 + progress*rF)*100;
+		const shiftX = (-1.01 + progress*rF*1.2)*100;
 
 		//вернуть в прежнее слои из левого свайпа
 		imageBot.style.opacity = `0`;	
@@ -865,31 +867,13 @@ layerMid.addEventListener("pointerup", e => {
  if (e && layerMid.hasPointerCapture(e.pointerId)) {
         layerMid.releasePointerCapture(e.pointerId);
     }
-		/*
-if (layerMid.hasPointerCapture(e.pointerId)) {
-        layerMid.releasePointerCapture(e.pointerId);
-}
-		  if (
-        e?.pointerId !== undefined &&
-        layerMid.hasPointerCapture(e.pointerId)
-    ) {
-        layerMid.releasePointerCapture(e.pointerId);
-    }
-*/
+
 			  
 	swiping = false;
 	startSwipeX = 0;
 
 	// возвращаем все на свои места при отмене свайпа	
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
-		/*
-	layerMid.style.transition = "transform .185s ease-in-out";
-	imageMid.style.transition = "opacity .185s ease-in-out, transform .185s ease-in-out";
-
-	layerTop.style.transition = "transform .185s ease-in-out";
-
-	imageBot.style.transition = "opacity .185s ease-in-out, transform .185s ease-in-out";
-		*/
 
 	imageMid.style.opacity = `1`;	
 	imageMid.style.transform = `scale(1)`;	  
@@ -905,6 +889,7 @@ if (layerMid.hasPointerCapture(e.pointerId)) {
 //удаление поинтеров изза экрана
 	function removePointer(e) {
     activePointers.delete(e.pointerId);
+	endSwipe(e);
 }
 
 window.addEventListener("pointerup", removePointer);
