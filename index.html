@@ -856,9 +856,15 @@ function updateSwipe(x) {
 }
 	
 
-	
+	//отслеживаем конец свайпа
 layerMid.addEventListener("pointerup", e => {
 	activePointers.delete(e.pointerId); 
+	if (!swiping) return;
+	if (progress > .25) {
+		// в право или в лево
+		doSwipe(e);
+	} else endSwipe(e);
+	
 	});
 
 
@@ -866,7 +872,53 @@ layerMid.addEventListener("pointerup", e => {
 	  activePointers.delete(e.pointerId); 
    });
 
-	  
+
+	// завершаем свайп
+	function doSwipe(e) {
+	 if (e && layerMid.hasPointerCapture(e.pointerId)) {
+        layerMid.releasePointerCapture(e.pointerId);
+    }
+
+	viewer.classList.remove("swiping"); // возвращаем плавные переходы
+
+		// сдесь пишем куда должны откатиться слои в том или ином случае
+		// в лево  право в конце все равно они встают в одни и те же места
+		
+
+    // 2. Вешаем одноразовый слушатель на завершение анимации среднего слоя
+    // Используем { once: true }, чтобы обработчик сам удалился после вызова
+    layerMid.addEventListener('transitionend', (e) => {
+        // Проверяем, что завершилась именно анимация transform, а не другое свойство
+        if (e.propertyName !== 'transform') return;
+
+        // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
+        slider.classList.remove('is-animating');
+
+        // 4. Обновляем индексы картинок (перелистываем вперед)
+        currentIndex++; 
+        
+        // 5. МГНОВЕННАЯ ПЕРЕЗАПИСЬ ССЫЛОК И СБРОС СЛОЕВ
+        // Ссылка из нижнего (следующего) слоя теперь становится центральной
+        // А в нижний слой загружается уже следующая по очереди картинка
+        const topIndex = currentIndex - 1;
+        const middleIndex = currentIndex;
+        const bottomIndex = currentIndex + 1;
+
+        // Обновляем картинки (с учетом зацикливания массива, если нужно)
+        layerTop.src = imagesArray[topIndex] || '';
+        layerMiddle.src = imagesArray[middleIndex] || '';
+        layerBottom.src = imagesArray[bottomIndex] || '';
+
+        // 6. Возвращаем слои в исходное состояние для следующего свайпа
+        // Так как класс 'is-animating' удален, эти сбросы произойдут МГНОВЕННО для пользователя
+        layerMiddle.style.transform = 'translateX(0)';
+        
+        // Возвращаем нижний слой в стартовое состояние (например, чуть уменьшен и прозрачен)
+        layerBottom.style.transform = 'scale(0.85)';
+        layerBottom.style.opacity = '0';
+    }, { once: true });
+	}
+	
 	
 	function endSwipe(e) {
 
