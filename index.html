@@ -878,9 +878,11 @@ layerMid.addEventListener("pointerup", e => {
         layerMid.releasePointerCapture(e.pointerId);
     }
 
-	swiping = false; 	
+	//swiping = false; 	
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
+	layerMid.offsetHeight; 
+		
 		// сдесь пишем куда должны откатиться слои в том или ином случае
 		// в лево  право в конце все равно они встают в одни и те же места
 		if (startSwipeX > e.clientX) { // лево вперед
@@ -905,13 +907,13 @@ layerMid.addEventListener("pointerup", e => {
 		imageMid.style.transform = `scale(.5)`;	
 		}
 		
-	layerMid.offsetHeight; //форсируем перерисовку через чтение свойства
+	//layerMid.offsetHeight; //форсируем перерисовку через чтение свойства
 		
     // 2. Вешаем одноразовый слушатель на завершение анимации среднего слоя
     // Используем { once: true }, чтобы обработчик сам удалился после вызова
-    layerMid.addEventListener('transitionend', (ee) => {
+    layerMid.addEventListener('transitionend', (event) => {
         // Проверяем, что завершилась именно анимация transform, а не другое свойство
-        if (ee.propertyName !== 'transform') return;
+        if (event.propertyName !== 'transform') return;
 
         // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
         viewer.classList.add("swiping");
@@ -919,7 +921,7 @@ layerMid.addEventListener("pointerup", e => {
 		
 
 		updateLayers(theIndex);
-		//swiping = false; //поставить в конец
+		swiping = false; //поставить в конец
         
     }, { once: true });
 	}
