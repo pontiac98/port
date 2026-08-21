@@ -864,10 +864,6 @@ layerMid.addEventListener("pointerup", e => {
 		// в право или в лево
 		doSwipe(e);
 	} else endSwipe(e);
-
-	  requestAnimationFrame(() => {
-          viewer.classList.remove("swiping"); // возвращаем плавные переходы
-        });
 	});
 
 
@@ -1691,6 +1687,7 @@ viewerImage.addEventListener("wheel", e => {
 
 	//viewer.classList.remove("swiping"); 
 	viewer.classList.add("deep"); //делаем фон непрозрачным
+	 viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
   //const containerRect = viewerImage.getBoundingClientRect();
     // Запоминаем текущие координаты мыши для этого шага скролла
