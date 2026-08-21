@@ -908,9 +908,9 @@ layerMid.addEventListener("pointerup", e => {
 		
     // 2. Вешаем одноразовый слушатель на завершение анимации среднего слоя
     // Используем { once: true }, чтобы обработчик сам удалился после вызова
-    layerMid.addEventListener('transitionend', (e) => {
+    layerMid.addEventListener('transitionend', (ee) => {
         // Проверяем, что завершилась именно анимация transform, а не другое свойство
-        if (e.propertyName !== 'transform') return;
+        if (ee.propertyName !== 'transform') return;
 
         // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
         viewer.classList.add("swiping");
