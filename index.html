@@ -882,7 +882,7 @@ layerMid.addEventListener("pointerup", e => {
 
 		// сдесь пишем куда должны откатиться слои в том или ином случае
 		// в лево  право в конце все равно они встают в одни и те же места
-		if (swipeX > e.clientX) { // лево вперед
+		if (startSwipeX > e.clientX) { // лево вперед
 		theIndex = (theIndex + gallery.length + 1) % gallery.length;
 			
 		layerTop.style.transform = `translateX(-101%)`; // это и так должно быть
