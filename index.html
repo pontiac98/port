@@ -950,7 +950,7 @@ layerMid.addEventListener("pointerup", e => {
 //удаление поинтеров изза экрана
 	function removePointer(e) {
     activePointers.delete(e.pointerId);
-	//viewer.classList.remove("swiping"); // либо это 
+	viewer.classList.remove("swiping"); // либо это 
 	//if (!swiping) return; // хуета
 	//endSwipe(e);   // либо это
 }
@@ -1685,6 +1685,7 @@ viewerImage.addEventListener("wheel", e => {
     if (!isMouseInside) return;
 	if (swiping) return; // блокируем пересечение со свайпом
 
+	//viewer.classList.remove("swiping"); 
 	viewer.classList.add("deep"); //делаем фон непрозрачным
 
   //const containerRect = viewerImage.getBoundingClientRect();
