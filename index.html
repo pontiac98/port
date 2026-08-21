@@ -904,7 +904,8 @@ layerMid.addEventListener("pointerup", e => {
 		imageMid.style.transform = `scale(.5)`;	
 		}
 		
-
+	layerMid.offsetHeight; //форсируем перерисовку через чтение свойства
+		
     // 2. Вешаем одноразовый слушатель на завершение анимации среднего слоя
     // Используем { once: true }, чтобы обработчик сам удалился после вызова
     layerMid.addEventListener('transitionend', (e) => {
