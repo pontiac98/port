@@ -951,6 +951,7 @@ layerMid.addEventListener("pointerup", e => {
 //удаление поинтеров изза экрана
 	function removePointer(e) {
     activePointers.delete(e.pointerId);
+	if (!swiping) return;
 	endSwipe(e);
 }
 
