@@ -878,6 +878,7 @@ layerMid.addEventListener("pointerup", e => {
         layerMid.releasePointerCapture(e.pointerId);
     }
 
+	swiping = false; 	
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
 		// сдесь пишем куда должны откатиться слои в том или ином случае
@@ -918,7 +919,7 @@ layerMid.addEventListener("pointerup", e => {
 		
 
 		updateLayers(theIndex);
-		swiping = false; //поставить в конец
+		//swiping = false; //поставить в конец
         
     }, { once: true });
 	}
@@ -952,7 +953,7 @@ layerMid.addEventListener("pointerup", e => {
 //удаление поинтеров изза экрана
 	function removePointer(e) {
     activePointers.delete(e.pointerId);
-	if (!swiping) return;
+	if (!swiping) return; //
 	endSwipe(e);
 }
 
