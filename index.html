@@ -918,6 +918,15 @@ layerMid.addEventListener("pointerup", e => {
         // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
         viewer.classList.add("swiping");
 		updateLayers(theIndex);        
+
+
+		// видимо так
+		 requestAnimationFrame(() => {
+        	requestAnimationFrame(() => {
+           	viewer.classList.remove("swiping"); //включаем анимацию слоев
+        	});
+    	});
+		
     }, { once: true });
 	}
 	
