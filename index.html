@@ -759,7 +759,8 @@ if (activePointers.size > 1) {
 	if (!swiping) swiping = true;
 
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
-	
+
+	progress = 0; //  обнуляем прогресс
 	startSwipeX = e.clientX;
 	viewer.classList.add("swiping"); //перенес из апдейтСвайп
 	imageMid.style.transformOrigin = `center center`; // поправляем центр после пинч зума
