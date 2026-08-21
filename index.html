@@ -883,7 +883,7 @@ layerMid.addEventListener("pointerup", e => {
 		// сдесь пишем куда должны откатиться слои в том или ином случае
 		// в лево  право в конце все равно они встают в одни и те же места
 		if (swipeX > e.clientX) { // лево
-		theIndex = (index + gallery.length - 1) % gallery.length;
+		theIndex = (theIndex + gallery.length - 1) % gallery.length;
 			
 		layerTop.style.transform = `translateX(-101%)`; // это и так должно быть
 		imageMid.style.opacity = 1;	
@@ -893,7 +893,7 @@ layerMid.addEventListener("pointerup", e => {
 		imageBot.style.opacity = 1;	
 		imageBot.style.transform = `scale(1)`;	
 		} else { // вправо
-			theIndex = (index + gallery.length + 1) % gallery.length;
+			theIndex = (theIndex + gallery.length + 1) % gallery.length;
 			
 			layerMid.style.transform = `translateX(0)`;	// это и так должно быть
 			imageBot.style.opacity = 0;	
