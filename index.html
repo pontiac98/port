@@ -917,12 +917,7 @@ layerMid.addEventListener("pointerup", e => {
 
         // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
         viewer.classList.add("swiping");
-
-		
-
-		updateLayers(theIndex);
-		//swiping = false; //поставить в конец
-        
+		updateLayers(theIndex);        
     }, { once: true });
 	}
 	
@@ -955,8 +950,8 @@ layerMid.addEventListener("pointerup", e => {
 //удаление поинтеров изза экрана
 	function removePointer(e) {
     activePointers.delete(e.pointerId);
-	if (!swiping) return; //
-	endSwipe(e);
+	//if (!swiping) return; // хуета
+	//endSwipe(e);
 }
 
 window.addEventListener("pointerup", removePointer);
@@ -1368,6 +1363,7 @@ if (rawScale <= maxK) {
   
   
   function resetZoom() {
+	  if (!pinchActive) return;
     pinchActive = false;
     firstMove = true;
     viewerImage.classList.remove("pinching");
