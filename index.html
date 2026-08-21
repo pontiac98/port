@@ -863,7 +863,10 @@ layerMid.addEventListener("pointerup", e => {
 		// в право или в лево
 		doSwipe(e);
 	} else endSwipe(e);
-	
+
+	  requestAnimationFrame(() => {
+          viewer.classList.remove("swiping"); // возвращаем плавные переходы
+        });
 	});
 
 
