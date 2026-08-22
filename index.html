@@ -753,7 +753,7 @@ if (activePointers.size > 1) {
     	return;
 	}
 
-	
+	if (viewer.classList.contains("swiping")) return; // защита от второго клика в конце анимации
 	viewer.classList.add("deep");
 	
 	// подтверждение свайпа
@@ -880,7 +880,7 @@ layerMid.addEventListener("pointerup", e => {
         layerMid.releasePointerCapture(e.pointerId);
     }
 
-	//swiping = false; 	// убрали отсюда вставили в конец транзишнЭнд
+	swiping = false; 	// убрали отсюда вставили в конец транзишнЭнд
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
 	layerMid.offsetHeight; 
@@ -921,7 +921,7 @@ layerMid.addEventListener("pointerup", e => {
         viewer.classList.add("swiping");
 		updateLayers(theIndex);        
 
-		swiping = false; 	// вот здесь кончается свипинг
+		
 		// видимо так
 		 requestAnimationFrame(() => {
         	requestAnimationFrame(() => {
