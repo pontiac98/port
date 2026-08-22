@@ -1067,6 +1067,7 @@ if (scale > 1) return;
 
 
   viewer.addEventListener("click", (e) => {
+	  if (isBlocking) return; 
     if (e.clientX == cx && e.clientY == cy) {
       closeViewer();
     }
