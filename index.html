@@ -1047,6 +1047,11 @@ imageMid.dataset.ratio = nowCard.dataset.ratio;
 
 function closeViewer() {
 if (scale > 1) return;
+
+	gallery[theIndex].card.scrollIntoView({
+            behavior: 'smooth', // 'smooth' для плавной анимации, 'auto' для мгновенного прыжка
+            block: 'center'     // Центрирует карточку по вертикали на экране
+        });
   
   rubberF = false;
      rubberTx = 0;
