@@ -2088,14 +2088,49 @@ window.addEventListener("blur", () => {
   //
   //
 // переключание галереи
-  document.querySelectorAll("#menu a").forEach(item => {
-    item.addEventListener("click", e => {
+ // 1. Находим родительский элемент меню
+const menu = document.getElementById('menu');
 
-        e.preventDefault();
-        // переключение галере
-      
-    });
+// 2. Вешаем один обработчик клика на всё меню
+menu.addEventListener('click', (e) => {
+    // Находим ближайший элемент с классом menu-item (на случай, если кликнули в <span>)
+    const menuItem = e.target.closest('.menu-item');
+    
+    // Если кликнули мимо пункта меню, ничего не делаем
+    if (!menuItem) return;
+    
+    // Если кликнули на уже активный элемент, тоже выходим
+    if (menuItem.classList.contains('active')) return;
+
+    // 3. ПЕРЕКЛЮЧЕНИЕ КЛАССА ACTIVE
+    // Находим текущий активный элемент внутри #menu и убираем у него класс
+    const currentActive = menu.querySelector('.menu-item.active');
+    if (currentActive) {
+        currentActive.classList.remove('active');
+    }
+    
+    // Добавляем класс active тому элементу, на который кликнули
+    menuItem.classList.add('active');
+
+    // 4. ЗАПУСК ЗАГРУЗКИ ГАЛЕРЕИ
+    // Считываем значение из атрибута data-gallery ("1", "2", "3" или "about")
+    const galleryType = menuItem.dataset.gallery;
+    
+    // Вызываем функцию смены раздела (ту, что мы детально разобрали в прошлом шаге)
+    loadGallerySection(galleryType);
 });
+
+// Пример функции, которая будет переключать данные на основе data-gallery
+function loadGallerySection(type) {
+    console.log(`Загружаем раздел: ${type}`);
+    
+    // Здесь вы вызываете очистку старых карточек и загрузку JSON
+    // Например:
+    // if (type === '1') switchSection(jsonDataRGB);
+    // if (type === '2') switchSection(jsonDataCMYK);
+    // и так далее...
+}
+
   
 //
   //
