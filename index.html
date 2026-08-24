@@ -717,6 +717,7 @@ loadAndRenderGallery("1");
 // Функция загрузки общего JSON и запуска анимации исчезновения
 
 const grid = document.getElementById("grid");
+	let isMenuBlocking = true;
 	
 async function loadAndRenderGallery(targetGalleryType) {
     try {
@@ -728,11 +729,13 @@ async function loadAndRenderGallery(targetGalleryType) {
         // 2. ЗАПУСКАЕМ АНИМАЦИЮ ИСЧЕЗНОВЕНИЯ СТАРОЙ ГАЛЕРЕИ
         // Добавляем класс, контейнер начинает плавно блекнуть в CSS
         grid.classList.add('fade-out');
+		isMenuBlocking = true;
 
         // 3. Вешаем одноразовый слушатель на завершение анимации исчезновения
         grid.addEventListener('transitionend', function onFadeOutEnd(e) {
             // Проверяем, что завершилась анимация именно свойства opacity
             if (e.propertyName !== 'opacity') return;
+			isMenuBlocking = false;
 
             // 4. СТАРАЯ ГАЛЕРЕЯ ПОЛНОСТЬЮ ИСЧЕЗЛА:
             // Безопасно очищаем память и создаем новые DOM-элементы
@@ -764,7 +767,7 @@ async function loadAndRenderGallery(targetGalleryType) {
 // Функция безопасной очистки и отрисовки новых карточек (остается почти без изменений)
 function renderNewSection(newItemsArray) {
     swiping = false;
-    isBlocking = false;
+    
 
     // Полностью очищаем старый массив (рвем JS-ссылки для сборщика мусора)
     gallery = [];
