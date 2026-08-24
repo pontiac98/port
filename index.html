@@ -277,7 +277,11 @@ body::after {
 *::after {
     box-sizing: border-box;
 }
-  
+
+
+:root{
+ --swipe-duration: 0.185s;
+}
 
 /* лайтбокс          */
 
@@ -425,7 +429,7 @@ touch-action: none; /* Запрещает нативный скролл и зу�
 	
   transform-origin: 0 0; 
   transition:
-      transform .185s ease-in-out .0s;
+      transform var(--swipe-duration) ease-in-out;
 }
 
 
@@ -463,9 +467,9 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     transform-origin: center center;  
 
     transition:
-		filter .2s ease-in-out,
-      	transform .185s ease-in-out, 
-     	opacity .185s ease-in; 
+		filter var(--swipe-duration) ease-in-out,
+      	transform var(--swipe-duration) ease-in-out, 
+     	opacity var(--swipe-duration) ease-in; 
 }
 
 
@@ -493,8 +497,8 @@ touch-action: none; /* Запрещает нативный скролл и зу�
     transform-origin: center center; 
 
     transition:
-      transform .185s ease-in-out, 
-      opacity .185s ease-in; 
+      transform var(--swipe-duration) ease-in-out, 
+      opacity var(--swipe-duration) ease-in; 
 }
 
 
@@ -930,6 +934,9 @@ function renderNewSection(newItemsArray) {
 layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
 
+	// стандартное время для свайпа
+	document.documentElement.style.setProperty('--slide-duration', '0.185s');
+	
 	if (isBlocking) return; 
    	if (scale > 1) return;
 
@@ -1203,6 +1210,8 @@ imageMid.dataset.ratio = nowCard.dataset.ratio;
 
 
 
+
+	
 // конпки лево и право
 // Находим кнопки навигации в DOM
 const btnPrev = document.getElementById('btn-prev');
@@ -1210,6 +1219,7 @@ const btnNext = document.getElementById('btn-next');
 
 // Функция-помощник для запуска анимации перелистывания через клик
 function triggerSwipeByButton(direction) {
+	
     // 1. Проверяем флаг блокировки (защита от спам-кликов, которую мы настраивали)
     if (isBlocking) return;
 
@@ -1227,6 +1237,8 @@ function triggerSwipeByButton(direction) {
     // 4. Взводим флаг, как будто жест был начат, чтобы doSwipe отработал корректно
     swiping = true;
 
+	// делаем вермя листания дольше
+	document.documentElement.style.setProperty('--slide-duration', '0.4s');
 	viewer.classList.add("deep"); //затемняем лайбокс
     // 5. Передаем наше фейковое событие в вашу готовую функцию
     doSwipe(fakeEvent);
