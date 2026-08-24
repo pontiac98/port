@@ -1222,6 +1222,7 @@ function triggerSwipeByButton(direction) {
     // 4. Взводим флаг, как будто жест был начат, чтобы doSwipe отработал корректно
     swiping = true;
 
+	viewer.classList.add("deep"); //затемняем лайбокс
     // 5. Передаем наше фейковое событие в вашу готовую функцию
     doSwipe(fakeEvent);
 }
