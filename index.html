@@ -177,9 +177,11 @@ body::after {
     .card-image {
         transform: none;
         filter: none;
-    }
 }
-  
+}
+
+
+
 .grid {
   display: grid;
   
@@ -191,6 +193,13 @@ body::after {
   gap: 4px;
   background: silver; 
   padding: 0px 4px 0px;  
+
+	opacity: 1;
+	transition: opacity 0.5s ease-out;
+}
+
+.grid.fade-out {
+  opacity: 0;
 }
 
   /* убрано для google подобной сетки */
@@ -632,6 +641,7 @@ position: sticky;
   // галерея
   let gallery = [];
 
+	/*
   // фвто загрузка картинок
   fetch("images.json")
     .then(res => res.json())
@@ -666,6 +676,8 @@ position: sticky;
         });
     });
 
+	*/
+
 // предзагрузчик в видимую область
   const observer = new IntersectionObserver(entries => {
 
@@ -699,6 +711,8 @@ position: sticky;
 });
 
 
+
+loadAndRenderGallery("1");
 // асинхронно загрузка преклбчение галереи
 // Функция загрузки общего JSON и запуска анимации исчезновения
 
