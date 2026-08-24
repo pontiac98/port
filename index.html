@@ -2292,6 +2292,27 @@ window.addEventListener("blur", () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Проверяем адресную строку на наличие нашего слова
+	 if (window.location.hash === "#hide") {
+    const element = document.getElementById("debug-back-rect");
+    
+    // Делаем элемент видимым
+    element.style.display = "none";
+    
+    // Опционально: очищаем адресную строку от #secret после открытия
+    history.replaceState(null, null, ' ');
+  }
+  if (window.location.hash === "#dev") {
+    const element = document.getElementById("debug-back-rect");
+    
+    // Делаем элемент видимым
+    element.style.display = "block";
+    
+    // Опционально: очищаем адресную строку от #secret после открытия
+    history.replaceState(null, null, ' ');
+  }
+});
 
 
   function drawDebugRect() {
