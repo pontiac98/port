@@ -811,6 +811,11 @@ async function loadAndRenderGallery(targetGalleryType) {
             if (e.propertyName !== 'opacity') return;
 			isMenuBlocking = false;
 
+			  window.scrollTo({
+                top: 0,
+                behavior: 'auto' // 'auto' делает скролл моментальным, без плавной анимации
+            });
+
             // 4. СТАРАЯ ГАЛЕРЕЯ ПОЛНОСТЬЮ ИСЧЕЗЛА:
             // Безопасно очищаем память и создаем новые DOM-элементы
             renderNewSection(filteredData);
