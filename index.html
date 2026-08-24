@@ -2295,21 +2295,35 @@ window.addEventListener("blur", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const element = document.getElementById("debug-back-rect");
-    
-    // БЕЗОПАСНОСТЬ: Если элемента на странице нет, мягко выходим, чтобы не сломать остальной JS
-    if (!element) return;
+    if (!element) return; // Защита от падения, если элемента нет в HTML
 
-    const currentHash = window.location.hash;
+    // Функция проверки хэша и переключения режима
+    function checkDebugHash() {
+        const currentHash = window.location.hash;
 
-    // Проверяем хэш адресной строки
-    if (currentHash === "#hide") {
-        element.style.display = "none";
-        history.replaceState(null, null, window.location.pathname); // Очищаем хэш красиво
-    } else if (currentHash === "#dev") {    
-        element.style.display = "block";
-        history.replaceState(null, null, window.location.pathname); // Очищаем хэш красиво
+        if (currentHash === "#dev") {
+            element.style.display = "block";
+            console.log("Режим отладки ВКЛЮЧЕН");
+            
+            // Очищаем хэш, чтобы адресная строка оставалась чистой
+            history.replaceState(null, null, window.location.pathname);
+        } 
+        else if (currentHash === "#hide") {
+            element.style.display = "none";
+            console.log("Режим отладки ВЫКЛЮЧЕН");
+            
+            // Очищаем хэш
+            history.replaceState(null, null, window.location.pathname);
+        }
     }
+
+    // 1. Проверяем хэш сразу при открытии страницы (если перешли по ссылке вида ://site.com)
+    checkDebugHash();
+
+    // 2. Отслеживаем изменения хэша НА ЛЕТУ без перезагрузки страницы
+    window.addEventListener("hashchange", checkDebugHash);
 });
+
 
 
   function drawDebugRect() {
