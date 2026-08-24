@@ -9,6 +9,7 @@ on:
       - 'images2/**' 
       - 'images3/**'
       - 'images4/**' 
+      - 'generate-json.js'
 
 jobs:
   build:
