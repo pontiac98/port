@@ -44,7 +44,7 @@
 
 body::before,
 body::after {
-  content: "";
+ /* content: ""; */
   position: fixed;
   inset: 0;
   background-repeat: repeat;
@@ -361,7 +361,7 @@ body::after {
 }
 
 #viewer.open {
-    backdrop-filter: blur(2px) grayscale(100%);
+    backdrop-filter: blur(0px) grayscale(100%);
     opacity: 1;
     visibility: visible; 
     pointer-events: auto;
@@ -393,7 +393,7 @@ body::after {
 
   /*  test */
   #viewer.open::after {
-    content: "";
+   /* content: ""; */
     position: fixed;
     inset: -20px;
     z-index: 1;
@@ -511,7 +511,7 @@ touch-action: none; /* Запрещает нативный скролл и зу�
 }   
 
     #viewerImage.animate.hover {
-     filter: brightness(120%);
+    /* filter: brightness(120%); */
 }   
 
   
