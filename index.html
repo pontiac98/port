@@ -935,7 +935,7 @@ layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
 
 	// стандартное время для свайпа
-	document.documentElement.style.setProperty('--slide-duration', '0.185s');
+	document.documentElement.style.setProperty('--swipe-duration', '0.185s');
 	
 	if (isBlocking) return; 
    	if (scale > 1) return;
@@ -1238,7 +1238,7 @@ function triggerSwipeByButton(direction) {
     swiping = true;
 
 	// делаем вермя листания дольше
-	document.documentElement.style.setProperty('--slide-duration', '0.4s');
+	document.documentElement.style.setProperty('--swipe-duration', '0.4s');
 	viewer.classList.add("deep"); //затемняем лайбокс
     // 5. Передаем наше фейковое событие в вашу готовую функцию
     doSwipe(fakeEvent);
