@@ -6,6 +6,9 @@ on:
       - main # Название вашей главной ветки (main или master)
     paths:
       - 'images1/**' # Запуск скрипта только при изменениях в папке images
+      - 'images2/**' 
+      - 'images3/**'
+      - 'images4/**' 
 
 jobs:
   build:
