@@ -697,7 +697,99 @@ position: sticky;
 }, {
     rootMargin: "300px"
 });
-  
+
+
+// асинхронно загрузка преклбчение галереи
+// Функция загрузки общего JSON и запуска анимации исчезновения
+
+const grid = document.getElementById("grid");
+	
+async function loadAndRenderGallery(targetGalleryType) {
+    try {
+        // 1. Параллельно с анимацией начинаем скачивать JSON, чтобы не терять время
+        const response = await fetch('images.json'); 
+        const allData = await response.json();
+        const filteredData = allData.filter(item => item.gallery === targetGalleryType);
+
+        // 2. ЗАПУСКАЕМ АНИМАЦИЮ ИСЧЕЗНОВЕНИЯ СТАРОЙ ГАЛЕРЕИ
+        // Добавляем класс, контейнер начинает плавно блекнуть в CSS
+        grid.classList.add('fade-out');
+
+        // 3. Вешаем одноразовый слушатель на завершение анимации исчезновения
+        grid.addEventListener('transitionend', function onFadeOutEnd(e) {
+            // Проверяем, что завершилась анимация именно свойства opacity
+            if (e.propertyName !== 'opacity') return;
+
+            // 4. СТАРАЯ ГАЛЕРЕЯ ПОЛНОСТЬЮ ИСЧЕЗЛА:
+            // Безопасно очищаем память и создаем новые DOM-элементы
+            renderNewSection(filteredData);
+
+             // 5. МГНОВЕННОЕ ПРОЯВЛЕНИЕ НОВОЙ ГАЛЕРЕИ (БЕЗ ФЕЙД-ИНА)
+            // Отключаем плавность инлайново, чтобы класс удалился мгновенно
+            grid.style.transition = 'none';
+            grid.classList.remove('fade-out');
+
+            // 6. ВОЗВРАЩАЕМ ПЛАВНОСТЬ ДЛЯ СЛЕДУЮЩИХ КЛИКОВ
+            // Ждем, пока браузер применит мгновенное появление в текущем кадре
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    // Удаляем инлайн-стиль, возвращая базовый CSS-переход (opacity 0.25s)
+                    grid.style.transition = '';
+                });
+            });
+
+        }, { once: true }); // { once: true } сам удалит слушатель после срабатывания
+
+    } catch (error) {
+        console.error("Ошибка при загрузке или обработке JSON:", error);
+        // В случае ошибки возвращаем видимость контейнеру
+        grid.classList.remove('fade-out');
+    }
+}
+
+// Функция безопасной очистки и отрисовки новых карточек (остается почти без изменений)
+function renderNewSection(newItemsArray) {
+    swiping = false;
+    isBlocking = false;
+
+    // Полностью очищаем старый массив (рвем JS-ссылки для сборщика мусора)
+    gallery = [];
+
+    // Полностью очищаем контейнер в HTML (удаляем старые карточки, пока их никто не видит)
+    grid.innerHTML = '';
+
+    // Отрисовываем новые карточки
+    newItemsArray.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.classList.add("card");          
+            card.dataset.image = item.url;
+            card.dataset.index = index;
+
+            // Пример шаблона размеров
+           if (item.type) {
+              card.classList.add(item.type);
+              }
+
+            const image = document.createElement("div");
+            image.className = "card-image";
+            card.dataset.ratio = item.width / item.height;
+          
+            card.appendChild(image);          
+            grid.appendChild(card);
+            observer.observe(card);
+
+           gallery.push({
+                url: item.url,
+                card: card
+            });
+    });
+}
+
+	/////////
+
+
+
+	
 
   // лайтбокс
   document.addEventListener("click", e => {
@@ -2129,19 +2221,10 @@ menu.addEventListener('click', (e) => {
     const galleryType = menuItem.dataset.gallery;
     
     // Вызываем функцию смены раздела (ту, что мы детально разобрали в прошлом шаге)
-    loadGallerySection(galleryType);
+    loadAndRenderGallery(galleryType);
 });
 
-// Пример функции, которая будет переключать данные на основе data-gallery
-function loadGallerySection(type) {
-    console.log(`Загружаем раздел: ${type}`);
-    
-    // Здесь вы вызываете очистку старых карточек и загрузку JSON
-    // Например:
-    // if (type === '1') switchSection(jsonDataRGB);
-    // if (type === '2') switchSection(jsonDataCMYK);
-    // и так далее...
-}
+
 
   
 //
