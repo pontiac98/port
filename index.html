@@ -280,7 +280,64 @@ body::after {
   
 
 /* лайтбокс          */
+
+.lightbox-nav {
+  position: absolute;
+  inset: 0;
+  z-index: 10; /* Поверх слоев картинок */
   
+  /* Флекс-контейнер разносит зоны по краям, оставляя центр пустым */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Магия: клики сквозь ПУСТОЕ пространство проходят к картинке ниже */
+  pointer-events: none; 
+}
+
+	/* Сами интерактивные зоны шириной 10vw */
+.lightbox-nav .nav-zone {
+  width: 10vw;
+  height: 100%; /* На всю высоту экрана, чтобы легче было попасть */
+  display: flex;
+  align-items: center;
+  /*cursor: pointer;  */
+  
+  /* Возвращаем кликабельность для самих зон */
+  pointer-events: auto; 
+  
+  /* Отключаем выделение текста стрелочек при частых кликах */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+	/* Стили самих белых стрелок-модификаторов */
+.lightbox-nav .nav-arrow {
+  color: #ffffff;
+  font-size: 48px; /* Размер тонких уголков */
+  font-weight: 300;
+  
+  /* Изначальная прозрачность 30% */
+  opacity: 0.3; 
+  
+  /* Плавный переход прозрачности */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* ХОВЕР-ЭФФЕКТ: при наведении на ДИВ-ЗОНУ, СПАН-СТРЕЛКА становится 80% прозрачности */
+.lightbox-nav .nav-zone:hover .nav-arrow {
+  opacity: 0.8;
+}
+
+
+
+
+@media (hover: none) {
+.lightbox-nav {
+    display: none !important;
+  }
+}
+	
 #viewer {
     position: fixed;
     inset: 0;
@@ -611,6 +668,21 @@ position: sticky;
    <div id="layerTop" class="viewerWrp">
     <div class="viewerImg"></div>
   </div>
+
+	<!-- Контейнер навигации поверх лайтбокса -->
+<div class="lightbox-nav">
+  
+  <!-- Левая зона (10vw) -->
+  <div class="nav-zone" id="btn-prev">
+    <span class="nav-arrow">˂</span>
+  </div>
+
+  <!-- Правая зона (10vw) -->
+  <div class="nav-zone" id="btn-next">
+    <span class="nav-arrow">˃</span>
+  </div>
+
+</div>
   
 </div>
  
