@@ -2294,25 +2294,21 @@ window.addEventListener("blur", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Проверяем адресную строку на наличие нашего слова
-	 if (window.location.hash === "#hide") {
     const element = document.getElementById("debug-back-rect");
     
-    // Делаем элемент видимым
-    element.style.display = "none";
-    
-    // Опционально: очищаем адресную строку от #secret после открытия
-    history.replaceState(null, null, ' ');
-  }
-  if (window.location.hash === "#dev") {
-    const element = document.getElementById("debug-back-rect");
-    
-    // Делаем элемент видимым
-    element.style.display = "block";
-    
-    // Опционально: очищаем адресную строку от #secret после открытия
-    history.replaceState(null, null, ' ');
-  }
+    // БЕЗОПАСНОСТЬ: Если элемента на странице нет, мягко выходим, чтобы не сломать остальной JS
+    if (!element) return;
+
+    const currentHash = window.location.hash;
+
+    // Проверяем хэш адресной строки
+    if (currentHash === "#hide") {
+        element.style.display = "none";
+        history.replaceState(null, null, window.location.pathname); // Очищаем хэш красиво
+    } else if (currentHash === "#dev") {    
+        element.style.display = "block";
+        history.replaceState(null, null, window.location.pathname); // Очищаем хэш красиво
+    }
 });
 
 
