@@ -13,7 +13,7 @@ const galleryConfig = {
 const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
 let allFilesData = [];
 
-//
+//// обновил
 // Проходим циклом по всем настроенным папкам
 for (const [dirName, galleryType] of Object.entries(galleryConfig)) {
     
