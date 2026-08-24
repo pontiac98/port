@@ -6,9 +6,10 @@
     "width": 1024,
     "height": 1024,
     "ratio": 1,
-    "type": "big"
+    "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (1).png",
     "url": "images1/image (1).png",
     "width": 525,
@@ -17,6 +18,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (10).png",
     "url": "images1/image (10).png",
     "width": 446,
@@ -25,6 +27,7 @@
     "type": "big"
   },
   {
+    "gallery": "1",
     "name": "image (11).png",
     "url": "images1/image (11).png",
     "width": 242,
@@ -33,6 +36,7 @@
     "type": "tall"
   },
   {
+    "gallery": "1",
     "name": "image (12).png",
     "url": "images1/image (12).png",
     "width": 899,
@@ -41,6 +45,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (13).png",
     "url": "images1/image (13).png",
     "width": 733,
@@ -49,6 +54,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (14).png",
     "url": "images1/image (14).png",
     "width": 731,
@@ -57,6 +63,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (15).png",
     "url": "images1/image (15).png",
     "width": 828,
@@ -65,6 +72,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (16).png",
     "url": "images1/image (16).png",
     "width": 357,
@@ -73,6 +81,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (17).png",
     "url": "images1/image (17).png",
     "width": 440,
@@ -81,6 +90,7 @@
     "type": "tall"
   },
   {
+    "gallery": "1",
     "name": "image (18).png",
     "url": "images1/image (18).png",
     "width": 345,
@@ -89,6 +99,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (19).png",
     "url": "images1/image (19).png",
     "width": 716,
@@ -97,6 +108,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (2).png",
     "url": "images1/image (2).png",
     "width": 775,
@@ -105,6 +117,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (20).png",
     "url": "images1/image (20).png",
     "width": 389,
@@ -113,6 +126,7 @@
     "type": "big"
   },
   {
+    "gallery": "1",
     "name": "image (21).png",
     "url": "images1/image (21).png",
     "width": 936,
@@ -121,6 +135,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (22).png",
     "url": "images1/image (22).png",
     "width": 259,
@@ -129,6 +144,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (23).png",
     "url": "images1/image (23).png",
     "width": 544,
@@ -137,6 +153,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (24).png",
     "url": "images1/image (24).png",
     "width": 549,
@@ -145,6 +162,7 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "image (25).png",
     "url": "images1/image (25).png",
     "width": 731,
@@ -153,6 +171,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (26).png",
     "url": "images1/image (26).png",
     "width": 525,
@@ -161,6 +180,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (3).png",
     "url": "images1/image (3).png",
     "width": 549,
@@ -169,6 +189,7 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "image (4).png",
     "url": "images1/image (4).png",
     "width": 419,
@@ -177,6 +198,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (5).png",
     "url": "images1/image (5).png",
     "width": 488,
@@ -185,6 +207,7 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "image (6).png",
     "url": "images1/image (6).png",
     "width": 259,
@@ -193,6 +216,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "image (7).png",
     "url": "images1/image (7).png",
     "width": 274,
@@ -201,6 +225,7 @@
     "type": "tall"
   },
   {
+    "gallery": "1",
     "name": "image (8).png",
     "url": "images1/image (8).png",
     "width": 544,
@@ -209,6 +234,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "image (9).png",
     "url": "images1/image (9).png",
     "width": 383,
@@ -217,6 +243,7 @@
     "type": "big"
   },
   {
+    "gallery": "1",
     "name": "img1.png",
     "url": "images1/img1.png",
     "width": 1702,
@@ -225,6 +252,7 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "img10.png",
     "url": "images1/img10.png",
     "width": 1608,
@@ -233,6 +261,7 @@
     "type": ""
   },
   {
+    "gallery": "1",
     "name": "img2.png",
     "url": "images1/img2.png",
     "width": 1970,
@@ -241,6 +270,7 @@
     "type": "big"
   },
   {
+    "gallery": "1",
     "name": "img3.png",
     "url": "images1/img3.png",
     "width": 2388,
@@ -249,6 +279,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "img4.png",
     "url": "images1/img4.png",
     "width": 2140,
@@ -257,14 +288,16 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "img5.png",
     "url": "images1/img5.png",
     "width": 1762,
     "height": 1779,
     "ratio": 0.99,
-    "type": "tall"
+    "type": ""
   },
   {
+    "gallery": "1",
     "name": "img6.png",
     "url": "images1/img6.png",
     "width": 2284,
@@ -273,6 +306,7 @@
     "type": "verywide"
   },
   {
+    "gallery": "1",
     "name": "img7.png",
     "url": "images1/img7.png",
     "width": 2636,
@@ -281,6 +315,7 @@
     "type": "wide"
   },
   {
+    "gallery": "1",
     "name": "img8.png",
     "url": "images1/img8.png",
     "width": 2346,
@@ -289,11 +324,183 @@
     "type": "big"
   },
   {
+    "gallery": "1",
     "name": "img9.png",
     "url": "images1/img9.png",
     "width": 2052,
     "height": 1179,
     "ratio": 1.74,
+    "type": "wide"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-0.png",
+    "url": "images2/cmyk-0.png",
+    "width": 989,
+    "height": 291,
+    "ratio": 3.4,
     "type": "verywide"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-1.png",
+    "url": "images2/cmyk-1.png",
+    "width": 1052,
+    "height": 225,
+    "ratio": 4.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-10.png",
+    "url": "images2/cmyk-10.png",
+    "width": 446,
+    "height": 578,
+    "ratio": 0.77,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-11.png",
+    "url": "images2/cmyk-11.png",
+    "width": 527,
+    "height": 682,
+    "ratio": 0.77,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-12.png",
+    "url": "images2/cmyk-12.png",
+    "width": 510,
+    "height": 858,
+    "ratio": 0.59,
+    "type": "tall"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-13.png",
+    "url": "images2/cmyk-13.png",
+    "width": 547,
+    "height": 636,
+    "ratio": 0.86,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-14.png",
+    "url": "images2/cmyk-14.png",
+    "width": 478,
+    "height": 464,
+    "ratio": 1.03,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-15.png",
+    "url": "images2/cmyk-15.png",
+    "width": 668,
+    "height": 463,
+    "ratio": 1.44,
+    "type": "big"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-16.png",
+    "url": "images2/cmyk-16.png",
+    "width": 548,
+    "height": 688,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-17.png",
+    "url": "images2/cmyk-17.png",
+    "width": 484,
+    "height": 403,
+    "ratio": 1.2,
+    "type": "big"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-18.png",
+    "url": "images2/cmyk-18.png",
+    "width": 336,
+    "height": 483,
+    "ratio": 0.7,
+    "type": "tall"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-2.png",
+    "url": "images2/cmyk-2.png",
+    "width": 827,
+    "height": 316,
+    "ratio": 2.62,
+    "type": "verywide"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-3.png",
+    "url": "images2/cmyk-3.png",
+    "width": 607,
+    "height": 383,
+    "ratio": 1.58,
+    "type": "big"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-4.png",
+    "url": "images2/cmyk-4.png",
+    "width": 473,
+    "height": 774,
+    "ratio": 0.61,
+    "type": "tall"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-5.png",
+    "url": "images2/cmyk-5.png",
+    "width": 355,
+    "height": 458,
+    "ratio": 0.78,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-6.png",
+    "url": "images2/cmyk-6.png",
+    "width": 646,
+    "height": 449,
+    "ratio": 1.44,
+    "type": "big"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-7.png",
+    "url": "images2/cmyk-7.png",
+    "width": 458,
+    "height": 355,
+    "ratio": 1.29,
+    "type": "big"
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-8.png",
+    "url": "images2/cmyk-8.png",
+    "width": 662,
+    "height": 620,
+    "ratio": 1.07,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "cmyk-9.png",
+    "url": "images2/cmyk-9.png",
+    "width": 611,
+    "height": 560,
+    "ratio": 1.09,
+    "type": ""
   }
 ]
