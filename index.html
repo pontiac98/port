@@ -1197,7 +1197,47 @@ imageMid.dataset.ratio = nowCard.dataset.ratio;
 }
 
 
-  
+
+// конпки лево и право
+// Находим кнопки навигации в DOM
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+
+// Функция-помощник для запуска анимации перелистывания через клик
+function triggerSwipeByButton(direction) {
+    // 1. Проверяем флаг блокировки (защита от спам-кликов, которую мы настраивали)
+    if (isBlocking) return;
+
+    // 2. Имитируем начальную координату свайпа (точка отсчета)
+    startSwipeX = 100; 
+
+    // 3. Создаем искусственный объект события (Fake Event)
+    // Задаем clientX так, чтобы условие внутри doSwipe сработало в нужную сторону
+    let fakeEvent = {
+        clientX: direction === 'next' ? 0 : 200 
+        // Если 'next' (вперед): clientX (0) меньше startSwipeX (100) -> свайп влево (вперед)
+        // Если 'prev' (назад): clientX (200) больше startSwipeX (100) -> свайп вправо (назад)
+    };
+
+    // 4. Взводим флаг, как будто жест был начат, чтобы doSwipe отработал корректно
+    swiping = true;
+
+    // 5. Передаем наше фейковое событие в вашу готовую функцию
+    doSwipe(fakeEvent);
+}
+
+// Навешиваем клики на ПК-кнопки
+if (btnPrev && btnNext) {
+    btnPrev.addEventListener('click', () => triggerSwipeByButton('prev'));
+    btnNext.addEventListener('click', () => triggerSwipeByButton('next'));
+}
+
+
+
+	
+
+
+	
   //обработчик лайтбокса
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
