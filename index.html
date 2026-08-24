@@ -2223,6 +2223,8 @@ menu.addEventListener('click', (e) => {
     // Если кликнули на уже активный элемент, тоже выходим
     if (menuItem.classList.contains('active')) return;
 
+	if (isMenuBlocking) return;
+
     // 3. ПЕРЕКЛЮЧЕНИЕ КЛАССА ACTIVE
     // Находим текущий активный элемент внутри #menu и убираем у него класс
     const currentActive = menu.querySelector('.menu-item.active');
