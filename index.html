@@ -623,6 +623,14 @@ position: sticky;
     transition: color .2s, background .5s, border-bottom .5s;
 }
 
+@media (max-width: 900px) {  
+	#menu div {
+		width: 100%;
+		display: inline-flex;
+		justify-content: center;
+	}
+}
+
 #menu div span:first-of-type {
  display: inline-flex;    /* Превращаем в гибкий контейнер, но сохраняем поведение в строке */
   align-items: center;     /* Ровняем текст и символы строго по ВЕРТИКАЛИ */
