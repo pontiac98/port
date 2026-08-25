@@ -1996,8 +1996,7 @@ viewerImage.addEventListener("wheel", e => {
     }
 
 
-	if (scale > 1) lightboxnav.classList.add('zoom')
-		else lightboxnav.classList.remove('zoom');
+	
 	
     // Ограничения
     scale = Math.max(rubberMin, scale);
@@ -2075,7 +2074,11 @@ if (scale < minScale) {
 
  unlockTime = Date.now() + 125; 
     }
-  
+
+// убираем кнопки лево и право
+	if (scale > 1) lightboxnav.classList.add('zoom')
+		else lightboxnav.classList.remove('zoom');
+	
     updateTransform();
   drawDebugRect(); 
 }, { passive: false });
