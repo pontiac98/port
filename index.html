@@ -297,7 +297,12 @@ body::after {
   
   /* Магия: клики сквозь ПУСТОЕ пространство проходят к картинке ниже */
   pointer-events: none; 
+	opacity: 1;
+	transition: opacity 0.2s ease-in-out;
 }
+	.lightbox-nav.zoom {
+opacity: 0;
+	}
 
 	/* Сами интерактивные зоны шириной 10vw */
 .lightbox-nav .nav-zone {
@@ -314,6 +319,9 @@ body::after {
   /* Отключаем выделение текста стрелочек при частых кликах */
   user-select: none;
   -webkit-user-select: none;
+	background-color: #ffffff00;
+
+	transition: background-color 0.2s ease-in-out;
 }
 
 	/* Стили самих белых стрелок-модификаторов */
@@ -333,6 +341,10 @@ body::after {
 /* ХОВЕР-ЭФФЕКТ: при наведении на ДИВ-ЗОНУ, СПАН-СТРЕЛКА становится 80% прозрачности */
 .lightbox-nav .nav-zone:hover .nav-arrow {
   opacity: 0.8;
+}
+
+	.lightbox-nav .nav-zone:hover {
+ background-color: #ffffff0f;
 }
 
 
@@ -676,7 +688,7 @@ position: sticky;
   </div>
 
 	<!-- Контейнер навигации поверх лайтбокса -->
-<div class="lightbox-nav">
+<div id="lightbox-nav" class="lightbox-nav">
   
   <!-- Левая зона (10vw) -->
   <div class="nav-zone" id="btn-prev">
