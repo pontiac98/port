@@ -620,21 +620,27 @@ position: sticky;
     text-decoration: none;
     border-bottom: 0px solid #00000000;
 
-    transition: color .2s, background .5s, border-bottom .5s;
+    transition: color .2s, background .5s, border-bottom .5s, padding .2s;
 }
 
 @media (max-width: 900px) {  
 	#menu div {
 		width: 100%;
 		display: inline-flex;
-		justify-content: center;
+		justify-content: center; 
+
+		padding: 8px 0px;
+	}
+
+	#menu.shrink div {
+		padding: 0px 0px;
 	}
 }
 
 #menu div span:first-of-type {
- display: inline-flex;    /* Превращаем в гибкий контейнер, но сохраняем поведение в строке */
-  align-items: center;     /* Ровняем текст и символы строго по ВЕРТИКАЛИ */
-  justify-content: center;  /* Ровняем текст и символы строго по ГОРИЗОНТАЛИ */
+ /*display: inline-flex;    
+  align-items: center;    
+  justify-content: center;   */
 	
  	color: white;
 	opacity: 0;
@@ -741,7 +747,7 @@ position: sticky;
     <div class="menu-item active" data-gallery="1"><span>＋</span><span>RGB</span></div>
     <div class="menu-item" data-gallery="2"><span>＋</span><span>CMYK</span></div>
     <div class="menu-item" data-gallery="3"><span>＋</span><span>3-D</span></div>
-    <div class="menu-item" data-gallery="4"><span>＋</span><span>ABOUT</span></div>
+    <div class="menu-item" data-gallery="4"><span>＋</span><span>WHO</span></div>
   </header>
 </div>
   
