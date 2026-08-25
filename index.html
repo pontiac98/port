@@ -1000,8 +1000,9 @@ if (activePointers.size > 1) {
 	});
 
 
-
-	
+window.addEventListener('pointermove', (e) => {
+  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
+}
 	// логика свайпа
 	//
 	//
