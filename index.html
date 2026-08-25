@@ -278,6 +278,13 @@ body::after {
     box-sizing: border-box;
 }
 
+/* эксперимент */
+body * {
+ outline: 1px solid rgba(255, 255, 255, 0.07);
+  
+  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
+  outline-offset: -1px; 
+}
 
 :root{
  --swipe-duration: 0.185s;
