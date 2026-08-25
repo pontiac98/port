@@ -1930,6 +1930,9 @@ const rRect = {
     return rRect;
 }
 
+
+	const lightboxnav = document.getElementById("lightbox-nav");
+
 function updateTransform() {
     viewerWrp.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 }
@@ -1992,6 +1995,10 @@ viewerImage.addEventListener("wheel", e => {
         scale /= 1.12;
     }
 
+
+	if (scale > 1) lightboxnav.classList.add('zoom')
+		else lightboxnav.classList.remove('zoom');
+	
     // Ограничения
     scale = Math.max(rubberMin, scale);
     scale = Math.min(rubberLimit, scale);
