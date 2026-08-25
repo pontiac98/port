@@ -2289,8 +2289,8 @@ viewerImage.addEventListener("mousedown", e => {
 
   limitRect = calcVLs();
 
-  
-    viewerWrp.style.transition = "transform .0s ease-in-out .0s";
+  viewerWrp.style.transition = "none";
+    //viewerWrp.style.transition = "transform .0s ease-in-out .0s";
     //viewerImage.style.cursor = "grabbing";
 
     // Запоминаем стартовую позицию курсора с учетом уже имеющегося сдвига (tx, ty)
@@ -2307,8 +2307,8 @@ window.addEventListener("mouseup", e => {
   
     isDragging = false;
   
-  
-  viewerWrp.style.transition = "transform .185s ease-in-out .0s";
+  viewerWrp.style.transition = "";
+  //viewerWrp.style.transition = "transform .185s ease-in-out .0s";
 
   // типа клик на месте не будет сбрасывать картинку в центр
   if (e.clientX == cx && e.clientY == cy) return;
