@@ -337,7 +337,8 @@ opacity: 0;
 
  display: inline-flex;    /* Превращаем в гибкий контейнер, но сохраняем поведение в строке */
   align-items: center;     /* Ровняем текст и символы строго по ВЕРТИКАЛИ */
-  justify-content: center;  /* Ровняем текст и символы строго по ГОРИЗОНТАЛИ */
+ /* justify-content: center;   Ровняем текст и символы строго по ГОРИЗОНТАЛИ */
+	justify-content: space-between;
 	
   color: #ffffff;
   font-size: 48px; /* Размер тонких уголков */
@@ -735,11 +736,13 @@ position: sticky;
   <!-- Левая зона (10vw) -->
   <div class="nav-zone" id="btn-prev">
     <span class="nav-arrow">&#12296;</span>
+	  <span></span>
   </div>
 
   <!-- Правая зона (10vw) -->
   <div class="nav-zone" id="btn-next">
-    <span class="nav-arrow">&rsaquo;</span>
+	  <span></span>
+    <span class="nav-arrow">&#12297;</span>
   </div>
 
 </div>
@@ -753,8 +756,8 @@ position: sticky;
   <header id="menu">
     <div class="menu-item active" data-gallery="1"><span>＋</span><span>RGB</span></div>
     <div class="menu-item" data-gallery="2"><span>＋</span><span>CMYK</span></div>
-    <div class="menu-item" data-gallery="3"><span>＋</span><span>3-D</span></div>
-    <div class="menu-item" data-gallery="4"><span>＋</span><span>WHO</span></div>
+    <div class="menu-item" data-gallery="3"><span>＋</span><span>3d</span></div>
+    <div class="menu-item" data-gallery="4"><span>＋</span><span>Who</span></div>
   </header>
 </div>
   
