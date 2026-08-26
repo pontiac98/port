@@ -694,11 +694,12 @@ position: sticky;
   transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
   
   /* Размещаем его абсолютно поверх или вместо галереи, чтобы верстка не прыгала */
-  position: absolute;
+  position: relative;
   top: 0px; /* Подстройте под высоту вашего сжимающегося меню */
   left: 0px;
   width: 100%;
-	margin: 4px;
+	height: 100%;
+	padding: 4px;
   
   /* Сохраняем абзацы и переносы строк из txt файла */
   white-space: pre-wrap; 
