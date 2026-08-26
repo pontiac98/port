@@ -684,7 +684,39 @@ position: sticky;
     border-bottom: 0px solid black;
     cursor: default;
 }
+
+
+/* Базовое состояние для текстового блока (изначально скрыт) */
+.info-block {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
   
+  /* Размещаем его абсолютно поверх или вместо галереи, чтобы верстка не прыгала */
+  position: absolute;
+  top: 0px; /* Подстройте под высоту вашего сжимающегося меню */
+  left: 0vw;
+  width: 90vw;
+  
+  /* Сохраняем абзацы и переносы строк из txt файла */
+  white-space: pre-wrap; 
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333333;
+
+	font-family: 'DotGothic16', sans-serif;
+  /* Включает пропорциональные ширины для знаков вместо полноширинных */
+  font-variant-east-asian: proportional-width;
+  font-feature-settings: "pwid" 1;
+}
+
+/* Когда текстовый блок активен — плавно проявляем его */
+.info-block.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+	
 </style>
 </head>
 
@@ -768,6 +800,10 @@ position: sticky;
         </section>
     </div>
   </main>
+
+<div id="about" class="info-block">
+  <p id="text-container">Загрузка текста...</p>
+</div>
   
 <script>
 
