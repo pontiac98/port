@@ -2508,14 +2508,14 @@ menu.addEventListener('click', async (e) => {
         grid.classList.add('fade-out');
         
         // 2. Параллельно начинаем скачивать текст в фоне, чтобы не терять время
-        const textPromise = fetch('texts/about').then(res => res.text());
+        const textPromise = fetch('about').then(res => res.text());
 
         // 3. Ждем, пока галерея полностью растворится
         grid.addEventListener('transitionend', async function onFadeEnd(evt) {
             if (evt.propertyName !== 'opacity') return;
 
             // Мгновенно очищаем скрытую галерею (освобождаем память)
-            cardsContainer.innerHTML = '';
+            gridr.innerHTML = '';
             gallery = [];
 
             // Вставляем скачанный текст в блок
