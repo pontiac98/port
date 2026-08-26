@@ -889,7 +889,8 @@ loadAndRenderGallery("1");
 
 const grid = document.getElementById("grid");
 	let isMenuBlocking = true;
-	
+
+	/*
 async function loadAndRenderGallery(targetGalleryType) {
     try {
         // 1. Параллельно с анимацией начинаем скачивать JSON, чтобы не терять время
@@ -939,6 +940,67 @@ async function loadAndRenderGallery(targetGalleryType) {
         grid.classList.remove('fade-out');
     }
 }
+
+
+*/
+
+
+
+
+// Добавляем второй параметр skipFadeOut со значением по умолчанию false
+async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
+    try {
+        // 1. В фоне скачиваем JSON, чтобы не терять время
+        const response = await fetch('images.json'); 
+        const allData = await response.json();
+        const filteredData = allData.filter(item => item.gallery === targetGalleryType);
+
+        // Функция-помощник, которая выполняет финальную сборку
+        function proceedWithRender() {
+            window.scrollTo({ top: 0, behavior: 'auto' }); // Мгновенный скролл вверх
+            renderNewSection(filteredData); // Безопасно строим новые карточки в DOM
+
+            // Мгновенно убираем плавность, прячем fade-out (проявляем контейнер)
+            grid.style.transition = 'none';
+            grid.classList.remove('fade-out');
+
+            // Возвращаем плавность обратно на следующем кадрах для будущих кликов
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    grid.style.transition = '';
+                });
+            });
+        }
+
+        // 2. ПРОВЕРКА: Если нам нужно пропустить исчезновение (шли из ABOUT)
+        if (skipFadeOut) {
+            proceedWithRender(); // Сразу собираем галерею
+        } else {
+            // Стандартный сценарий: плавно тушим старую галерею, перед показом новой
+            grid.classList.add('fade-out');
+
+            grid.addEventListener('transitionend', function onFadeOutEnd(e) {
+                if (e.propertyName !== 'opacity') return;
+                proceedWithRender();
+            }, { once: true });
+        }
+
+    } catch (error) {
+        console.error("Ошибка при загрузке или обработке JSON:", error);
+        cardsContainer.classList.remove('fade-out');
+    }
+}
+
+
+
+
+
+
+
+
+
+	
+	
 
 // Функция безопасной очистки и отрисовки новых карточек (остается почти без изменений)
 function renderNewSection(newItemsArray) {
@@ -2544,7 +2606,7 @@ menu.addEventListener('click', async (e) => {
                 document.getElementById("text-container").innerText = "Загрузка...";
                 
                 // Загружаем и мгновенно отображаем нужную галерею картинок
-                loadAndRenderGallery(selectedGallery);
+                loadAndRenderGallery(selectedGallery, true);
                 
             }, { once: true });
         } else {
