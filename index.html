@@ -2486,6 +2486,79 @@ document.addEventListener("DOMContentLoaded", () => {
  // 1. Находим родительский элемент меню
 const menu = document.getElementById('menu');
 
+
+const aboutBlock = document.getElementById('about');
+
+menu.addEventListener('click', async (e) => {
+    const menuItem = e.target.closest('.menu-item');
+    if (!menuItem || menuItem.classList.contains('active')) return;
+
+    // Считываем тип ("1", "2", "3" или "about")
+    const selectedGallery = menuItem.dataset.gallery;
+
+    // Переключаем активный класс в меню
+    const currentActive = menu.querySelector('.menu-item.active');
+    if (currentActive) currentActive.classList.remove('active');
+    menuItem.classList.add('active');
+
+    // ЗАПУСКАЕМ СМЕНУ РАЗДЕЛОВ С АНИМАЦИЕЙ
+    if (selectedGallery === '4') {
+        // СЦЕНАРИЙ: Переход на ABOUT
+        // 1. Плавно тушим галерею
+        grid.classList.add('fade-out');
+        
+        // 2. Параллельно начинаем скачивать текст в фоне, чтобы не терять время
+        const textPromise = fetch('texts/about').then(res => res.text());
+
+        // 3. Ждем, пока галерея полностью растворится
+        grid.addEventListener('transitionend', async function onFadeEnd(evt) {
+            if (evt.propertyName !== 'opacity') return;
+
+            // Мгновенно очищаем скрытую галерею (освобождаем память)
+            cardsContainer.innerHTML = '';
+            gallery = [];
+
+            // Вставляем скачанный текст в блок
+            const plainText = await textPromise;
+            document.getElementById("text-container").innerText = plainText;
+
+            // Мгновенно скроллим в самый верх перед показом текста
+            window.scrollTo({ top: 0, behavior: 'auto' });
+
+            // Плавно зажигаем текстовый блок
+            aboutBlock.classList.add('active');
+
+        }, { once: true });
+
+    } else {
+        // СЦЕНАРИЙ: Переход обратно на вкладки с картинками (1, 2, 3)
+        // 1. Плавно тушим текстовый блок, если он был открыт
+        if (aboutBlock.classList.contains('active')) {
+            aboutBlock.classList.remove('active');
+            
+            // Ждем, пока текст полностью растворится
+            aboutBlock.addEventListener('transitionend', function onTextHide(evt) {
+                if (evt.propertyName !== 'opacity') return;
+
+                // Очищаем контейнер текста, чтобы не мерцал при следующем открытии
+                document.getElementById("text-container").innerText = "Загрузка...";
+                
+                // Загружаем и мгновенно отображаем нужную галерею картинок
+                loadAndRenderGallery(selectedGallery);
+                
+            }, { once: true });
+        } else {
+            // Если мы переключались просто между галереями (например с 1 на 2), 
+            // используем наш старый стандартный метод с fade-out контейнера
+            loadAndRenderGallery(selectedGallery);
+        }
+    }
+});
+
+
+	
+
+	/*
 // 2. Вешаем один обработчик клика на всё меню
 menu.addEventListener('click', (e) => {
     // Находим ближайший элемент с классом menu-item (на случай, если кликнули в <span>)
@@ -2517,6 +2590,7 @@ menu.addEventListener('click', (e) => {
     loadAndRenderGallery(galleryType);
 });
 
+	*/
 
 
   
