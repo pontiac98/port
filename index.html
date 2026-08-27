@@ -727,6 +727,34 @@ position: sticky;
   visibility: visible;
 }
 
+.about-sec {
+	opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+	
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.about-sec.active {
+  opacity: 1;
+  visibility: visible;
+}
+	
+.awrp {
+	max-widht: 36%;
+
+}
+	
+.aimg {
+	width: 1080px;
+	height: 400px;
+	background-image: url('about.png');
+
+}
+
 	
 </style>
 </head>
@@ -812,10 +840,17 @@ position: sticky;
     </div>
   </main>
 
+
+
+	
 <div id="about" class="info-block">
-  <p id="text-container">Загрузка текста...</p>
+	<div class="awrp">
+		<div class="aimg"></div> 
+  		<p id="text-container">Загрузка текста...</p>
+	</div>
 </div>
-  
+
+	
 <script>
 
 
