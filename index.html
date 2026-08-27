@@ -794,6 +794,22 @@ position: sticky;
 	font-size: 12px;
 }
 
+
+/* ТОЧЕЧНАЯ КОРРЕКТИРОВКА ДЛЯ АНГЛИЙСКИХ СЛОВ */
+.about-paragraph .eng {
+  /* Пример 1: Меняем шрифт для английских слов на более изящный */
+  font-family: "DotGothic16", sans-serif;
+  
+  /* Пример 2: Если английский шрифт кажется визуально меньше русского, 
+     слегка компенсируем это размером */
+  font-size: 16px; 
+  
+  /* Пример 3: Можно сделать английские термины чуть контрастнее */
+ 
+  font-weight: 400;
+  font-style: normal; 
+}
+	
 	
 </style>
 </head>
@@ -2684,16 +2700,22 @@ menu.addEventListener('click', async (e) => {
 
             // 4. Проходим циклом по всем абзацам
             paragraphs.forEach(paragraphText => {
-                // Триммим пробелы по краям. Если строка оказалась пустой (лишний Enter в файле), 
-                // мы можем её пропустить, чтобы не плодить пустые теги
-                if (paragraphText.trim() === '') return;
+                 if (paragraphText.trim() === '') return;
 
-                // Создаем новый элемент абзаца
                 const p = document.createElement('p');
-                p.className = 'about-paragraph'; // Добавляем класс для стилизации в CSS
-                p.innerText = paragraphText;      // Безопасно вставляем текст
+                p.className = 'about-paragraph';
 
-                // Добавляем абзац в главный контейнер
+                // РЕГУЛЯРНОЕ ВЫРАЖЕНИЕ: ищет любые последовательности английских букв (A-Z, a-z)
+                // Символ \b гарантирует, что мы захватываем слова целиком, включая знаки препинания вокруг
+                const englishRegex = /([A-Za-z0-9\-]+)/g;
+
+                // Оборачиваем найденные совпадения в тег span с классом eng
+                // $1 — это то самое английское слово, которое нашел JS
+                const processedText = paragraphText.replace(englishRegex, '<span class="eng">$1</span>');
+
+                // Используем innerHTML, чтобы браузер превратил строку со спанами в живые теги
+                p.innerHTML = processedText;
+
                 textContainer.appendChild(p);
             });
 
