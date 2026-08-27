@@ -730,6 +730,9 @@ position: sticky;
   visibility: visible;
 }
 
+#text-container {
+	margin: 0 29px;
+}
 
 	
 /* Внутренний враппер контента */
@@ -743,10 +746,17 @@ position: sticky;
 
 /* Адаптивная картинка в бэкграунде */
 .aimg {
-  width: 100%; /* Картинка всегда идеально равна ширине враппера awrp */
-  height: 400px; /* Фиксированная высота (как вы и просили) */
+  width: 100%; /* Картинка занимает всю ширину враппера (900px на ПК) */
+  
+  /* !!! ВМЕСТО height: 400px ИСПОЛЬЗУЕМ ПРОПОРЦИИ */
+  height: auto;               /* Сбрасываем жесткую высоту */
+  aspect-ratio: 1080 / 400;   /* Или просто пишите 2.7 / 1 */
+
+	min-height: 200px;
+
+	background-repeat: no-repeat;
   background-image: url('about.png');
-  background-size: contain; /* Картинка масштабируется без искажений, заполняя блок */
+  background-size: cover; /* contain Картинка масштабируется без искажений, заполняя блок */
   background-position: center; /* Центрируем изображение внутри блока */
   border-radius: 8px; /* Опционально: аккуратное скругление углов */
   margin-bottom: 24px; /* Отступ между картинкой и текстом под ней */
