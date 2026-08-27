@@ -633,6 +633,11 @@ position: sticky;
 }
 
 @media (max-width: 900px) {  
+ 
+	#menu {
+    gap: 0px;
+ 	}
+	
 	#menu div {
 		width: 100%;
 		display: inline-flex;
@@ -713,7 +718,7 @@ position: sticky;
 .info-block.active {
 	/*display: flex;  Гарантируем флекс-режим при активации */
 	height: auto;
-	min-height: 100dvh;
+	min-height: 100vh; /* 100dvh */
   opacity: 1;
   visibility: visible;
 }
