@@ -776,6 +776,20 @@ position: sticky;
   }
 }
 
+	/* Стили для новых сгенерированных абзацев */
+.about-paragraph {
+  margin-top: 0;
+  
+  /* Расстояние между абзацами (подберите идеальное под ваш дизайн) */
+  margin-bottom: 20px; 
+}
+
+/* Опционально: у самого последнего абзаца убираем нижний отступ, 
+   чтобы он не увеличивал высоту враппера awrp */
+.about-paragraph:last-child {
+  margin-bottom: 0;
+}
+
 	
 </style>
 </head>
@@ -867,7 +881,7 @@ position: sticky;
 <div id="about" class="info-block">
 	<div class="awrp">
 		<div class="aimg"></div> 
-  		<p id="text-container">Загрузка текста...</p>
+  		<div id="text-container">Загрузка текста...</div>
 	</div>
 </div>
 
@@ -2648,8 +2662,44 @@ menu.addEventListener('click', async (e) => {
             gallery = [];
 
             // Вставляем скачанный текст в блок
+            //const plainText = await textPromise;
+            //document.getElementById("text-container").innerText = plainText;
+
+
+			
+			            // 1. Очищаем контейнер от старого контента или слова "Загрузка..."
+            const textContainer = document.getElementById("text-container");
+            textContainer.innerHTML = '';
+
+            // 2. Получаем чистый текст из вашего текстового файла
             const plainText = await textPromise;
-            document.getElementById("text-container").innerText = plainText;
+
+            // 3. Разбиваем текст на массив строк по символу переноса строки (\n)
+            // Регулярное выражение /\r?\n/ корректно сработает и на Windows (\r\n), и на Linux/Mac (\n)
+            const paragraphs = plainText.split(/\r?\n/);
+
+            // 4. Проходим циклом по всем абзацам
+            paragraphs.forEach(paragraphText => {
+                // Триммим пробелы по краям. Если строка оказалась пустой (лишний Enter в файле), 
+                // мы можем её пропустить, чтобы не плодить пустые теги
+                if (paragraphText.trim() === '') return;
+
+                // Создаем новый элемент абзаца
+                const p = document.createElement('p');
+                p.className = 'about-paragraph'; // Добавляем класс для стилизации в CSS
+                p.innerText = paragraphText;      // Безопасно вставляем текст
+
+                // Добавляем абзац в главный контейнер
+                textContainer.appendChild(p);
+            });
+
+
+
+
+
+
+
+			
 
             // Мгновенно скроллим в самый верх перед показом текста
             window.scrollTo({ top: 0, behavior: 'auto' });
