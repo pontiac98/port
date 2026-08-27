@@ -712,7 +712,8 @@ position: sticky;
 /* Когда текстовый блок активен — плавно проявляем его */
 .info-block.active {
 	/*display: flex;  Гарантируем флекс-режим при активации */
-	height: 100%;
+	height: auto;
+	min-height: 100dvh;
   opacity: 1;
   visibility: visible;
 }
