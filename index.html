@@ -698,9 +698,14 @@ position: sticky;
   top: 0px; /* Подстройте под высоту вашего сжимающегося меню */
   left: 0px;
   width: 100%;
-	height: 100%;
+
 	padding: 4px;
-  
+
+ /* МЕНЮ ФЛЕКС: Центрируем внутренний враппер awrp по горизонтали */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Текст начнется сверху и будет расти вниз */
+	
   /* Сохраняем абзацы и переносы строк из txt файла */
   white-space: pre-wrap; 
   font-size: 18px;
@@ -711,9 +716,6 @@ position: sticky;
 	font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  /* Включает пропорциональные ширины для знаков вместо полноширинных 
-  font-variant-east-asian: proportional-width;
-  font-feature-settings: "pwid" 1;*/
 
 	  -webkit-user-select: none; /* Для Safari и iOS Safari */
   -moz-user-select: none;    /* Для старых версий Firefox */
@@ -723,36 +725,40 @@ position: sticky;
 
 /* Когда текстовый блок активен — плавно проявляем его */
 .info-block.active {
+	display: flex; /* Гарантируем флекс-режим при активации */
   opacity: 1;
   visibility: visible;
 }
 
-.about-sec {
-	opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
-	
-	position: relative;
-	display: flex;
-	width: 100%;
-	height: 100%;
-}
 
-.about-sec.active {
-  opacity: 1;
-  visibility: visible;
-}
 	
+/* Внутренний враппер контента */
 .awrp {
-	max-widht: 36%;
-
+  width: 50%; /* На больших экранах занимает ровно половину (50%) */
+  max-width: 800px; /* Ограничиваем максимальную ширину на огромных мониторах */
+  box-sizing: border-box;
 }
-	
-.aimg {
-	width: 1080px;
-	height: 400px;
-	background-image: url('about.png');
 
+/* Адаптивная картинка в бэкграунде */
+.aimg {
+  width: 100%; /* Картинка всегда идеально равна ширине враппера awrp */
+  height: 400px; /* Фиксированная высота (как вы и просили) */
+  background-image: url('about.png');
+  background-size: cover; /* Картинка масштабируется без искажений, заполняя блок */
+  background-position: center; /* Центрируем изображение внутри блока */
+  border-radius: 8px; /* Опционально: аккуратное скругление углов */
+  margin-bottom: 24px; /* Отступ между картинкой и текстом под ней */
+}
+
+/* Адаптивность для мобильных телефонов и планшетов */
+@media (max-width: 900px) {
+  .awrp {
+    width: 100%; /* На телефонах блок расширяется на всю ширину экрана */
+  }
+  
+  .aimg {
+    height: 250px; /* На смартфонах уменьшаем высоту картинки, чтобы она не занимала весь экран */
+  }
 }
 
 	
