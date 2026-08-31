@@ -814,7 +814,37 @@ position: sticky;
   font-weight: 700;
   font-style: normal; 
 }
+
+
+.ai-tag {
+	display: none; /* Изначально скрываем */
+  position: absolute;
+  
+  /* Размещаем, например, в верхнем правом углу картинки */
+  top: 10px;
+  right: 10px;
+ 
+  
+  /* Оформление фона и размеров */
+  background-color: rgba(238, 238, 238, 0.15); /* #EEEEEE0F очень прозрачный, сделали чуть заметнее */
+  padding: 6px 12px;
+  border-radius: 50%; /* Овальная аккуратная плашка (вместо 50% круга, чтобы текст влез) */
+  
+  /* Стили текста */
+  color: #000;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ai-tag.show {
+	display: block;
+}
 	
+.ai-tag::before {
+  content: "ai used";
+}
 	
 </style>
 </head>
@@ -1134,7 +1164,17 @@ function renderNewSection(newItemsArray) {
             const image = document.createElement("div");
             image.className = "card-image";
             card.dataset.ratio = item.width / item.height;
-          
+
+			// AI тэг
+			const aiTag = document.createElement("div");
+            aiTag.className = "ai-tag";
+
+			 if (item.ai == 1) {
+              aiTag.classList.add("show");
+              }
+		
+			image.appendChild(aiTag); 
+		
             card.appendChild(image);          
             grid.appendChild(card);
             observer.observe(card);
