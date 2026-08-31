@@ -139,7 +139,11 @@ body::after {
    content: "";
    position: absolute; 
    inset: 0; 
-  background-color: white;
+  /*background-color: white; */
+	   outline: 2px solid rgba(255, 255, 255, 0.87);
+  
+  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
+  outline-offset: -2px; 
   opacity: .0;
   pointer-events: none; 
    transition:   opacity .155s ease; 
@@ -200,7 +204,7 @@ body::after {
   width: 100%; 
   
   gap: 2px;
-  background: silver; 
+ /* background: silver; */
   padding: 0px 4px 0px;  
 
 	opacity: 1;
@@ -755,7 +759,7 @@ position: sticky;
 	
 /* Внутренний враппер контента */
 .awrp {
-	padding: 0 12px;
+	padding: 0 4px;
   /* 1. На экранах больше 900px блок намертво застынет на отметке 900px */
   max-width: 900px; 
   
@@ -870,8 +874,11 @@ position: sticky;
   content: "ai used";
 }
 
+@media (hover: hover) and (pointer: fine) {
+	
 .card:hover .ai-tag {
 	opacity: .7;
+}
 }
 
 @media (hover: none) {
@@ -904,7 +911,7 @@ flex-grow: 1;
   width: 100%;
  /* background-color: #111111; */
   color: #333333;
-  padding: 4px;
+  padding: 8px;
   text-align: left;
 
 	opacity: .3;
@@ -912,7 +919,7 @@ flex-grow: 1;
 	
 	font-family: "M PLUS 1p", sans-serif;
   font-size: 13px; 
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal; 
 	transition:   opacity .255s ease; 
 
@@ -1017,7 +1024,15 @@ opacity: .5;
     <div class="menu-item" data-gallery="4"><span>＋</span><span>about</span></div>
   </header>
 </div>
-  
+
+
+<div id="about" class="info-block">
+	<div class="awrp">
+		<div class="aimg"></div> 
+  		<div id="text-container">Загрузка текста...</div>
+	</div>
+</div>
+	
   <main>
     <div id="content">  
         <section id="section1" class="section">
@@ -1029,12 +1044,7 @@ opacity: .5;
 
 
 	
-<div id="about" class="info-block">
-	<div class="awrp">
-		<div class="aimg"></div> 
-  		<div id="text-container">Загрузка текста...</div>
-	</div>
-</div>
+
 
 	<footer class="footer">
       <span></span>
