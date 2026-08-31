@@ -821,18 +821,19 @@ position: sticky;
   position: absolute;
   
   /* Размещаем, например, в верхнем правом углу картинки */
-  top: 10px;
-  right: 10px;
+  top: 4px;
+  right: 4px;
  
-  
+	opacity: .3;
+	
   /* Оформление фона и размеров */
-  background-color: rgba(238, 238, 238, 0.15); /* #EEEEEE0F очень прозрачный, сделали чуть заметнее */
+  background-color: rgba(238, 238, 238, 0.55); /* #EEEEEE0F очень прозрачный, сделали чуть заметнее */
   padding: 6px 12px;
-  border-radius: 50%; /* Овальная аккуратная плашка (вместо 50% круга, чтобы текст влез) */
+  border-radius: 10%; /* Овальная аккуратная плашка (вместо 50% круга, чтобы текст влез) */
   
   /* Стили текста */
-  color: #000;
-  font-size: 13px;
+  color: #222;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -844,6 +845,10 @@ position: sticky;
 	
 .ai-tag::before {
   content: "ai used";
+}
+
+.card:hover .ai-tag {
+	opacity: .7;
 }
 	
 </style>
