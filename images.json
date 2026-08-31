@@ -9,6 +9,7 @@
     "type": "big"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (1).png",
     "url": "images1/image (1).png",
@@ -45,6 +46,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (13).png",
     "url": "images1/image (13).png",
@@ -81,6 +83,7 @@
     "type": ""
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (17).png",
     "url": "images1/image (17).png",
@@ -90,6 +93,7 @@
     "type": "tall"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (18).png",
     "url": "images1/image (18).png",
@@ -117,6 +121,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (20).png",
     "url": "images1/image (20).png",
@@ -135,6 +140,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (22).png",
     "url": "images1/image (22).png",
@@ -171,6 +177,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (26).png",
     "url": "images1/image (26).png",
@@ -180,6 +187,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (3).png",
     "url": "images1/image (3).png",
@@ -189,6 +197,7 @@
     "type": "wide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (4).png",
     "url": "images1/image (4).png",
@@ -198,6 +207,7 @@
     "type": ""
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (5).png",
     "url": "images1/image (5).png",
@@ -234,6 +244,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "image (9).png",
     "url": "images1/image (9).png",
@@ -261,6 +272,7 @@
     "type": ""
   },
   {
+    "ai" : "1",
     "gallery": "1",
     "name": "img2.png",
     "url": "images1/img2.png",
@@ -333,6 +345,7 @@
     "type": "wide"
   },
   {
+    "ai" : "1",
     "gallery": "2",
     "name": "cmyk-0.png",
     "url": "images2/cmyk-0.png",
@@ -351,6 +364,7 @@
     "type": "verywide"
   },
   {
+    "ai" : "1",
     "gallery": "2",
     "name": "cmyk-10.png",
     "url": "images2/cmyk-10.png",
@@ -369,6 +383,7 @@
     "type": ""
   },
   {
+    "ai" : "1",
     "gallery": "2",
     "name": "cmyk-12.png",
     "url": "images2/cmyk-12.png",
