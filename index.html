@@ -772,6 +772,7 @@ position: sticky;
   aspect-ratio: 1080 / 400;   /* Или просто пишите 2.7 / 1 */
 
 	min-height: 250px;
+	 padding: 0 12px;
 
 	background-repeat: no-repeat;
   background-image: url('about.png');
@@ -783,6 +784,11 @@ position: sticky;
 
 /* Адаптивность для мобильных телефонов и планшетов */
 @media (max-width: 900px) {
+
+#text-container {
+	font-size: 17px;
+}
+	
   .awrp {
     width: 100%; /* На телефонах блок расширяется на всю ширину экрана */
   }
@@ -850,6 +856,8 @@ position: sticky;
 
 	transition:   opacity .155s ease; 
 }
+
+	
 
 .ai-tag.show {
 	display: block;
