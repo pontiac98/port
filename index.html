@@ -644,6 +644,7 @@ position: sticky;
   
 
   #menu div {
+	  position: relative;
     user-select: none;
     display: block;
     padding: 8px 24px;
@@ -697,9 +698,11 @@ position: sticky;
   cursor: pointer;
 }
 
-
+/*
 	#menu div::after {
 		content: "";
+		position: absolute; 
+   inset: 0; 
 		background-image: image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
   background-image: -webkit-image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
 		opacity: 0;
@@ -709,7 +712,8 @@ position: sticky;
 	#menu div:hover:not(.active)::after {
 		opacity: 1;
 	}
-
+*/
+	
     #menu div span{
       display: inline-block; 
  transition: transform .2s ease-in-out;
