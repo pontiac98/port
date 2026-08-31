@@ -879,6 +879,46 @@ position: sticky;
 	opacity: .3;
 }
 }
+
+
+
+
+/* 2. НАШ ВНЕШНИЙ ДИВ: Перехватывает на себя роль главного флекс-короба */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  
+  /* Заставляем сам див занять абсолютно всю высоту экрана (100% от body) */
+  min-height: 100%; 
+  
+  /* Если на мобильных адресная строка браузера будет прыгать, 
+     можно подстраховать современной единицей: min-height: 100dvh; */
+}
+
+.content-wrapper main {
+flex-grow: 1;
+}
+
+/* 4. Футер */
+.footer {
+  width: 100%;
+ /* background-color: #111111; */
+  color: #333333;
+  padding: 4px;
+  text-align: left;
+}
+
+.footer .eng {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 16px; 
+  font-weight: 400;
+  font-style: normal; 
+	letter-spacing: 1.5px;
+}
+
+
+	
+
 	
 </style>
 </head>
@@ -946,7 +986,7 @@ position: sticky;
  
   <!-- 
   -->
-
+<div class="content-wrapper">
 <div class="bw">
   <header id="menu">
     <div class="menu-item active" data-gallery="1"><span>＋</span><span>RGB</span></div>
@@ -972,6 +1012,11 @@ position: sticky;
 		<div class="aimg"></div> 
   		<div id="text-container">Загрузка текста...</div>
 	</div>
+</div>
+
+	<footer class="footer">
+      <span>© 2026 Моя Галерея</span>
+    </footer>
 </div>
 
 	
