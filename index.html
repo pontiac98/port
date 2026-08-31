@@ -135,24 +135,35 @@ body::after {
   opacity: .0;
 }
 
+
+
+/* стили карты ховер */
+	
   .card::after{
    content: "";
    position: absolute; 
    inset: 0; 
   /*background-color: white; */
-	   outline: 2px solid rgba(255, 255, 255, 0.87);
+	  background-color: rgba(0, 0, 0, 0);
+	   outline: 2px solid rgba(255, 255, 255, 1);
   
   /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
-  outline-offset: -2px; 
+  outline-offset: -3px; 
   opacity: .0;
   pointer-events: none; 
-   transition:   opacity .155s ease; 
+   transition:   opacity .155s ease, background-color .155s; 
 }  
 
 .card:has(.card-image.loaded):hover::after {
-  opacity: .15;
+	background-color: rgba(0, 0, 0, 0.115);
+  opacity: .75;
 }
-  /*
+  
+	
+	
+	
+	
+	/*
   .card:hover::after {
   opacity: .355;
 }
@@ -258,11 +269,12 @@ body::after {
 	
     html {
     scrollbar-gutter: auto;
-    background: #EEE;   
+		background: aqua;
+   /*background: #EEE;   */
 }
 
   html.no-scroll {
-    background: #EEE;
+    background: aqua;
 }
 
     .grid {
@@ -871,7 +883,7 @@ position: sticky;
 }
 	
 .ai-tag::before {
-  content: "ai used";
+  content: "++ai";
 }
 
 @media (hover: hover) and (pointer: fine) {
