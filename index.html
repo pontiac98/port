@@ -1300,6 +1300,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
             proceedWithRender(); // Сразу собираем галерею
         } else {
             // Стандартный сценарий: плавно тушим старую галерею, перед показом новой
+			grid.classList.remove('fade-out');
             grid.classList.add('fade-out');
 
             grid.addEventListener('transitionend', function onFadeOutEnd(e) {
