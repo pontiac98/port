@@ -365,7 +365,7 @@ opacity: 0;
  /* justify-content: center;   Ровняем текст и символы строго по ГОРИЗОНТАЛИ */
 	justify-content: space-between;
 	
-  color: #ffffff;
+  color: #333;
   font-size: 48px; /* Размер тонких уголков */
   font-weight: 300;
   
@@ -428,7 +428,7 @@ opacity: 0;
     inset: -20px;
     z-index: -1;
 
-    background: rgba(0,0,0,.85);
+    background: rgba(230,230,230,.85);
     opacity: 0;
     transition: 
 		background 1s ease-out,
@@ -443,7 +443,7 @@ opacity: 0;
 
 	#viewer.open.deep::before {
   content: "";
-    background: rgba(16,16,16,1);
+    background: rgba(230,230,230,1);
 }
 
   /*  test */
@@ -994,12 +994,24 @@ opacity: .5;
 	filter: brightness(.9);
 }
 
+	#viewer::before {
+	background: rgba(0,0,0,.85);
+	}
+
+	#viewer.open.deep::before {
+	background: rgba(24,24,24,1);
+	}
+
+	.lightbox-nav .nav-arrow {
+		color: white;
+	}
+
 	html, body {
 background: #333;
 	}
 
 	.ai-tag {
-		    background-color: #333;
+		background-color: #333;
 		color: white;
 	}
 
@@ -1303,6 +1315,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     grid.style.transition = '';
+					isMenuBlocking = false; 
                 });
             });
         }
@@ -1337,6 +1350,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
                 } catch (err) {
                     console.error("Ошибка при ожидании данных в таймере:", err);
                     grid.classList.remove('fade-out');
+					isMenuBlocking = false; 
                 }
             }, animationDelay); 
 
@@ -1351,6 +1365,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
     } catch (error) {
         console.error("Ошибка при загрузке или обработке JSON:", error);
         cardsContainer.classList.remove('fade-out');
+		isMenuBlocking = false; 
     }
 }
 
@@ -2923,11 +2938,16 @@ const menu = document.getElementById('menu');
 
 
 const aboutBlock = document.getElementById('about');
+let isMenuBlocking = false; // Блокирует меню во время смены разделов и скачивания JSON
+
 
 menu.addEventListener('click', async (e) => {
     const menuItem = e.target.closest('.menu-item');
-    if (!menuItem || menuItem.classList.contains('active')) return;
+    if (!menuItem || isMenuBlocking || menuItem.classList.contains('active')) return;
 
+
+	isMenuBlocking = true;
+	
     // Считываем тип ("1", "2", "3" или "about")
     const selectedGallery = menuItem.dataset.gallery;
 
