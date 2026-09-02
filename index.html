@@ -1223,7 +1223,8 @@ loadAndRenderGallery("1");
 // Функция загрузки общего JSON и запуска анимации исчезновения
 
 const grid = document.getElementById("grid");
-	let isMenuBlocking = true;
+	
+let isMenuBlocking = true; // блокируем меню в том числе при перволй загрузке
 
 	/*
 async function loadAndRenderGallery(targetGalleryType) {
@@ -2938,7 +2939,7 @@ const menu = document.getElementById('menu');
 
 
 const aboutBlock = document.getElementById('about');
-let isMenuBlocking = false; // Блокирует меню во время смены разделов и скачивания JSON
+//let isMenuBlocking = false; // Блокирует меню во время смены разделов и скачивания JSON
 
 
 menu.addEventListener('click', async (e) => {
