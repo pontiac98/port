@@ -1332,7 +1332,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
             // Таймер сработает ВСЕГДА вовремя, подстраиваясь под ваш CSS
             setTimeout(async () => {
                 try {
-                    const filteredData = await dataPromise;
+                    //const filteredData = await dataPromise;
                     proceedWithRender(filteredData);
                 } catch (err) {
                     console.error("Ошибка при ожидании данных в таймере:", err);
