@@ -304,7 +304,7 @@ body::after {
 }
 
 /* эксперимент */
-body * {
+body.dev * {
  outline: 1px solid rgba(255, 255, 255, 0.57);
   
   /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
@@ -2880,6 +2880,13 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkDebugHash() {
         const currentHash = window.location.hash;
 
+
+		if (currentHash === "#clean") {
+            document.body.classList.toggle("dev");            
+            history.replaceState(null, null, window.location.pathname);
+        } 
+		
+		
         if (currentHash === "#dev") {
             element.style.display = "block";
             console.log("Режим отладки ВКЛЮЧЕН");
