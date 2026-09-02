@@ -3034,7 +3034,10 @@ menu.addEventListener('click', async (e) => {
         // 1. Плавно тушим текстовый блок, если он был открыт
         if (aboutBlock.classList.contains('active')) {
             aboutBlock.classList.remove('active');
-            
+
+
+
+			/*
             // Ждем, пока текст полностью растворится
             aboutBlock.addEventListener('transitionend', function onTextHide(evt) {
                 if (evt.propertyName !== 'opacity') return;
@@ -3046,6 +3049,30 @@ menu.addEventListener('click', async (e) => {
                 loadAndRenderGallery(selectedGallery, true);
                 
             }, { once: true });
+
+			*/
+
+
+			 const animationDelay = getTransitionDuration(aboutBlock);
+
+            // Таймер сработает ВСЕГДА вовремя, подстраиваясь под ваш CSS
+            setTimeout(async () => {
+                try {
+                    // Очищаем контейнер текста, чтобы не мерцал при следующем открытии
+               		 document.getElementById("text-container").innerText = "Загрузка...";
+                
+                	// Загружаем и мгновенно отображаем нужную галерею картинок
+                	loadAndRenderGallery(selectedGallery, true);
+					
+                } catch (err) {
+                    console.error("Ошибка при ожидании данных в таймере при выходе из эбаутБлок:", err);
+                }
+            }, animationDelay); 
+
+
+
+
+			
         } else {
             // Если мы переключались просто между галереями (например с 1 на 2), 
             // используем наш старый стандартный метод с fade-out контейнера
