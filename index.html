@@ -2957,7 +2957,7 @@ const aboutBlock = document.getElementById('about');
 //let isMenuBlocking = false; // Блокирует меню во время смены разделов и скачивания JSON
 
 
-menu.addEventListener('click', async (e) => {
+menu.addEventListener('click', (e) => {
     const menuItem = e.target.closest('.menu-item');
     if (!menuItem || isMenuBlocking || menuItem.classList.contains('active')) return;
 
@@ -2982,7 +2982,7 @@ menu.addEventListener('click', async (e) => {
         const textPromise = fetch('about').then(res => res.text());
 
         // 3. Ждем, пока галерея полностью растворится
-        grid.addEventListener('transitionend', async function onFadeEnd(evt) {
+        grid.addEventListener('transitionend', function onFadeEnd(evt) {
             if (evt.propertyName !== 'opacity') return;
 
             // Мгновенно очищаем скрытую галерею (освобождаем память)
