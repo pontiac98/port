@@ -35,6 +35,19 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
 
 <style>
+
+/* 1. РЕГИСТРИРУЕМ ОБЕ ПЕРЕМЕННЫЕ (В самом верху файла) */
+@property --mask-scale-mid {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+@property --mask-scale-bot {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 50%;
+}
+	
   body {
 
     scrollbar-width: none; /* Для Firefox */
@@ -466,6 +479,23 @@ opacity: 0;
 }
 
 
+
+#layerMid {
+  /* Переменная, которой вы будете управлять в JS для среднего слоя */
+  --mask-scale: var(--mask-scale-mid); 
+}
+
+#layerBot {
+  /* Переменная, которой вы будете управлять в JS для нижнего слоя */
+  --mask-scale: var(--mask-scale-bot); 
+}
+
+	#layerTop {
+  /* Переменная, которой вы будете управлять в JS для нижнего слоя */
+  --mask-scale: 100%; 
+}
+	
+
 .swiping #viewerImage,
 .swiping .viewerWrp,
 .swiping .viewerImg{
@@ -484,11 +514,25 @@ opacity: 0;
 
 touch-action: none; /* Запрещает нативный скролл и зум браузера */
   user-select: none;   /* Запрещает выделение текста при удерживании */
+  transform-origin: 0 0; 
+
+  mask-image: 
+    linear-gradient(to right, black var(--mask-scale), transparent calc(var(--mask-scale) + 15%)),
+    linear-gradient(to left, black var(--mask-scale), transparent calc(var(--mask-scale) + 15%)),
+    linear-gradient(to top, black var(--mask-scale), transparent calc(var(--mask-scale) + 15%)),
+    linear-gradient(to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + 15%));
+
+
+  mask-size: 100vmax 100vmax;
+  mask-position: center;
+  mask-repeat: no-repeat;  
+ mask-composite: intersect;
+
 
 	
-  transform-origin: 0 0; 
   transition:
-      transform var(--swipe-duration) ease-in-out;
+		transform var(--swipe-duration) ease-in-out,
+	  --mask-scale var(--swipe-duration) ease-in-out;
 }
 
 
