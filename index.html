@@ -1624,12 +1624,15 @@ function updateSwipe(x) {
 	if (deltaSwipeX < 0) {
 		const scaleBot = 1 - scaleF + scaleF * progress;
 		const opaBot = progress * opaF;
+		const maskBot = (.6 + progress * .4) * 100;
 
 		//вернуть в прежнее слои из правого свайпа
+		layerMid.style.setProperty('--mask-scale', `100%`);
 		imageMid.style.opacity = `1`;	
 		imageMid.style.transform = `scale(1)`;
 		layerTop.style.transform = `translateX(-101%)`;	
 
+	layerBot.style.setProperty('--mask-scale', `${maskBot}%`);
 	imageBot.style.opacity = `${opaBot}`;	
 	imageBot.style.transform = `scale(${scaleBot})`;	
 	layerMid.style.transform = `translateX(${deltaSwipeX}px)`;	
@@ -1638,12 +1641,15 @@ function updateSwipe(x) {
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
 		const shiftX = (-1.01 + progress*rF)*100;
+		const maskMid = (1 - progress * .4) * 100;
 
 		//вернуть в прежнее слои из левого свайпа
+		layerBot.style.setProperty('--mask-scale', `60%`);
 		imageBot.style.opacity = `0`;	
 		imageBot.style.transform = `scale(.5)`;	
 		layerMid.style.transform = `translateX(0px)`;	
 
+	layerMid.style.setProperty('--mask-scale', `${maskMid}%`);
 	imageMid.style.opacity = `${opaMid}`;	
 	imageMid.style.transform = `scale(${scaleMid})`;
 	layerTop.style.transform = `translateX(${shiftX}%)`;	
@@ -1684,24 +1690,29 @@ layerMid.addEventListener("pointerup", e => {
 		// в лево  право в конце все равно они встают в одни и те же места
 		if (startSwipeX > e.clientX) { // лево вперед
 		theIndex = (theIndex + gallery.length + 1) % gallery.length;
-			
+
+		
 		layerTop.style.transform = `translateX(-101%)`; // это и так должно быть
 		imageMid.style.opacity = 1;	
 		imageMid.style.transform = `scale(1)`;	
+			layerMid.style.setProperty('--mask-scale', `100%`);	
 			
 		layerMid.style.transform = `translateX(-101%)`;	
 		imageBot.style.opacity = 1;	
 		imageBot.style.transform = `scale(1)`;	
+			layerBot.style.setProperty('--mask-scale', `100%`);	
 		} else { // вправо назад
 			theIndex = (theIndex + gallery.length - 1) % gallery.length;
 			
 			layerMid.style.transform = `translateX(0)`;	// это и так должно быть
 			imageBot.style.opacity = 0;	
 			imageBot.style.transform = `scale(.5)`;	
+				layerBot.style.setProperty('--mask-scale', `60%`);	
 			
 		layerTop.style.transform = `translateX(0)`;	
 		imageMid.style.opacity = 0;	
 		imageMid.style.transform = `scale(.5)`;	
+			layerMid.style.setProperty('--mask-scale', `60%`);	
 		}
 		
 	//layerMid.offsetHeight; //форсируем перерисовку через чтение свойства
@@ -1750,12 +1761,15 @@ layerMid.addEventListener("pointerup", e => {
 	// возвращаем все на свои места при отмене свайпа	
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
+		
+		layerMid.style.setProperty('--mask-scale', `100%`);	
 	imageMid.style.opacity = `1`;	
 	imageMid.style.transform = `scale(1)`;	  
 	layerMid.style.transform = `translateX(0) scale(1)`;	  
 
 	layerTop.style.transform = `translateX(-101%)`; // весь слой смещаем
-		
+
+		layerBot.style.setProperty('--mask-scale', `60%`);	
 	imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
 	imageBot.style.opacity = `0.0`;
   }
@@ -1782,6 +1796,7 @@ const prevCard = gallery[(index + gallery.length - 1) % gallery.length].card;
 const nowCard = gallery[index].card;
 
 // нижний только манипуляции с контейнером картинки
+	layerBot.style.setProperty('--mask-scale', `60%`);	
 imageBot.style.transform = `scale(0.5)`; // картинку снизу уменьшаем
 imageBot.style.opacity = `0.0`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
@@ -1795,6 +1810,7 @@ imageTop.style.aspectRatio = prevCard.dataset.ratio;
 imageTop.dataset.ratio = prevCard.dataset.ratio; 
 
 // средний
+	layerMid.style.setProperty('--mask-scale', `100%`);	
 layerMid.style.transform = `translateX(0)`;
 imageMid.style.opacity = 1;
 imageMid.style.transform = `scale(1)`;
