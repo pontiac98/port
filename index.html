@@ -37,15 +37,10 @@
 <style>
 
 /* 1. РЕГИСТРИРУЕМ ОБЕ ПЕРЕМЕННЫЕ (В самом верху файла) */
-@property --mask-scale-mid {
+@property --mask-scale {
   syntax: '<percentage>';
   inherits: false;
-  initial-value: 100%;
-}
-@property --mask-scale-bot {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 50%;
+  initial-value: 60%;
 }
 	
   body {
@@ -482,12 +477,12 @@ opacity: 0;
 
 #layerMid {
   /* Переменная, которой вы будете управлять в JS для среднего слоя */
-  --mask-scale: var(--mask-scale-mid); 
+  --mask-scale: 100%; 
 }
 
 #layerBot {
   /* Переменная, которой вы будете управлять в JS для нижнего слоя */
-  --mask-scale: var(--mask-scale-bot); 
+  --mask-scale: 60%; 
 }
 
 	#layerTop {
@@ -1625,7 +1620,7 @@ function updateSwipe(x) {
 	const scaleF = .33;
 	const opaF = .8;
 	
-	// свайп в лево
+	// свайп в лево FORWARD
 	if (deltaSwipeX < 0) {
 		const scaleBot = 1 - scaleF + scaleF * progress;
 		const opaBot = progress * opaF;
@@ -1639,7 +1634,7 @@ function updateSwipe(x) {
 	imageBot.style.transform = `scale(${scaleBot})`;	
 	layerMid.style.transform = `translateX(${deltaSwipeX}px)`;	
 		
-	} else if (deltaSwipeX > 0) {  //  свайп в право
+	} else if (deltaSwipeX > 0) {  //  свайп в право BACK
 		const scaleMid = 1 - scaleF * progress;
 		const opaMid = (1 - progress ) * .75 + .25;
 		const shiftX = (-1.01 + progress*rF)*100;
