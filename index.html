@@ -1721,7 +1721,7 @@ layerMid.addEventListener("pointerup", e => {
     // Используем { once: true }, чтобы обработчик сам удалился после вызова
     layerMid.addEventListener('transitionend', (event) => {
         // Проверяем, что завершилась именно анимация transform, а не другое свойство
-        if (event.propertyName !== 'transform' && event.propertyName !== 'opacity') return;
+        if (event.propertyName !== 'transform' && event.propertyName !== 'opacity' && event.propertyName !== '--mask-scale') return;
 
         // 3. АНИМАЦИЯ ЗАВЕРШИЛАСЬ: Мгновенно выключаем транзишены
         viewer.classList.add("swiping");
