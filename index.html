@@ -42,6 +42,12 @@
   inherits: false;
   initial-value: 60%;
 }
+
+	html {
+  /* Указывает всем мобильным браузерам, что сайт поддерживает оба режима 
+     и принудительно форсировать инверсию цветов поверх вашего CSS НЕ НУЖНО */
+  color-scheme: light dark; 
+}
 	
   body {
 
@@ -1106,16 +1112,16 @@ color: silver;
 		border-top: 1px solid silver;
 	}
 
-	#menu {
+	header#menu {
 	background-color: #444;
 		border-bottom: 1px solid silver;
 	}
 
-	#menu div {
+	header#menu div {
 		color: silver;
 	}
 
-	#menu div.active {
+	header#menu div.active {
 	    color: black;
 		background: silver;
 	}
