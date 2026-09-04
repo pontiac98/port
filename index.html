@@ -115,8 +115,7 @@ body::after {
           filter .55s ease;
 }
 
-.card:hover .card-image {
-}
+
 
 
   .card-image.loaded {
@@ -126,8 +125,7 @@ body::after {
   /* Эффекты только на устройствах с мышью hover */
 @media (hover: hover) and (pointer: fine) {
 
-  body.no-scroll .card:hover .card-image {
-}
+
 
     body.no-scroll .card:hover{
       filter: saturate(1.0) ; 
@@ -264,11 +262,7 @@ body::after {
    transition: filter .25s ease-out;   
 }
 
- .card:focus {
-  }
-  
-  .card:hover {
-  }
+
 
 /* для мобильной */
 
@@ -884,18 +878,15 @@ position: sticky;
   margin-top: 0;
   
   /* Расстояние между абзацами (подберите идеальное под ваш дизайн) */
-  margin-bottom: 8px; 
+  margin-bottom: 10px; 
 }
 
 /* Опционально: у самого последнего абзаца убираем нижний отступ, 
    чтобы он не увеличивал высоту враппера awrp */
-/*.about-paragraph:last-child {
-	opacity: 70%;
-	margin-top: 24px;
+.about-paragraph:last-child {
   margin-bottom: 24px;
-	font-size: 12px;
 }
-	*/
+	
 
 
 /* ТОЧЕЧНАЯ КОРРЕКТИРОВКА ДЛЯ АНГЛИЙСКИХ СЛОВ */
@@ -989,6 +980,11 @@ flex-grow: 1;
 
 /* 4. Футер */
 .footer {
+
+	display: flex;
+  flex-direction: column; /* Выстраиваем строки строго друг под другом */
+  align-items: left; 
+	
   width: 100%;
  /* background-color: #111111; */
   color: #333333;
@@ -1004,6 +1000,8 @@ flex-grow: 1;
   font-style: normal; 
 	transition:   opacity .255s ease; 
 
+	white-space: pre-wrap;
+
 		  -webkit-user-select: none; /* Для Safari и iOS Safari */
   -moz-user-select: none;    /* Для старых версий Firefox */
   -ms-user-select: none;     /* Для старых версий Internet Explorer/Edge */
@@ -1015,17 +1013,16 @@ opacity: .5;
 }
 
 	.footer span::before {
-	content: "©2026 Sergey Yakovlev. Все права на представленные изображения принадлежат соотвествующим компаниям.";
+	content: "©2026 Sergey Yakovlev.";
+		font-family: "DotGothic16", sans-serif;
+		letter-spacing: 0.6px;
+	}
+
+	.footer span::after {
+	content: "Изображения имеют ознакомительный характер. Все права на представленные изображения принадлежат соотвествующим компаниям.";
 	}
 	
-.footer .eng {
-  font-family: "DotGothic16", sans-serif;
-  font-size: 16px; 
-  font-weight: 400;
-  font-style: normal; 
-	letter-spacing: 1.5px;
-}
-
+	
 
 
 
@@ -1492,7 +1489,7 @@ function renderNewSection(newItemsArray) {
     const image = card.querySelector(".card-image");
     if (!image.classList.contains("loaded")) return;
 
-	  openViewer(card.dataset.index);
+	  openViewer(Number(card.dataset.index));
 });
 
 
