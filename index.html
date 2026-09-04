@@ -21,15 +21,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
-
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
-
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
@@ -647,9 +638,7 @@ mask-image:
     opacity: 1;
 }   
 
-    #viewerImage.animate.hover {
-    /* filter: brightness(120%); */
-}   
+  
 
   
 #viewerImage.pinching {
@@ -1118,7 +1107,7 @@ color: silver;
 	}
 
 	header#menu div {
-		color: silver !important;
+		color: white !important;
 	}
 
 	header#menu div.active {
@@ -2762,8 +2751,8 @@ const isHover = (
             e.clientX >= backRect.left && e.clientX <= backRect.right &&
             e.clientY >= backRect.top && e.clientY <= backRect.bottom
         );
-  if (isHover) viewerImage.classList.add("hover")
-    else viewerImage.classList.remove("hover");
+  //if (isHover) viewerImage.classList.add("hover")
+    //else viewerImage.classList.remove("hover");
 
   
     lastWheelX = e.clientX;
