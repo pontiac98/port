@@ -526,7 +526,7 @@ mask-image:
     linear-gradient(to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + 15%));
 */
 
-	--mask-add: 13%;
+	--mask-add: 15%;
 	/* по умолчанию вертикальная маска */
 -webkit-mask-image: 
     linear-gradient(to top, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
@@ -1113,17 +1113,17 @@ color: silver;
 	}
 
 	header#menu {
-	background-color: #444;
-		border-bottom: 1px solid silver;
+	background-color: #444 !important;
+		border-bottom: 1px solid silver !important;
 	}
 
 	header#menu div {
-		color: silver;
+		color: silver !important;
 	}
 
 	header#menu div.active {
-	    color: black;
-		background: silver;
+	    color: black !important;
+		background: silver !important;
 	}
 
 	#text-container {
