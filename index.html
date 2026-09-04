@@ -1846,6 +1846,8 @@ imageBot.style.opacity = `0.0`;
 imageBot.style.aspectRatio = nextCard.dataset.ratio;
 imageBot.style.backgroundImage = `url("${nextCard.dataset.image}")`;
 imageBot.dataset.ratio = nextCard.dataset.ratio; 
+	if (imageBot.dataset.ratio > 1.1) layerBot.classList.add("hor")
+		else layerBot.classList.remove("hor");
 
 // верхний
 layerTop.style.transform = `translateX(-101%)`; // весь слой смещаем
@@ -1861,6 +1863,9 @@ imageMid.style.transform = `scale(1)`;
 imageMid.style.backgroundImage = `url("${nowCard.dataset.image}")`;
 imageMid.style.aspectRatio = nowCard.dataset.ratio;
 imageMid.dataset.ratio = nowCard.dataset.ratio; 
+
+	if (imageMid.dataset.ratio > 1.1) layerMid.classList.add("hor")
+		else layerMid.classList.remove("hor");
 }
 
 
