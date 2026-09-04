@@ -981,9 +981,7 @@ flex-grow: 1;
 /* 4. Футер */
 .footer {
 
-	display: flex;
-  flex-direction: column; /* Выстраиваем строки строго друг под другом */
-  align-items: left; 
+
 	
   width: 100%;
  /* background-color: #111111; */
@@ -1012,6 +1010,13 @@ flex-grow: 1;
 opacity: .5;
 }
 
+.footer span {
+		display: flex;
+  flex-direction: column; /* Выстраиваем строки строго друг под другом */
+  align-items: left; 
+}
+
+	
 	.footer span::before {
 	content: "©2026 Sergey Yakovlev.";
 		font-family: "DotGothic16", sans-serif;
