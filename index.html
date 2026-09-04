@@ -56,42 +56,14 @@
   }
 
 
-body::before,
-body::after {
- /* content: ""; */
-  position: fixed;
-  inset: 0;
-  background-repeat: repeat;
-  pointer-events: none;
-}
-
-  /* Первый GIF-слой */
-body::before {
-  z-index: 2000; /* Выше любого стандартного лайтбокса */
-  background-image: image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
-  background-image: -webkit-image-set(url('o1.gif') 1x, url('o1.gif') 2x, url('o1.gif') 3x);
-  opacity: 0.08;
-  mix-blend-mode: overlay; 
-}
-
-/* Второй GIF-слой */
-body::after {
-  z-index: 2001; /* Самый верхний уровень на всей странице */
-  background-image: image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
-  background-image: -webkit-image-set(url('o2.gif') 1x, url('o2.gif') 2x, url('o2.gif') 3x);
-  opacity: 0.10;
-  /*mix-blend-mode: overlay; */
-}
-  
+/*  
 .section {
   display: block;
   width: 100%;
   height: 100%;
 }
+*/
 
-.section.active {
-  display: block;
-}
 
 
     
@@ -171,7 +143,8 @@ body::after {
   opacity: .355;
 }
   */
-  
+
+	/*
     .card:hover{
     filter: saturate(1.0); 
 }
@@ -189,9 +162,12 @@ body::after {
         filter: none;
     }
 
+	*/
+
 }
 
 /* Сенсорные устройства */
+	/*
 @media (hover: none) {
 
       .card{
@@ -206,6 +182,7 @@ body::after {
         filter: none;
 }
 }
+	*/
 
 
 
@@ -218,7 +195,6 @@ body::after {
   width: 100%; 
   
   gap: 2px;
- /* background: silver; */
   padding: 0px 4px 0px;  
 
 	opacity: 1;
@@ -265,17 +241,18 @@ body::after {
 
 @media (max-width: 900px) {  
 
-	
+	/*
     html {
     scrollbar-gutter: auto;
 		background: aqua;
-   /*background: #EEE;   */
+   background: #EEE;   
 }
 
   html.no-scroll {
     background: aqua;
 }
-
+*/
+	
     .grid {
       padding: 0px 0px 0px;
       grid-template-columns: repeat(3, minmax(15px, 1fr));
@@ -423,7 +400,7 @@ opacity: 0;
 }
 
 #viewer.open {
-    backdrop-filter: blur(0px) grayscale(100%);
+   /* backdrop-filter: blur(0px) grayscale(100%); */
     opacity: 1;
     visibility: visible; 
     pointer-events: auto;
@@ -439,7 +416,7 @@ opacity: 0;
     opacity: 0;
     transition: 
 		background 1s ease-out,
-		opacity .8s ease-out .0s;
+		opacity .8s ease-out;
     pointer-events: none;
 }
 
@@ -453,9 +430,9 @@ opacity: 0;
     background: rgba(230,230,230,1);
 }
 
-  /*  test */
+  /*  test 
   #viewer.open::after {
-   /* content: ""; */
+    content: ""; 
     position: fixed;
     inset: -20px;
     z-index: 1;
@@ -463,7 +440,7 @@ opacity: 0;
     opacity: .01;
     pointer-events: none;
 }
-
+*/
 
 
 #layerMid {
@@ -520,12 +497,12 @@ mask-image:
 	--mask-add: 15%;
 	/* по умолчанию вертикальная маска */
 -webkit-mask-image: 
-    linear-gradient(to top, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
-    linear-gradient(to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
+    linear-gradient(in srgb-linear to top, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
+    linear-gradient(in srgb-linear to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
 
 	mask-image: 
-    linear-gradient(to top, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
-    linear-gradient(to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
+    linear-gradient(in srgb-linear to top, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
+    linear-gradient(in srgb-linear to bottom, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
 
 	
   -webkit-mask-size: 100vmax 100vmax;
@@ -549,12 +526,12 @@ mask-image:
 
 	.viewerWrp.hor {
 		-webkit-mask-image: 
-    linear-gradient(to left, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
-    linear-gradient(to right, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
+    linear-gradient(in srgb-linear to left, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
+    linear-gradient(in srgb-linear to right, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
 
 	mask-image: 
-    linear-gradient(to left, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
-    linear-gradient(to right, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
+    linear-gradient(in srgb-linear to left, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add))),
+    linear-gradient(in srgb-linear to right, black var(--mask-scale), transparent calc(var(--mask-scale) + var(--mask-add)));
 	}
 
 #layerTop {
@@ -585,7 +562,7 @@ mask-image:
     touch-action: none;
 	user-select: none;
 	pointer-events: none;
-	filter: brightness(100%);
+	/*filter: brightness(100%); */
 	
     /*transform-origin: 50% 50%; maybe */
     transform-origin: center center;  
@@ -2746,11 +2723,11 @@ window.addEventListener('contextmenu', (e) => {
 window.addEventListener('mousemove', (e) => {
   document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
 
-backRect = realRect(); 
-const isHover = (
-            e.clientX >= backRect.left && e.clientX <= backRect.right &&
-            e.clientY >= backRect.top && e.clientY <= backRect.bottom
-        );
+//backRect = realRect(); 
+//const isHover = (
+ //           e.clientX >= backRect.left && e.clientX <= backRect.right &&
+ //           e.clientY >= backRect.top && e.clientY <= backRect.bottom
+  //      );
   //if (isHover) viewerImage.classList.add("hover")
     //else viewerImage.classList.remove("hover");
 
