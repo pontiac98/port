@@ -805,8 +805,8 @@ position: sticky;
 /* Базовое состояние для текстового блока (изначально скрыт) */
 .info-block {
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  /*visibility: hidden; */
+  transition: opacity 0.5s ease-out, height 0.5s ease-out;
   
   /* Размещаем его абсолютно поверх или вместо галереи, чтобы верстка не прыгала */
   position: relative;
@@ -827,10 +827,10 @@ position: sticky;
 /* Когда текстовый блок активен — плавно проявляем его */
 .info-block.active {
 	/*display: flex;  Гарантируем флекс-режим при активации */
-	height: auto;
+	height: 100%;
 	/*min-height: 100vh;  100dvh */
   opacity: 1;
-  visibility: visible;
+  /*visibility: visible; */
 }
 
 #text-container {
@@ -2793,11 +2793,13 @@ window.addEventListener("resize", () => {
 
 	resizeTimeout = setTimeout(() => {
 		
+		fullDeviceHeight = innerHeight;
+		
     // Проверяем, открыт ли лайтбокс (если у вас есть для этого флаг или класс)
     if (viewer && viewer.classList.contains("open")) { 
         
       // Пересчитываем базовую область заново
-		fullDeviceHeight = innerHeight;
+		
 		fullProgressWidth = innerWidth;
         limitRect = calcVLs();
        backRect = realRect();
