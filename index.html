@@ -687,7 +687,7 @@ position: sticky;
 	  --mouse-y-ratio: 0;
     
     /* Наша формула: из 0.5 вычитаем (коэффициент * разницу 0.4) */
-    opacity: calc(0.5 - var(--mouse-y-ratio, 0) * 0.4);
+    opacity: 0;
     
    /* opacity: 50%; */
     border-bottom: 1px solid black; 
@@ -698,7 +698,11 @@ position: sticky;
 	 /* убрали транзишн */
   }
 
-  #menu:hover{
+	#menu.loaded {
+		opacity: calc(0.5 - var(--mouse-y-ratio, 0) * 0.4);
+	}
+
+  #menu.loaded:hover{
     opacity: 80%; 
   }
 
@@ -1224,6 +1228,11 @@ color: silver;
 	
 <script>
 
+	 const headerMenu = document.getElementById("menu");  
+    if (headerMenu)  document.fonts.ready.then(() => {
+        // Шрифты готовы! Плавно зажигаем меню без микро-рывков
+        headerMenu.classList.add("loaded");
+    });
 
 
   // галерея
@@ -1911,7 +1920,7 @@ if (btnPrev && btnNext) {
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
   const viewerWrp = layerMid;
-	const headerMenu = document.getElementById("menu");
+	
 
 
 
