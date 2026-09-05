@@ -1002,10 +1002,14 @@ position: sticky;
      можно подстраховать современной единицей: min-height: 100dvh; */
 }
 
-.content-wrapper main {
-flex-grow: 1;
-}
 
+	
+/*.content-wrapper main {
+flex-grow: 1;  
+}
+*/
+
+	
 /* 4. Футер */
 .footer {
 
@@ -1017,7 +1021,7 @@ display: flex;
   padding: 8px;
   text-align: left;
 
-	opacity: .0;
+	opacity: .3;
 	border-top: 1px solid black; 
 	
 	font-family: "M PLUS 1p", sans-serif;
@@ -1039,9 +1043,6 @@ display: flex;
   transition: opacity 0.1s ease-out; /* Прячем быстрее, до того как он успеет подпрыгнуть */
 }
 
-header#menu.loaded ~ .footer {
-	opacity: .3;
-}
 	
 .footer:hover {
 opacity: .5;
@@ -1216,13 +1217,9 @@ color: silver;
 	</div>
 </div>
 	
-  <main>
-    <div id="content">  
-        <section id="section1" class="section">
+
           <div class="grid" id="grid"></div>
-        </section>
-    </div>
-  </main>
+ 
 
 
 
