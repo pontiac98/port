@@ -1017,7 +1017,7 @@ display: flex;
   padding: 8px;
   text-align: left;
 
-	opacity: .3;
+	opacity: .0;
 	border-top: 1px solid black; 
 	
 	font-family: "M PLUS 1p", sans-serif;
@@ -1034,6 +1034,15 @@ display: flex;
   user-select: none;         /* Стандартное свойство для современных браузеров */
 }
 
+.grid.fade-out ~ .footer {
+  opacity: 0;
+  transition: opacity 0.1s ease-out; /* Прячем быстрее, до того как он успеет подпрыгнуть */
+}
+
+header#menu.loaded ~ .footer {
+	opacity: .3;
+}
+	
 .footer:hover {
 opacity: .5;
 }
@@ -3100,6 +3109,7 @@ menu.addEventListener('click', async (e) => {
 
             // Плавно зажигаем текстовый блок
             aboutBlock.classList.add('active');
+			grid.classList.remove('fade-out');		
 			isMenuBlocking = false; // разблокируем меню
 
 			} catch (err) {
