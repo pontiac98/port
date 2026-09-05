@@ -16,23 +16,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
-	
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
-
 <style>
 
+/* dotgothic16-regular - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'DotGothic16';
+  font-style: normal;
+  font-weight: 400;
+  src: url('dotgothic16.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+	
+@font-face {
+  font-display: swap; 
+  font-family: "M PLUS 1p";
+  font-style: normal;
+  font-weight: 400;
+  src: url('m-plus-1p.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+	
 /* 1. РЕГИСТРИРУЕМ ОБЕ ПЕРЕМЕННЫЕ (В самом верху файла) */
 @property --mask-scale {
   syntax: '<percentage>';
   inherits: false;
   initial-value: 60%;
 }
+	
 
 	html {
   /* Указывает всем мобильным браузерам, что сайт поддерживает оба режима 
@@ -821,7 +830,7 @@ position: sticky;
 
 	   
 	
-	/*font-family: "Zen Kaku Gothic Antique", sans-serif; */
+	
 	font-family: "M PLUS 1p", sans-serif;
 	font-optical-sizing: auto;
   font-weight: 400;
