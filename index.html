@@ -2776,7 +2776,8 @@ window.addEventListener('mousemove', (e) => {
 
 
 //ресайз окна обновляет данные областей
-  
+  let resizeTimeout = null;
+	
 window.addEventListener("resize", () => {
 
 	clearTimeout(resizeTimeout);
