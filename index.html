@@ -1717,7 +1717,7 @@ layerMid.addEventListener("pointerup", e => {
 	swiping = false; 	// убрали отсюда вставили в конец транзишнЭнд
 	viewer.classList.remove("swiping"); // возвращаем плавные переходы
 
-	layerMid.offsetHeight; 
+	//layerMid.offsetHeight; 
 		
 		// сдесь пишем куда должны откатиться слои в том или ином случае
 		// в лево  право в конце все равно они встают в одни и те же места
@@ -1928,6 +1928,7 @@ if (btnPrev && btnNext) {
  
   viewer.classList.add("open");
 	  menu.classList.add("lb-open");
+	  lbOpen = true;
 	   
    
    // Сбросить состояние
@@ -1964,6 +1965,7 @@ if (scale > 1) return;
   viewerImage.style.transform = `scale(${scale})`;
   viewerImage.classList.remove("animate");
 
+	lbOpen = false;
 	menu.classList.remove("lb-open");
   viewer.classList.remove("open");
 	viewer.classList.remove("deep"); // обнюляем непрозрачность
@@ -2743,9 +2745,11 @@ window.addEventListener('contextmenu', (e) => {
 //мышь влияет на прозрачность меню
 
 	let fullDeviceHeight = innerHeight;
+	let lbOpen = false;
   
 window.addEventListener('mousemove', (e) => {
-  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / fullDeviceHeight);
+
+	
 
 	
 
@@ -2765,7 +2769,9 @@ window.addEventListener('mousemove', (e) => {
    if (e.buttons !== 1) isDragging = false;
   
   if (!isDragging) return;
- 
+
+	// обновляем коофициент меню только при закрытом лайтбоксе
+	if (!lbOpen) document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / fullDeviceHeight);
   
     // Вычисляем новый сдвиг
     tx = e.clientX - startX;
