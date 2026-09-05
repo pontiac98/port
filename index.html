@@ -2730,9 +2730,13 @@ window.addEventListener('contextmenu', (e) => {
 
 
 //мышь влияет на прозрачность меню
+
+	let fullDeviceHeight = innerHeight;
   
 window.addEventListener('mousemove', (e) => {
-  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / window.innerHeight);
+  document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / fullDeviceHeight);
+
+	
 
 //backRect = realRect(); 
 //const isHover = (
@@ -2837,6 +2841,7 @@ window.addEventListener("resize", () => {
     if (viewer.classList.contains("open")) { 
         
       // Пересчитываем базовую область заново
+		fullDeviceHeight = innerHeight;
 		fullProgressWidth = innerWidth;
         limitRect = calcVLs();
        backRect = realRect();
