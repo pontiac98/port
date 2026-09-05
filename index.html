@@ -690,10 +690,10 @@ position: sticky;
    /* opacity: 50%; */
     border-bottom: 1px solid black; 
 
-    /*transition:
+    transition:
         opacity .325s ease-out;  
 
-	  убрали транзишн */
+	 /* убрали транзишн */
   }
 
   #menu:hover{
@@ -1909,6 +1909,7 @@ if (btnPrev && btnNext) {
   const viewer = document.getElementById("viewer");
   const viewerImage = document.getElementById("viewerImage");
   const viewerWrp = layerMid;
+	const headerMenu = document.getElementById("menu");
 
 
 
@@ -1926,6 +1927,8 @@ if (btnPrev && btnNext) {
   document.documentElement.classList.add("no-scroll");
  
   viewer.classList.add("open");
+	  menu.classList.add("lb-open");
+	   
    
    // Сбросить состояние
     viewerImage.classList.remove("animate");
@@ -1960,6 +1963,8 @@ if (scale > 1) return;
   viewerWrp.style.transform = `scale(${scale})`;
   viewerImage.style.transform = `scale(${scale})`;
   viewerImage.classList.remove("animate");
+
+	menu.classList.remove("lb-open");
   viewer.classList.remove("open");
 	viewer.classList.remove("deep"); // обнюляем непрозрачность
   
@@ -3051,7 +3056,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //
 // переключание галереи
  // 1. Находим родительский элемент меню
-const menu = document.getElementById('menu');
+//const menu = document.getElementById('menu');
 
 
 const aboutBlock = document.getElementById('about');
