@@ -16,11 +16,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
+	<link rel="preload" href="dotgothic16.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 
 /* dotgothic16-regular - latin */
 @font-face {
-  font-display: swap; 
   font-family: 'DotGothic16';
   font-style: normal;
   font-weight: 400;
@@ -876,7 +876,7 @@ position: sticky;
   background-image: url('about.png');
   background-size: cover; /* contain Картинка масштабируется без искажений, заполняя блок */
   background-position: center; /* Центрируем изображение внутри блока */
-  border-radius: 8px; /* Опционально: аккуратное скругление углов */
+  border-radius: 0px; /* Опционально: аккуратное скругление углов */
   margin: 24px 0; /* Отступ  */
 }
 
@@ -1043,7 +1043,7 @@ opacity: .5;
 */
 	
 	.footer span::before {
-	content: "©2026 Sergey Yakovlev.";
+	content: "©2026, ⒲+⒫ by Sergey Yakovlev.";
 		font-family: "DotGothic16", sans-serif;
 		font-size: 13px;
 		letter-spacing: 0.6px;
