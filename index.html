@@ -305,7 +305,7 @@ body.dev * {
 }
 
 :root{
- --swipe-duration: 0.185s;
+ --swipe-duration: 0.205s;
 }
 
 /* лайтбокс          */
@@ -701,10 +701,10 @@ position: sticky;
     opacity: 80%; 
   }
 
-	#menu.lb-open {
+/*	#menu.lb-open {
 		opacity: 80%; 
 	}
-
+*/
   
 
   #menu div {
@@ -1561,7 +1561,7 @@ layerMid.addEventListener("pointerdown", e => {
 	activePointers.set(e.pointerId, e);
 
 	// стандартное время для свайпа
-	document.documentElement.style.setProperty('--swipe-duration', '0.185s');
+	document.documentElement.style.setProperty('--swipe-duration', '0.205s'); // было 185
 	
 	if (isBlocking) return; 
    	if (scale > 1) return;
@@ -1928,7 +1928,7 @@ if (btnPrev && btnNext) {
   document.documentElement.classList.add("no-scroll");
  
   viewer.classList.add("open");
-	  menu.classList.add("lb-open");
+	 // menu.classList.add("lb-open");
 	  lbOpen = true;
 	   
    
@@ -1967,7 +1967,7 @@ if (scale > 1) return;
   viewerImage.classList.remove("animate");
 
 	lbOpen = false;
-	menu.classList.remove("lb-open");
+	//menu.classList.remove("lb-open");
   viewer.classList.remove("open");
 	viewer.classList.remove("deep"); // обнюляем непрозрачность
   
