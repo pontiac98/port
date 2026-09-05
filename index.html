@@ -683,6 +683,7 @@ position: sticky;
     gap: 4px;
  
     background: silver;
+	  --mouse-y-ratio: 0;
     
     /* Наша формула: из 0.5 вычитаем (коэффициент * разницу 0.4) */
     opacity: calc(0.5 - var(--mouse-y-ratio, 0) * 0.4);
@@ -2750,7 +2751,7 @@ window.addEventListener('contextmenu', (e) => {
 window.addEventListener('mousemove', (e) => {
 
 // обновляем коофициент меню только при закрытом лайтбоксе
-	if (!lbOpen) document.documentElement.style.setProperty('--mouse-y-ratio', e.clientY / fullDeviceHeight);
+	if (!lbOpen) menu.style.setProperty('--mouse-y-ratio', e.clientY / fullDeviceHeight);
   
     lastWheelX = e.clientX;
     lastWheelY = e.clientY;
