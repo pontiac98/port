@@ -1547,6 +1547,7 @@ function renderNewSection(newItemsArray) {
 
 	let progress = 0;
 	let theIndex = 0;
+	let fullProgressWidth = 0;
 
   
 layerMid.addEventListener("pointerdown", e => {
@@ -1578,6 +1579,7 @@ if (activePointers.size > 1) {
 
 	layerMid.setPointerCapture(e.pointerId); //захват указателя чтобы он не терялся при выходе из окна
 
+	fullProgressWidth = innerWidth;
 	progress = 0; //  обнуляем прогресс
 	startSwipeX = e.clientX;
 	viewer.classList.add("swiping"); //перенес из апдейтСвайп
@@ -1639,7 +1641,7 @@ function updateSwipe(x) {
 	
 	const rF = 0.70; // фактор тяжести
 	const deltaSwipeX = (x - startSwipeX) * rF;
-	progress = Math.min(1, Math.abs(x - startSwipeX) / innerWidth);
+	progress = Math.min(1, Math.abs(x - startSwipeX) / fullProgressWidth);
 
 
 	const scaleF = .33;
@@ -2835,6 +2837,7 @@ window.addEventListener("resize", () => {
     if (viewer.classList.contains("open")) { 
         
       // Пересчитываем базовую область заново
+		fullProgressWidth = innerWidth;
         limitRect = calcVLs();
        backRect = realRect();
       drawDebugRect(); 
