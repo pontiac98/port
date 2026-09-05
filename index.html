@@ -207,7 +207,7 @@
   padding: 0px 4px 0px;  
 
 	opacity: 1;
-	transition: opacity 0.5s ease-out;
+	transition: opacity 0.5s ease-out, min-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .grid.fade-out {
@@ -1408,6 +1408,10 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
 
         // Функция-помощник, которая выполняет финальную сборку
         function proceedWithRender() {
+
+		const currentHeight = grid.offsetHeight;
+    	grid.style.minHeight = `${currentHeight}px`;
+			
             window.scrollTo({ top: 0, behavior: 'auto' }); // Мгновенный скролл вверх
             renderNewSection(filteredData); // Безопасно строим новые карточки в DOM
 
@@ -1418,6 +1422,8 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
             // Возвращаем плавность обратно на следующем кадрах для будущих кликов
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
+
+					grid.style.minHeight = ''; 
                     grid.style.transition = '';
 					isMenuBlocking = false; 
                 });
