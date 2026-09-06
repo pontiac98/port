@@ -1038,7 +1038,7 @@ display: flex;
   user-select: none;         /* Стандартное свойство для современных браузеров */
 }
 
-.grid.fade-out ~ .footer {
+.footer.fade {
   opacity: 0;
   transition: opacity 0.1s ease-out; /* Прячем быстрее, до того как он успеет подпрыгнуть */
 }
@@ -1232,7 +1232,7 @@ color: silver;
 	
 
 
-	<footer class="footer">
+	<footer id="footer" class="footer fade">
       <span></span>
     </footer>
 </div>
@@ -1241,9 +1241,11 @@ color: silver;
 <script>
 
 	 const headerMenu = document.getElementById("menu");  
+	const footer = document.getElementById("footer");  
     if (headerMenu)  document.fonts.ready.then(() => {
         // Шрифты готовы! Плавно зажигаем меню без микро-рывков
         headerMenu.classList.add("loaded");
+		footer.classList.remove("fade");
     });
 
 
@@ -1418,11 +1420,12 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
             // Мгновенно убираем плавность, прячем fade-out (проявляем контейнер)
             grid.style.transition = 'none';
             grid.classList.remove('fade-out');
+			
 
             // Возвращаем плавность обратно на следующем кадрах для будущих кликов
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-
+					footer.classList.remove("fade");
 					grid.style.minHeight = ''; 
                     grid.style.transition = '';
 					isMenuBlocking = false; 
@@ -1432,11 +1435,14 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
 
         // 2. ПРОВЕРКА: Если нам нужно пропустить исчезновение (шли из ABOUT)
         if (skipFadeOut) {
+			footer.classList.add("fade");
             proceedWithRender(); // Сразу собираем галерею
+			
         } else {
             // Стандартный сценарий: плавно тушим старую галерею, перед показом новой
 			grid.classList.remove('fade-out');
             grid.classList.add('fade-out');
+			footer.classList.add("fade");
 
 			/*
 
@@ -1460,6 +1466,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
                 } catch (err) {
                     console.error("Ошибка при ожидании данных в таймере:", err);
                     grid.classList.remove('fade-out');
+					footer.classList.remove("fade");
 					isMenuBlocking = false; 
                 }
             }, animationDelay); 
@@ -1474,7 +1481,8 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
 
     } catch (error) {
         console.error("Ошибка при загрузке или обработке JSON:", error);
-        cardsContainer.classList.remove('fade-out');
+        grid.classList.remove('fade-out');
+		footer.classList.remove("fade");
 		isMenuBlocking = false; 
     }
 }
@@ -3051,7 +3059,8 @@ menu.addEventListener('click', async (e) => {
         // СЦЕНАРИЙ: Переход на ABOUT
         // 1. Плавно тушим галерею
         grid.classList.add('fade-out');
-        
+        footer.classList.add("fade");
+		
         // 2. Параллельно начинаем скачивать текст в фоне, чтобы не терять время
         const textPromise = fetch('about').then(res => res.text());
 
@@ -3063,6 +3072,7 @@ menu.addEventListener('click', async (e) => {
 
 		
 			const animationDelayA = getTransitionDuration(grid);
+			
         	setTimeout(async () => {
                 try {
 
@@ -3119,11 +3129,13 @@ menu.addEventListener('click', async (e) => {
             // Плавно зажигаем текстовый блок
             aboutBlock.classList.add('active');
 			grid.classList.remove('fade-out');		
+			footer.classList.remove("fade");
 			isMenuBlocking = false; // разблокируем меню
 
 			} catch (err) {
                     console.error("Ошибка при ожидании данных в таймере при входе в эбаутБлок:", err);
                     grid.classList.remove('fade-out');
+					footer.classList.remove("fade");
                 }
             }, animationDelayA); 
 
@@ -3141,7 +3153,7 @@ menu.addEventListener('click', async (e) => {
         // 1. Плавно тушим текстовый блок, если он был открыт
         if (aboutBlock.classList.contains('active')) {
             aboutBlock.classList.remove('active');
-
+			footer.classList.add("fade");
 
 
 			/*
@@ -3170,6 +3182,7 @@ menu.addEventListener('click', async (e) => {
                 
                 	// Загружаем и мгновенно отображаем нужную галерею картинок
                 	loadAndRenderGallery(selectedGallery, true);
+					footer.classList.remove("fade");
 					
                 } catch (err) {
                     console.error("Ошибка при ожидании данных в таймере при выходе из эбаутБлок:", err);
