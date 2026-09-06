@@ -502,5 +502,347 @@
     "height": 560,
     "ratio": 1.09,
     "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "1.png",
+    "url": "images3/1.png",
+    "width": 1001,
+    "height": 750,
+    "ratio": 1.33,
+    "type": "big"
+  },
+  {
+    "gallery": "3",
+    "name": "10.png",
+    "url": "images3/10.png",
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "12.png",
+    "url": "images3/12.png",
+    "width": 1470,
+    "height": 410,
+    "ratio": 3.59,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "14.png",
+    "url": "images3/14.png",
+    "width": 1080,
+    "height": 620,
+    "ratio": 1.74,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "20.png",
+    "url": "images3/20.png",
+    "width": 1180,
+    "height": 440,
+    "ratio": 2.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "21.png",
+    "url": "images3/21.png",
+    "width": 1200,
+    "height": 537,
+    "ratio": 2.23,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "24.png",
+    "url": "images3/24.png",
+    "width": 1080,
+    "height": 1920,
+    "ratio": 0.56,
+    "type": "tall"
+  },
+  {
+    "gallery": "3",
+    "name": "25.png",
+    "url": "images3/25.png",
+    "width": 1280,
+    "height": 356,
+    "ratio": 3.6,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "29.png",
+    "url": "images3/29.png",
+    "width": 1180,
+    "height": 440,
+    "ratio": 2.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "3.png",
+    "url": "images3/3.png",
+    "width": 900,
+    "height": 900,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "30.png",
+    "url": "images3/30.png",
+    "width": 880,
+    "height": 1100,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "31.png",
+    "url": "images3/31.png",
+    "width": 1180,
+    "height": 440,
+    "ratio": 2.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "32.png",
+    "url": "images3/32.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "34.png",
+    "url": "images3/34.png",
+    "width": 640,
+    "height": 1080,
+    "ratio": 0.59,
+    "type": "tall"
+  },
+  {
+    "gallery": "3",
+    "name": "40.png",
+    "url": "images3/40.png",
+    "width": 2400,
+    "height": 2400,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "42.png",
+    "url": "images3/42.png",
+    "width": 1180,
+    "height": 440,
+    "ratio": 2.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "43.png",
+    "url": "images3/43.png",
+    "width": 960,
+    "height": 1200,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "5.png",
+    "url": "images3/5.png",
+    "width": 1080,
+    "height": 607,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "52.png",
+    "url": "images3/52.png",
+    "width": 898,
+    "height": 1123,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "55.png",
+    "url": "images3/55.png",
+    "width": 1125,
+    "height": 492,
+    "ratio": 2.29,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "60.png",
+    "url": "images3/60.png",
+    "width": 864,
+    "height": 1080,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "62.png",
+    "url": "images3/62.png",
+    "width": 1080,
+    "height": 607,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "63.png",
+    "url": "images3/63.png",
+    "width": 1180,
+    "height": 415,
+    "ratio": 2.84,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "70.png",
+    "url": "images3/70.png",
+    "width": 1200,
+    "height": 537,
+    "ratio": 2.23,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "73.png",
+    "url": "images3/73.png",
+    "width": 843,
+    "height": 999,
+    "ratio": 0.84,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "76.png",
+    "url": "images3/76.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "77.png",
+    "url": "images3/77.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "78.png",
+    "url": "images3/78.png",
+    "width": 880,
+    "height": 1100,
+    "ratio": 0.8,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "8.png",
+    "url": "images3/8.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "80.png",
+    "url": "images3/80.png",
+    "width": 1080,
+    "height": 607,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "82.png",
+    "url": "images3/82.png",
+    "width": 1180,
+    "height": 440,
+    "ratio": 2.68,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "85.png",
+    "url": "images3/85.png",
+    "width": 1602,
+    "height": 300,
+    "ratio": 5.34,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "88.png",
+    "url": "images3/88.png",
+    "width": 1080,
+    "height": 1080,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "90.png",
+    "url": "images3/90.png",
+    "width": 1200,
+    "height": 1200,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "92.png",
+    "url": "images3/92.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "94.png",
+    "url": "images3/94.png",
+    "width": 1600,
+    "height": 300,
+    "ratio": 5.33,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "96.png",
+    "url": "images3/96.png",
+    "width": 1285,
+    "height": 250,
+    "ratio": 5.14,
+    "type": "verywide"
+  },
+  {
+    "gallery": "3",
+    "name": "98.png",
+    "url": "images3/98.png",
+    "width": 900,
+    "height": 900,
+    "ratio": 1,
+    "type": ""
   }
 ]
