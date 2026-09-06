@@ -3007,7 +3007,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function drawDebugRect() {
     const debugEl = document.getElementById("debug-back-rect");
-    if (!debugEl) return;
+    if (!debugEl || (debugEl.style.display = "none")) return;
+
+	 
     
     //debugEl.textContent = `Track Y: ${trackY}`;
     debugEl.children[0].textContent = `Track Y: ${trackY.toFixed(2)}  Max Y: ${maxTrackY.toFixed(2)}`;
