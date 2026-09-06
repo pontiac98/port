@@ -421,7 +421,8 @@ opacity: 0;
     inset: -20px;
     z-index: -1;
 
-    background: rgba(230,230,230,.85);
+   /* background: rgba(230,230,230,.85); */
+	  background: rgba(230,230,230);
     opacity: 0;
     transition: 
 		background 1s ease-out,
@@ -431,12 +432,13 @@ opacity: 0;
 
 #viewer.open::before {
   content: "";
-    opacity: 1;
+    opacity: .85;
 }
 
 	#viewer.open.deep::before {
   content: "";
-    background: rgba(230,230,230,1);
+    /*background: rgba(230,230,230,1); */
+		opacity: 1;
 }
 
   /*  test 
@@ -1068,11 +1070,11 @@ opacity: .5;
 }
 
 	#viewer::before {
-	background: rgba(13,13,13,.85);
+	background: rgba(13,13,13);
 	}
 
 	#viewer.open.deep::before {
-	background: rgba(36,36,36,1);
+	background: rgba(36,36,36);
 	}
 
 	.lightbox-nav .nav-arrow {
