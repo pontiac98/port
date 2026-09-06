@@ -1411,7 +1411,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
         // Функция-помощник, которая выполняет финальную сборку
         function proceedWithRender() {
 
-		const currentHeight = grid.offsetHeight;
+		const currentHeight = grid.offsetHeight || aboutBlock.offsetHeight;
     	grid.style.minHeight = `${currentHeight}px`;
 			
             window.scrollTo({ top: 0, behavior: 'auto' }); // Мгновенный скролл вверх
