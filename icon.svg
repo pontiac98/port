@@ -1,14 +1,16 @@
 <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
-
+.st0{fill:#FAFAFA;}
+.st1{fill:#121212;}
  @media (prefers-color-scheme: dark) {
-     .st0{fill:#000000;}
+     .st0{fill:#121212;}
+	.st1{fill:#FAFAFA;}
      }
 </style>
-<g id="_x5F_Ð_xA1_Ð_xBB_Ð_xBE_Ð_xB9__x5F_1" transform="matrix(0.7683600187301635, 0, 0, 0.7683600187301635, -66.20639235396357, 177.65033488423612)">
-	<rect x="86.2" y="-231.2" class="st0" fill="#FFFFFF" width="650.7" height="650.7"/>
-	<g transform="matrix(1, 0, 0, 1, 89.443293, -227.929862)">
+<g id="rect" transform="matrix(0.7683600187301635, 0, 0, 0.7683600187301635, -66.20639235396357, 177.65033488423612)">
+	<rect x="86.2" y="-231.2" class="st0" width="650.7" height="650.7"/>
+	<g class="st1" transform="matrix(1, 0, 0, 1, 89.443293, -227.929862)">
 		<polygon points="95.7,98.4 211.5,98.4 211.5,52 95.7,52 49.4,52 49.4,98.4 49.4,214.1 95.7,214.1 		"/>
 		<polygon points="547.6,52 431.9,52 431.9,98.4 547.6,98.4 547.6,214.1 594,214.1 594,98.4 594,52 		"/>
 		<polygon points="547.6,550.3 431.9,550.3 431.9,596.6 547.6,596.6 594,596.6 594,550.3 594,434.6 547.6,434.6 		"/>
