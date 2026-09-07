@@ -3290,8 +3290,8 @@ if (favicon) {
         
         // ХАК СБРОСА КЭША: Добавляем текущую метку времени (timestamp),
         // чтобы браузер подумал, что иконка обновилась, и принудительно перерисовал её!
-	if (baseHref == "icon.svg?v=1.0") favicon.setAttribute('href', `icon.svg?v=1.1}`)
-		else favicon.setAttribute('href', `icon.svg?v=1.0}`);
+	if (baseHref == "icon.svg?v=1.0") favicon.setAttribute('href', `icon.svg?v=1.1`)
+		else favicon.setAttribute('href', `icon.svg?v=1.0`);
     }
 
     // 3. Вешаем событие: на современных браузерах работает addEventListener, 
