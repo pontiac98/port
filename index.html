@@ -15,7 +15,7 @@
   <meta name="description" content="Designer Portfolio" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" type="image/svg+xml" href="icon.svg?v=1.1">
+  <link id="icon" rel="icon" type="image/svg+xml" href="icon.svg?v=1.1">
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="manifest" href="./manifest.json">
 	<link rel="preload" href="dotgothic16.woff2" as="font" type="font/woff2" crossorigin>
@@ -3276,6 +3276,33 @@ menu.addEventListener('click', (e) => {
   //
   //
   //  
+
+	// 1. Находим тег нашей SVG-иконки в head
+const favicon = document.getElementById('icon');
+
+if (favicon) {
+    // 2. Создаем слушатель системной темы устройства (Light / Dark)
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function handleThemeChange(e) {
+        // Считываем текущий базовый путь (без старых хэшей)
+        const baseHref = favicon.getAttribute('href');
+        
+        // ХАК СБРОСА КЭША: Добавляем текущую метку времени (timestamp),
+        // чтобы браузер подумал, что иконка обновилась, и принудительно перерисовал её!
+	if (baseHref == "icon.svg?v=1.0") favicon.setAttribute('href', `icon.svg?v=1.1}`)
+		else favicon.setAttribute('href', `icon.svg?v=1.0}`);
+    }
+
+    // 3. Вешаем событие: на современных браузерах работает addEventListener, 
+    // на старых подстрахуем через addListener
+    if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleThemeChange);
+    } else {
+        mediaQuery.addListener(handleThemeChange);
+    }
+}
+
 
 
 	if ('serviceWorker' in navigator) {
