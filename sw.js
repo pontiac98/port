@@ -1,42 +1,42 @@
 const CORE_CACHE = 'gallery-core-v1';
 const IMAGE_CACHE = 'gallery-images-v1';
 
-// 1. Øðèôòû è ñòðàíèöó ñêà÷èâàåì ÑÐÀÇÓ ïðè óñòàíîâêå ïðèëîæåíèÿ
+// 1. Ã˜Ã°Ã¨Ã´Ã²Ã» Ã¨ Ã±Ã²Ã°Ã Ã­Ã¨Ã¶Ã³ Ã±ÃªÃ Ã·Ã¨Ã¢Ã Ã¥Ã¬ Ã‘ÃÃ€Ã‡Ã“ Ã¯Ã°Ã¨ Ã³Ã±Ã²Ã Ã­Ã®Ã¢ÃªÃ¥ Ã¯Ã°Ã¨Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¿
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/m-plus-1p.woff2',    // Åñëè ëåæàò â ïàïêå, çàìåíèòå íà '/fonts/m-plus-1p.woff2'
-  '/dotgothic16.woff2'   // Åñëè ëåæàò â ïàïêå, çàìåíèòå íà '/fonts/dotgothic16.woff2'
+  './',
+  './index.html',
+  './m-plus-1p.woff2',    // Ã…Ã±Ã«Ã¨ Ã«Ã¥Ã¦Ã Ã² Ã¢ Ã¯Ã Ã¯ÃªÃ¥, Ã§Ã Ã¬Ã¥Ã­Ã¨Ã²Ã¥ Ã­Ã  '/fonts/m-plus-1p.woff2'
+  './dotgothic16.woff2'   // Ã…Ã±Ã«Ã¨ Ã«Ã¥Ã¦Ã Ã² Ã¢ Ã¯Ã Ã¯ÃªÃ¥, Ã§Ã Ã¬Ã¥Ã­Ã¨Ã²Ã¥ Ã­Ã  '/fonts/dotgothic16.woff2'
 ];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CORE_CACHE).then((cache) => cache.addAll(ASSETS))
   );
-  self.skipWaiting(); // Àêòèâèðóåì íîâûé ñåðâèñ-âîðêåð ñðàçó
+  self.skipWaiting(); // Ã€ÃªÃ²Ã¨Ã¢Ã¨Ã°Ã³Ã¥Ã¬ Ã­Ã®Ã¢Ã»Ã© Ã±Ã¥Ã°Ã¢Ã¨Ã±-Ã¢Ã®Ã°ÃªÃ¥Ã° Ã±Ã°Ã Ã§Ã³
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(self.clients.claim()); // Íà÷èíàåì óïðàâëÿòü ñòðàíèöåé íåìåäëåííî
+  e.waitUntil(self.clients.claim()); // ÃÃ Ã·Ã¨Ã­Ã Ã¥Ã¬ Ã³Ã¯Ã°Ã Ã¢Ã«Ã¿Ã²Ã¼ Ã±Ã²Ã°Ã Ã­Ã¨Ã¶Ã¥Ã© Ã­Ã¥Ã¬Ã¥Ã¤Ã«Ã¥Ã­Ã­Ã®
 });
 
-// 2. ÏÅÐÅÕÂÀÒ ÇÀÏÐÎÑÎÂ: âûäàåì ôàéëû èç êýøà, à êàðòèíêè ñîõðàíÿåì íà ëåòó
+// 2. ÃÃ…ÃÃ…Ã•Ã‚Ã€Ã’ Ã‡Ã€ÃÃÃŽÃ‘ÃŽÃ‚: Ã¢Ã»Ã¤Ã Ã¥Ã¬ Ã´Ã Ã©Ã«Ã» Ã¨Ã§ ÃªÃ½Ã¸Ã , Ã  ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ¨ Ã±Ã®ÃµÃ°Ã Ã­Ã¿Ã¥Ã¬ Ã­Ã  Ã«Ã¥Ã²Ã³
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
-      // Åñëè ôàéë (ñòðàíèöà, øðèôò èëè óæå âèäåííàÿ êàðòèíêà) åñòü â êýøå — îòäàåì ñðàçó
+      // Ã…Ã±Ã«Ã¨ Ã´Ã Ã©Ã« (Ã±Ã²Ã°Ã Ã­Ã¨Ã¶Ã , Ã¸Ã°Ã¨Ã´Ã² Ã¨Ã«Ã¨ Ã³Ã¦Ã¥ Ã¢Ã¨Ã¤Ã¥Ã­Ã­Ã Ã¿ ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ ) Ã¥Ã±Ã²Ã¼ Ã¢ ÃªÃ½Ã¸Ã¥ â€” Ã®Ã²Ã¤Ã Ã¥Ã¬ Ã±Ã°Ã Ã§Ã³
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      // Åñëè ôàéëà íåò â êýøå, èäåì â ñåòü
+      // Ã…Ã±Ã«Ã¨ Ã´Ã Ã©Ã«Ã  Ã­Ã¥Ã² Ã¢ ÃªÃ½Ã¸Ã¥, Ã¨Ã¤Ã¥Ã¬ Ã¢ Ã±Ã¥Ã²Ã¼
       return fetch(e.request).then((networkResponse) => {
-        // Ïðîâåðÿåì, îòíîñèòñÿ ëè çàïðîñ ê âàøèì ïàïêàì ñ êàðòèíêàìè
+        // ÃÃ°Ã®Ã¢Ã¥Ã°Ã¿Ã¥Ã¬, Ã®Ã²Ã­Ã®Ã±Ã¨Ã²Ã±Ã¿ Ã«Ã¨ Ã§Ã Ã¯Ã°Ã®Ã± Ãª Ã¢Ã Ã¸Ã¨Ã¬ Ã¯Ã Ã¯ÃªÃ Ã¬ Ã± ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ Ã¬Ã¨
         const isGalleryImage = e.request.url.includes('/images1/') || 
                                e.request.url.includes('/images2/') || 
                                e.request.url.includes('/images3/');
 
-        // Åñëè ýòî êàðòèíêà è ñåðâåð îòâåòèë óñïåøíî, ñîõðàíÿåì å¸ â êýø
+        // Ã…Ã±Ã«Ã¨ Ã½Ã²Ã® ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ  Ã¨ Ã±Ã¥Ã°Ã¢Ã¥Ã° Ã®Ã²Ã¢Ã¥Ã²Ã¨Ã« Ã³Ã±Ã¯Ã¥Ã¸Ã­Ã®, Ã±Ã®ÃµÃ°Ã Ã­Ã¿Ã¥Ã¬ Ã¥Â¸ Ã¢ ÃªÃ½Ã¸
         if (isGalleryImage && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
           caches.open(IMAGE_CACHE).then((cache) => {
