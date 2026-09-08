@@ -925,7 +925,7 @@ inset:0;
 
  /* background-repeat: no-repeat; */
   background-image: url('about-checker.png');
-  background-size: constain; 
+  background-size: contain; 
   background-position: center; 
  background-attachment: fixed;
 }
@@ -937,10 +937,10 @@ inset:0;
 
 inset:0;
 	z-index: 1; 
-  opacity: 1;
+  opacity: .98;
 
   background-repeat: no-repeat;
-   background-image: url('about2.png');
+   background-image: url('about.png');
   background-size: contain; 
   background-position: center; 
 }
@@ -952,6 +952,11 @@ inset:0;
 /* Адаптивность для мобильных телефонов и планшетов */
 @media (max-width: 900px) {
 
+div.aimg::after {
+background-size: cover; 
+}
+
+	
 #text-container {
 	font-size: 17px;
 }
@@ -1139,6 +1144,11 @@ opacity: .5;
 
 
 @media (prefers-color-scheme: dark) {
+div.aimg::after {
+filter: brightness(0.78);
+background-size: cover; 
+}
+	
 	.card-image.loaded {
 	filter: brightness(.7);
 	}
