@@ -892,11 +892,16 @@ position: sticky;
 
 /* Адаптивная картинка в бэкграунде */
 .aimg {
+
+	  isolation: isolate; 
+	position: relative;
+
+	
   width: 100%; /* Картинка занимает всю ширину враппера (900px на ПК) */
   
   /* !!! ВМЕСТО height: 400px ИСПОЛЬЗУЕМ ПРОПОРЦИИ */
   height: auto;               /* Сбрасываем жесткую высоту */
-  aspect-ratio: 1080 / 400;   /* Или просто пишите 2.7 / 1 */
+  aspect-ratio: 1080 / 400;   /* Или просто пишите 2.7 / 1   1200-582  */
 
 	min-height: 250px;
 
@@ -908,6 +913,25 @@ position: sticky;
   border-radius: 0px; /* Опционально: аккуратное скругление углов */
   margin: 24px 0; /* Отступ  */
 }
+
+.aimg::after {
+  content: ""; 
+  position: absolute;
+
+inset:0;
+	z-index: -1; 
+  opacity: .37;
+
+  background-repeat: no-repeat;
+  background-image: url('about-checker.png');
+  background-size: cover; 
+  background-position: center; 
+}
+
+
+
+
+	
 
 /* Адаптивность для мобильных телефонов и планшетов */
 @media (max-width: 900px) {
