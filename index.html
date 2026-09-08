@@ -982,16 +982,18 @@ background-size: cover;
 /* Опционально: у самого последнего абзаца убираем нижний отступ, 
    чтобы он не увеличивал высоту враппера awrp */
 .about-paragraph:first-of-type {
- text-indent: 1.5em;
+ text-indent: 1.25em;
+	font-size: 17px;
 	 font-weight: 700;
   font-style: normal; 
 
 	letter-spacing: 1.5px;
+	font-variant-caps: small-caps;
 }
 	
 .about-paragraph:last-of-type {
   margin-bottom: 24px;
-	text-indent: 1.5em;
+	text-indent: 1.25em;
 }
 
 
@@ -1157,7 +1159,6 @@ opacity: .5;
 @media (prefers-color-scheme: dark) {
 div.aimg::after {
 filter: brightness(0.78);
-background-size: cover; 
 }
 	
 	.card-image.loaded {
