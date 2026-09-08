@@ -955,22 +955,22 @@ inset:0;
 div.aimg::after {
 background-size: cover; 
 }
-
-	
 #text-container {
 	font-size: 17px;
 }
 	
   .awrp {
     width: 100%; /* На телефонах блок расширяется на всю ширину экрана */
-	
   }
-  
   .aimg {
     height: 250px; /* На смартфонах уменьшаем высоту картинки, чтобы она не занимала весь экран */
   }
 }
 
+
+
+
+	
 	/* Стили для новых сгенерированных абзацев */
 .about-paragraph {
   margin-top: 0;
@@ -981,9 +981,20 @@ background-size: cover;
 
 /* Опционально: у самого последнего абзаца убираем нижний отступ, 
    чтобы он не увеличивал высоту враппера awrp */
-.about-paragraph:last-child {
-  margin-bottom: 24px;
+.about-paragraph:first-of-type {
+ text-indent: 1.5em;
+	 font-weight: 700;
+  font-style: normal; 
+
+	letter-spacing: 1.5px;
 }
+	
+.about-paragraph:last-of-type {
+  margin-bottom: 24px;
+	text-indent: 1.5em;
+}
+
+
 	
 
 
