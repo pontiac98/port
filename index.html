@@ -907,14 +907,14 @@ position: sticky;
 
 
 	background-repeat: no-repeat;
-  background-image: url('about2.png');
+  background-image: none;
   background-size: cover; /* contain Картинка масштабируется без искажений, заполняя блок */
   background-position: center; /* Центрируем изображение внутри блока */
   border-radius: 0px; /* Опционально: аккуратное скругление углов */
   margin: 24px 0; /* Отступ  */
 }
 
-div.aimg::after {
+div.aimg::before {
   content: "";
   position: absolute;
 	display: block;
@@ -923,12 +923,27 @@ inset:0;
 	z-index: -1; 
   opacity: .37;
 
-  background-repeat: no-repeat;
+ /* background-repeat: no-repeat; */
   background-image: url('about-checker.png');
-  background-size: cover; 
+  background-size: constain; 
   background-position: center; 
+ background-attachment: fixed;
 }
 
+	div.aimg::after {
+  content: "";
+  position: absolute;
+	display: block;
+
+inset:0;
+	z-index: 1; 
+  opacity: 1;
+
+  background-repeat: no-repeat;
+   background-image: url('about2.png');
+  background-size: contain; 
+  background-position: center; 
+}
 
 
 
