@@ -41,6 +41,14 @@
   font-weight: 400;
   font-style: normal; 
   }
+
+	  .page-wrapper {
+		display: flex;
+	  }
+
+	  .message {
+		  flex-grow: 1;
+	  }
     
     /* Стили специально для сообщения об ошибке */
     .error-container {
@@ -49,7 +57,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      min-height: 50vh; /* Занимает половину высоты экрана */
+      min-height: 100vh; /* Занимает половину высоты экрана */
       padding: 20px;
     }
     
@@ -73,7 +81,7 @@
       font-family: 'DotGothic16', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      color: black;
+      color: #333;
       text-decoration: none;
       padding-bottom: 2px;
       margin-top: 30px;
@@ -82,6 +90,7 @@
     
     .error-link:hover {
       opacity: 0.6;
+		font-weight: 400;
     }
 
 @media (prefers-color-scheme: dark) {
@@ -110,11 +119,11 @@ background: #333;
 
 
     <!-- Главный блок с ошибкой, который благодаря flex-grow займет всё свободное место -->
-    <div class="cards-container" style="flex-grow: 1;">
+    <div class="message">
       <div class="error-container">
         <h1 class="error-code">404</h1>
-        <h2 class="error-title">Похоже, этой страницы не существует.</h2>
-        <a href="index.html" class="error-link">＋back ot main page</a>
+        <p class="error-title">Такой страницы нет.</p>
+        <a href="index.html" class="error-link">＋back to main page</a>
       </div>
     </div>
 
