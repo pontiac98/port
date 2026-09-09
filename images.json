@@ -565,5 +565,194 @@
     "height": 900,
     "ratio": 0.71,
     "type": "tall"
+  },
+  {
+    "gallery": "3",
+    "name": "1.webp",
+    "url": "images3/1.webp",
+    "width": 1100,
+    "height": 619,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "5.webp",
+    "url": "images3/5.webp",
+    "width": 1100,
+    "height": 619,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "10.webp",
+    "url": "images3/10.webp",
+    "width": 1100,
+    "height": 481,
+    "ratio": 2.29,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "15.webp",
+    "url": "images3/15.webp",
+    "width": 1100,
+    "height": 1099,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "17.webp",
+    "url": "images3/17.webp",
+    "width": 1100,
+    "height": 1100,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "20.webp",
+    "url": "images3/20.webp",
+    "width": 1100,
+    "height": 618,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "24.webp",
+    "url": "images3/24.webp",
+    "width": 1100,
+    "height": 619,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "25.webp",
+    "url": "images3/25.webp",
+    "width": 1100,
+    "height": 678,
+    "ratio": 1.62,
+    "type": "big"
+  },
+  {
+    "gallery": "3",
+    "name": "28.webp",
+    "url": "images3/28.webp",
+    "width": 1100,
+    "height": 1100,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "29.webp",
+    "url": "images3/29.webp",
+    "width": 1100,
+    "height": 931,
+    "ratio": 1.18,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "30.webp",
+    "url": "images3/30.webp",
+    "width": 1100,
+    "height": 619,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "34.webp",
+    "url": "images3/34.webp",
+    "width": 1100,
+    "height": 1100,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "35.webp",
+    "url": "images3/35.webp",
+    "width": 1100,
+    "height": 1099,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "3",
+    "name": "36.webp",
+    "url": "images3/36.webp",
+    "width": 1100,
+    "height": 619,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "41.webp",
+    "url": "images3/41.webp",
+    "width": 1100,
+    "height": 617,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "48.webp",
+    "url": "images3/48.webp",
+    "width": 1100,
+    "height": 618,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "50.webp",
+    "url": "images3/50.webp",
+    "width": 1100,
+    "height": 618,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "3",
+    "name": "60.webp",
+    "url": "images3/60.webp",
+    "width": 1100,
+    "height": 733,
+    "ratio": 1.5,
+    "type": "big"
+  },
+  {
+    "gallery": "3",
+    "name": "62.webp",
+    "url": "images3/62.webp",
+    "width": 1100,
+    "height": 733,
+    "ratio": 1.5,
+    "type": "big"
+  },
+  {
+    "gallery": "3",
+    "name": "64.webp",
+    "url": "images3/64.webp",
+    "width": 1100,
+    "height": 734,
+    "ratio": 1.5,
+    "type": "big"
+  },
+  {
+    "gallery": "3",
+    "name": "65.webp",
+    "url": "images3/65.webp",
+    "width": 1100,
+    "height": 733,
+    "ratio": 1.5,
+    "type": "big"
   }
 ]
