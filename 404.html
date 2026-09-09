@@ -2,14 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 — Страница не найдена</title>
+  <meta name="description" content="Designer Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <!-- Принудительно подключаем ту же адаптивную иконку и стили сайта -->
   <link rel="icon" type="image/svg+xml" href="icon.svg?v=1.1">
-  <link rel="stylesheet" href="style.css">
   
   <style>
+
+    body {
+
+    scrollbar-width: none; /* Для Firefox */
+  -ms-overflow-style: none;  /* Для IE и Edge */
+    
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #EEE;
+
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal; 
+  }
+    
     /* Стили специально для сообщения об ошибке */
     .error-container {
       display: flex;
@@ -22,36 +37,52 @@
     }
     
     .error-code {
-      font-family: 'Ruda', sans-serif;
-      font-size: 120px;
+      font-family: 'DotGothic16', sans-serif;
+      font-size: 26px;
       font-weight: 700;
+      color: #333;
       line-height: 1;
       margin: 0;
-      color: var(--text-main);
       opacity: 0.15; /* Делаем цифры изящно блеклыми, в стиле минимализма */
     }
     
     .error-title {
-      font-family: 'Ruda', sans-serif;
-      font-size: 24px;
+      font-family: 'M PLUS 1p', sans-serif;
+      font-size: 16px;
       margin: 20px 0 10px 0;
-      color: var(--text-main);
     }
     
     .error-link {
-      font-family: 'Ruda', sans-serif;
+      font-family: 'DotGothic16', sans-serif;
       font-size: 14px;
-      color: var(--text-main);
+      font-weight: 700;
+      color: black;
       text-decoration: none;
-      border-bottom: 1px solid var(--text-main);
       padding-bottom: 2px;
       margin-top: 30px;
-      transition: opacity 0.2s ease;
+      letter-spacing: 0.6px;
     }
     
     .error-link:hover {
       opacity: 0.6;
     }
+
+@media (prefers-color-scheme: dark) {
+	html, body {
+background: #333;
+	}
+ .error-link {
+   color: silver;
+ }
+   .error-link:hover {
+       font-weight: 400;
+    }
+  .error-code {
+    color: white;
+  }
+}
+
+    
   </style>
 </head>
 <body>
@@ -59,26 +90,16 @@
   <!-- Наша проверенная флекс-обертка, которая прижмет футер к низу экрана при любом масштабе -->
   <div class="page-wrapper">
 
-    <!-- Статичное меню-заголовок, чтобы пользователь мог вернуться -->
-    <header id="menu">
-      <a href="index.html" class="menu-item" style="text-decoration: none;">
-        <span>←</span> <span>На главную</span>
-      </a>
-    </header>
+
 
     <!-- Главный блок с ошибкой, который благодаря flex-grow займет всё свободное место -->
     <div class="cards-container" style="flex-grow: 1;">
       <div class="error-container">
         <h1 class="error-code">404</h1>
         <h2 class="error-title">Похоже, этой страницы не существует.</h2>
-        <a href="index.html" class="error-link">Вернуться в галерею</a>
+        <a href="index.html" class="error-link">＋back ot main page</a>
       </div>
     </div>
-
-    <!-- Наш прилипающий футер (переменная текста подгрузится из вашего основного CSS) -->
-    <footer class="footer">
-      <span></span>
-    </footer>
 
   </div>
 
