@@ -59,6 +59,10 @@ html {
 	  .message {
 		  flex-grow: 1;
 	  }
+ .message-null {
+		  flex-grow: .33;
+	  }
+	  
     
     /* Стили специально для сообщения об ошибке */
     .error-container {
@@ -85,6 +89,7 @@ html {
       font-family: 'M PLUS 1p', sans-serif;
       font-size: 16px;
       margin: 20px 0 10px 0;
+		opacity: .8;
     }
     
     .error-link {
@@ -114,7 +119,7 @@ background: #333;
        font-weight: 400;
     }
   .error-code {
-    color: white;
+    color: silver;
   }
 }
 
@@ -136,6 +141,8 @@ background: #333;
         <a href="index.html" class="error-link">＋back to main page</a>
       </div>
     </div>
+
+	  <div class="message-null"></div>
 
   </div>
 
