@@ -977,11 +977,14 @@ background-size: cover;
   
   /* Расстояние между абзацами (подберите идеальное под ваш дизайн) */
   margin-bottom: 10px; 
+	padding-left: 1.25em;
+    text-indent: -1.25em;
 }
 
 /* Опционально: у самого последнего абзаца убираем нижний отступ, 
    чтобы он не увеличивал высоту враппера awrp */
 .about-paragraph:first-of-type {
+	padding-left: 0;
  text-indent: 1.25em;
 	font-size: 17px;
 	 font-weight: 700;
@@ -993,7 +996,8 @@ background-size: cover;
 	
 .about-paragraph:last-of-type {
   margin-bottom: 24px;
-	text-indent: 1.25em;
+	/*padding-left: 0; */
+	text-indent: 0;
 }
 
 
