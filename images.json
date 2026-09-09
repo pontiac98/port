@@ -10,6 +10,33 @@
   },
   {
     "gallery": "1",
+    "name": "3.png",
+    "url": "images1/3.png",
+    "width": 900,
+    "height": 900,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "1",
+    "name": "5.png",
+    "url": "images1/5.png",
+    "width": 1080,
+    "height": 607,
+    "ratio": 1.78,
+    "type": "wide"
+  },
+  {
+    "gallery": "1",
+    "name": "8.png",
+    "url": "images1/8.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
+    "type": "wide"
+  },
+  {
+    "gallery": "1",
     "name": "10.png",
     "url": "images1/10.png",
     "width": 1080,
@@ -82,15 +109,6 @@
   },
   {
     "gallery": "1",
-    "name": "3.png",
-    "url": "images1/3.png",
-    "width": 900,
-    "height": 900,
-    "ratio": 1,
-    "type": ""
-  },
-  {
-    "gallery": "1",
     "name": "30.png",
     "url": "images1/30.png",
     "width": 880,
@@ -151,15 +169,6 @@
     "height": 1200,
     "ratio": 0.8,
     "type": ""
-  },
-  {
-    "gallery": "1",
-    "name": "5.png",
-    "url": "images1/5.png",
-    "width": 1080,
-    "height": 607,
-    "ratio": 1.78,
-    "type": "wide"
   },
   {
     "gallery": "1",
@@ -250,15 +259,6 @@
     "height": 1100,
     "ratio": 0.8,
     "type": ""
-  },
-  {
-    "gallery": "1",
-    "name": "8.png",
-    "url": "images1/8.png",
-    "width": 1400,
-    "height": 626,
-    "ratio": 2.24,
-    "type": "wide"
   },
   {
     "gallery": "1",
@@ -361,6 +361,24 @@
   },
   {
     "gallery": "2",
+    "name": "2.png",
+    "url": "images2/2.png",
+    "width": 1100,
+    "height": 1100,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "2",
+    "name": "3.png",
+    "url": "images2/3.png",
+    "width": 1000,
+    "height": 1000,
+    "ratio": 1,
+    "type": ""
+  },
+  {
+    "gallery": "2",
     "name": "10.png",
     "url": "images2/10.png",
     "width": 1000,
@@ -375,15 +393,6 @@
     "width": 695,
     "height": 900,
     "ratio": 0.77,
-    "type": ""
-  },
-  {
-    "gallery": "2",
-    "name": "2.png",
-    "url": "images2/2.png",
-    "width": 1100,
-    "height": 1100,
-    "ratio": 1,
     "type": ""
   },
   {
@@ -410,15 +419,6 @@
     "url": "images2/26.png",
     "width": 800,
     "height": 800,
-    "ratio": 1,
-    "type": ""
-  },
-  {
-    "gallery": "2",
-    "name": "3.png",
-    "url": "images2/3.png",
-    "width": 1000,
-    "height": 1000,
     "ratio": 1,
     "type": ""
   },
