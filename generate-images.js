@@ -26,8 +26,9 @@ for (const [dirName, galleryType] of Object.entries(galleryConfig)) {
     console.log(`Сканируем папку: ${dirName} для галереи: ${galleryType}`);
 
     const folderFiles = fs.readdirSync(dirName)
-        .filter(file => extensions.includes(path.extname(file).toLowerCase()))
-        .map(file => {
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+    .filter(file => extensions.includes(path.extname(file).toLowerCase()))
+    .map(file => {
             const filePath = path.join(dirName, file);
             const buffer = fs.readFileSync(filePath);
             const size = imageSize(buffer);
