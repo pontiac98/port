@@ -1525,7 +1525,14 @@ function getTransitionDuration(element) {
 // Добавляем второй параметр skipFadeOut со значением по умолчанию false
 	let aboutOffest = 0;
 async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
-    try {
+    
+	 // ставим класс галереи
+	grid.className = "";
+	if (targetGalleryType == 1) grid.classList.add('rgb')
+		else (targetGalleryType == 2) grid.classList.add('cmyk')
+			else grid.classList.add('3d');
+	
+	try {
         // 1. В фоне скачиваем JSON, чтобы не терять время
         const response = await fetch('images.json'); 
         const allData = await response.json();
@@ -1646,6 +1653,11 @@ function renderNewSection(newItemsArray) {
            if (item.type) {
               card.classList.add(item.type);
               }
+		// класс по имени файла
+		 if (item.url.includes('-sbig')) {
+			card.className = "";
+            card.classList.add('sbig');
+        }
 
             const image = document.createElement("div");
             image.className = "card-image";
@@ -1655,7 +1667,7 @@ function renderNewSection(newItemsArray) {
 			const aiTag = document.createElement("div");
             aiTag.className = "ai-tag";
 
-			 if (item.ai == 1) {
+			 if (item.ai == 1 || item.url.includes('-ai')) {
               aiTag.classList.add("show");
               }
 		
