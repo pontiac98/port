@@ -1529,7 +1529,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
 	 // ставим класс галереи
 	grid.className = "";
 	if (targetGalleryType == 1) grid.classList.add('rgb')
-		else (targetGalleryType == 2) grid.classList.add('cmyk')
+		else if (targetGalleryType == 2) grid.classList.add('cmyk')
 			else grid.classList.add('tree-d');
 	
 	try {
