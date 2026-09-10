@@ -30,9 +30,9 @@
     "gallery": "1",
     "name": "8.png",
     "url": "images1/8.png",
-    "width": 1400,
-    "height": 626,
-    "ratio": 2.24,
+    "width": 1125,
+    "height": 492,
+    "ratio": 2.29,
     "type": "wide"
   },
   {
@@ -181,11 +181,11 @@
   },
   {
     "gallery": "1",
-    "name": "55.png",
-    "url": "images1/55.png",
-    "width": 1125,
-    "height": 492,
-    "ratio": 2.29,
+    "name": "54.png",
+    "url": "images1/54.png",
+    "width": 1400,
+    "height": 626,
+    "ratio": 2.24,
     "type": "wide"
   },
   {
