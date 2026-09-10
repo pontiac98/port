@@ -1528,6 +1528,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
     
 	 // ставим класс галереи
 	grid.className = "";
+	grid.classList.add('grid');
 	if (targetGalleryType == 1) grid.classList.add('rgb')
 		else if (targetGalleryType == 2) grid.classList.add('cmyk')
 			else grid.classList.add('tree-d');
@@ -1650,14 +1651,14 @@ function renderNewSection(newItemsArray) {
             card.dataset.index = index;
 
             // Пример шаблона размеров
+		// класс по имени файла
+		 if (item.url.includes('-sbig')) {
+			card.classList.add('sbig');
+        } else
            if (item.type) {
               card.classList.add(item.type);
               }
-		// класс по имени файла
-		 if (item.url.includes('-sbig')) {
-			card.className = "";
-            card.classList.add('sbig');
-        }
+		
 
             const image = document.createElement("div");
             image.className = "card-image";
