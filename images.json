@@ -289,8 +289,8 @@
   },
   {
     "gallery": "1",
-    "name": "88.png",
-    "url": "images1/88.png",
+    "name": "88-tall.png",
+    "url": "images1/88-tall.png",
     "width": 1080,
     "height": 1080,
     "ratio": 1,
@@ -298,8 +298,8 @@
   },
   {
     "gallery": "1",
-    "name": "90.png",
-    "url": "images1/90.png",
+    "name": "90-tall.png",
+    "url": "images1/90-tall.png",
     "width": 1200,
     "height": 1200,
     "ratio": 1,
