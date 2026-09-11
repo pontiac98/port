@@ -35,10 +35,10 @@ for (const [dirName, galleryType] of Object.entries(galleryConfig)) {
             const ratio = size.width / size.height;
 
             let type = "";
-            if (ratio > 2.4) type = "verywide";
-            else if (ratio > 1.7) type = "wide";
-            else if (ratio < 0.75) type = "tall";
-            else if (ratio > 1.2) type = "big";
+           // if (ratio > 2.4) type = "verywide";
+           // else if (ratio > 1.7) type = "wide";
+           // else if (ratio < 0.75) type = "tall";
+           // else if (ratio > 1.2) type = "big";
 
             // Возвращаем объект карточки с новым полем gallery
             return {
