@@ -1652,12 +1652,34 @@ function renderNewSection(newItemsArray) {
 
             // Пример шаблона размеров
 		// класс по имени файла
-		 if (item.url.includes('-sbig')) {
-			card.classList.add('sbig');
-        } else
-           if (item.type) {
-              card.classList.add(item.type);
-              }
+		// if (item.url.includes('-sbig')) {
+		//	card.classList.add('sbig');
+       // } else
+        //   if (item.type) {
+         //     card.classList.add(item.type);
+         //     }
+
+
+	const name = item.name;
+	const ratio = item.ratio;
+    	let type = "";
+
+
+    if (name.includes('-sbig')) type = 'sbig';
+    	else if (name.includes('-big')) type = 'big';
+    	else if (name.includes('-verywide')) type = 'verywide';
+    	else if (name.includes('-wide')) type = 'wide';
+    	else if (name.includes('-tall')) type = 'tall';
+    	    else if (ratio > 2.4) type = 'verywide'; 
+        	else if (ratio > 1.7) type = 'wide';     
+        	else if (ratio < 0.75) type = 'tall'; 
+		else if (ratio > 1.2) type = "big";    
+     
+
+    if (type) card.classList.add(type);
+
+
+
 		
 
             const image = document.createElement("div");
