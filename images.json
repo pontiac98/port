@@ -6,7 +6,7 @@
     "width": 1001,
     "height": 750,
     "ratio": 1.33,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -24,7 +24,7 @@
     "width": 1080,
     "height": 607,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -33,7 +33,7 @@
     "width": 1125,
     "height": 492,
     "ratio": 2.29,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -51,7 +51,7 @@
     "width": 1470,
     "height": 410,
     "ratio": 3.59,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -60,7 +60,7 @@
     "width": 1080,
     "height": 620,
     "ratio": 1.74,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -69,7 +69,7 @@
     "width": 1180,
     "height": 440,
     "ratio": 2.68,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -78,7 +78,7 @@
     "width": 1200,
     "height": 537,
     "ratio": 2.23,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -87,7 +87,7 @@
     "width": 1080,
     "height": 1920,
     "ratio": 0.56,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -96,7 +96,7 @@
     "width": 1280,
     "height": 356,
     "ratio": 3.6,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -105,7 +105,7 @@
     "width": 1180,
     "height": 440,
     "ratio": 2.68,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -123,7 +123,7 @@
     "width": 1180,
     "height": 440,
     "ratio": 2.68,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -132,7 +132,7 @@
     "width": 1400,
     "height": 626,
     "ratio": 2.24,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -141,7 +141,7 @@
     "width": 640,
     "height": 1080,
     "ratio": 0.59,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -159,7 +159,7 @@
     "width": 1180,
     "height": 440,
     "ratio": 2.68,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -186,7 +186,7 @@
     "width": 1400,
     "height": 626,
     "ratio": 2.24,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -204,7 +204,7 @@
     "width": 1080,
     "height": 607,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -213,7 +213,7 @@
     "width": 1180,
     "height": 415,
     "ratio": 2.84,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -222,7 +222,7 @@
     "width": 1200,
     "height": 537,
     "ratio": 2.23,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -240,7 +240,7 @@
     "width": 1400,
     "height": 626,
     "ratio": 2.24,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -249,7 +249,7 @@
     "width": 1400,
     "height": 626,
     "ratio": 2.24,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -267,7 +267,7 @@
     "width": 1080,
     "height": 607,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -276,7 +276,7 @@
     "width": 1180,
     "height": 440,
     "ratio": 2.68,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -285,7 +285,7 @@
     "width": 1602,
     "height": 300,
     "ratio": 5.34,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -312,7 +312,7 @@
     "width": 1400,
     "height": 626,
     "ratio": 2.24,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -321,7 +321,7 @@
     "width": 1600,
     "height": 300,
     "ratio": 5.33,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -330,7 +330,7 @@
     "width": 1285,
     "height": 250,
     "ratio": 5.14,
-    "type": "verywide"
+    "type": ""
   },
   {
     "gallery": "1",
@@ -402,7 +402,7 @@
     "width": 828,
     "height": 1200,
     "ratio": 0.69,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -429,7 +429,7 @@
     "width": 708,
     "height": 1000,
     "ratio": 0.71,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -438,7 +438,7 @@
     "width": 794,
     "height": 1123,
     "ratio": 0.71,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -447,7 +447,7 @@
     "width": 1241,
     "height": 1754,
     "ratio": 0.71,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -456,7 +456,7 @@
     "width": 708,
     "height": 1000,
     "ratio": 0.71,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -474,7 +474,7 @@
     "width": 2000,
     "height": 1547,
     "ratio": 1.29,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -537,7 +537,7 @@
     "width": 1100,
     "height": 828,
     "ratio": 1.33,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -546,7 +546,7 @@
     "width": 1060,
     "height": 750,
     "ratio": 1.41,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -555,7 +555,7 @@
     "width": 489,
     "height": 1100,
     "ratio": 0.44,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "2",
@@ -564,7 +564,7 @@
     "width": 637,
     "height": 900,
     "ratio": 0.71,
-    "type": "tall"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -573,7 +573,7 @@
     "width": 1100,
     "height": 619,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -582,7 +582,7 @@
     "width": 1100,
     "height": 619,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -609,7 +609,7 @@
     "width": 1100,
     "height": 618,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -618,7 +618,7 @@
     "width": 1000,
     "height": 562,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -627,7 +627,7 @@
     "width": 1100,
     "height": 678,
     "ratio": 1.62,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -654,7 +654,7 @@
     "width": 1100,
     "height": 619,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -681,7 +681,7 @@
     "width": 1000,
     "height": 561,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -690,7 +690,7 @@
     "width": 1100,
     "height": 618,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -699,7 +699,7 @@
     "width": 1100,
     "height": 618,
     "ratio": 1.78,
-    "type": "wide"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -708,7 +708,7 @@
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -717,7 +717,7 @@
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -726,7 +726,7 @@
     "width": 1100,
     "height": 734,
     "ratio": 1.5,
-    "type": "big"
+    "type": ""
   },
   {
     "gallery": "3",
@@ -735,6 +735,6 @@
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
-    "type": "big"
+    "type": ""
   }
 ]
