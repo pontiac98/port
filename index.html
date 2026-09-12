@@ -238,6 +238,7 @@
 .wide {grid-column: span 2;}
 .verywide {grid-column: span 3;}
 .tall {grid-row: span 2;}
+	.ptall {grid-row: span 2;}
 }
 
 /* для ВТОРОЙ галереи */	
@@ -312,7 +313,7 @@
 
 
 /* для ПЕРВОЙ МОБИЛ галереи */	
-.rgb {
+.grid.rgb {
 .sbig {grid-column: span 3; grid-row: span 2;}
 .big {grid-column: span 2; grid-row: span 2;}
 .wide {grid-column: span 2;}
@@ -1081,7 +1082,7 @@ background-size: cover;
 
 	
 
-.ai-tag.show {
+.card.ai .ai-tag {
 	display: block;
 }
 	
@@ -1660,11 +1661,12 @@ function renderNewSection(newItemsArray) {
          //     }
 
 
+		
 	const name = item.name;
 	const ratio = item.ratio;
-    	let type = "";
+    	//let type = "";
 
-
+/*
     if (name.includes('-sbig')) type = 'sbig';
     	else if (name.includes('-big')) type = 'big';
     	else if (name.includes('-verywide')) type = 'verywide';
@@ -1676,8 +1678,28 @@ function renderNewSection(newItemsArray) {
 		else if (ratio > 1.2) type = "big";    
      
 
-    if (type) card.classList.add(type);
+    if (type) card.classList.add(type); 
+		*/
 
+		
+
+let type = name.split('.')[0].split('-').slice(1).join(' '); 
+
+if (type == "" || type == "ai") {
+    let autoType = "";
+    if (ratio > 2.4) autoType = 'verywide'; 
+    else if (ratio > 1.7) autoType = 'wide';     
+    else if (ratio < 0.75) autoType = 'tall'; 
+    else if (ratio > 1.2) autoType = "big";
+    
+    // Дописываем вычисленный по ratio класс в начало нашей общей строки через пробел
+    if (autoType) type = `${autoType} ${type}`.trim();
+}
+
+// 3. УЛЬТИМАТИВНОЕ ПРИСВОЕНИЕ ВСЕХ КЛАССОВ В ОДНУ СТРОКУ
+// Свойство className само превратит строку "wide ptall ai" в три независимых класса в DOM!
+card.className = `card ${type}`.trim();
+		
 
 
 		
@@ -1690,9 +1712,11 @@ function renderNewSection(newItemsArray) {
 			const aiTag = document.createElement("div");
             aiTag.className = "ai-tag";
 
-			 if (item.ai == 1 || item.url.includes('-ai')) {
-              aiTag.classList.add("show");
-              }
+
+			// перенесем в ксс
+			// if (item.ai == 1 || item.name.includes('-ai')) {
+            //  aiTag.classList.add("show");
+             // }
 		
 			image.appendChild(aiTag); 
 		
