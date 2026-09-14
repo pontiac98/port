@@ -102,6 +102,17 @@
     opacity: 1;
 }
 
+
+	   .card-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+		   opacity: 0;
+        background-color: rgba(0, 0, 0, 0.3); /* 30% затемнения = brightness(.7) */
+        pointer-events: none; /* Чтобы не мешал кликам */
+        z-index: 1; /* Должен быть ниже, чем .ai-tag */
+    }
+
   /* Эффекты только на устройствах с мышью hover */
 @media (hover: hover) and (pointer: fine) {
 
@@ -1239,11 +1250,16 @@ opacity: .5;
 div.aimg::after {
 filter: brightness(0.78);
 }
-	
+
+	.card-image::before {
+		   opacity: 1;
+	}
+
+		/*
 	.card-image.loaded {
 	filter: brightness(.7);
 	}
-
+		*/
 	
 #viewer {
 	filter: brightness(.9);
