@@ -280,8 +280,8 @@
   },
   {
     "gallery": "1",
-    "name": "85.png",
-    "url": "images1/85.png",
+    "name": "85-ai.png",
+    "url": "images1/85-ai.png",
     "width": 1602,
     "height": 300,
     "ratio": 5.34,
@@ -343,8 +343,8 @@
   },
   {
     "gallery": "1",
-    "name": "99.png",
-    "url": "images1/99.png",
+    "name": "99-ai.png",
+    "url": "images1/99-ai.png",
     "width": 900,
     "height": 900,
     "ratio": 1,
