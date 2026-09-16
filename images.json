@@ -604,8 +604,8 @@
   },
   {
     "gallery": "3",
-    "name": "17-tall.png",
-    "url": "images3/17-tall.png",
+    "name": "17-tall-pbig.png",
+    "url": "images3/17-tall-pbig.png",
     "width": 900,
     "height": 900,
     "ratio": 1,
@@ -676,8 +676,8 @@
   },
   {
     "gallery": "3",
-    "name": "35-tall.png",
-    "url": "images3/35-tall.png",
+    "name": "35-tall-pbig.png",
+    "url": "images3/35-tall-pbig.png",
     "width": 900,
     "height": 899,
     "ratio": 1,
@@ -739,8 +739,8 @@
   },
   {
     "gallery": "3",
-    "name": "65-msbig.gif",
-    "url": "images3/65-msbig.gif",
+    "name": "65-msbig-ptall.gif",
+    "url": "images3/65-msbig-ptall.gif",
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
