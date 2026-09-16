@@ -712,8 +712,8 @@
   },
   {
     "gallery": "3",
-    "name": "60-big.gif",
-    "url": "images3/60-big.gif",
+    "name": "60-big-msbig.gif",
+    "url": "images3/60-big-msbig.gif",
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
@@ -730,8 +730,8 @@
   },
   {
     "gallery": "3",
-    "name": "64-big.gif",
-    "url": "images3/64-big.gif",
+    "name": "64-big-msbig.gif",
+    "url": "images3/64-big-msbig.gif",
     "width": 1100,
     "height": 734,
     "ratio": 1.5,
@@ -739,8 +739,8 @@
   },
   {
     "gallery": "3",
-    "name": "65.gif",
-    "url": "images3/65.gif",
+    "name": "65-msbig.gif",
+    "url": "images3/65-msbig.gif",
     "width": 1100,
     "height": 733,
     "ratio": 1.5,
