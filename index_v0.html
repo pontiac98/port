@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Sergey Yakovlev</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Designer Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+ 
+
+<style>
+  body {
+background: #EEE;
+  }
+
+.section {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.section.active {
+  display: block;
+}
+
+/* случайная картинка на весь экран */
+
+
+/* галерея */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+#randomImage {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.gallery-item {
+  width: 100%;
+  height: 150px;
+
+  background-size: cover;
+  background-position: center;
+}
+
+  
+  /*запрет выделения картинки*/
+  img {
+  user-select: none;
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+
+  touch-action: manipulation;
+}
+
+  .submenu,
+.header,
+.item {
+  pointer-events: auto;
+}
+
+
+
+  
+  #menu {
+     touch-action: none;
+-webkit-touch-callout: none;
+     isolation: isolate;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    border: 2px solid white;
+    user-select: none;
+    
+  border-radius: 3px;
+    overflow: hidden;
+    transform: translate(50px, 50px); 
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+#menu.dragging {
+  transition: none;
+}
+
+  .header {
+    padding: 10px 14px;
+    font-weight: bold;
+    background: #111;
+  cursor: grab; 
+
+    transition: opacity 0.2s ease;
+  }
+  
+#menu.open .header {
+border-bottom: 2px dotted white;
+}
+
+  
+  .submenu {    
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 0px 0px;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transform: translateY(-5px);
+    transition: all 0.25s ease;
+  }
+
+  #menu.open .submenu {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+.arrow {
+    vertical-align: middle;
+   width: 1.6em;
+  height: 1.6em;
+}
+
+  @media (max-width: 600px) {
+  .arrow {
+   width: 1.9em;
+  height: 1.9em;
+  }
+  }
+
+  
+  #menu.open .arrow {
+  transform: rotate(180deg);
+}
+  
+  .item {
+     /* запреет дефолтной подсветки*/
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+
+    
+    padding: 14px 28px;
+    border: 0px solid white;
+    cursor: pointer;
+
+      transition: 
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+  }
+
+  .label {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+
+/* hover только desktop */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover, .item.active:hover {
+    background: silver;
+    color: black;
+  }
+
+  .item:hover .label {
+  transform: translate(4px, 0px)/* лёгкий сдвиг */
+}
+}
+
+/* mobile — ничего не делает */
+@media (hover: none) {
+  .item:hover {
+    background: inherit;
+    color: inherit;
+  }
+
+  .item:hover .label {
+  transform: none;
+}
+}
+  
+
+
+  
+
+
+  
+  .item.active {
+    font-weight: bold;
+    background: white;
+    color: black;
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="content">
+  <section id="section0" class="section active">
+    <div id="randomImage"></div>
+  </section>
+
+  <section id="section1" class="section">
+    <div class="gallery" id="gallery1"></div>
+  </section>
+</div>
+
+<div id="menu">
+  <div class="header">MENU 
+    <svg class="arrow" viewBox="0 0 24 24" >
+    <path d="M7 10l5 5 5-5" fill="white" stroke="none" stroke-width="0"/>
+  </svg>
+  </div>
+
+  <div class="submenu">
+<div class="item"><span class="label">submenu1</span></div>
+<div class="item"><span class="label">submenu2</span></div>
+<div class="item"><span class="label">submenu3</span></div>
+  </div>
+</div>
+
+<script>
+
+
+  
+  // убрать контекст меню
+  document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+
+  img.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+});
+
+function loadGallery() {
+  const gallery = document.getElementById("gallery1");
+
+  for (let i = 1; i <= 10; i++) {
+
+    const div = document.createElement("div");
+    div.className = "gallery-item";
+
+    div.style.backgroundImage = `url(images1/img${i}.png)`;
+
+    gallery.appendChild(div);
+  }
+}
+
+loadGallery();
+
+
+  
+const menu = document.getElementById("menu");
+const items = document.querySelectorAll(".item");
+  const header = document.querySelector(".header");
+
+let isOpen = false;
+
+  
+items.forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    // убрать active у всех
+    items.forEach(i => i.classList.remove("active"));
+
+    // добавить только текущему
+    item.classList.add("active");
+  });
+});
+
+// ======================
+// DRAG + SAFE BOUNDS
+// ======================
+let isDragging = false;
+let dragged = false;
+
+let startX, startY;
+let offsetX = 50, offsetY = 50;
+
+const DRAG_THRESHOLD = 1;
+
+function clampPosition(x, y) {
+  const rect = menu.getBoundingClientRect();
+
+  const maxX = window.innerWidth - rect.width;
+  const maxY = window.innerHeight - rect.height;
+
+  return {
+    x: Math.max(0, Math.min(x, maxX)),
+    y: Math.max(0, Math.min(y, maxY))
+  };
+}
+
+header.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+  isDragging = true;
+  dragged = false;
+  
+  menu.classList.add("dragging");
+
+header.style.cursor = "grabbing";
+  
+  startX = e.clientX - offsetX;
+  startY = e.clientY - offsetY;
+
+  header.setPointerCapture(e.pointerId);
+});
+
+header.addEventListener("pointermove", (e) => {
+  if (!isDragging) return;
+
+  let x = e.clientX - startX;
+  let y = e.clientY - startY;
+
+  const clamped = clampPosition(x, y);
+
+  if (Math.abs(clamped.x - offsetX) > DRAG_THRESHOLD ||
+      Math.abs(clamped.y - offsetY) > DRAG_THRESHOLD) {
+    dragged = true;
+  }
+
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+
+header.addEventListener("pointerup", (e) => {
+  isDragging = false;
+
+  menu.classList.remove("dragging");
+   header.style.cursor = "grab";
+  header.releasePointerCapture(e.pointerId);
+
+  
+
+  if (dragged) return;
+  
+// 👉 если открываем
+    if (!isOpen) {
+    const submenuHeight = menu.querySelector(".submenu").scrollHeight;
+    const rect = menu.getBoundingClientRect();
+
+    let newY = offsetY;
+
+    const futureBottom = rect.bottom + submenuHeight;
+
+    if (futureBottom > window.innerHeight) {
+      newY -= (futureBottom - window.innerHeight);
+    }
+
+    newY = Math.max(0, newY);
+
+    offsetY = newY;
+
+    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  }
+
+  // toggle меню только если это не drag
+  isOpen = !isOpen;
+  menu.classList.toggle("open", isOpen);
+  
+  header.style.opacity = 0.9;
+setTimeout(() => {
+// header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+  header.style.opacity = 1;
+}, 150);
+ // header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+
+  // 🟡 после изменения размера — проверяем границы заново
+
+});
+
+
+  header.addEventListener("pointercancel", () => {
+  isDragging = false;
+  header.style.cursor = "grab";
+});
+
+// при изменении размера окна — тоже держим внутри
+window.addEventListener("resize", () => {
+  const clamped = clampPosition(offsetX, offsetY);
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+</script>
+
+</body>
+</html>

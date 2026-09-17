@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Sergey Yakovlev</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Designer Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+ 
+
+<style>
+  body {
+    margin: 0px;
+    padding: 0px;
+background: #EEE;
+
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
+
+.section {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section.active {
+  display: block;
+}
+
+
+  
+  /*запрет выделения картинки*/
+  img {
+  user-select: none;
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+
+  touch-action: manipulation;
+}
+
+  .submenu,
+.header,
+.item {
+  pointer-events: auto;
+}
+
+
+
+  
+  #menu {
+     touch-action: none;
+-webkit-touch-callout: none;
+     isolation: isolate;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    border: 2px solid white;
+    user-select: none;
+    
+  border-radius: 3px;
+    overflow: hidden;
+    transform: translate(50px, 50px); 
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+#menu.dragging {
+  transition: none;
+}
+
+  .header {
+    padding: 10px 14px;
+    font-weight: bold;
+    background: #111;
+  cursor: grab; 
+
+    transition: opacity 0.2s ease;
+  }
+  
+#menu.open .header {
+border-bottom: 2px dotted white;
+}
+
+  
+  .submenu {    
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 0px 0px;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transform: translateY(-5px);
+    transition: all 0.25s ease;
+  }
+
+  #menu.open .submenu {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+.arrow {
+    vertical-align: middle;
+   width: 1.6em;
+  height: 1.6em;
+}
+
+  @media (max-width: 600px) {
+  .arrow {
+   width: 1.9em;
+  height: 1.9em;
+  }
+  }
+
+  
+  #menu.open .arrow {
+  transform: rotate(180deg);
+}
+  
+  .item {
+     /* запреет дефолтной подсветки*/
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+
+    
+    padding: 14px 28px;
+    border: 0px solid white;
+    cursor: pointer;
+
+      transition: 
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+  }
+
+  .label {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+
+/* hover только desktop */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover, .item.active:hover {
+    background: silver;
+    color: black;
+  }
+
+  .item:hover .label {
+  transform: translate(4px, 0px)/* лёгкий сдвиг */
+}
+}
+
+/* mobile — ничего не делает */
+@media (hover: none) {
+  .item:hover {
+    background: inherit;
+    color: inherit;
+  }
+
+  .item:hover .label {
+  transform: none;
+}
+}
+  
+  
+  .item.active {
+    font-weight: bold;
+    background: white;
+    color: black;
+  }
+
+
+
+
+
+  
+/* карточки*/
+  
+  .card-image {
+    width: 100%; 
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card:hover .card-image {
+
+}
+
+  /* Эффекты только на устройствах с мышью hover */
+@media (hover: hover) and (pointer: fine) {
+
+  body.no-scroll .card:hover .card-image {
+   /* transform: scale(1.02); */
+        filter: grayscale(90%) saturate(1.0) brightness(1.0) opacity(.5);
+}
+    .card-image {
+      transform: scale(1.00);
+        filter: grayscale(90%) saturate(1.0) brightness(1.0) opacity(.5);
+        transition: 
+          transform .35s ease, 
+          filter .55s ease;
+    }
+
+    .card:hover .card-image {
+        transform: scale(1.00);
+        filter: none;
+    }
+
+}
+
+/* Сенсорные устройства */
+@media (hover: none) {
+
+    .card-image {
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+  
+.grid {
+  display: grid;
+  
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 15vw;
+  grid-auto-flow: dense;
+  
+
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+  width: 100%; 
+  
+  gap: 4px;
+  padding: 64px 4px 0px;  
+}
+
+  /* убрано для google подобной сетки */
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.verywide {
+    grid-column: span 3;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+  
+
+.card {
+   overflow: hidden;
+   border-radius: 4px;
+   width: 100%;
+}
+
+ .card:focus {
+   /* outline: 2px solid silver;  */
+  }
+  
+  .card:hover {
+    
+  }
+
+/* для мобильной */
+@media (max-width: 1100px) {
+
+    .grid {
+      padding: 64px 0px 0px;
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      /*  grid-template-columns: 1fr; */
+      grid-auto-rows: minmax(35vw, auto); /* или AUTO или другое подходящее значение */
+     /* grid-auto-flow: dense; */
+    }
+
+  /*.verywide {
+    grid-column: span 2;
+    }
+   
+    .big,
+    .wide,
+    .verywide,
+    .tall {
+        grid-column: auto;
+        grid-row: auto;
+    }  */
+}
+
+
+
+/* лайтбокс          */
+  
+#viewer {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    isolation: isolate;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden; 
+    pointer-events: none;
+
+    backdrop-filter: blur(0px);
+    transition:
+        opacity .1s ease-out,
+        visibility .1s ease; 
+}
+
+#viewer.open {
+    backdrop-filter: blur(2px) grayscale(100%);
+    opacity: 1;
+    visibility: visible; 
+    pointer-events: auto;
+}
+
+  #viewer::before {
+    content: "";
+    position: fixed;
+    inset: -20px;
+    z-index: -1;
+
+    background: rgba(0,0,0,.85);
+    opacity: 0;
+    transition: opacity .8s ease-out .0s;
+    pointer-events: none;
+}
+
+#viewer.open::before {
+    opacity: 1;
+}
+
+  /*  test */
+  #viewer.open::after {
+    content: "";
+    position: fixed;
+    inset: -20px;
+    z-index: 1;
+    background: white;
+    opacity: .01;
+}
+
+
+  #viewerImage {
+    width: 89vw; 
+    height: auto;
+
+    max-width: 89vw;
+    max-height: 89vh;
+    
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.0); 
+    opacity: 0.1;
+
+    transition:
+      transform .1s ease-in-out .0s, 
+      opacity .1s ease-in .0s; 
+}
+
+  #viewerImage.animate {
+    transform: scale(1);
+    opacity: 1;
+}
+
+  body.no-scroll {
+    overflow: hidden;
+    touch-action: none; 
+}
+
+  html {
+    scrollbar-gutter: stable;
+    background: #EEE;
+    transition:
+        background .8s ease-out;    
+}
+
+  html.no-scroll {
+    background: #262626;
+}
+
+  
+/* меню */
+  #menu{
+  position: sticky;
+  top: 0;
+    margin: 0px;
+    padding: 0px;
+    z-index: 2;
+
+    height: 52px;
+    width: 100%;
+    background: #2f2f2f;
+  }
+  
+</style>
+</head>
+
+<body>
+  
+<div id="viewer">
+    <div id="viewerImage"> </div>
+</div>
+  
+  <header id="menu">
+
+    <button class="active" data-gallery="1">RGB</button>
+    <button data-gallery="2">CMYK</button>
+    <button data-gallery="3">3-D</button>
+    <button data-gallery="about">ABOUT</button>
+
+</header>
+  
+  <main>
+  <div id="content">
+    <!--
+  <section id="section0" class="section active">
+    <div id="randomImage"></div>
+  </section>
+-->
+
+    
+  <section id="section1" class="section">
+      <div class="grid" id="grid"></div>
+  </section>
+  </div>
+  </main>
+
+<!--
+  <div id="menu">
+  <div class="header">MENU 
+    <svg class="arrow" viewBox="0 0 24 24" >
+    <path d="M7 10l5 5 5-5" fill="white" stroke="none" stroke-width="0"/>
+  </svg>
+  </div>
+
+  <div class="submenu">
+<div class="item"><span class="label">submenu1</span></div>
+<div class="item"><span class="label">submenu2</span></div>
+<div class="item"><span class="label">submenu3</span></div>
+  </div>
+
+  
+</div>
+-->
+
+  
+<script>
+
+  // фвто загрузка картинок
+  fetch("images.json")
+    .then(res => res.json())
+    .then(images => {
+
+        const grid = document.getElementById("grid");
+
+        images.forEach((item, index) => {
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+            //card.tabIndex = 0;
+          
+            card.dataset.image = item.url;
+
+            // Пример шаблона размеров
+           if (item.type) {
+              card.classList.add(item.type);
+              }
+
+            const image = document.createElement("div");
+            image.className = "card-image";
+            image.style.backgroundImage = `url("${item.url}")`;
+            //image.style.aspectRatio = `${item.width} / ${item.height}`;
+
+           //card.style.aspectRatio = `${item.width} / ${item.height}`;
+            card.dataset.ratio = `${item.width} / ${item.height}`;
+          
+
+            card.appendChild(image);
+          
+            //const img = document.createElement("img");
+           // img.src = image.url;
+           // img.alt = image.name;
+           // img.loading = "lazy";
+
+            //card.appendChild(img);
+            grid.appendChild(card);
+
+        });
+    });
+
+  // лайтбокс
+  document.addEventListener("click", e => {
+
+    const card = e.target.closest(".card");
+    if (!card) return;
+
+    openViewer(card.dataset.image, card.dataset.ratio);
+
+});
+
+  //обработчик лайтбокса
+  const viewer = document.getElementById("viewer");
+const viewerImage = document.getElementById("viewerImage");
+
+function openViewer(src, aspect){
+  
+  document.body.classList.add("no-scroll");
+  document.documentElement.classList.add("no-scroll");
+ // const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  //document.body.style.paddingRight = scrollbarWidth + "px";
+  
+  viewerImage.style.backgroundImage = `url("${src}")`;
+  viewerImage.style.aspectRatio = aspect;
+
+  
+    //viewerImage.src = src;
+  //viewerImage.getBoundingClientRect();
+    viewer.classList.add("open");
+   
+
+ requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            //viewer.classList.add("open");
+            //document.body.classList.add("no-scroll");
+        });
+    });
+
+   // Сбросить состояние
+    viewerImage.classList.remove("animate");
+  //viewerImage.offsetHeight;
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            viewerImage.classList.add("animate");
+        });
+    });
+  
+}
+
+function closeViewer() {
+  viewerImage.classList.remove("animate");
+    viewer.classList.remove("open");
+  
+    document.body.classList.remove("no-scroll");
+  document.documentElement.classList.remove("no-scroll");
+  //document.body.style.paddingRight = "";
+}
+
+/*viewer.addEventListener("click", (e) => {
+    if (e.target === viewer) {
+        closeViewer();
+    }
+}); */
+  
+//viewer.onclick = () => viewer.classList.remove("open");
+ // viewer.onclick = () => closeViewer();
+  viewer.addEventListener("click", closeViewer);
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeViewer();
+        //viewer.classList.remove("open");
+    }
+});
+  
+//
+  //
+  //
+  //
+  //
+  //
+
+
+  
+  
+  // убрать контекст меню
+  document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+
+  img.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+});
+
+
+
+  
+const menu = document.getElementById("menu");
+const items = document.querySelectorAll(".item");
+  const header = document.querySelector(".header");
+
+let isOpen = false;
+
+  
+items.forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    // убрать active у всех
+    items.forEach(i => i.classList.remove("active"));
+
+    // добавить только текущему
+    item.classList.add("active");
+
+    // section1 hide + section2 show
+    //
+    
+  });
+});
+
+// ======================
+// DRAG + SAFE BOUNDS
+// ======================
+let isDragging = false;
+let dragged = false;
+
+let startX, startY;
+let offsetX = 50, offsetY = 50;
+
+const DRAG_THRESHOLD = 1;
+
+function clampPosition(x, y) {
+  const rect = menu.getBoundingClientRect();
+
+  const maxX = window.innerWidth - rect.width;
+  const maxY = window.innerHeight - rect.height;
+
+  return {
+    x: Math.max(0, Math.min(x, maxX)),
+    y: Math.max(0, Math.min(y, maxY))
+  };
+}
+
+header.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+  isDragging = true;
+  dragged = false;
+  
+  menu.classList.add("dragging");
+
+header.style.cursor = "grabbing";
+  
+  startX = e.clientX - offsetX;
+  startY = e.clientY - offsetY;
+
+  header.setPointerCapture(e.pointerId);
+});
+
+header.addEventListener("pointermove", (e) => {
+  if (!isDragging) return;
+
+  let x = e.clientX - startX;
+  let y = e.clientY - startY;
+
+  const clamped = clampPosition(x, y);
+
+  if (Math.abs(clamped.x - offsetX) > DRAG_THRESHOLD ||
+      Math.abs(clamped.y - offsetY) > DRAG_THRESHOLD) {
+    dragged = true;
+  }
+
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+
+header.addEventListener("pointerup", (e) => {
+  isDragging = false;
+
+  menu.classList.remove("dragging");
+   header.style.cursor = "grab";
+  header.releasePointerCapture(e.pointerId);
+
+  
+
+  if (dragged) return;
+  
+// 👉 если открываем
+    if (!isOpen) {
+    const submenuHeight = menu.querySelector(".submenu").scrollHeight;
+    const rect = menu.getBoundingClientRect();
+
+    let newY = offsetY;
+
+    const futureBottom = rect.bottom + submenuHeight;
+
+    if (futureBottom > window.innerHeight) {
+      newY -= (futureBottom - window.innerHeight);
+    }
+
+    newY = Math.max(0, newY);
+
+    offsetY = newY;
+
+    menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  }
+
+  // toggle меню только если это не drag
+  isOpen = !isOpen;
+  menu.classList.toggle("open", isOpen);
+  
+  header.style.opacity = 0.9;
+setTimeout(() => {
+// header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+  header.style.opacity = 1;
+}, 150);
+ // header.textContent = isOpen ? "MENU ⏶" : "MENU ⏷";
+
+  // 🟡 после изменения размера — проверяем границы заново
+
+});
+
+
+  header.addEventListener("pointercancel", () => {
+  isDragging = false;
+  header.style.cursor = "grab";
+});
+
+// при изменении размера окна — тоже держим внутри
+window.addEventListener("resize", () => {
+  const clamped = clampPosition(offsetX, offsetY);
+  offsetX = clamped.x;
+  offsetY = clamped.y;
+  menu.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+</script>
+
+</body>
+</html>
