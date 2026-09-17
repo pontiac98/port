@@ -27,6 +27,18 @@ jobs:
     - name: Generate JSON
       run: node generate-images.js
 
+    - name: Install HTML Minifier
+      run: npm install -g html-minifier-terser
+
+    - name: Minify index.html (JS & CSS inside)
+      run: |
+          html-minifier-terser \
+            --collapse-whitespace \
+            --remove-comments \
+            --minify-js true \
+            --minify-css true \
+            -o index.html index.html
+
 
     # 3. Сохраняем созданный images.json обратно в репозиторий
     - name: Commit and Push changes
