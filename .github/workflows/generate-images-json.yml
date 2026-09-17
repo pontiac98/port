@@ -46,7 +46,7 @@ jobs:
             --collapse-whitespace \
             --remove-comments \
             --minify-js true \
-            --minify-css '{ "compatibility": "*", "level": 0 }' \
+            --minify-css false \
             -o index.html index.html
           perl -i -pe 's/\/\*.*?\*\///g' index.html
           perl -i -pe 's/\s*([\{\};:,])\s*/$1/g' index.html
