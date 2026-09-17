@@ -289,7 +289,7 @@ body.dev * {
 }
 
 /* для ТРЕТЬКЙ галереи */	
-.tree-d {
+.d3 {
 & .sbig {grid-column: span 3; grid-row: span 2;}
 & .big {grid-column: span 2; grid-row: span 2;}
 & .wide {grid-column: span 2;}
@@ -393,13 +393,13 @@ body.dev * {
 }
 
 /* для ТРЕТЬКЙ МОБИЛ галереи */	
-		.tree-d {
+		.d3 {
 		& .pbig {grid-column: span 1; grid-row: span 1;}
 	& .pwide {grid-column: span 1;}
 	& .pverywide {grid-column: span 1;}
 	& .ptall {grid-row: span 1;}
 	}
-.grid.tree-d {
+.grid.d3 {
 & .sbig {grid-column: span 3; grid-row: span 2;}
 & .big {grid-column: span 2; grid-row: span 2;}
 & .wide {grid-column: span 3;}
@@ -1594,7 +1594,7 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
 	grid.classList.add('grid');
 	if (targetGalleryType == 1) grid.classList.add('rgb')
 		else if (targetGalleryType == 2) grid.classList.add('cmyk')
-			else grid.classList.add('tree-d');
+			else grid.classList.add('d3');
 	
 	try {
         // 1. В фоне скачиваем JSON, чтобы не терять время
