@@ -26,6 +26,15 @@ jobs:
     # 2. Запускаем Node.js скрипт для сканирования папки и сборки JSON
     - name: Generate JSON
       run: node generate-images.js
+    # 3. Сохраняем созданный images.json обратно в репозиторий
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@://github.com"
+        git add images.json
+        git diff-index --quiet HEAD || git commit -m "Автогенерация images.json [skip ci] + minify"
+        git push
+      
 
     - name: Install HTML Minifier
       run: npm install -g html-minifier-terser
@@ -39,12 +48,9 @@ jobs:
             --minify-css true \
             -o index.html index.html
 
+    - name: Deploy to GitHub Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+          folder: .
+          branch: gh-pages
 
-    # 3. Сохраняем созданный images.json обратно в репозиторий
-    - name: Commit and Push changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@://github.com"
-        git add index.html images.json
-        git diff-index --quiet HEAD || git commit -m "Автогенерация images.json [skip ci] + minify"
-        git push
