@@ -46,7 +46,7 @@ jobs:
             --collapse-whitespace \
             --remove-comments \
             --minify-js true \
-            --minify-css true \
+            --minify-css '{ "compatibility": "*", "level": 0 }' \
             -o index.html index.html
 
     - name: Deploy to GitHub Pages 🚀
