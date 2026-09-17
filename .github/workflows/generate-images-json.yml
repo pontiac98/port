@@ -10,6 +10,7 @@ on:
       - 'images3/**'
       - 'images4/**' 
       - 'generate-images.js'
+  workflow_dispatch:
 
 jobs:
   build:
