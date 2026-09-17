@@ -50,6 +50,26 @@
      и принудительно форсировать инверсию цветов поверх вашего CSS НЕ НУЖНО */
   color-scheme: light dark; 
 }
+
+	/* эксперимент */
+
+body * {
+ outline: 1px solid rgba(255, 255, 255, 0.57);
+  
+  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
+  outline-offset: -1px; 
+}
+	
+body.dev * {
+ outline: 1px none rgba(255, 255, 255, 0.67);
+  
+  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
+  outline-offset: -1px; 
+}
+
+:root{
+ --swipe-duration: 0.205s;
+}
 	
   body {
 
@@ -270,15 +290,15 @@
 
 /* для ТРЕТЬКЙ галереи */	
 .tree-d {
-.sbig {grid-column: span 3; grid-row: span 2;}
-.big {grid-column: span 2; grid-row: span 2;}
-.wide {grid-column: span 2;}
-.verywide {grid-column: span 3;}
-.tall {grid-row: span 2;}
-	.pbig {grid-column: span 2; grid-row: span 2;}
-	.pwide {grid-column: span 2;}
-	.pverywide {grid-column: span 3;}
-	.ptall {grid-row: span 2;}
+& .sbig {grid-column: span 3; grid-row: span 2;}
+& .big {grid-column: span 2; grid-row: span 2;}
+& .wide {grid-column: span 2;}
+& .verywide {grid-column: span 3;}
+& .tall {grid-row: span 2;}
+	& .pbig {grid-column: span 2; grid-row: span 2;}
+	& .pwide {grid-column: span 2;}
+	& .pverywide {grid-column: span 3;}
+	& .ptall {grid-row: span 2;}
 }
   	
 
@@ -374,22 +394,22 @@
 
 /* для ТРЕТЬКЙ МОБИЛ галереи */	
 		.tree-d {
-		.pbig {grid-column: span 1; grid-row: span 1;}
-	.pwide {grid-column: span 1;}
-	.pverywide {grid-column: span 1;}
-	.ptall {grid-row: span 1;}
+		& .pbig {grid-column: span 1; grid-row: span 1;}
+	& .pwide {grid-column: span 1;}
+	& .pverywide {grid-column: span 1;}
+	& .ptall {grid-row: span 1;}
 	}
 .grid.tree-d {
-.sbig {grid-column: span 3; grid-row: span 2;}
-.big {grid-column: span 2; grid-row: span 2;}
-.wide {grid-column: span 3;}
-.verywide {grid-column: span 3;}
-.tall {grid-row: span 2;}
-	.msbig {grid-column: span 3; grid-row: span 2;}
-	.mbig {grid-column: span 2; grid-row: span 2;}
-	.mwide {grid-column: span 2;}
-	.mverywide {grid-column: span 3; grid-row: span 1;}
-	.mtall {grid-row: span 2;}
+& .sbig {grid-column: span 3; grid-row: span 2;}
+& .big {grid-column: span 2; grid-row: span 2;}
+& .wide {grid-column: span 3;}
+& .verywide {grid-column: span 3;}
+& .tall {grid-row: span 2;}
+	& .msbig {grid-column: span 3; grid-row: span 2;}
+	& .mbig {grid-column: span 2; grid-row: span 2;}
+	& .mwide {grid-column: span 2;}
+	& .mverywide {grid-column: span 3; grid-row: span 1;}
+	& .mtall {grid-row: span 2;}
 }	
 }
 
@@ -410,25 +430,7 @@
     box-sizing: border-box;
 }
 
-/* эксперимент */
 
-body * {
- outline: 1px solid rgba(255, 255, 255, 0.57);
-  
-  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
-  outline-offset: -1px; 
-}
-	
-body.dev * {
- outline: 1px none rgba(255, 255, 255, 0.67);
-  
-  /* Сдвигаем рамку внутрь на 1 пиксель, чтобы она не вылезала наружу */
-  outline-offset: -1px; 
-}
-
-:root{
- --swipe-duration: 0.205s;
-}
 
 /* лайтбокс          */
 
