@@ -1563,12 +1563,7 @@ function getTransitionDuration(element) {
 	let aboutOffest = 0;
 async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
     
-	 // ставим класс галереи
-	grid.className = "";
-	grid.classList.add('grid');
-	if (targetGalleryType == 1) grid.classList.add('rgb')
-		else if (targetGalleryType == 2) grid.classList.add('cmyk')
-			else grid.classList.add('d3');
+
 	
 	try {
         // 1. В фоне скачиваем JSON, чтобы не терять время
@@ -1586,6 +1581,14 @@ async function loadAndRenderGallery(targetGalleryType, skipFadeOut = false) {
     	grid.style.minHeight = `${currentHeight}px`;
 			
             window.scrollTo({ top: 0, behavior: 'auto' }); // Мгновенный скролл вверх
+
+			// ставим класс галереи
+			grid.className = "";
+			grid.classList.add('grid');
+			if (targetGalleryType == 1) grid.classList.add('rgb')
+				else if (targetGalleryType == 2) grid.classList.add('cmyk')
+					else grid.classList.add('d3');
+			
             renderNewSection(filteredData); // Безопасно строим новые карточки в DOM
 
             // Мгновенно убираем плавность, прячем fade-out (проявляем контейнер)
