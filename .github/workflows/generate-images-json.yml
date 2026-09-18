@@ -46,11 +46,8 @@ jobs:
             --collapse-whitespace \
             --remove-comments \
             --minify-js true \
-            --minify-css false \
+            --minify-css true \
             -o index.html index.html
-          perl -0777 -i -pe 's/\/\*.*?\*\///gs' index.html
-          perl -0777 -i -pe 's/\s*([\{\};:,])\s*/$1/g' index.html
-          perl -i -ne 'print unless /^$/' index.html
 
     - name: Deploy to GitHub Pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4
