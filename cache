@@ -1,0 +1,24 @@
+
+let swipeTreshold = .25;
+
+
+
+
+1911
+
+progress = Math.min(1, Math.abs(x - startSwipeX) / fullProgressWidth);
+
+if (maxProgress < progress) maxProgress = progress;
+
+надо обнулять maxProgress после смены направления
+
+if (maxProgress - progress < .1) maxProgress = 0;
+
+
+
+1958
+
+if (progress > .25 && progress != maxProgress && progress/maxprogress > .7) {
+
+
+if progress != maxProgress and progress/maxprogress < .7
