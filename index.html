@@ -1864,6 +1864,7 @@ if (activePointers.size > 1) {
 	
 	let swipeX = 0;
 	let swipeFrame = false;
+	let maxProgress = 0;
 	
 layerMid.addEventListener("pointermove", e => {
 	 if (activePointers.has(e.pointerId)) {
@@ -1887,6 +1888,11 @@ layerMid.addEventListener("pointermove", e => {
 	}  
 
  	swipeX = e.clientX;
+
+	// отслеживаем прогресс без тротлинга
+	progress = Math.min(1, Math.abs(swipeX - startSwipeX) / fullProgressWidth);
+	if (maxProgress < progress || progress < .1) maxProgress = progress;
+	// обнуляем макспрогресс если почти вернулись к началу свайпа
 	
 
     if (!swipeFrame) {
@@ -1908,7 +1914,7 @@ function updateSwipe(x) {
 	
 	const rF = 0.70; // фактор тяжести
 	const deltaSwipeX = (x - startSwipeX) * rF;
-	progress = Math.min(1, Math.abs(x - startSwipeX) / fullProgressWidth);
+	//progress = Math.min(1, Math.abs(x - startSwipeX) / fullProgressWidth);
 
 
 	const scaleF = .33;
@@ -1956,15 +1962,21 @@ layerMid.addEventListener("pointerup", e => {
 	activePointers.delete(e.pointerId); 
 	
 	if (!swiping) return;
-	if (progress > .25) {
+
+	
+	
+	if (progress > .25 && progress/maxprogress > .73) {
 		// в право или в лево
 		doSwipe(e);
 	} else endSwipe(e);
+	
+	maxProgress = 0; // обнуляем после использования
 	});
 
 
   layerMid.addEventListener("pointercancel", e => {
 	  activePointers.delete(e.pointerId); 
+	  maxProgress = 0;
    });
 
 
