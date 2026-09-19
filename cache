@@ -8,11 +8,11 @@ let swipeTreshold = .25;
 
 progress = Math.min(1, Math.abs(x - startSwipeX) / fullProgressWidth);
 
-if maxProgress < progress then maxProgress - progress
+if (maxProgress < progress) maxProgress = progress;
 
 надо обнулять maxProgress после смены направления
 
-if maxProgress - progress < .1 then maxProgress = 0
+if (maxProgress - progress < .1) maxProgress = 0;
 
 
 
